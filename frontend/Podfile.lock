@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (5.7.1)
+  - Kingfisher (7.9.0)
+  - SnapKit (5.6.0)
+  - StickerView (1.0)
+  - Then (3.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Kingfisher (~> 7.0)
+  - SnapKit (~> 5.6.0)
+  - StickerView
+  - Then
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Kingfisher
+    - SnapKit
+    - StickerView
+    - Then
+
+SPEC CHECKSUMS:
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  Kingfisher: 59f908b6d2f403b0a3e539debb0eec05cb27002c
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  StickerView: c486fbc722bddaff4f521afd9028ea4dc3e25a62
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+
+PODFILE CHECKSUM: 5907b3adec76b757fe8a1808910787d3ccbfcec3
+
+COCOAPODS: 1.12.1
