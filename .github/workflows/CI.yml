@@ -9,11 +9,10 @@ name: CI
 
 on:
   push:
-    branches: [ "server-feature/**",  ]
+    branches: [ "server-feature/**" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -25,25 +24,25 @@ jobs:
         distribution: 'temurin'
         
     - name: Create Test YML
-    - run : |
+      run : |
         cd ./backend
         cd ./src/test/resources
         touch ./application.yml
         echo "${{ secrets.TEST_YML }}" > ./application.yml
         
     - name: Grant execute permission for gradlew
-    - run: |
+      run: |
         cd ./backend
         chmod +x ./gradlew
       shell: bash
 
     - name: Build with Gradle
-    - run: |
+      run: |
         cd ./backend
         ./gradlew clean build -x test
       shell: bash
 
     - name: Test with Gradle
-    - run: |
+      run: |
         cd ./backend
         ./gradlew clean test
