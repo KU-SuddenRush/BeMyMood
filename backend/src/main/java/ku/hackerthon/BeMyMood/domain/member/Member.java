@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,12 +24,12 @@ public class Member {
 
     private String password;
 
-    @OneToMany(mappedBy = "color")
-    private List<MemberColor> memberColors;
+    @OneToMany(mappedBy = "member")
+    private List<MemberColor> memberColors = new ArrayList<>();
 
-    @OneToMany(mappedBy = "mood")
-    private List<MemberMood> memberMoods;
+    @OneToMany(mappedBy = "member")
+    private List<MemberMood> memberMoods = new ArrayList<>();
 
-    @OneToMany(mappedBy = "location")
-    private List<MemberLocation> memberLocations;
+    @OneToMany(mappedBy = "member")
+    private List<MemberLocation> memberLocations = new ArrayList<>();
 }
