@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		13A7F6639B6F1B219DB4FFF9 /* Pods_BeMyMood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C55293BF6C3B8416A325017 /* Pods_BeMyMood.framework */; };
 		2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05162A80F72700FC3FF3 /* UIViewController.swift */; };
+		2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */; };
+		2ECD051C2A80FFE500FC3FF3 /* SpotListModalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD051B2A80FFE500FC3FF3 /* SpotListModalLayout.swift */; };
+		2ECD05212A810C5F00FC3FF3 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05202A810C5F00FC3FF3 /* PageViewController.swift */; };
+		2ECD05252A81182100FC3FF3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05242A81182100FC3FF3 /* FirstViewController.swift */; };
+		2ECD05272A81184200FC3FF3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05262A81184200FC3FF3 /* SecondViewController.swift */; };
 		76D03CCBDD333211385A400D /* Pods_BeMyMood_BeMyMoodUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20789D2FDFD4A2EB34922C8 /* Pods_BeMyMood_BeMyMoodUITests.framework */; };
 		906A530A66B51C9F89D40E23 /* Pods_BeMyMoodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9608FAD3B71F7A69B22CBDA /* Pods_BeMyMoodTests.framework */; };
 		ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */; };
@@ -50,6 +55,11 @@
 		25E0CDC52360D350D5222219 /* Pods-BeMyMood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood.debug.xcconfig"; path = "Target Support Files/Pods-BeMyMood/Pods-BeMyMood.debug.xcconfig"; sourceTree = "<group>"; };
 		2D6782CAFCB745F115D490F8 /* Pods-BeMyMood-BeMyMoodUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood-BeMyMoodUITests.release.xcconfig"; path = "Target Support Files/Pods-BeMyMood-BeMyMoodUITests/Pods-BeMyMood-BeMyMoodUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2ECD05162A80F72700FC3FF3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModalViewController.swift; sourceTree = "<group>"; };
+		2ECD051B2A80FFE500FC3FF3 /* SpotListModalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModalLayout.swift; sourceTree = "<group>"; };
+		2ECD05202A810C5F00FC3FF3 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		2ECD05242A81182100FC3FF3 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		2ECD05262A81184200FC3FF3 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		33D0006B4858ACF3CEE49C14 /* Pods-BeMyMoodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMoodTests.debug.xcconfig"; path = "Target Support Files/Pods-BeMyMoodTests/Pods-BeMyMoodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3866844B03D2C5893F9D2102 /* Pods-BeMyMood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood.release.xcconfig"; path = "Target Support Files/Pods-BeMyMood/Pods-BeMyMood.release.xcconfig"; sourceTree = "<group>"; };
 		8C55293BF6C3B8416A325017 /* Pods_BeMyMood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyMood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +123,18 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		2ECD05182A80FF7A00FC3FF3 /* SpotListModal */ = {
+			isa = PBXGroup;
+			children = (
+				2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */,
+				2ECD051B2A80FFE500FC3FF3 /* SpotListModalLayout.swift */,
+				2ECD05202A810C5F00FC3FF3 /* PageViewController.swift */,
+				2ECD05242A81182100FC3FF3 /* FirstViewController.swift */,
+				2ECD05262A81184200FC3FF3 /* SecondViewController.swift */,
+			);
+			path = SpotListModal;
+			sourceTree = "<group>";
+		};
 		503D9839263E3452235526DE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +183,7 @@
 		ACF16DC82A7D4CE50010CF21 /* BeMyMood */ = {
 			isa = PBXGroup;
 			children = (
+				2ECD05182A80FF7A00FC3FF3 /* SpotListModal */,
 				2ECD05152A80F6C100FC3FF3 /* Extension */,
 				ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */,
 				ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */,
@@ -435,12 +458,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */,
+				2ECD05272A81184200FC3FF3 /* SecondViewController.swift in Sources */,
 				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
+				2ECD051C2A80FFE500FC3FF3 /* SpotListModalLayout.swift in Sources */,
+				2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */,
 				ACF16E042A7D6B900010CF21 /* CommunityViewController.swift in Sources */,
 				2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */,
 				ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */,
+				2ECD05212A810C5F00FC3FF3 /* PageViewController.swift in Sources */,
 				ACF16DFC2A7D6B090010CF21 /* MoodBoardViewController.swift in Sources */,
 				ACF16E002A7D6B420010CF21 /* ProfileViewController.swift in Sources */,
+				2ECD05252A81182100FC3FF3 /* FirstViewController.swift in Sources */,
 				ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */,
 				ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */,
 				ACF16DFA2A7D5D500010CF21 /* HomeLayout.swift in Sources */,
