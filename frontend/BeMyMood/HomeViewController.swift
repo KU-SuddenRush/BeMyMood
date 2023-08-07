@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
         $0.setTitle("홈", for: .normal)
         $0.backgroundColor = UIColor(red: 184/255, green: 184/255, blue: 184/255, alpha: 1)
         $0.setTitleColor(.white, for: .normal)
+        
     }
 
     //MARK: - LifeCycles
@@ -25,7 +26,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .blue
         
         hierarchy()
         layout()
