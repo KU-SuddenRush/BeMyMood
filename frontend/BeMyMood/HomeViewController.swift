@@ -8,6 +8,7 @@
 import UIKit
 import Then
 import SnapKit
+import SwiftUI
 
 class HomeViewController: UIViewController {
     
@@ -33,3 +34,8 @@ class HomeViewController: UIViewController {
 
 }
 
+struct HomeVCPreView:PreviewProvider {
+    static var previews: some View {
+        HomeViewController().toPreview()
+    }
+}
