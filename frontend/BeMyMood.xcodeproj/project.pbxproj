@@ -166,18 +166,13 @@
 		ACF16DC82A7D4CE50010CF21 /* BeMyMood */ = {
 			isa = PBXGroup;
 			children = (
+				ACF16E0C2A8123050010CF21 /* Application */,
 				ACF16E092A8110E50010CF21 /* TabBar */,
+				ACF16E0D2A8123260010CF21 /* Home */,
+				ACF16E102A8123D10010CF21 /* Profile */,
+				ACF16E0F2A8123C20010CF21 /* Community */,
+				ACF16E0E2A8123380010CF21 /* MoodBoard */,
 				2ECD05152A80F6C100FC3FF3 /* Extension */,
-				ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */,
-				ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */,
-				ACF16DCD2A7D4CE50010CF21 /* HomeViewController.swift */,
-				ACF16DF92A7D5D500010CF21 /* HomeLayout.swift */,
-				ACF16DFB2A7D6B090010CF21 /* MoodBoardViewController.swift */,
-				ACF16DFD2A7D6B200010CF21 /* MoodBoardLayout.swift */,
-				ACF16E032A7D6B900010CF21 /* CommunityViewController.swift */,
-				ACF16E052A7D6BA00010CF21 /* CommunityLayout.swift */,
-				ACF16DFF2A7D6B420010CF21 /* ProfileViewController.swift */,
-				ACF16E012A7D6B520010CF21 /* ProfileLayout.swift */,
 				ACF16DD22A7D4CE70010CF21 /* Assets.xcassets */,
 				ACF16DD42A7D4CE70010CF21 /* LaunchScreen.storyboard */,
 				ACF16DD72A7D4CE70010CF21 /* Info.plist */,
@@ -208,6 +203,51 @@
 				ACF16E0A2A81118E0010CF21 /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		ACF16E0C2A8123050010CF21 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */,
+				ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		ACF16E0D2A8123260010CF21 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16DCD2A7D4CE50010CF21 /* HomeViewController.swift */,
+				ACF16DF92A7D5D500010CF21 /* HomeLayout.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		ACF16E0E2A8123380010CF21 /* MoodBoard */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16DFB2A7D6B090010CF21 /* MoodBoardViewController.swift */,
+				ACF16DFD2A7D6B200010CF21 /* MoodBoardLayout.swift */,
+			);
+			path = MoodBoard;
+			sourceTree = "<group>";
+		};
+		ACF16E0F2A8123C20010CF21 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16E052A7D6BA00010CF21 /* CommunityLayout.swift */,
+				ACF16E032A7D6B900010CF21 /* CommunityViewController.swift */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		ACF16E102A8123D10010CF21 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16DFF2A7D6B420010CF21 /* ProfileViewController.swift */,
+				ACF16E012A7D6B520010CF21 /* ProfileLayout.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
