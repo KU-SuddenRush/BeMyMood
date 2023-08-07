@@ -26,6 +26,8 @@
 		ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E012A7D6B520010CF21 /* ProfileLayout.swift */; };
 		ACF16E042A7D6B900010CF21 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E032A7D6B900010CF21 /* CommunityViewController.swift */; };
 		ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E052A7D6BA00010CF21 /* CommunityLayout.swift */; };
+		ACF16E082A810E660010CF21 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E072A810E660010CF21 /* UIColor.swift */; };
+		ACF16E0B2A81118E0010CF21 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E0A2A81118E0010CF21 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		ACF16E012A7D6B520010CF21 /* ProfileLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLayout.swift; sourceTree = "<group>"; };
 		ACF16E032A7D6B900010CF21 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		ACF16E052A7D6BA00010CF21 /* CommunityLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityLayout.swift; sourceTree = "<group>"; };
+		ACF16E072A810E660010CF21 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		ACF16E0A2A81118E0010CF21 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E20789D2FDFD4A2EB34922C8 /* Pods_BeMyMood_BeMyMoodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyMood_BeMyMoodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9608FAD3B71F7A69B22CBDA /* Pods_BeMyMoodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyMoodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				2ECD05162A80F72700FC3FF3 /* UIViewController.swift */,
+				ACF16E072A810E660010CF21 /* UIColor.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 		ACF16DC82A7D4CE50010CF21 /* BeMyMood */ = {
 			isa = PBXGroup;
 			children = (
+				ACF16E092A8110E50010CF21 /* TabBar */,
 				2ECD05152A80F6C100FC3FF3 /* Extension */,
 				ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */,
 				ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */,
@@ -194,6 +200,14 @@
 				ACF16DEC2A7D4CE70010CF21 /* BeMyMoodUITestsLaunchTests.swift */,
 			);
 			path = BeMyMoodUITests;
+			sourceTree = "<group>";
+		};
+		ACF16E092A8110E50010CF21 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16E0A2A81118E0010CF21 /* TabBarController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,6 +449,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */,
+				ACF16E0B2A81118E0010CF21 /* TabBarController.swift in Sources */,
+				ACF16E082A810E660010CF21 /* UIColor.swift in Sources */,
 				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
 				ACF16E042A7D6B900010CF21 /* CommunityViewController.swift in Sources */,
 				2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */,
