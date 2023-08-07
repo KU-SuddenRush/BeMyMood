@@ -14,10 +14,17 @@ class HomeViewController: UIViewController {
     
     //MARK: - UIComponents
     
-    let nextButton = UIButton().then{
-        $0.setTitle("홈", for: .normal)
-        $0.backgroundColor = UIColor(red: 184/255, green: 184/255, blue: 184/255, alpha: 1)
-        $0.setTitleColor(.white, for: .normal)
+    let logo = UIImageView().then{
+        $0.image = UIImage(named: "logo")
+    }
+    
+    let notificationBtn = UIButton().then{
+        $0.setImage(UIImage(named: "notification"), for: .normal)
+    }
+    
+    let introduce = UILabel().then{
+        $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        $0.text = "김건국님의 무드8"
         
     }
 
@@ -26,7 +33,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.view.backgroundColor = .blue
+        self.view.backgroundColor = UIColor(hex: "#EAE9E5")
         
         hierarchy()
         layout()

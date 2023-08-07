@@ -12,13 +12,28 @@ import SnapKit
 extension HomeViewController {
     
     func hierarchy(){
-        self.view.addSubview(nextButton)
+        self.view.addSubview(logo)
+        self.view.addSubview(notificationBtn)
+        self.view.addSubview(introduce)
     }
     
     func layout(){
-        nextButton.snp.makeConstraints{ make in
-            make.centerX.centerY.equalToSuperview()
-            make.width.height.equalTo(60)
+        logo.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(70)
+            make.leading.equalToSuperview().offset(24)
+            make.width.equalTo(122)
+            make.height.equalTo(20)
+        }
+        
+        notificationBtn.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(68)
+            make.trailing.equalToSuperview().offset(-24)
+            make.width.height.equalTo(24)
+        }
+        
+        introduce.snp.makeConstraints{ make in
+            make.top.equalTo(logo.snp.bottom).offset(20)
+            make.leading.equalTo(logo.snp.leading)
         }
     }
 }
