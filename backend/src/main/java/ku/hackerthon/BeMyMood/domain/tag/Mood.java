@@ -1,12 +1,8 @@
-package ku.hackerthon.BeMyMood.domain.member;
-
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+package ku.hackerthon.BeMyMood.domain.tag;
 
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Mood {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mood_id")
