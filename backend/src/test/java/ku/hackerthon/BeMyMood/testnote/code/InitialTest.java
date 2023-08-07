@@ -12,4 +12,12 @@ public class InitialTest {
 
         assertThat(a).isEqualTo(1);
     }
+
+    @Test
+    void sum_test() {
+        int a = 1;
+        int b = 1;
+
+        assertThat(a + b).isEqualTo(2);
+    }
 }
