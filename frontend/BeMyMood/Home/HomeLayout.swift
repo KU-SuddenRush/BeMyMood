@@ -15,6 +15,9 @@ extension HomeViewController {
         self.view.addSubview(logo)
         self.view.addSubview(notificationBtn)
         self.view.addSubview(introduce)
+        self.view.addSubview(collectionView)
+        self.view.addSubview(star1)
+        self.view.addSubview(star2)
     }
     
     func layout(){
@@ -34,6 +37,25 @@ extension HomeViewController {
         introduce.snp.makeConstraints{ make in
             make.top.equalTo(logo.snp.bottom).offset(20)
             make.leading.equalTo(logo.snp.leading)
+        }
+        
+        collectionView.snp.makeConstraints{ make in
+            make.top.equalTo(introduce.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-32)
+            make.height.equalTo(100)
+        }
+        
+        star1.snp.makeConstraints{ make in
+            make.top.equalTo(collectionView.snp.top).offset(-14)
+            make.trailing.equalTo(collectionView.snp.trailing).offset(3)
+            make.height.width.equalTo(28)
+        }
+        
+        star2.snp.makeConstraints{ make in
+            make.bottom.equalTo(collectionView.snp.bottom).offset(5)
+            make.leading.equalTo(collectionView.snp.leading).offset(5)
+            make.height.width.equalTo(28)
         }
     }
 }
