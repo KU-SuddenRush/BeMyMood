@@ -9,9 +9,10 @@ import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MemberLocation {
+public class PreferredLocation {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_location_id")
+    @Column(name = "preferred_location_id")
     private Long id;
 
     @ManyToOne
