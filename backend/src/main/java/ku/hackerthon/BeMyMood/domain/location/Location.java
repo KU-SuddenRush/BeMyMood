@@ -1,11 +1,13 @@
-package ku.hackerthon.BeMyMood.domain.spot.location;
+package ku.hackerthon.BeMyMood.domain.location;
 
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@EqualsAndHashCode(of = {"name"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Location {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
