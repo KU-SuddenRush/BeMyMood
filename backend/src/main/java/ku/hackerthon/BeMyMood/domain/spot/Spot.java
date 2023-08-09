@@ -1,10 +1,8 @@
 package ku.hackerthon.BeMyMood.domain.spot;
 
 import ku.hackerthon.BeMyMood.domain.review.Review;
-import ku.hackerthon.BeMyMood.domain.spot.tag.SpotColor;
-import ku.hackerthon.BeMyMood.domain.spot.tag.SpotLocation;
-import ku.hackerthon.BeMyMood.domain.spot.tag.SpotMood;
-import ku.hackerthon.BeMyMood.domain.tag.Location;
+import ku.hackerthon.BeMyMood.domain.location.Location;
+import ku.hackerthon.BeMyMood.domain.spot.mood.SpotMood;
 import ku.hackerthon.BeMyMood.service.spot.dto.SpotParams;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -37,9 +35,6 @@ public class Spot {
     @OneToOne
     @JoinColumn(name = "location_id")
     private Location location;
-
-    @OneToMany(mappedBy = "spot")
-    private List<SpotColor> spotColors = new ArrayList<>();
 
     @OneToMany(mappedBy = "spot")
     private List<SpotMood> spotMoods = new ArrayList<>();

@@ -1,7 +1,7 @@
-package ku.hackerthon.BeMyMood.domain.member.tag;
+package ku.hackerthon.BeMyMood.domain.member.mood;
 
-import ku.hackerthon.BeMyMood.domain.tag.Location;
 import ku.hackerthon.BeMyMood.domain.member.Member;
+import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -9,9 +9,9 @@ import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MemberLocation {
+public class MemberMood {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_location_id")
+    @Column(name = "member_mood_id")
     private Long id;
 
     @ManyToOne
@@ -19,6 +19,6 @@ public class MemberLocation {
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "location_id")
-    private Location location;
+    @JoinColumn(name = "mood_id")
+    private Mood mood;
 }

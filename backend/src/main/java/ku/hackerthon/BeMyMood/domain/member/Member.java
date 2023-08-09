@@ -1,8 +1,7 @@
 package ku.hackerthon.BeMyMood.domain.member;
 
-import ku.hackerthon.BeMyMood.domain.member.tag.MemberColor;
-import ku.hackerthon.BeMyMood.domain.member.tag.MemberLocation;
-import ku.hackerthon.BeMyMood.domain.member.tag.MemberMood;
+import ku.hackerthon.BeMyMood.domain.member.location.MemberLocation;
+import ku.hackerthon.BeMyMood.domain.member.mood.MemberMood;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -23,9 +22,6 @@ public class Member {
     private String email;
 
     private String password;
-
-    @OneToMany(mappedBy = "member")
-    private List<MemberColor> memberColors = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
     private List<MemberMood> memberMoods = new ArrayList<>();
