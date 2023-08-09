@@ -1,6 +1,6 @@
-package ku.hackerthon.BeMyMood.domain.member.tag;
+package ku.hackerthon.BeMyMood.domain.member.location;
 
-import ku.hackerthon.BeMyMood.domain.spot.location.Location;
+import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

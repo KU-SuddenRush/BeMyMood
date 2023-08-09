@@ -1,7 +1,7 @@
 package ku.hackerthon.BeMyMood.domain.spot.location;
 
+import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
-import ku.hackerthon.BeMyMood.domain.spot.location.Location;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
