@@ -1,7 +1,7 @@
-package ku.hackerthon.BeMyMood.domain.spot.tag;
+package ku.hackerthon.BeMyMood.domain.spot.mood;
 
+import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
-import ku.hackerthon.BeMyMood.domain.tag.Mood;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
