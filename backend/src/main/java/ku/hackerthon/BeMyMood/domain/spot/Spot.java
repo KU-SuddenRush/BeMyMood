@@ -56,7 +56,6 @@ public class Spot {
         this.closeAt = closeAt;
     }
 
-    // Method
     public static Spot ofParams(SpotParams params) {
         return new Spot(
                 params.getName(),
