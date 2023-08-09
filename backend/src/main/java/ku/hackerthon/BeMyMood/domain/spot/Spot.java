@@ -5,6 +5,7 @@ import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.spot.mood.SpotMood;
 import ku.hackerthon.BeMyMood.service.spot.dto.SpotParams;
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@EqualsAndHashCode(of = {"name", "location"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Spot {
@@ -26,13 +28,14 @@ public class Spot {
 
     private String introduce;
 
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private SpotCategory category;
 
     private LocalTime openAt;
 
     private LocalTime closeAt;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id")
     private Location location;
 
@@ -44,7 +47,7 @@ public class Spot {
     private List<Review> reviews = new ArrayList<>();
 
     // Constructor
-    private Spot(String name, String introduce, String category, Location location, LocalTime openAt, LocalTime closeAt) {
+    private Spot(String name, String introduce, SpotCategory category, Location location, LocalTime openAt, LocalTime closeAt) {
         this.name = name;
         this.introduce = introduce;
         this.category = category;
@@ -54,7 +57,7 @@ public class Spot {
     }
 
     // Method
-    public static Spot of(SpotParams params) {
+    public static Spot ofParams(SpotParams params) {
         return new Spot(
                 params.getName(),
                 params.getIntroduce(),
@@ -64,4 +67,6 @@ public class Spot {
                 params.getCloseAt()
         );
     }
+
+
 }
