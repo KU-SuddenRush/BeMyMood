@@ -1,4 +1,4 @@
-package ku.hackerthon.BeMyMood.domain.tag;
+package ku.hackerthon.BeMyMood.domain.spot.location;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -14,4 +14,14 @@ public class Location {
 
     @Column(name = "location_name")
     private String name;
+
+    // Constructor
+    private Location(String name) {
+        this.name = name;
+    }
+
+    // Method
+    public static Location of(String name) {
+        return new Location(name);
+    }
 }
