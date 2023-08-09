@@ -55,6 +55,8 @@ class ColorSelectionViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
+        swipeRecognizer()
+        
         hierarchy()
         layout()
         
@@ -71,6 +73,12 @@ class ColorSelectionViewController: UIViewController {
         
         
     }
+    func swipeRecognizer() {
+            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
+            swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+            self.view.addGestureRecognizer(swipeRight)
+            
+        }
     
     //MARK: - Actions
     
@@ -79,7 +87,21 @@ class ColorSelectionViewController: UIViewController {
         self.navigationController?.pushViewController(moodSelectionViewController, animated: true)
         
     }
+    
+    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer){
+            if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+                switch swipeGesture.direction{
+                case UISwipeGestureRecognizer.Direction.right:
+                    // 스와이프 시, 뒤로가기
+                    self.navigationController?.popViewController(animated: true)
+                default: break
+                }
+            }
+        }
+
 }
+
+
 
 
 

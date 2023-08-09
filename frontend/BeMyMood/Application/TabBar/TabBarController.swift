@@ -27,6 +27,11 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.viewControllers = [createFirstViewController(), createSecondViewController(), createThirdViewController(),createFourViewController()]
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.viewControllers = [createFirstViewController(), createSecondViewController(), createThirdViewController(),createFourViewController()]
+    }
+    
     func createFirstViewController() -> UIViewController {
         let firstViewController = HomeViewController()
         firstViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "home"), tag: 0)

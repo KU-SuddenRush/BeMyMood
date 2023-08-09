@@ -65,12 +65,18 @@ class MoodSelectionViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.allowsMultipleSelection = true
+        
+        self.nextBtn.addTarget(self, action: #selector(nextBtnDidTab), for: .touchUpInside)
     }
     
     
-    //MARK: - Btn
-
-
+    //MARK: - Actions
+    
+    @objc func nextBtnDidTab() {
+        let locationSelectionViewController = LocationSelectionViewController()
+        self.navigationController?.pushViewController(locationSelectionViewController, animated: true)
+        
+    }
 }
 
     //MARK: - CollectionViewDelegate

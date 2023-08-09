@@ -10,6 +10,8 @@ extension LocationSelectionViewController {
     func hierarchy(){
         self.view.addSubview(progressBar)
         self.view.addSubview(label)
+        self.view.addSubview(searchBar)
+        self.view.addSubview(locationSearchBtn)
         self.view.addSubview(nextBtn)
     }
     
@@ -27,6 +29,21 @@ extension LocationSelectionViewController {
             make.leading.equalToSuperview().offset(20)
             make.height.equalTo(30)
         }
+        
+        searchBar.snp.makeConstraints{ make in
+            make.top.equalTo(label.snp.bottom).offset(30)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(50)
+        }
+        
+        locationSearchBtn.snp.makeConstraints{ make in
+            make.top.equalTo(searchBar.snp.bottom).offset(14)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(50)
+        }
+
         
         nextBtn.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(20)

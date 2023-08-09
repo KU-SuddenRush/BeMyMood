@@ -31,6 +31,30 @@ class LocationSelectionViewController: UIViewController {
         $0.text = "선호하는 지역을 알려주세요"
     }
     
+    let searchBar = UITextField().then{
+        $0.placeholder = "동 이름으로 찾기"
+        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black_50])
+        $0.layer.borderColor = UIColor.black_30.cgColor
+        $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 50/2
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: $0.frame.size.height))
+        $0.leftView = paddingView
+        $0.leftViewMode = .always
+    }
+    
+    let locationSearchBtn = UIButton().then{
+        $0.setTitle("현재 위치로 찾기", for: .normal)
+        $0.backgroundColor = .grayBeige
+        $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        $0.titleLabel?.textAlignment = .center
+        $0.layer.cornerRadius = 15
+        
+        let iconImage = UIImage(named: "location") // 원하는 아이콘 이미지로 변경
+            $0.setImage(iconImage, for: .normal)
+            $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8) // 아이콘 위치 조정
+    }
+    
     let nextBtn = UIButton().then{
         $0.setTitle("다음", for: .normal)
         $0.backgroundColor = .black
