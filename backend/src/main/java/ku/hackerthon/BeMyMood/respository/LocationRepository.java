@@ -14,8 +14,8 @@ public class LocationRepository {
     private final EntityManager em;
 
     public List<Location> findContainsByName(String name) {
-        return em.createQuery("select l from Location l where l.name like %:name%", Location.class)
-                .setParameter("name", name)
+        return em.createQuery("select l from Location l where l.name like :name", Location.class)
+                .setParameter("name", "%" + name + "%")
                 .getResultList();
     }
 }
