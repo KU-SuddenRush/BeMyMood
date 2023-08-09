@@ -25,11 +25,11 @@ extension HomeViewController {
             make.top.equalToSuperview().offset(70)
             make.leading.equalToSuperview().offset(24)
             make.width.equalTo(122)
-            make.height.equalTo(20)
+            make.height.equalTo(24)
         }
         
         notificationBtn.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(68)
+            make.centerY.equalTo(logo)
             make.trailing.equalToSuperview().offset(-24)
             make.width.height.equalTo(24)
         }

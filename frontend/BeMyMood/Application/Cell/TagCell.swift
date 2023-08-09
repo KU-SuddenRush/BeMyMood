@@ -9,7 +9,26 @@ import UIKit
 
 class TagCell: UICollectionViewCell {
     
-    static let cellIdentifier = "todoCategoryCell"
+    static let cellIdentifier = "tagCell"
+    
+    override var isSelected: Bool{
+            didSet{
+                if isSelected{
+                    tagLabel.layer.borderWidth = 0
+                    tagLabel.backgroundColor = .black
+                    tagLabel.textColor = .white
+                    
+                }
+                else{
+                    tagLabel.layer.borderWidth = 1
+                    tagLabel.layer.borderColor = UIColor.black_30.cgColor
+                    tagLabel.backgroundColor = .white
+                    tagLabel.textColor = .black_50
+                    
+                }
+            }
+        }
+    
     
     lazy var tagLabel = cellPaddingLabel().then{
         $0.textColor = .white

@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     //MARK: - UIComponents
     
     let logo = UIImageView().then{
+        $0.contentMode = .scaleAspectFit
         $0.image = UIImage(named: "logo")
     }
     
@@ -30,6 +31,7 @@ class HomeViewController: UIViewController {
     }
     
     let collectionView = UICollectionView(frame: .init(), collectionViewLayout: UICollectionViewLayout()).then{
+        $0.allowsSelection = false
         $0.backgroundColor = .grayBeige
         $0.showsVerticalScrollIndicator = false
         $0.register(TagCell.self, forCellWithReuseIdentifier: TagCell.cellIdentifier)
@@ -58,6 +60,16 @@ class HomeViewController: UIViewController {
         self.collectionView.collectionViewLayout = layout
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
+        self.notificationBtn.addTarget(self, action: #selector(nextBtnDidTab), for: .touchUpInside)
+    }
+    
+    //MARK: - Actions
+    
+    @objc func nextBtnDidTab() {
+        let colorSelectionViewController = ColorSelectionViewController()
+        self.navigationController?.pushViewController(colorSelectionViewController, animated: true)
+        
     }
 
 
