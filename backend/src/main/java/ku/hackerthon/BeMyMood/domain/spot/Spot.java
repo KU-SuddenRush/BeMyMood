@@ -1,5 +1,7 @@
 package ku.hackerthon.BeMyMood.domain.spot;
 
+import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
+import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.review.Review;
 import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.spot.mood.SpotMood;
@@ -68,4 +70,15 @@ public class Spot {
     }
 
 
+    public int countMatchingMoods(PreferredMoods preferredMoods) {
+        return (int) spotMoods.stream()
+                .filter(spotMood -> preferredMoods.hasMood(spotMood.getMood()))
+                .count();
+    }
+
+    public boolean hasMood(Mood mood) {
+        return spotMoods.stream()
+                .map(SpotMood::getMood)
+                .anyMatch(m -> m.equals(mood));
+    }
 }
