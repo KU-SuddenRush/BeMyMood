@@ -14,15 +14,16 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @Slf4j
-@Service
 @RequiredArgsConstructor
+@Service
 public class StorageService {
+
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
-    @Autowired
-    private AmazonS3Client amazonS3Client;
 
-    private final String SPLITER = "/";
+    private static final String SPLITER = "/";
+
+    private final AmazonS3Client amazonS3Client;
 
     public String uploadToS3(MultipartFile file, String fileName) throws IOException {
         long size = file.getSize();
