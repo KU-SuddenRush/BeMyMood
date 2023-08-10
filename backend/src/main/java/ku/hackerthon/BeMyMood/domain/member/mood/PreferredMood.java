@@ -1,20 +1,18 @@
-package ku.hackerthon.BeMyMood.domain.member.location;
+package ku.hackerthon.BeMyMood.domain.member.mood;
 
-import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.member.Member;
+import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PreferredLocation {
+public class PreferredMood {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "preferred_location_id")
+    @Column(name = "member_mood_id")
     private Long id;
 
     @ManyToOne
@@ -22,12 +20,18 @@ public class PreferredLocation {
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "location_id")
-    private Location location;
+    @JoinColumn(name = "mood_id")
+    private Mood mood;
 
     // Constructor
-    public PreferredLocation(Member member, Location location) {
+    public PreferredMood(Member member, Mood mood) {
         this.member = member;
-        this.location = location;
+        member.addMood(this);
+        this.mood = mood;
+    }
+
+    // Method
+    public boolean equalMood(Mood mood) {
+        return this.mood.equals(mood);
     }
 }

@@ -1,14 +1,13 @@
 package ku.hackerthon.BeMyMood.domain.member;
 
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
-import ku.hackerthon.BeMyMood.domain.member.mood.MemberMood;
+import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
+import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -24,11 +23,11 @@ public class Member {
 
     private String password;
 
-    @OneToMany(mappedBy = "member")
-    private List<MemberMood> memberMoods = new ArrayList<>();
+    @Embedded
+    private PreferredMoods preferredMoods;
 
     @Embedded
-    private PreferredLocations preferredLocations = new PreferredLocations();
+    private PreferredLocations preferredLocations;
 
     // Constructor
     @Builder
@@ -36,5 +35,12 @@ public class Member {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.preferredMoods = new PreferredMoods();
+        this.preferredLocations = new PreferredLocations();
+    }
+
+    // Method
+    public void addMood(PreferredMood preferredMood) {
+        this.preferredMoods.add(preferredMood);
     }
 }
