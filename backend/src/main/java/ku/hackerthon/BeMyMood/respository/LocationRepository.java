@@ -18,4 +18,10 @@ public class LocationRepository {
                 .setParameter("name", "%" + name + "%")
                 .getResultList();
     }
+
+    public Location findByName(String name) {
+        return em.createQuery("select l from Location l where l.name = :name", Location.class)
+                .setParameter("name", name)
+                .getSingleResult();
+    }
 }

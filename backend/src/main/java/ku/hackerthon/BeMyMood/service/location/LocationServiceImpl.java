@@ -17,4 +17,9 @@ public class LocationServiceImpl implements LocationService {
     public List<Location> searchAllContainsName(String subName) {
         return locationRepository.findContainsByName(subName);
     }
+
+    @Override
+    public Location getByName(String name) {
+        return locationRepository.findByName(name);
+    }
 }
