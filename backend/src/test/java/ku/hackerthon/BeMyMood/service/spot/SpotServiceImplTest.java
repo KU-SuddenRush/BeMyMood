@@ -3,8 +3,7 @@ package ku.hackerthon.BeMyMood.service.spot;
 import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.domain.spot.SpotCategory;
-import ku.hackerthon.BeMyMood.service.spot.dto.SpotParams;
-import org.assertj.core.api.Assertions;
+import ku.hackerthon.BeMyMood.dto.spot.SpotParams;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import javax.persistence.EntityManager;
 import java.time.LocalTime;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @Transactional
 @SpringBootTest
