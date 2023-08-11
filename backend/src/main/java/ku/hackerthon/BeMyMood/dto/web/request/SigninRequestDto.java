@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class SignupRequestDto {
+public class SigninRequestDto {
 
-    private String name;
     private String email;
     private String password;
 }
