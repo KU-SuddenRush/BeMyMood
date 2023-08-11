@@ -24,4 +24,10 @@ public class MemberServiceImpl implements MemberService {
 
         return memberRepository.save(member);
     }
+
+    @Override
+    public Member searchByEmail(String email) throws IllegalArgumentException {
+        return memberRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("wrong email"));
+    }
 }
