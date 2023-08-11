@@ -23,4 +23,9 @@ public class SpotMood {
     @ManyToOne
     @JoinColumn(name = "mood_id")
     private Mood mood;
+
+    // Method
+    public boolean isOf(Mood mood) {
+        return this.mood.equals(mood);
+    }
 }
