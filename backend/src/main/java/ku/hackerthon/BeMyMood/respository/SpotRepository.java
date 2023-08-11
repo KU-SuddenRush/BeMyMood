@@ -6,9 +6,7 @@ import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -22,7 +20,8 @@ public class SpotRepository {
         return spot.getId();
     }
 
-    public List<Spot> findAllPreferred(PreferredLocations preferredLocations) {
+    public List<Spot> findAllPreferLocated(PreferredLocations preferredLocations) {
+        System.out.println(preferredLocations.getLocationIds());
         return em.createQuery("select s from Spot s where s.id in :locationIds", Spot.class)
                 .setParameter("locationIds", preferredLocations.getLocationIds())
                 .getResultStream()
