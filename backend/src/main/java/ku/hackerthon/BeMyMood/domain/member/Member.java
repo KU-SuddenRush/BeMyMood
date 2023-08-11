@@ -5,10 +5,12 @@ import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {

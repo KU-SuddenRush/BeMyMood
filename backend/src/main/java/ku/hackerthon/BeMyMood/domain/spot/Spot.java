@@ -5,6 +5,7 @@ import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.review.Review;
 import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.spot.mood.SpotMood;
+import ku.hackerthon.BeMyMood.domain.spot.mood.SpotMoods;
 import ku.hackerthon.BeMyMood.service.spot.dto.SpotParams;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -41,9 +42,8 @@ public class Spot {
     @JoinColumn(name = "location_id")
     private Location location;
 
-    @OneToMany(mappedBy = "spot")
-    private List<SpotMood> spotMoods = new ArrayList<>();
-
+    @Embedded
+    private SpotMoods spotMoods;
 
     @OneToMany(mappedBy = "spot")
     private List<Review> reviews = new ArrayList<>();
@@ -69,16 +69,7 @@ public class Spot {
         );
     }
 
-
-    public int countMatchingMoods(PreferredMoods preferredMoods) {
-        return (int) spotMoods.stream()
-                .filter(spotMood -> preferredMoods.hasMood(spotMood.getMood()))
-                .count();
-    }
-
     public boolean hasMood(Mood mood) {
-        return spotMoods.stream()
-                .map(SpotMood::getMood)
-                .anyMatch(m -> m.equals(mood));
+        return spotMoods.hasMood(mood);
     }
 }
