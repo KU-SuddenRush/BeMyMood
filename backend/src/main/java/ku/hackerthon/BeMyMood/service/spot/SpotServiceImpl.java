@@ -1,6 +1,8 @@
 package ku.hackerthon.BeMyMood.service.spot;
 
 import ku.hackerthon.BeMyMood.domain.location.Location;
+import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
+import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.domain.spot.SpotCategory;
@@ -13,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -24,6 +26,9 @@ public class SpotServiceImpl implements SpotService {
     private final LocationService locationService;
     private final MoodService moodService;
 
+    /**
+     * 새로운 스팟을 등록
+     */
     @Override
     public Spot register(SpotParams spotParams) {
         Spot spot = Spot.ofParams(spotParams);
@@ -31,11 +36,18 @@ public class SpotServiceImpl implements SpotService {
         return spot;
     }
 
+    /**
+     * 등록된 모든 스팟을 검색
+     */
     @Override
     public List<Spot> getAll() {
         return spotRepository.findAll();
     }
 
+    /**
+     * [ 카테고리 / 위치 / 무드 ]로 스팟 리스트를 검색
+     * @param params -> 각 필드각 nullable
+     */
     @Transactional
     @Override
     public List<Spot> searchAll(SpotSearchParams params) {
@@ -44,6 +56,22 @@ public class SpotServiceImpl implements SpotService {
         List<Spot> collectByCategory = collectByCategory(collectByLocation, params);
         List<Spot> collectByMood = collectByMood(collectByCategory, params);
         return collectByMood;
+    }
+
+    @Override
+    public List<Spot> recommend(PreferredLocations preferredLocations, PreferredMoods preferredMoods) {
+        List<Spot> preferredSpots = spotRepository.findAllPreferLocated(preferredLocations);
+        Map<Spot, Integer> spotScores = new HashMap<>();
+        preferredSpots.stream()
+                .forEach(spot -> {
+                    int matched = spot.getSpotMoods().countMatchingMoods(preferredMoods);
+                    spotScores.put(spot, matched);
+                });
+
+        return spotScores.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 
     private List<Spot> collectByLocation(SpotSearchParams params) {
