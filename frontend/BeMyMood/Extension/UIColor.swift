@@ -30,4 +30,8 @@ extension UIColor {
     static let orange = UIColor(hex:"#FF8A00")
     static let black_50 = UIColor(hex:"#808080")
     static let black_30 = UIColor(hex:"#B3B3B3")
+    static let darkBrown_30 = UIColor(hex: "#DAD9D6")
+    static let darkBrown_50 = UIColor(hex: "#BAB9B8")
+    static let darkBrown_80 = UIColor(hex: "#999999")
+    static let darkBrown = UIColor(hex: "#595352")
 }

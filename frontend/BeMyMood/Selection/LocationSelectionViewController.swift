@@ -16,8 +16,8 @@ class LocationSelectionViewController: UIViewController {
    
     let progressBar = UIProgressView().then{
         $0.progressViewStyle = .default
-        $0.progressTintColor = .black_50
-        $0.trackTintColor = .grayBeige
+        $0.progressTintColor = .darkBrown_50
+        $0.trackTintColor = .darkBrown_30
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 4/2
         $0.clipsToBounds = true
@@ -31,10 +31,32 @@ class LocationSelectionViewController: UIViewController {
         $0.text = "선호하는 지역을 알려주세요"
     }
     
-    let searchBar = UITextField().then{
+    let searchBar1 = UITextField().then{
         $0.placeholder = "동 이름으로 찾기"
-        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black_50])
-        $0.layer.borderColor = UIColor.black_30.cgColor
+        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
+        $0.layer.borderColor = UIColor.darkBrown_30.cgColor
+        $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 50/2
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: $0.frame.size.height))
+        $0.leftView = paddingView
+        $0.leftViewMode = .always
+    }
+    
+    let searchBar2 = UITextField().then{
+        $0.placeholder = "동 이름으로 찾기"
+        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
+        $0.layer.borderColor = UIColor.darkBrown_30.cgColor
+        $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 50/2
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: $0.frame.size.height))
+        $0.leftView = paddingView
+        $0.leftViewMode = .always
+    }
+    
+    let searchBar3 = UITextField().then{
+        $0.placeholder = "동 이름으로 찾기"
+        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
+        $0.layer.borderColor = UIColor.darkBrown_30.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 50/2
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: $0.frame.size.height))
@@ -45,7 +67,7 @@ class LocationSelectionViewController: UIViewController {
     let locationSearchBtn = UIButton().then{
         $0.setTitle("현재 위치로 찾기", for: .normal)
         $0.backgroundColor = .grayBeige
-        $0.setTitleColor(.black, for: .normal)
+        $0.setTitleColor(.darkBrown, for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         $0.titleLabel?.textAlignment = .center
         $0.layer.cornerRadius = 15
@@ -56,8 +78,8 @@ class LocationSelectionViewController: UIViewController {
     }
     
     let nextBtn = UIButton().then{
-        $0.setTitle("다음", for: .normal)
-        $0.backgroundColor = .black
+        $0.setTitle("완료", for: .normal)
+        $0.backgroundColor = .darkBrown_30
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         $0.titleLabel?.textAlignment = .center

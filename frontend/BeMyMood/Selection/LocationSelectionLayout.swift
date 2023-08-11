@@ -10,7 +10,9 @@ extension LocationSelectionViewController {
     func hierarchy(){
         self.view.addSubview(progressBar)
         self.view.addSubview(label)
-        self.view.addSubview(searchBar)
+        self.view.addSubview(searchBar1)
+        self.view.addSubview(searchBar2)
+        self.view.addSubview(searchBar3)
         self.view.addSubview(locationSearchBtn)
         self.view.addSubview(nextBtn)
     }
@@ -30,15 +32,29 @@ extension LocationSelectionViewController {
             make.height.equalTo(30)
         }
         
-        searchBar.snp.makeConstraints{ make in
+        searchBar1.snp.makeConstraints{ make in
             make.top.equalTo(label.snp.bottom).offset(30)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.height.equalTo(50)
         }
         
+        searchBar2.snp.makeConstraints{ make in
+            make.top.equalTo(searchBar1.snp.bottom).offset(12)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(50)
+        }
+        
+        searchBar3.snp.makeConstraints{ make in
+            make.top.equalTo(searchBar2.snp.bottom).offset(12)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(50)
+        }
+        
         locationSearchBtn.snp.makeConstraints{ make in
-            make.top.equalTo(searchBar.snp.bottom).offset(14)
+            make.top.equalTo(searchBar3.snp.bottom).offset(14)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.height.equalTo(50)

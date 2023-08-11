@@ -18,8 +18,8 @@ class ColorSelectionViewController: UIViewController {
     
     let progressBar = UIProgressView().then{
         $0.progressViewStyle = .default
-        $0.progressTintColor = .black_50
-        $0.trackTintColor = .grayBeige
+        $0.progressTintColor = .darkBrown_50
+        $0.trackTintColor = .darkBrown_30
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 4/2
         $0.clipsToBounds = true
@@ -41,7 +41,7 @@ class ColorSelectionViewController: UIViewController {
     
     let nextBtn = UIButton().then{
         $0.setTitle("다음", for: .normal)
-        $0.backgroundColor = .black
+        $0.backgroundColor = .darkBrown_30
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         $0.titleLabel?.textAlignment = .center
@@ -123,10 +123,9 @@ extension ColorSelectionViewController: UICollectionViewDelegate, UICollectionVi
             fatalError()
         }
         
-        cell.tagLabel.backgroundColor = .white
-        cell.tagLabel.layer.borderColor = UIColor.black_30.cgColor
+        cell.tagLabel.backgroundColor = .grayBeige
         cell.tagLabel.text = tagColorData[indexPath.row]
-        cell.tagLabel.textColor = .black_50
+        cell.tagLabel.textColor = .darkBrown
         
         return cell
     }

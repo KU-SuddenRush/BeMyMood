@@ -14,16 +14,13 @@ class TagCell: UICollectionViewCell {
     override var isSelected: Bool{
             didSet{
                 if isSelected{
-                    tagLabel.layer.borderWidth = 0
-                    tagLabel.backgroundColor = .black
+                    tagLabel.backgroundColor = .darkBrown
                     tagLabel.textColor = .white
                     
                 }
                 else{
-                    tagLabel.layer.borderWidth = 1
-                    tagLabel.layer.borderColor = UIColor.black_30.cgColor
-                    tagLabel.backgroundColor = .white
-                    tagLabel.textColor = .black_50
+                    tagLabel.backgroundColor = .grayBeige
+                    tagLabel.textColor = .darkGray
                     
                 }
             }
@@ -34,9 +31,9 @@ class TagCell: UICollectionViewCell {
         $0.textColor = .white
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         $0.textAlignment = .center
-        $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 30.5/2
         $0.layer.masksToBounds = true
+        $0.backgroundColor = .grayBeige
     }
     
    
