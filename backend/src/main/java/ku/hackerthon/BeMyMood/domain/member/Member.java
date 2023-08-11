@@ -45,4 +45,8 @@ public class Member {
     public void addMood(PreferredMood preferredMood) {
         this.preferredMoods.add(preferredMood);
     }
+
+    public boolean matchPassword(String password) {
+        return this.password.equals(password);
+    }
 }

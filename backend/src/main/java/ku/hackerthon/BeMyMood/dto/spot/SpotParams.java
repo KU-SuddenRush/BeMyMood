@@ -1,4 +1,4 @@
-package ku.hackerthon.BeMyMood.service.spot.dto;
+package ku.hackerthon.BeMyMood.dto.spot;
 
 import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.spot.SpotCategory;
