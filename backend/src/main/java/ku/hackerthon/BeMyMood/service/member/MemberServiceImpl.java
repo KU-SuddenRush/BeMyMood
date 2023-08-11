@@ -1,6 +1,7 @@
 package ku.hackerthon.BeMyMood.service.member;
 
 import ku.hackerthon.BeMyMood.domain.member.Member;
+import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.respository.MemberRepository;
 import ku.hackerthon.BeMyMood.dto.member.MemberJoinParams;
 import lombok.RequiredArgsConstructor;
@@ -30,4 +31,21 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("wrong email"));
     }
+
+    @Override
+    public Member searchById(Long memberId) throws IllegalArgumentException {
+        return memberRepository.findById(memberId)
+                .orElseThrow(() -> new IllegalArgumentException("wrong id"));
+    }
+
+    @Override
+    public MemberInfoResponseDto searchMemberInfoById(Long memberId) {
+        Member member = searchById(memberId);
+        return new MemberInfoResponseDto(
+                member.getId(),
+                member.getName(),
+                member.getEmail()
+        );
+    }
+
 }
