@@ -33,7 +33,6 @@ public class AuthServiceImpl implements AuthService {
         if (member.matchPassword(signinParams.getPassword())) {
             return new SigninResponseDto(member.getId());
         }
-
         return null;
     }
 }
