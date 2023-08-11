@@ -1,12 +1,10 @@
 package ku.hackerthon.BeMyMood.domain.spot;
 
-import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.review.Review;
 import ku.hackerthon.BeMyMood.domain.location.Location;
-import ku.hackerthon.BeMyMood.domain.spot.mood.SpotMood;
 import ku.hackerthon.BeMyMood.domain.spot.mood.SpotMoods;
-import ku.hackerthon.BeMyMood.service.spot.dto.SpotParams;
+import ku.hackerthon.BeMyMood.dto.spot.SpotParams;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
