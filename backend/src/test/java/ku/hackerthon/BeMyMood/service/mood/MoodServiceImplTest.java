@@ -31,4 +31,21 @@ class MoodServiceImplTest {
 
     }
 
+    @Test
+    @DisplayName("DB에서 분위기 리스트 조회 후 동등성 테스트")
+    void getAllVibes() throws Exception {
+        // given
+        List<String> vibes = List.of("#엔틱", "#빈티지", "#키치한", "#Y2K", "#힙한", "#우디", "#어두운", "#아기자기한", "#모노톤의", "#미니멀한",
+                "#인더스트리얼", "#식물이많은", "#반려동물과함께하는", "#특이한소재의", "#풍경위주의", "#여유로운", "#연인과함께", "#친구와함께", "#컬러풀한",
+                "#포인트컬러", "#미래지향적인", "#영화컨셉의", "#소품이많은", "#고풍스러운", "#한국적인", "#밤과어울리는", "#야경이예쁜", "#고즈넉한",
+                "#별이보이는", "#화려한조명", "#한적한", "#볼거리가많은", "#로컬의", "#이국적인", "#은은한조명의", "#LP가흐르는", "#루프탑", "#복고풍의");
+
+        // when
+        List<String> findVibes = moodService.getAllVibes();
+
+        // then
+        assertThat(findVibes).containsAll(vibes);
+
+    }
+
 }
