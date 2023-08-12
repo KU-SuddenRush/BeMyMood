@@ -1,6 +1,5 @@
 package ku.hackerthon.BeMyMood.respository;
 
-import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.mood.MoodType;
 import lombok.RequiredArgsConstructor;
