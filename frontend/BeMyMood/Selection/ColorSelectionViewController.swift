@@ -14,6 +14,8 @@ class ColorSelectionViewController: UIViewController {
     
     let tagColorData = ["#뮤트한","#비비드한","#차분한","#빛바랜", "#무채색의","#쿨한","#포인트컬러","#자연적인","#투명한","#형광의","#웜한","#블랙앤화이트"]
     
+    var isAnyCellSelected = false
+    
     //MARK: - UIComponents
     
     let progressBar = UIProgressView().then{
@@ -35,8 +37,9 @@ class ColorSelectionViewController: UIViewController {
     
     let collectionView = UICollectionView(frame: .init(), collectionViewLayout: UICollectionViewLayout()).then{
         $0.backgroundColor = .white
-        $0.showsVerticalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = true
         $0.register(TagCell.self, forCellWithReuseIdentifier: TagCell.cellIdentifier)
+        $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
     }
     
     let nextBtn = UIButton().then{
@@ -68,17 +71,12 @@ class ColorSelectionViewController: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.allowsMultipleSelection = true
         
+        updateNextBtnColor()
         self.nextBtn.addTarget(self, action: #selector(nextBtnDidTab), for: .touchUpInside)
         
         
         
     }
-    func swipeRecognizer() {
-            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
-            swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-            self.view.addGestureRecognizer(swipeRight)
-            
-        }
     
     //MARK: - Actions
     
@@ -98,6 +96,27 @@ class ColorSelectionViewController: UIViewController {
                 }
             }
         }
+    
+    func swipeRecognizer() {
+            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
+            swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+            self.view.addGestureRecognizer(swipeRight)
+            
+        }
+    
+    //MARK: - Helpers
+    
+    func updateNextBtnColor() {
+        if isAnyCellSelected {
+            // 선택된 셀이 있을 때
+            nextBtn.backgroundColor = .darkBrown
+            nextBtn.isEnabled = true
+        } else {
+            // 선택된 셀이 없을 때
+            nextBtn.backgroundColor = .darkBrown_30
+            nextBtn.isEnabled = false
+        }
+    }
 
 }
 
@@ -136,6 +155,8 @@ extension ColorSelectionViewController: UICollectionViewDelegate, UICollectionVi
         }
         
         cell.isSelected = true
+        isAnyCellSelected = true
+        updateNextBtnColor()
         
     }
     
@@ -144,6 +165,8 @@ extension ColorSelectionViewController: UICollectionViewDelegate, UICollectionVi
             fatalError()
         }
         cell.isSelected = false
+        isAnyCellSelected = collectionView.indexPathsForSelectedItems?.isEmpty == false
+        updateNextBtnColor()
         
     }
     

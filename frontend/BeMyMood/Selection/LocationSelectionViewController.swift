@@ -32,8 +32,7 @@ class LocationSelectionViewController: UIViewController {
     }
     
     let searchBar1 = UITextField().then{
-        $0.placeholder = "동 이름으로 찾기"
-        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
+        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기 (필수)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
         $0.layer.borderColor = UIColor.darkBrown_30.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 50/2
@@ -43,8 +42,7 @@ class LocationSelectionViewController: UIViewController {
     }
     
     let searchBar2 = UITextField().then{
-        $0.placeholder = "동 이름으로 찾기"
-        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
+        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기 (선택)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
         $0.layer.borderColor = UIColor.darkBrown_30.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 50/2
@@ -54,8 +52,7 @@ class LocationSelectionViewController: UIViewController {
     }
     
     let searchBar3 = UITextField().then{
-        $0.placeholder = "동 이름으로 찾기"
-        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
+        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기 (선택)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
         $0.layer.borderColor = UIColor.darkBrown_30.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 50/2

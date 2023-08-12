@@ -37,7 +37,7 @@ extension MoodSelectionViewController {
         collectionView.snp.makeConstraints{ make in
             make.top.equalTo(label.snp.bottom).offset(24)
             make.leading.equalToSuperview().offset(18)
-            make.trailing.equalToSuperview().offset(-18)
+            make.trailing.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview().offset(-124)
         }
         

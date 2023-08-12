@@ -183,6 +183,8 @@
 		ACF16DC82A7D4CE50010CF21 /* BeMyMood */ = {
 			isa = PBXGroup;
 			children = (
+				ACF16E092A8110E50010CF21 /* TabBar */,
+				ACF16E132A8263E70010CF21 /* Cell */,
 				ACF16E0C2A8123050010CF21 /* Application */,
 				ACF16E162A828E480010CF21 /* Selection */,
 				ACF16E0D2A8123260010CF21 /* Home */,
@@ -225,8 +227,6 @@
 		ACF16E0C2A8123050010CF21 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				ACF16E132A8263E70010CF21 /* Cell */,
-				ACF16E092A8110E50010CF21 /* TabBar */,
 				ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */,
 				ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */,
 			);
