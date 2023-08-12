@@ -3,11 +3,13 @@ package ku.hackerthon.BeMyMood.domain.member.mood;
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PreferredMood {
 
