@@ -14,6 +14,9 @@ public class MoodServiceImpl implements MoodService {
     private final MoodRepository moodRepository;
 
     @Override
+    public Long register(Mood mood) { return moodRepository.save(mood); }
+
+    @Override
     public Mood getByName(String name) {
         return moodRepository.findByName(name);
     }

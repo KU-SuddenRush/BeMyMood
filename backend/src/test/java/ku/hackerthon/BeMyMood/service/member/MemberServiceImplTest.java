@@ -3,12 +3,12 @@ package ku.hackerthon.BeMyMood.service.member;
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
+import ku.hackerthon.BeMyMood.domain.mood.MoodType;
 import ku.hackerthon.BeMyMood.service.mood.MoodService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -26,8 +26,16 @@ class MemberServiceImplTest {
     
     @Test
     @DisplayName("좋아하는 무드 입력 테스트")
-    @Rollback(value = false)
     void setMemberService() throws Exception {
+        // given
+        List<String> colors = List.of("#뮤트한", "#비비드한", "#   차분한", "#빛바랜", "#무채색의", "#파스텔의", "#블랙앤화이트",
+                "#자연적인", "#투명한", "#매트한", "#형광의", "#쿨한", "#웜한");
+        for (String color : colors) {
+            Mood tempMood = new Mood(color, MoodType.COLOR);
+            moodService.register(tempMood);
+        }
+                
+        // when
         List<String> selectMoods = List.of("#무채색의", "#파스텔의", "#블랙앤화이트"); // 43, 44, 45
         List<Mood> moods = new ArrayList<>();
         for (String selectMood : selectMoods) {
@@ -36,8 +44,7 @@ class MemberServiceImplTest {
 
         Long memberId = 1L;
         Member member = memberService.searchById(memberId);
-                
-        // when
+
         memberService.setMemberMood(selectMoods, memberId);
         PreferredMoods preferredMoods = member.getPreferredMoods();
 

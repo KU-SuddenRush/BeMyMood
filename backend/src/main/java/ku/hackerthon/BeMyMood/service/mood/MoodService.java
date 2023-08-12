@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface MoodService {
 
+    Long register(Mood mood);
+
     Mood getByName(String name);
 
     List<String> getAllColors();

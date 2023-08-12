@@ -14,6 +14,11 @@ public class MoodRepository {
 
     private final EntityManager em;
 
+    public Long save(Mood mood) {
+        em.persist(mood);
+        return mood.getId();
+    }
+
     public Mood findByName(String name) {
         return em.createQuery("select m from Mood m where m.name = :name", Mood.class)
                 .setParameter("name", name)
