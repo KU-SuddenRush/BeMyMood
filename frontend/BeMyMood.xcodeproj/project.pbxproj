@@ -28,6 +28,14 @@
 		ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E052A7D6BA00010CF21 /* CommunityLayout.swift */; };
 		ACF16E082A810E660010CF21 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E072A810E660010CF21 /* UIColor.swift */; };
 		ACF16E0B2A81118E0010CF21 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E0A2A81118E0010CF21 /* TabBarController.swift */; };
+		ACF16E122A82638C0010CF21 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E112A82638C0010CF21 /* UICollectionView.swift */; };
+		ACF16E152A8263FC0010CF21 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E142A8263FC0010CF21 /* TagCell.swift */; };
+		ACF16E182A828ECF0010CF21 /* MoodSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E172A828ECF0010CF21 /* MoodSelectionViewController.swift */; };
+		ACF16E1A2A828EE10010CF21 /* ColorSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E192A828EE10010CF21 /* ColorSelectionViewController.swift */; };
+		ACF16E1C2A8290A70010CF21 /* LocationSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E1B2A8290A70010CF21 /* LocationSelectionViewController.swift */; };
+		ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E1D2A82918C0010CF21 /* MoodSelectionLayout.swift */; };
+		ACF16E202A82919C0010CF21 /* ColorSelectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E1F2A82919C0010CF21 /* ColorSelectionLayout.swift */; };
+		ACF16E222A8291AA0010CF21 /* LocationSelectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E212A8291AA0010CF21 /* LocationSelectionLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +85,14 @@
 		ACF16E052A7D6BA00010CF21 /* CommunityLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityLayout.swift; sourceTree = "<group>"; };
 		ACF16E072A810E660010CF21 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		ACF16E0A2A81118E0010CF21 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		ACF16E112A82638C0010CF21 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		ACF16E142A8263FC0010CF21 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		ACF16E172A828ECF0010CF21 /* MoodSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectionViewController.swift; sourceTree = "<group>"; };
+		ACF16E192A828EE10010CF21 /* ColorSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionViewController.swift; sourceTree = "<group>"; };
+		ACF16E1B2A8290A70010CF21 /* LocationSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectionViewController.swift; sourceTree = "<group>"; };
+		ACF16E1D2A82918C0010CF21 /* MoodSelectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectionLayout.swift; sourceTree = "<group>"; };
+		ACF16E1F2A82919C0010CF21 /* ColorSelectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionLayout.swift; sourceTree = "<group>"; };
+		ACF16E212A8291AA0010CF21 /* LocationSelectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectionLayout.swift; sourceTree = "<group>"; };
 		E20789D2FDFD4A2EB34922C8 /* Pods_BeMyMood_BeMyMoodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyMood_BeMyMoodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9608FAD3B71F7A69B22CBDA /* Pods_BeMyMoodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyMoodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -114,6 +130,7 @@
 			children = (
 				2ECD05162A80F72700FC3FF3 /* UIViewController.swift */,
 				ACF16E072A810E660010CF21 /* UIColor.swift */,
+				ACF16E112A82638C0010CF21 /* UICollectionView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -166,8 +183,10 @@
 		ACF16DC82A7D4CE50010CF21 /* BeMyMood */ = {
 			isa = PBXGroup;
 			children = (
-				ACF16E0C2A8123050010CF21 /* Application */,
 				ACF16E092A8110E50010CF21 /* TabBar */,
+				ACF16E132A8263E70010CF21 /* Cell */,
+				ACF16E0C2A8123050010CF21 /* Application */,
+				ACF16E162A828E480010CF21 /* Selection */,
 				ACF16E0D2A8123260010CF21 /* Home */,
 				ACF16E102A8123D10010CF21 /* Profile */,
 				ACF16E0F2A8123C20010CF21 /* Community */,
@@ -248,6 +267,27 @@
 				ACF16E012A7D6B520010CF21 /* ProfileLayout.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		ACF16E132A8263E70010CF21 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16E142A8263FC0010CF21 /* TagCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ACF16E162A828E480010CF21 /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16E172A828ECF0010CF21 /* MoodSelectionViewController.swift */,
+				ACF16E1D2A82918C0010CF21 /* MoodSelectionLayout.swift */,
+				ACF16E192A828EE10010CF21 /* ColorSelectionViewController.swift */,
+				ACF16E1F2A82919C0010CF21 /* ColorSelectionLayout.swift */,
+				ACF16E1B2A8290A70010CF21 /* LocationSelectionViewController.swift */,
+				ACF16E212A8291AA0010CF21 /* LocationSelectionLayout.swift */,
+			);
+			path = Selection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,16 +530,24 @@
 			files = (
 				ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */,
 				ACF16E0B2A81118E0010CF21 /* TabBarController.swift in Sources */,
+				ACF16E152A8263FC0010CF21 /* TagCell.swift in Sources */,
+				ACF16E122A82638C0010CF21 /* UICollectionView.swift in Sources */,
+				ACF16E202A82919C0010CF21 /* ColorSelectionLayout.swift in Sources */,
 				ACF16E082A810E660010CF21 /* UIColor.swift in Sources */,
 				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
+				ACF16E1A2A828EE10010CF21 /* ColorSelectionViewController.swift in Sources */,
 				ACF16E042A7D6B900010CF21 /* CommunityViewController.swift in Sources */,
+				ACF16E182A828ECF0010CF21 /* MoodSelectionViewController.swift in Sources */,
+				ACF16E222A8291AA0010CF21 /* LocationSelectionLayout.swift in Sources */,
 				2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */,
 				ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */,
 				ACF16DFC2A7D6B090010CF21 /* MoodBoardViewController.swift in Sources */,
 				ACF16E002A7D6B420010CF21 /* ProfileViewController.swift in Sources */,
 				ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */,
 				ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */,
+				ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */,
 				ACF16DFA2A7D5D500010CF21 /* HomeLayout.swift in Sources */,
+				ACF16E1C2A8290A70010CF21 /* LocationSelectionViewController.swift in Sources */,
 				ACF16DCC2A7D4CE50010CF21 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

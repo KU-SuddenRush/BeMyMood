@@ -27,17 +27,22 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.viewControllers = [createFirstViewController(), createSecondViewController(), createThirdViewController(),createFourViewController()]
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.viewControllers = [createFirstViewController(), createSecondViewController(), createThirdViewController(),createFourViewController()]
+    }
+    
     func createFirstViewController() -> UIViewController {
         let firstViewController = HomeViewController()
         firstViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "home"), tag: 0)
         firstViewController.tabBarItem.selectedImage = UIImage(named: "home_select")?.withRenderingMode(.alwaysOriginal)
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor(hex: "#9A9A9A"),
+            .foregroundColor: UIColor.darkBrown_80,
             .font: UIFont.systemFont(ofSize: 14, weight: .regular)
         ]
         firstViewController.tabBarItem.setTitleTextAttributes(attributes , for: .normal)
         let selectedAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black,
+            .foregroundColor: UIColor.darkBrown,
             .font: UIFont.systemFont(ofSize: 14, weight: .regular)
         ]
         firstViewController.tabBarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
@@ -51,12 +56,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         secondViewController.tabBarItem = UITabBarItem(title: "무드보드", image: UIImage(named: "moodBoard"), tag:1)
         secondViewController.tabBarItem.selectedImage = UIImage(named: "moodBoard_select")?.withRenderingMode(.alwaysOriginal)
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor(hex: "#9A9A9A"),
+            .foregroundColor: UIColor.darkBrown_80,
             .font: UIFont.systemFont(ofSize: 14, weight: .regular)
         ]
         secondViewController.tabBarItem.setTitleTextAttributes(attributes , for: .normal)
         let selectedAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black,
+            .foregroundColor: UIColor.darkBrown,
             .font: UIFont.systemFont(ofSize: 14, weight: .regular)
         ]
         secondViewController.tabBarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
@@ -70,12 +75,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         thirdViewController.tabBarItem = UITabBarItem(title: "커뮤니티", image: UIImage(named: "community"), tag:2)
         thirdViewController.tabBarItem.selectedImage = UIImage(named: "community_select")?.withRenderingMode(.alwaysOriginal)
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor(hex: "#9A9A9A"),
+            .foregroundColor: UIColor.darkBrown_80,
             .font: UIFont.systemFont(ofSize: 14, weight: .regular)
         ]
         thirdViewController.tabBarItem.setTitleTextAttributes(attributes , for: .normal)
         let selectedAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black,
+            .foregroundColor: UIColor.darkBrown,
             .font: UIFont.systemFont(ofSize: 14, weight: .regular)
         ]
         thirdViewController.tabBarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
@@ -89,12 +94,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         fourViewController.tabBarItem = UITabBarItem(title: "내프로필", image: UIImage(named: "profile"), tag: 3)
         fourViewController.tabBarItem.selectedImage = UIImage(named: "profile_select")?.withRenderingMode(.alwaysOriginal)
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor(hex: "#9A9A9A"),
+            .foregroundColor: UIColor.darkBrown_80,
             .font: UIFont.systemFont(ofSize: 14, weight: .regular)
         ]
         fourViewController.tabBarItem.setTitleTextAttributes(attributes , for: .normal)
         let selectedAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black,
+            .foregroundColor: UIColor.darkBrown,
             .font: UIFont.systemFont(ofSize: 14, weight: .regular)
         ]
         fourViewController.tabBarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
