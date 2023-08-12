@@ -10,7 +10,9 @@ name: CI
 on:
   push:
     branches: [ "server-feature/**" ]
-
+    
+  pull_request:
+    branches: [ "server-develop" ]
 jobs:
   build:
     runs-on: ubuntu-latest
