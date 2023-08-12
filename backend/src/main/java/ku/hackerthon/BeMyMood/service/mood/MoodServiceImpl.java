@@ -20,4 +20,7 @@ public class MoodServiceImpl implements MoodService {
 
     @Override
     public List<String> getAllColors() { return moodRepository.findAllColors(); }
+
+    @Override
+    public List<String> getAllVibes() { return moodRepository.findAllVibes(); }
 }

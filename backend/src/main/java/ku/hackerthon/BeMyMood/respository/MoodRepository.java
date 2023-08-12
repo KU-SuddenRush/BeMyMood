@@ -26,4 +26,10 @@ public class MoodRepository {
                 .setParameter("type", MoodType.COLOR)
                 .getResultList();
     }
+
+    public List<String> findAllVibes() {
+        return em.createQuery("select m.name from Mood m where m.type = :type", String.class)
+                .setParameter("type", MoodType.VIBE)
+                .getResultList();
+    }
 }
