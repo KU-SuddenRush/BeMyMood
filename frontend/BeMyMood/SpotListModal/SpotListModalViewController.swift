@@ -23,9 +23,15 @@ class SpotListModalViewController: UIViewController {
         $0.text = "내 무드를 담은 스팟"
     }
     
-    let pageViewController = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-
-
+    let slidingTabVC = UISlidingTabController().then{
+        $0.addItem(item: FirstViewController(), title: "모든무드")
+        $0.addItem(item: SecondViewController(), title: "무드별")
+        $0.setHeaderActiveColor(color: .white)
+        $0.setHeaderInActiveColor(color: .lightText)
+        $0.setHeaderBackgroundColor(color: .orange)
+        $0.build()
+    }
+            
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,10 +45,7 @@ extension SpotListModalViewController {
     
     func hierarchy(){
         self.view.addSubview(spotListModalTitle)
-        
-        addChild(pageViewController)
-        self.view.addSubview(pageViewController.view)
-        pageViewController.didMove(toParent: self)
+        self.view.addSubview(slidingTabVC.view)
     }
     
     func layout(){
@@ -52,11 +55,10 @@ extension SpotListModalViewController {
             make.width.height.equalTo(50)
         }
         
-        pageViewController.view.snp.makeConstraints{ make in
-            make.leading.trailing.bottom.equalToSuperview()
+        slidingTabVC.view.snp.makeConstraints{ make in
             make.top.equalTo(spotListModalTitle.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
         }
-    
     }
 }
 
