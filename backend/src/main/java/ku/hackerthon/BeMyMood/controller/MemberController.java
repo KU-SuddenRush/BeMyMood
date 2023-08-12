@@ -34,6 +34,7 @@ public class MemberController {
 
     /**
      * <b>이미지 업로드 (테스트영)</b>
+     * @param file 업로드할 사진
      * @return
      */
     @PostMapping("/image")
