@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		13A7F6639B6F1B219DB4FFF9 /* Pods_BeMyMood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C55293BF6C3B8416A325017 /* Pods_BeMyMood.framework */; };
+		2E4FEC0D2A87809300EDA21A /* SpotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC0C2A87809300EDA21A /* SpotCell.swift */; };
+		2E4FEC0F2A87940300EDA21A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC0E2A87940300EDA21A /* UIImageView.swift */; };
 		2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A21242A8768A700750119 /* UISlidingTabController.swift */; };
 		2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05162A80F72700FC3FF3 /* UIViewController.swift */; };
 		2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */; };
@@ -54,6 +56,8 @@
 		14918AEB277B52AE7F421F65 /* Pods-BeMyMood-BeMyMoodUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood-BeMyMoodUITests.debug.xcconfig"; path = "Target Support Files/Pods-BeMyMood-BeMyMoodUITests/Pods-BeMyMood-BeMyMoodUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		25E0CDC52360D350D5222219 /* Pods-BeMyMood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood.debug.xcconfig"; path = "Target Support Files/Pods-BeMyMood/Pods-BeMyMood.debug.xcconfig"; sourceTree = "<group>"; };
 		2D6782CAFCB745F115D490F8 /* Pods-BeMyMood-BeMyMoodUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood-BeMyMoodUITests.release.xcconfig"; path = "Target Support Files/Pods-BeMyMood-BeMyMoodUITests/Pods-BeMyMood-BeMyMoodUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2E4FEC0C2A87809300EDA21A /* SpotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCell.swift; sourceTree = "<group>"; };
+		2E4FEC0E2A87940300EDA21A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		2E9A21242A8768A700750119 /* UISlidingTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISlidingTabController.swift; sourceTree = "<group>"; };
 		2ECD05162A80F72700FC3FF3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModalViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				2ECD05162A80F72700FC3FF3 /* UIViewController.swift */,
+				2E4FEC0E2A87940300EDA21A /* UIImageView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 				2ECD05242A81182100FC3FF3 /* FirstViewController.swift */,
 				2ECD05262A81184200FC3FF3 /* SecondViewController.swift */,
 				2E9A21242A8768A700750119 /* UISlidingTabController.swift */,
+				2E4FEC0C2A87809300EDA21A /* SpotCell.swift */,
 			);
 			path = SpotListModal;
 			sourceTree = "<group>";
@@ -467,7 +473,9 @@
 				ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */,
 				ACF16DFC2A7D6B090010CF21 /* MoodBoardViewController.swift in Sources */,
 				ACF16E002A7D6B420010CF21 /* ProfileViewController.swift in Sources */,
+				2E4FEC0F2A87940300EDA21A /* UIImageView.swift in Sources */,
 				2ECD05252A81182100FC3FF3 /* FirstViewController.swift in Sources */,
+				2E4FEC0D2A87809300EDA21A /* SpotCell.swift in Sources */,
 				ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */,
 				ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */,
 				2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */,
