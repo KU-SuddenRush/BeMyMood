@@ -1,6 +1,5 @@
 package ku.hackerthon.BeMyMood.domain.spot.mood;
 
-import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 
@@ -8,6 +7,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Embeddable
 public class SpotMoods {
@@ -48,10 +48,8 @@ public class SpotMoods {
     }
 
     public List<String> getMoodNames() {
-        List<String> names = new ArrayList<>();
-        for (SpotMood mood : this.spotMoods) {
-            names.add(mood.getMood().getName());
-        }
-        return names;
+        return spotMoods.stream()
+                .map(spotMood -> spotMood.getMood().getName())
+                .collect(Collectors.toList());
     }
 }
