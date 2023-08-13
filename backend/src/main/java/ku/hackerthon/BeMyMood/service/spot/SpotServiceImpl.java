@@ -62,7 +62,7 @@ public class SpotServiceImpl implements SpotService {
     }
 
     /**
-     * [ 카테고리 / 위치 / 무드 ]로 스팟 리스트를 검색
+     * <b>[ 카테고리 / 위치 / 무드 ]로 스팟 리스트를 검색</b>
      * @param params -> 각 필드각 nullable
      */
     @Transactional
@@ -131,16 +131,16 @@ public class SpotServiceImpl implements SpotService {
     }
 
     private List<Spot> collectByLocation(SpotFilterParams params) {
-        if (params.getLocationName() != null) {
-            Location location = locationService.getByName(params.getLocationName());
+        if (params.getLocationId() != null) {
+            Location location = locationService.getById(params.getLocationId());
             return spotRepository.findAllLocatedIn(location);
         }
         return getAll();
     }
 
     private List<Spot> collectByCategory(List<Spot> spots, SpotFilterParams params) {
-        if (params.getCategoryName() != null) {
-            SpotCategory category = SpotCategory.ofName(params.getCategoryName());
+        if (params.getCategoryId() != null) {
+            SpotCategory category = SpotCategory.ofId(params.getCategoryId());
             return spots.stream()
                     .filter(spot -> spot.getCategory().equals(category))
                     .collect(Collectors.toList());
@@ -150,8 +150,8 @@ public class SpotServiceImpl implements SpotService {
     }
 
     private List<Spot> collectByMood(List<Spot> spots,  SpotFilterParams params) {
-        if (params.getMoodName() != null) {
-            Mood mood = moodService.getByName(params.getMoodName());
+        if (params.getMoodId() != null) {
+            Mood mood = moodService.getById(params.getMoodId());
             return spots.stream()
                     .filter(spot -> spot.hasMood(mood))
                     .collect(Collectors.toList());

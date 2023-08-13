@@ -55,11 +55,11 @@ public class SpotController {
 
     @GetMapping("/filter")
     public ResponseEntity<FilteredSpotsResponseDto> getFilteredSpots(
-            @RequestParam(name = "category", required = false) String categoryName,
-            @RequestParam(name = "location", required = false) String locationName,
-            @RequestParam(name = "mood", required = false) String moodName
+            @RequestParam(name = "category_id", required = false) Long categoryId,
+            @RequestParam(name = "location_id", required = false) Long locationId,
+            @RequestParam(name = "mood_id", required = false) Long moodId
     ) {
-        SpotFilterParams params = new SpotFilterParams(categoryName, locationName, moodName);
+        SpotFilterParams params = new SpotFilterParams(categoryId, locationId, moodId);
         FilteredSpotsResponseDto responseDto = spotService.filter(params);
         return ResponseEntity.ok(responseDto);
     }

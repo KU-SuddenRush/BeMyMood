@@ -8,7 +8,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class SpotFilterParams {
 
-    private String categoryName;
-    private String locationName;
-    private String moodName;
+    private Long categoryId;
+    private Long locationId;
+    private Long moodId;
 }

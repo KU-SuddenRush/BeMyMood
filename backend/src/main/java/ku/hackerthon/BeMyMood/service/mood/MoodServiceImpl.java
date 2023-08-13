@@ -26,4 +26,9 @@ public class MoodServiceImpl implements MoodService {
 
     @Override
     public List<String> getAllVibes() { return moodRepository.findAllVibes(); }
+
+    @Override
+    public Mood getById(Long moodId) {
+        return moodRepository.findById(moodId);
+    }
 }
