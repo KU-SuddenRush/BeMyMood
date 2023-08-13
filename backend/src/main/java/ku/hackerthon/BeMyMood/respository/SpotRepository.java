@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -37,5 +38,9 @@ public class SpotRepository {
     public List<Spot> findAll() {
         return em.createQuery("select s from Spot s", Spot.class)
                 .getResultList();
+    }
+
+    public Optional<Spot> findById(Long spotId) {
+        return Optional.ofNullable(em.find(Spot.class, spotId));
     }
 }

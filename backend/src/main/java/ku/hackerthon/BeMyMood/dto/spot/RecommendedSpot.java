@@ -9,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RecommendedSpot {
 
+    private Long spotId;
     private String spotName;
     private String spotThumbnailImageUrl;
     private String categoryName;

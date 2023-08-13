@@ -27,6 +27,10 @@ public class Spot {
     @Column(name = "spot_name")
     private String name;
 
+    private String address;
+
+    private String contact;
+
     private String introduce;
 
     @Enumerated(EnumType.STRING)
@@ -72,5 +76,9 @@ public class Spot {
 
     public boolean hasMood(Mood mood) {
         return spotMoods.hasMood(mood);
+    }
+
+    public String getOperationInfo() {
+        return String.format("매일 %s - %s, 라스트오더 20:00", this.openAt.toString(), this.closeAt.toString());
     }
 }

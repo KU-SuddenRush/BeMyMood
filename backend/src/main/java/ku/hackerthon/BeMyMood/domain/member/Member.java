@@ -5,6 +5,7 @@ import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmarks;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
+import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -57,4 +58,8 @@ public class Member {
     }
 
     public void addBookmark(Bookmark bookmark) { this.bookmarks.add(bookmark); }
+
+    public boolean bookmarked(Spot spot) {
+        return bookmarks.hasSpot(spot);
+    }
 }
