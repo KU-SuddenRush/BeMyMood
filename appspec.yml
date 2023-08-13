@@ -3,7 +3,7 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ubuntu/BeMyMood/artifact
+    destination: /home/ubuntu/BeMyMood-Deploy/artifact
 
 permissions:
   - object: /

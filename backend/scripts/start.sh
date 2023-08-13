@@ -1,4 +1,4 @@
-PROJECT_ROOT="/home/ubuntu/BeMyMood/artifact"
+PROJECT_ROOT="/home/ubuntu/BeMyMood/artifact/backend"
 JAR_FILE="$PROJECT_ROOT/build/libs/*.jar"
 
 APP_LOG="$PROJECT_ROOT/application.log"
