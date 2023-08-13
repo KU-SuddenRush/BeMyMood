@@ -1,19 +1,25 @@
 package ku.hackerthon.BeMyMood.service.member;
 
 import ku.hackerthon.BeMyMood.domain.member.Member;
+import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmark;
+import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmarks;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
+import ku.hackerthon.BeMyMood.domain.spot.Spot;
+import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.respository.MemberRepository;
 import ku.hackerthon.BeMyMood.dto.member.MemberJoinParams;
 import ku.hackerthon.BeMyMood.service.mood.MoodService;
+import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Transactional
@@ -76,5 +82,36 @@ public class MemberServiceImpl implements MemberService {
         Member member = searchById(memberId);
         PreferredMoods preferredMoods = member.getPreferredMoods();
         return preferredMoods.getNames();
+    }
+
+    @Override
+    public List<BookmarkResponseDto> getBookmarks(Long memberId) {
+        Member member = searchById(memberId);
+        Bookmarks bookmarks = member.getBookmarks();
+
+        List<BookmarkResponseDto> bookmarkResponseDtoList = bookmarks.getSpots().stream()
+                .map(spot -> new BookmarkResponseDto(
+                        spot.getSpotImages().getMainImage().getImgUrl(),
+                        spot.getId(),
+                        spot.getName(),
+                        spot.getSpotMoods().getMoodNames(),
+                        spot.getAddress(),
+                        spot.getCategory().getName()
+                )).collect(Collectors.toList());
+
+        return bookmarkResponseDtoList;
+    }
+
+    @Override
+    public boolean setBookmark(Member member, Spot spot) {
+        boolean isBookmarked = member.getBookmarks().hasSpot(spot);
+        if (isBookmarked) {
+            Bookmark bookmark = member.getBookmarks().findBySpot(spot);
+            member.removeBookmark(bookmark);
+            return false;
+        }
+
+        member.addBookmark(new Bookmark(member, spot));
+        return true;
     }
 }
