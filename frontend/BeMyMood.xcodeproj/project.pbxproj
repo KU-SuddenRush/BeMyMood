@@ -10,6 +10,7 @@
 		13A7F6639B6F1B219DB4FFF9 /* Pods_BeMyMood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C55293BF6C3B8416A325017 /* Pods_BeMyMood.framework */; };
 		2E4FEC0D2A87809300EDA21A /* SpotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC0C2A87809300EDA21A /* SpotCell.swift */; };
 		2E4FEC0F2A87940300EDA21A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC0E2A87940300EDA21A /* UIImageView.swift */; };
+		2E4FEC112A88066700EDA21A /* SpotTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC102A88066700EDA21A /* SpotTagCell.swift */; };
 		2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A21242A8768A700750119 /* UISlidingTabController.swift */; };
 		2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05162A80F72700FC3FF3 /* UIViewController.swift */; };
 		2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */; };
@@ -58,6 +59,7 @@
 		2D6782CAFCB745F115D490F8 /* Pods-BeMyMood-BeMyMoodUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood-BeMyMoodUITests.release.xcconfig"; path = "Target Support Files/Pods-BeMyMood-BeMyMoodUITests/Pods-BeMyMood-BeMyMoodUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2E4FEC0C2A87809300EDA21A /* SpotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCell.swift; sourceTree = "<group>"; };
 		2E4FEC0E2A87940300EDA21A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		2E4FEC102A88066700EDA21A /* SpotTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotTagCell.swift; sourceTree = "<group>"; };
 		2E9A21242A8768A700750119 /* UISlidingTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISlidingTabController.swift; sourceTree = "<group>"; };
 		2ECD05162A80F72700FC3FF3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModalViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				2ECD05262A81184200FC3FF3 /* SecondViewController.swift */,
 				2E9A21242A8768A700750119 /* UISlidingTabController.swift */,
 				2E4FEC0C2A87809300EDA21A /* SpotCell.swift */,
+				2E4FEC102A88066700EDA21A /* SpotTagCell.swift */,
 			);
 			path = SpotListModal;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E4FEC112A88066700EDA21A /* SpotTagCell.swift in Sources */,
 				ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */,
 				2ECD05272A81184200FC3FF3 /* SecondViewController.swift in Sources */,
 				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,

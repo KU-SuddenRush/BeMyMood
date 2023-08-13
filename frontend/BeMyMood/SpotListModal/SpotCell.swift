@@ -10,6 +10,9 @@ import SwiftUI
 
 class SpotCell: UICollectionViewCell {
     
+    var tags: [String]?
+//    lazy var tagCollectionViewWidth = CGRect(origin: spotTagCollectionView.contentOffset, size: spotTagCollectionView.bounds.size).width
+    
     //MARK: - UIComponents
     let thumbnailImage = UIImageView().then {
         $0.image = UIImage(named: "apple.logo")
@@ -33,10 +36,14 @@ class SpotCell: UICollectionViewCell {
         $0.font = UIFont(name: "AppleSDGothicNeoR00-Regular", size: 14)
         $0.textColor = UIColor(red: 1, green: 0.54, blue: 0, alpha: 1)
     }
+
+    let spotTagCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let tagCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return tagCV
+    }()
     
-    let spotTagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
-        $0.backgroundColor = .red
-    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -84,8 +91,61 @@ class SpotCell: UICollectionViewCell {
             make.top.equalTo(thumbnailImage.snp.bottom)
         }
         
+        spotTagCollectionView.dataSource = self
+        spotTagCollectionView.delegate = self
+        spotTagCollectionView.register(SpotTagCell.self, forCellWithReuseIdentifier: "spotTagCell")
     }
     
+}
+
+extension SpotCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tags?.count ?? 0
+    }
+    
+//    func calculateItemCount(_ itemCount: Int) -> Int{
+//
+//        return
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                
+        let spotTagCell = spotTagCollectionView.dequeueReusableCell(withReuseIdentifier: "spotTagCell", for: indexPath) as! SpotTagCell
+        
+        spotTagCell.tagLabel.text = "#" + tags![indexPath.row]
+        
+        return spotTagCell
+    }
+    
+    func calculateTagCellWidth(for tagText: String) -> CGFloat {
+        // 셀 폭을 계산하는 로직을 작성합니다. 텍스트의 길이에 따라 동적으로 폭을 설정하거나, 고정된 값으로 설정할 수 있습니다.
+        let textWidth = tagText.size(withAttributes: [.font: UIFont.systemFont(ofSize: 14.0)]).width
+        let cellWidth = textWidth + 40.0 // 예시로 폭에 텍스트 너비를 추가하고 여백을 더합니다.
+        
+        return cellWidth
+    }
+    
+    // CollectionView Cell의 Size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let cellWidth = calculateTagCellWidth(for: tags![indexPath.row])
+        
+        return CGSize(width: cellWidth, height: collectionView.frame.height)
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        
+//        let totalSpacing: CGFloat = (numberOfItemsPerRow - 1) * 10 // 가로 간격의 합
+//        
+//        let cellWidth = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow
+//        let cellHeight: CGFloat = 100 // 예시로 고정된 높이
+//        
+//        return CGSize(width: cellWidth, height: cellHeight)
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10 // 가로 간격 설정
+//    }
 }
 
 struct SpotCellPreView:PreviewProvider {

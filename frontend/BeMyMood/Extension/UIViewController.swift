@@ -26,3 +26,24 @@ extension UIViewController {
     }
 }
 #endif
+
+#if DEBUG
+extension UICollectionViewCell {
+    
+    struct Preview: UIViewRepresentable {
+        let collectionviewCell: UICollectionViewCell
+        // UICollectionViewCell을 SwiftUI 뷰로 wrapping하는 프로토콜 구현
+        func makeUIView(context: Context) -> UICollectionViewCell {
+            return collectionviewCell
+        }
+
+        func updateUIView(_ uiView: UICollectionViewCell, context: Context) {
+            // 업데이트 논리를 구현 (필요하다면)
+        }
+    }
+    
+    func toPreview() -> some View {
+        Preview(collectionviewCell: self)
+    }
+}
+#endif
