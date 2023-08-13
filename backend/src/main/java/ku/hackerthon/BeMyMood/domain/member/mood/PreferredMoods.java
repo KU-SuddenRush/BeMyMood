@@ -27,4 +27,12 @@ public class PreferredMoods {
         return this.preferredMoods.stream()
                 .anyMatch(pm -> pm.equalMood(mood));
     }
+
+    public List<String> getNames() {
+        List<String> names = new ArrayList<>();
+        for (PreferredMood mood : this.preferredMoods) {
+            names.add(mood.getMood().getName());
+        }
+        return names;
+    }
 }
