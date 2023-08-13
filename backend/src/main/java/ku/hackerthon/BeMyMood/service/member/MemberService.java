@@ -17,4 +17,6 @@ public interface MemberService {
     MemberInfoResponseDto searchMemberInfoById(Long memberId);
 
     void setMemberMood(List<String> moods, Long memberId);
+
+    List<String> getPreferredMoodNames(Long memberId);
 }
