@@ -14,8 +14,8 @@ on:
 env:
   PROJECT_NAME: BeMyMood-service
   S3_BUCKET_NAME: bemymood-bucket
-  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: BeMyMood
-  DEPLOYMENT_GROUP_NAME: release
+  CODE_DEPLOY_APPLICATION_NAME: BeMyMood
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: release
 
 jobs:
   build:
