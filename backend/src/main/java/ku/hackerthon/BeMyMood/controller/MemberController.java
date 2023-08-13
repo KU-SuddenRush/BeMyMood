@@ -7,6 +7,7 @@ import ku.hackerthon.BeMyMood.dto.member.request.BookmarkSettingRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.request.MemberMoodRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.request.MemberLocationRequestDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import ku.hackerthon.BeMyMood.service.storage.StorageService;
@@ -78,6 +79,34 @@ public class MemberController {
     @GetMapping("/mood")
     public ResponseEntity<List<String>> getMemberMood(@State Long memberId) {
         List<String> response = memberService.getPreferredMoodNames(memberId);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * <b>내가 선호하는 위치 저장</b>
+     * @param requestDto
+     * @param memberId
+     * @return
+     */
+    @PostMapping("/location")
+    public ResponseEntity<String> setMemberLocation(
+            @RequestBody MemberLocationRequestDto requestDto,
+            @State Long memberId
+    ) {
+        if (memberService.setMemberLocation(requestDto.getLocationIds(), memberId)) {
+            return ResponseEntity.ok("내가 좋아하는 위치 저장에 성공하였습니다.");
+        }
+        return ResponseEntity.ok("내가 좋아하는 위치 저장에 실패하였습니다.");
+    }
+
+    /**
+     * <b>내가 선호하는 위치 조회</b>
+     * @param memberId
+     * @return
+     */
+    @GetMapping("/location")
+    public ResponseEntity<List<String>> getMemberLocation(@State Long memberId) {
+        List<String> response = memberService.getPreferredLocationNames(memberId);
         return ResponseEntity.ok(response);
     }
 
