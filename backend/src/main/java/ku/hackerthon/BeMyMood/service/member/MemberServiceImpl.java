@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Transactional
@@ -86,16 +87,17 @@ public class MemberServiceImpl implements MemberService {
     public List<BookmarkResponseDto> getBookmarks(Long memberId) {
         Member member = searchById(memberId);
         Bookmarks bookmarks = member.getBookmarks();
-        List<BookmarkResponseDto> responseList = new ArrayList<>();
 
-        for (Spot spot : bookmarks.getSpots()) {
-            Long spotId = spot.getId();
-            String spotName = spot.getName();
-            List<String> moodNames = spot.getSpotMoods().getMoodNames();
-            String categoryName = spot.getCategory().name();
-            responseList.add(new BookmarkResponseDto("imgUrl", spotId, spotName, moodNames, "address", categoryName));
-        }
+        List<BookmarkResponseDto> bookmarkResponseDtoList = bookmarks.getSpots().stream()
+                .map(spot -> new BookmarkResponseDto(
+                        "imgUrl",
+                        spot.getId(),
+                        spot.getName(),
+                        spot.getSpotMoods().getMoodNames(),
+                        "address",
+                        spot.getCategory().name()
+                )).collect(Collectors.toList());
 
-        return responseList;
+        return bookmarkResponseDtoList;
     }
 }
