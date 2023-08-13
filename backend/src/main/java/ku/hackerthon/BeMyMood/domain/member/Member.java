@@ -59,6 +59,8 @@ public class Member {
 
     public void addBookmark(Bookmark bookmark) { this.bookmarks.add(bookmark); }
 
+    public void removeBookmark(Bookmark bookmark) { this.bookmarks.remove(bookmark); }
+
     public boolean bookmarked(Spot spot) {
         return bookmarks.hasSpot(spot);
     }
