@@ -8,6 +8,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Embeddable
 public class SpotMoods {
@@ -45,5 +46,11 @@ public class SpotMoods {
                 .map(SpotMood::getMood)
                 .filter(preferredMoods::hasMood)
                 .count();
+    }
+
+    public List<String> getMoodNames() {
+        return spotMoods.stream()
+                .map(spotMood -> spotMood.getMood().getName())
+                .collect(Collectors.toList());
     }
 }
