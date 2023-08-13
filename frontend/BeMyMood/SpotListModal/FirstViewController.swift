@@ -26,7 +26,14 @@ class FirstViewController: UIViewController {
     //MARK: - UIComponents
     
     let filterSection = UIView().then{
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .white
+    }
+    
+    let filterCategoryBtn = FilterOption(title: "카테고리")
+    let filterRegionBtn = FilterOption(title: "지역")
+    let filterIcon = UIImageView().then {
+        $0.tintColor = .lightGray
+        $0.image = UIImage(systemName: "slider.horizontal.3")
     }
     
     let spotCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
@@ -38,6 +45,17 @@ class FirstViewController: UIViewController {
 
         hierarchy()
         layout()
+        
+        filterCategoryBtn.layer.cornerRadius = filterCategoryBtn.frame.height / 2
+        filterRegionBtn.layer.cornerRadius = filterCategoryBtn.frame.height / 2
+        filterRegionBtn.addTarget(self, action: #selector(filterRegionBtnTapped), for: .touchUpInside)
+    }
+    
+    @objc func filterRegionBtnTapped(){
+        print("region btn tap")
+        filterRegionBtn.setTitleColor(.orange, for: .normal)
+        filterRegionBtn.setTitle("filter selected test", for: .normal)
+        filterRegionBtn.tintColor = .orange
     }
 
 }
@@ -46,7 +64,11 @@ extension FirstViewController {
     
     func hierarchy(){
         self.view.addSubview(filterSection)
+        filterSection.addSubview(filterCategoryBtn)
+        filterSection.addSubview(filterRegionBtn)
+        filterSection.addSubview(filterIcon)
         self.view.addSubview(spotCollectionView)
+        
         spotCollectionView.dataSource = self
         spotCollectionView.delegate = self
         spotCollectionView.register(SpotCell.self, forCellWithReuseIdentifier: "spotCell")
@@ -59,12 +81,34 @@ extension FirstViewController {
             make.bottom.equalTo(spotCollectionView.snp.top)
         }
         
+        filterIcon.snp.makeConstraints{ make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(-16)
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+        }
+        
+        filterRegionBtn.snp.makeConstraints{ make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(filterIcon.snp.leading).offset(-5)
+//            make.width.equalTo(50)
+            make.height.equalTo(30)
+        }
+        
+        filterCategoryBtn.snp.makeConstraints{ make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(filterRegionBtn.snp.leading).offset(-5)
+//            make.width.equalTo(90)
+            make.height.equalTo(30)
+        }
+        
         spotCollectionView.snp.makeConstraints{ make in
             make.bottom.leading.trailing.equalToSuperview()
         }
     }
 }
 
+//MARK: - Collection View
 extension FirstViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
