@@ -2,6 +2,7 @@ package ku.hackerthon.BeMyMood.controller;
 
 import ku.hackerthon.BeMyMood.aop.annotation.State;
 import ku.hackerthon.BeMyMood.dto.member.request.MemberMoodRequestDto;
+import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.storage.StorageService;
@@ -72,6 +73,18 @@ public class MemberController {
     @GetMapping("/mood")
     public ResponseEntity<List<String>> getMemberMood(@State Long memberId) {
         List<String> response = memberService.getPreferredMoodNames(memberId);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * <b>나의 관심 스팟(즐겨찾기) 조회</b>
+     *
+     * @param memberId {@link State}로 주입된 MemberId
+     * @return List<String>
+     */
+    @GetMapping("/bookmark")
+    public ResponseEntity<List<BookmarkResponseDto>> getBookmarks(@State Long memberId) {
+        List<BookmarkResponseDto> response = memberService.getBookmarks(memberId);
         return ResponseEntity.ok(response);
     }
 }
