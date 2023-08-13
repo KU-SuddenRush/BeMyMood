@@ -31,7 +31,7 @@ class SpotListModalViewController: UIViewController {
         $0.setHeaderBackgroundColor(color: .orange)
         $0.build()
     }
-            
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,9 +50,8 @@ extension SpotListModalViewController {
     
     func layout(){
         spotListModalTitle.snp.makeConstraints{ make in
-            make.centerX.equalToSuperview()
             make.leading.top.trailing.equalToSuperview()
-            make.width.height.equalTo(50)
+            make.height.equalTo(50)
         }
         
         slidingTabVC.view.snp.makeConstraints{ make in

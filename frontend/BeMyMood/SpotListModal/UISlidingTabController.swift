@@ -197,7 +197,8 @@ extension UISlidingTabController: UICollectionViewDataSource{
         cell.addSubview(vc.view)
         
         vc.view.translatesAutoresizingMaskIntoConstraints = false
-        vc.view.topAnchor.constraint(equalTo: cell.topAnchor, constant: 28).isActive = true
+//        vc.view.topAnchor.constraint(equalTo: cell.topAnchor, constant: 28).isActive = true
+        vc.view.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0).isActive = true
         vc.view.leadingAnchor.constraint(equalTo: cell.leadingAnchor).isActive = true
         vc.view.trailingAnchor.constraint(equalTo: cell.trailingAnchor).isActive = true
         vc.view.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
@@ -217,7 +218,12 @@ extension UISlidingTabController: UICollectionViewDelegateFlowLayout{
             }
         }
         
-        return CGSize(width: view.frame.width, height: view.frame.height)
+//        print(view.frame.size)
+//        print(collectionHeader.frame.size)
+//        print(collectionPage.frame.size)
+//        print(collectionPage.frame.origin)
+        
+        return CGSize(width: view.frame.width, height: collectionPage.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
