@@ -7,16 +7,14 @@ import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.domain.spot.SpotCategory;
-import ku.hackerthon.BeMyMood.dto.spot.FilteredSpotInfo;
-import ku.hackerthon.BeMyMood.dto.spot.RecommendedSpotInfo;
+import ku.hackerthon.BeMyMood.dto.spot.*;
+import ku.hackerthon.BeMyMood.dto.web.response.AllSpotInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.FilteredSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.SpotDetailsResponseDto;
 import ku.hackerthon.BeMyMood.respository.SpotRepository;
 import ku.hackerthon.BeMyMood.service.location.LocationService;
 import ku.hackerthon.BeMyMood.service.mood.MoodService;
-import ku.hackerthon.BeMyMood.dto.spot.SpotFilterParams;
-import ku.hackerthon.BeMyMood.dto.spot.SpotParams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,6 +46,24 @@ public class SpotServiceImpl implements SpotService {
     @Override
     public List<Spot> getAll() {
         return spotRepository.findAll();
+    }
+
+    @Override
+    public AllSpotInfoResponseDto getAllInfo() {
+        List<Spot> allSpot = getAll();
+
+        return new AllSpotInfoResponseDto(
+                allSpot.stream()
+                        .map(spot -> new SpotInfo(
+                                        spot.getId(),
+                                        true,
+                                        spot.getName(),
+                                        spot.getSpotImages().getMainImage().getImgUrl(),
+                                        spot.getCategory().name(),
+                                        spot.getSpotMoods().getMoodNames()
+                                )
+                        ).collect(Collectors.toList())
+        );
     }
 
     /**

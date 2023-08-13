@@ -5,6 +5,7 @@ import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.spot.RecommendedSpotInfo;
 import ku.hackerthon.BeMyMood.dto.spot.SpotFilterParams;
+import ku.hackerthon.BeMyMood.dto.web.response.AllSpotInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.FilteredSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.SpotDetailsResponseDto;
@@ -13,8 +14,6 @@ import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @RequestMapping("/spot")
@@ -25,11 +24,21 @@ public class SpotController {
     private final MemberService memberService;
 
     /**
+     * 전체 스팟 조회
+     */
+    @GetMapping("/info/all")
+    public ResponseEntity<AllSpotInfoResponseDto> getAllSpotInfos() {
+        AllSpotInfoResponseDto responseDto = spotService.getAllInfo();
+        return ResponseEntity.ok(responseDto);
+    }
+
+    /**
      * <b>추천 스팟 리스트 조회</b>
+     *
      * @param memberId statemanager에 저장된 memberId
      * @return List 형식의 {@link RecommendedSpotInfo}
      */
-    @GetMapping("/recommend")
+    @GetMapping("/info/recommend")
     public ResponseEntity<RecommendedSpotsResponseDto> getRecommendedSpots(@State Long memberId) {
         Member member = memberService.searchById(memberId);
         RecommendedSpotsResponseDto responseDto = spotService.recommend(member.getPreferredLocations(), member.getPreferredMoods());
@@ -38,11 +47,12 @@ public class SpotController {
 
     /**
      * <b>스팟 상세 정보 조회</b>
-     * @param spotId 스팟에 할당된 식별자
+     *
+     * @param spotId   스팟에 할당된 식별자
      * @param memberId 멤버 식별자, bookmark된 스팟인지 확인하기 위함.
      * @return {@link SpotDetailsResponseDto}
      */
-    @GetMapping("/{spotId}/details")
+    @GetMapping("/{spotId}/detail")
     public ResponseEntity<SpotDetailsResponseDto> getSpotDetails(
             @PathVariable Long spotId,
             @State Long memberId
@@ -53,7 +63,12 @@ public class SpotController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @GetMapping("/filter")
+    /**
+     * <b>무드별 - 스팟 필터링 조회</b>
+     *
+     * @return
+     */
+    @GetMapping("/info/filter")
     public ResponseEntity<FilteredSpotsResponseDto> getFilteredSpots(
             @RequestParam(name = "category_id", required = false) Long categoryId,
             @RequestParam(name = "location_id", required = false) Long locationId,
@@ -63,5 +78,4 @@ public class SpotController {
         FilteredSpotsResponseDto responseDto = spotService.filter(params);
         return ResponseEntity.ok(responseDto);
     }
-
 }

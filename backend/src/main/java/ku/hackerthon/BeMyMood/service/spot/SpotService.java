@@ -6,6 +6,7 @@ import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.spot.SpotFilterParams;
 import ku.hackerthon.BeMyMood.dto.spot.SpotParams;
+import ku.hackerthon.BeMyMood.dto.web.response.AllSpotInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.FilteredSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.SpotDetailsResponseDto;
@@ -17,6 +18,8 @@ public interface SpotService {
     Spot register(SpotParams spotParams);
 
     List<Spot> getAll();
+
+    AllSpotInfoResponseDto getAllInfo();
 
     Spot searchById(Long spotId);
 
