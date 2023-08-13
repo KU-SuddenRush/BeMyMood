@@ -192,7 +192,7 @@ extension ColorSelectionViewController: UICollectionViewDelegate, UICollectionVi
         
         cell.tagLabel.sizeToFit()
 
-        let cellWidth = cell.tagLabel.frame.width + 40
+        let cellWidth = cell.tagLabel.frame.width + 30
 
         let size = CGSize(width: cellWidth, height: 30)
 
