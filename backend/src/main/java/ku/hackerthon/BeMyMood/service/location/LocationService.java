@@ -11,4 +11,6 @@ public interface LocationService {
     List<Location> searchAllContainsName(String subName);
 
     Location getByName(String name);
+
+    Location getById(Long locationId);
 }

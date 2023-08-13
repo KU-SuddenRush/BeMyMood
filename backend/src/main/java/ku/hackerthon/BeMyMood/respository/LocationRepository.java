@@ -24,4 +24,8 @@ public class LocationRepository {
                 .setParameter("name", name)
                 .getSingleResult();
     }
+
+    public Location findById(Long locationId) {
+        return em.find(Location.class, locationId);
+    }
 }

@@ -13,4 +13,6 @@ public interface MoodService {
     List<String> getAllColors();
 
     List<String> getAllVibes();
+
+    Mood getById(Long moodId);
 }

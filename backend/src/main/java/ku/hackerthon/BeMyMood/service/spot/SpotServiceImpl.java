@@ -7,16 +7,14 @@ import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.domain.spot.SpotCategory;
-import ku.hackerthon.BeMyMood.dto.spot.FilteredSpotInfo;
-import ku.hackerthon.BeMyMood.dto.spot.RecommendedSpotInfo;
+import ku.hackerthon.BeMyMood.dto.spot.*;
+import ku.hackerthon.BeMyMood.dto.web.response.AllSpotInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.FilteredSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.SpotDetailsResponseDto;
 import ku.hackerthon.BeMyMood.respository.SpotRepository;
 import ku.hackerthon.BeMyMood.service.location.LocationService;
 import ku.hackerthon.BeMyMood.service.mood.MoodService;
-import ku.hackerthon.BeMyMood.dto.spot.SpotFilterParams;
-import ku.hackerthon.BeMyMood.dto.spot.SpotParams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,6 +48,24 @@ public class SpotServiceImpl implements SpotService {
         return spotRepository.findAll();
     }
 
+    @Override
+    public AllSpotInfoResponseDto getAllInfo() {
+        List<Spot> allSpot = getAll();
+
+        return new AllSpotInfoResponseDto(
+                allSpot.stream()
+                        .map(spot -> new SpotInfo(
+                                        spot.getId(),
+                                        true,
+                                        spot.getName(),
+                                        spot.getSpotImages().getMainImage().getImgUrl(),
+                                        spot.getCategory().name(),
+                                        spot.getSpotMoods().getMoodNames()
+                                )
+                        ).collect(Collectors.toList())
+        );
+    }
+
     /**
      * <b>spot의 id로 스팟 조회</b>
      * @param spotId
@@ -62,7 +78,7 @@ public class SpotServiceImpl implements SpotService {
     }
 
     /**
-     * [ 카테고리 / 위치 / 무드 ]로 스팟 리스트를 검색
+     * <b>[ 카테고리 / 위치 / 무드 ]로 스팟 리스트를 검색</b>
      * @param params -> 각 필드각 nullable
      */
     @Transactional
@@ -131,16 +147,16 @@ public class SpotServiceImpl implements SpotService {
     }
 
     private List<Spot> collectByLocation(SpotFilterParams params) {
-        if (params.getLocationName() != null) {
-            Location location = locationService.getByName(params.getLocationName());
+        if (params.getLocationId() != null) {
+            Location location = locationService.getById(params.getLocationId());
             return spotRepository.findAllLocatedIn(location);
         }
         return getAll();
     }
 
     private List<Spot> collectByCategory(List<Spot> spots, SpotFilterParams params) {
-        if (params.getCategoryName() != null) {
-            SpotCategory category = SpotCategory.ofName(params.getCategoryName());
+        if (params.getCategoryId() != null) {
+            SpotCategory category = SpotCategory.ofId(params.getCategoryId());
             return spots.stream()
                     .filter(spot -> spot.getCategory().equals(category))
                     .collect(Collectors.toList());
@@ -150,8 +166,8 @@ public class SpotServiceImpl implements SpotService {
     }
 
     private List<Spot> collectByMood(List<Spot> spots,  SpotFilterParams params) {
-        if (params.getMoodName() != null) {
-            Mood mood = moodService.getByName(params.getMoodName());
+        if (params.getMoodId() != null) {
+            Mood mood = moodService.getById(params.getMoodId());
             return spots.stream()
                     .filter(spot -> spot.hasMood(mood))
                     .collect(Collectors.toList());

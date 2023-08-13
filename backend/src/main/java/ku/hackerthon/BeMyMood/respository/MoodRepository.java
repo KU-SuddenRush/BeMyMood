@@ -36,4 +36,8 @@ public class MoodRepository {
                 .setParameter("type", MoodType.VIBE)
                 .getResultList();
     }
+
+    public Mood findById(Long moodId) {
+        return em.find(Mood.class, moodId);
+    }
 }
