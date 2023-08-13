@@ -46,4 +46,12 @@ public class SpotMoods {
                 .filter(preferredMoods::hasMood)
                 .count();
     }
+
+    public List<String> getMoodNames() {
+        List<String> names = new ArrayList<>();
+        for (SpotMood mood : this.spotMoods) {
+            names.add(mood.getMood().getName());
+        }
+        return names;
+    }
 }

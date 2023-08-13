@@ -1,5 +1,6 @@
 package ku.hackerthon.BeMyMood.domain.member.bookmark;
 
+import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 
 import javax.persistence.CascadeType;
@@ -21,5 +22,13 @@ public class Bookmarks {
     public boolean hasSpot(Spot spot) {
         return this.bookmarks.stream()
                 .anyMatch(bm -> bm.equalSpot(spot));
+    }
+
+    public List<Spot> getSpots() {
+        List<Spot> spots = new ArrayList<>();
+        for (Bookmark bookmark : this.bookmarks) {
+            spots.add(bookmark.getSpot());
+        }
+        return spots;
     }
 }
