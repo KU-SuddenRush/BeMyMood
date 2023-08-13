@@ -1,9 +1,12 @@
 package ku.hackerthon.BeMyMood.service.member;
 
 import ku.hackerthon.BeMyMood.domain.member.Member;
+import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmarks;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
+import ku.hackerthon.BeMyMood.domain.spot.Spot;
+import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.respository.MemberRepository;
 import ku.hackerthon.BeMyMood.dto.member.MemberJoinParams;
@@ -13,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -76,5 +80,22 @@ public class MemberServiceImpl implements MemberService {
         Member member = searchById(memberId);
         PreferredMoods preferredMoods = member.getPreferredMoods();
         return preferredMoods.getNames();
+    }
+
+    @Override
+    public List<BookmarkResponseDto> getBookmarks(Long memberId) {
+        Member member = searchById(memberId);
+        Bookmarks bookmarks = member.getBookmarks();
+        List<BookmarkResponseDto> responseList = new ArrayList<>();
+
+        for (Spot spot : bookmarks.getSpots()) {
+            Long spotId = spot.getId();
+            String spotName = spot.getName();
+            List<String> moodNames = spot.getSpotMoods().getMoodNames();
+            String categoryName = spot.getCategory().name();
+            responseList.add(new BookmarkResponseDto("imgUrl", spotId, spotName, moodNames, "address", categoryName));
+        }
+
+        return responseList;
     }
 }
