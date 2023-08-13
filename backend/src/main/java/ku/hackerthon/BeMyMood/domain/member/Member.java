@@ -1,5 +1,7 @@
 package ku.hackerthon.BeMyMood.domain.member;
 
+import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmark;
+import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmarks;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
@@ -31,6 +33,9 @@ public class Member {
     @Embedded
     private PreferredLocations preferredLocations;
 
+    @Embedded
+    private Bookmarks bookmarks;
+
     // Constructor
     @Builder
     public Member(String name, String email, String password) {
@@ -39,6 +44,7 @@ public class Member {
         this.password = password;
         this.preferredMoods = new PreferredMoods();
         this.preferredLocations = new PreferredLocations();
+        this.bookmarks = new Bookmarks();
     }
 
     // Method
@@ -49,4 +55,6 @@ public class Member {
     public boolean matchPassword(String password) {
         return this.password.equals(password);
     }
+
+    public void addBookmark(Bookmark bookmark) { this.bookmarks.add(bookmark); }
 }
