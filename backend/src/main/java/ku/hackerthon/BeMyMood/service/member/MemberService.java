@@ -25,4 +25,8 @@ public interface MemberService {
     List<BookmarkResponseDto> getBookmarks(Long memberId);
 
     boolean setBookmark(Member member, Spot spot);
+
+    boolean setMemberLocation(List<Long> locationIds, Long memberId);
+
+    List<String> getPreferredLocationNames(Long memberId);
 }

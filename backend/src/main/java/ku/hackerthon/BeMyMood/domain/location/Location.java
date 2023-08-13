@@ -2,10 +2,12 @@ package ku.hackerthon.BeMyMood.domain.location;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
 @Entity
 @EqualsAndHashCode(of = {"name"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

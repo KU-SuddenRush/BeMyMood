@@ -1,7 +1,9 @@
 package ku.hackerthon.BeMyMood.domain.member;
 
+import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmark;
 import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmarks;
+import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocation;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
@@ -63,5 +65,9 @@ public class Member {
 
     public boolean bookmarked(Spot spot) {
         return bookmarks.hasSpot(spot);
+    }
+
+    public void addLocation(PreferredLocation location) {
+        this.preferredLocations.add(location);
     }
 }

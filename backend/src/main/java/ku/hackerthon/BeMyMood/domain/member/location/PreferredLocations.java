@@ -34,4 +34,10 @@ public class PreferredLocations {
                 .map(PreferredLocation::getId)
                 .collect(Collectors.toUnmodifiableList());
     }
+
+    public List<String> getNames() {
+        return this.preferredLocations.stream()
+                .map(preferredLocation -> preferredLocation.getLocation().getName())
+                .collect(Collectors.toList());
+    }
 }

@@ -3,6 +3,7 @@ package ku.hackerthon.BeMyMood.service.member;
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmark;
 import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmarks;
+import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocation;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
@@ -11,6 +12,7 @@ import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.respository.MemberRepository;
 import ku.hackerthon.BeMyMood.dto.member.MemberJoinParams;
+import ku.hackerthon.BeMyMood.service.location.LocationService;
 import ku.hackerthon.BeMyMood.service.mood.MoodService;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +31,7 @@ public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;
     private final MoodService moodService;
+    private final LocationService locationService;
 
     @Override
     public Long join(MemberJoinParams params) {
@@ -113,5 +116,21 @@ public class MemberServiceImpl implements MemberService {
 
         member.addBookmark(new Bookmark(member, spot));
         return true;
+    }
+
+    @Override
+    public boolean setMemberLocation(List<Long> locationIds, Long memberId) {
+        Member member = searchById(memberId);
+
+        locationIds.stream()
+                .map(locationId -> new PreferredLocation(member, locationService.getById(locationId)))
+                .forEach(member::addLocation);
+        return true;
+    }
+
+    @Override
+    public List<String> getPreferredLocationNames(Long memberId) {
+        Member member = searchById(memberId);
+        return member.getPreferredLocations().getNames();
     }
 }
