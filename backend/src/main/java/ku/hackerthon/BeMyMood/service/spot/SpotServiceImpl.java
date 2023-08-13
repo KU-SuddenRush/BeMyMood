@@ -6,6 +6,8 @@ import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.domain.spot.SpotCategory;
+import ku.hackerthon.BeMyMood.dto.spot.RecommendedSpot;
+import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
 import ku.hackerthon.BeMyMood.respository.SpotRepository;
 import ku.hackerthon.BeMyMood.service.location.LocationService;
 import ku.hackerthon.BeMyMood.service.mood.MoodService;
@@ -59,7 +61,8 @@ public class SpotServiceImpl implements SpotService {
     }
 
     @Override
-    public List<Spot> recommend(PreferredLocations preferredLocations, PreferredMoods preferredMoods) {
+    public RecommendedSpotsResponseDto recommend(PreferredLocations preferredLocations, PreferredMoods preferredMoods) {
+
         List<Spot> preferredSpots = spotRepository.findAllPreferLocated(preferredLocations);
         Map<Spot, Integer> spotScores = new HashMap<>();
         preferredSpots.stream()
@@ -68,10 +71,21 @@ public class SpotServiceImpl implements SpotService {
                     spotScores.put(spot, matched);
                 });
 
-        return spotScores.entrySet().stream()
+        List<Spot> spotsOrderedByScore = spotScores.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
+
+        return new RecommendedSpotsResponseDto(
+                spotsOrderedByScore.stream()
+                        .map(spot -> new RecommendedSpot(
+                                        spot.getName(),
+                                        spot.getSpotImages().getThumbnail().getImgUrl(),
+                                        spot.getCategory().name(),
+                                        spot.getSpotMoods().getMoodNames()
+                                )
+                        ).collect(Collectors.toList())
+        );
     }
 
     private List<Spot> collectByLocation(SpotSearchParams params) {

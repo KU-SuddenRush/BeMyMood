@@ -5,6 +5,7 @@ import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.spot.SpotSearchParams;
 import ku.hackerthon.BeMyMood.dto.spot.SpotParams;
+import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
 
 import java.util.List;
 
@@ -16,5 +17,5 @@ public interface SpotService {
 
     List<Spot> searchAll(SpotSearchParams spotSearchParams);
 
-    List<Spot> recommend(PreferredLocations preferredLocations, PreferredMoods preferredMoods);
+    RecommendedSpotsResponseDto recommend(PreferredLocations preferredLocations, PreferredMoods preferredMoods);
 }
