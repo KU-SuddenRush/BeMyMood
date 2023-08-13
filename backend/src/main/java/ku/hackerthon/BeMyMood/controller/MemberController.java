@@ -1,10 +1,14 @@
 package ku.hackerthon.BeMyMood.controller;
 
 import ku.hackerthon.BeMyMood.aop.annotation.State;
+import ku.hackerthon.BeMyMood.domain.member.Member;
+import ku.hackerthon.BeMyMood.domain.spot.Spot;
+import ku.hackerthon.BeMyMood.dto.member.request.BookmarkSettingRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.request.MemberMoodRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
+import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import ku.hackerthon.BeMyMood.service.storage.StorageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +26,7 @@ public class MemberController {
 
     private final MemberService memberService;
     private final StorageService storageService;
+    private final SpotService spotService;
 
     /**
      * <b>Member의 간단한 정보 조회 (테스트용)</b>
@@ -86,5 +91,21 @@ public class MemberController {
     public ResponseEntity<List<BookmarkResponseDto>> getBookmarks(@State Long memberId) {
         List<BookmarkResponseDto> response = memberService.getBookmarks(memberId);
         return ResponseEntity.ok(response);
+    }
+
+    /**
+     * <b>나의 관심 스팟(즐겨찾기) 조회</b>
+     *
+     * @param memberId {@link State}로 주입된 MemberId
+     * @return List<String>
+     */
+    @PostMapping("/bookmark")
+    public ResponseEntity<String> setBookmark(@State Long memberId, @RequestBody BookmarkSettingRequestDto requestDto) {
+        Member member = memberService.searchById(memberId);
+        Spot spot = spotService.searchById(requestDto.getSpotId());
+        if (memberService.setBookmark(member, spot)) { // 등록
+            return ResponseEntity.ok("관심 스팟에 등록하였습니다.");
+        }
+        return ResponseEntity.ok("관심 스팟에서 삭제하였습니다.");
     }
 }
