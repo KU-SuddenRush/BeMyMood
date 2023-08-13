@@ -1,6 +1,5 @@
 package ku.hackerthon.BeMyMood.domain.spot.mood;
 
-import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 
