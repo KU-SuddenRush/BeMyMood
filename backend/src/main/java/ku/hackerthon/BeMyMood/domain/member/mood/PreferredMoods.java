@@ -9,8 +9,6 @@ import java.util.List;
 
 public class PreferredMoods {
 
-    private static final int MAX_PREFERRED = 3;
-
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<PreferredMood> preferredMoods = new ArrayList<>();
 
