@@ -8,6 +8,6 @@ import java.util.List;
 public class RecommendedSpotInfo extends SpotInfo {
 
     public RecommendedSpotInfo(Long id, String name, String imgUrl, String categoryName, List<String> moodNames) {
-        super();
+        super(id, false, name, imgUrl, categoryName, moodNames);
     }
 }

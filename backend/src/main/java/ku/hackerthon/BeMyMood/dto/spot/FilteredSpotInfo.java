@@ -8,6 +8,6 @@ import java.util.List;
 public class FilteredSpotInfo extends SpotInfo {
 
     public FilteredSpotInfo(Long id, String name, String imgUrl, String categoryName, List<String> moodNames) {
-        super();
+        super(id, false, name, imgUrl, categoryName, moodNames);
     }
 }
