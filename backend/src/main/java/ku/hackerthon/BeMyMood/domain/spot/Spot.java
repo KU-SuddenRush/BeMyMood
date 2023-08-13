@@ -43,6 +43,9 @@ public class Spot {
     @Embedded
     private SpotMoods spotMoods;
 
+    @Embedded
+    private SpotImages spotImages;
+
     @OneToMany(mappedBy = "spot")
     private List<Review> reviews = new ArrayList<>();
 
