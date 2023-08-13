@@ -18,7 +18,7 @@ class RecordViewController: UIViewController{
     
     var deletePictureIndex = -1
     
-    var imageData : [UIImage?] = [UIImage(named: "badge_empty"),UIImage(named: "home"),UIImage(named: "home_select")]
+    var imageData : [UIImage?] = []
     
     //MARK: - UIComponents
     
@@ -150,6 +150,7 @@ class RecordViewController: UIViewController{
         self.publicBtn.addTarget(self, action: #selector(isPublicSwitch), for: .touchUpInside)
         self.privateBtn.addTarget(self, action: #selector(isPublicSwitch), for: .touchUpInside)
         self.photoBtn.addTarget(self, action: #selector(pictureUploadBtnTap), for: .touchUpInside)
+        self.completeBtn.addTarget(self, action: #selector(completeBtnDidTab), for: .touchUpInside)
     }
     
     //MARK: - Actions
@@ -161,9 +162,12 @@ class RecordViewController: UIViewController{
         }
     }
     
-    @objc func nextBtnDidTab() {
-        let colorSelectionViewController = ColorSelectionViewController()
-        self.navigationController?.pushViewController(colorSelectionViewController, animated: true)
+    @objc func completeBtnDidTab() {
+        
+        let entertainmentBottomSheetVC = EntertainmentBottomSheetViewController()
+        entertainmentBottomSheetVC.modalPresentationStyle = .overFullScreen
+        
+        self.present(entertainmentBottomSheetVC, animated: false, completion: nil)
         
     }
     
@@ -358,6 +362,11 @@ extension RecordViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if self.recordTextView.text == "" {
             self.recordTextView.text = self.recordTextViewPlaceHolder
+            self.completeBtn.isEnabled = false
+            self.completeBtn.backgroundColor = .darkBrown_30
+        }else {
+            self.completeBtn.isEnabled = true
+            self.completeBtn.backgroundColor = .darkBrown
         }
     }
 

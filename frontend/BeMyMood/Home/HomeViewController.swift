@@ -104,7 +104,7 @@ class HomeViewController: UIViewController {
     //MARK: - Actions
     
     @objc func nextBtnDidTab() {
-        let colorSelectionViewController = RecordViewController()
+        let colorSelectionViewController = ColorSelectionViewController()
         self.navigationController?.pushViewController(colorSelectionViewController, animated: true)
         
     }
@@ -136,7 +136,7 @@ class HomeViewController: UIViewController {
 
 
 }
-
+    //MARK: - CollectionViewDelegate
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

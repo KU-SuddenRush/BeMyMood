@@ -14,6 +14,10 @@
 		AC06243E2A87B7DA00EDFB8E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06243D2A87B7DA00EDFB8E /* RecordViewController.swift */; };
 		AC0624402A87B81000EDFB8E /* RecordLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06243F2A87B81000EDFB8E /* RecordLayout.swift */; };
 		AC0624422A88ADFE00EDFB8E /* RecordPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624412A88ADFE00EDFB8E /* RecordPictureCell.swift */; };
+		AC0624442A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624432A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift */; };
+		AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */; };
+		AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */; };
+		AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */; };
 		ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */; };
 		ACF16DCC2A7D4CE50010CF21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */; };
 		ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DCD2A7D4CE50010CF21 /* HomeViewController.swift */; };
@@ -70,6 +74,10 @@
 		AC06243D2A87B7DA00EDFB8E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		AC06243F2A87B81000EDFB8E /* RecordLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordLayout.swift; sourceTree = "<group>"; };
 		AC0624412A88ADFE00EDFB8E /* RecordPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPictureCell.swift; sourceTree = "<group>"; };
+		AC0624432A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentBottomSheetViewController.swift; sourceTree = "<group>"; };
+		AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
+		AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchLayout.swift; sourceTree = "<group>"; };
+		AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultCell.swift; sourceTree = "<group>"; };
 		ACF16DC62A7D4CE50010CF21 /* BeMyMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +177,7 @@
 			children = (
 				AC06243D2A87B7DA00EDFB8E /* RecordViewController.swift */,
 				AC06243F2A87B81000EDFB8E /* RecordLayout.swift */,
+				AC0624432A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -290,6 +299,7 @@
 			children = (
 				ACF16E142A8263FC0010CF21 /* TagCell.swift */,
 				AC0624412A88ADFE00EDFB8E /* RecordPictureCell.swift */,
+				AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -303,6 +313,8 @@
 				ACF16E1F2A82919C0010CF21 /* ColorSelectionLayout.swift */,
 				ACF16E1B2A8290A70010CF21 /* LocationSelectionViewController.swift */,
 				ACF16E212A8291AA0010CF21 /* LocationSelectionLayout.swift */,
+				AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */,
+				AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */,
 			);
 			path = Selection;
 			sourceTree = "<group>";
@@ -553,8 +565,10 @@
 				AC0624422A88ADFE00EDFB8E /* RecordPictureCell.swift in Sources */,
 				AC06243E2A87B7DA00EDFB8E /* RecordViewController.swift in Sources */,
 				ACF16E082A810E660010CF21 /* UIColor.swift in Sources */,
+				AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */,
 				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
 				ACF16E1A2A828EE10010CF21 /* ColorSelectionViewController.swift in Sources */,
+				AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */,
 				ACF16E042A7D6B900010CF21 /* CommunityViewController.swift in Sources */,
 				ACF16E182A828ECF0010CF21 /* MoodSelectionViewController.swift in Sources */,
 				ACF16E222A8291AA0010CF21 /* LocationSelectionLayout.swift in Sources */,
@@ -563,8 +577,10 @@
 				ACF16DFC2A7D6B090010CF21 /* MoodBoardViewController.swift in Sources */,
 				ACF16E002A7D6B420010CF21 /* ProfileViewController.swift in Sources */,
 				ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */,
+				AC0624442A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift in Sources */,
 				ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */,
 				ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */,
+				AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */,
 				ACF16DFA2A7D5D500010CF21 /* HomeLayout.swift in Sources */,
 				ACF16E1C2A8290A70010CF21 /* LocationSelectionViewController.swift in Sources */,
 				ACF16DCC2A7D4CE50010CF21 /* SceneDelegate.swift in Sources */,
