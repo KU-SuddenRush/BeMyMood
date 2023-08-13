@@ -13,7 +13,7 @@ public class SpotImages {
     private List<SpotImage> spotImages = new ArrayList<>();
 
     // Getter
-    public SpotImage getThumbnail() {
+    public SpotImage getMainImage() {
         return spotImages.get(0);
     }
 

@@ -4,8 +4,9 @@ import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
-import ku.hackerthon.BeMyMood.dto.spot.SpotSearchParams;
+import ku.hackerthon.BeMyMood.dto.spot.SpotFilterParams;
 import ku.hackerthon.BeMyMood.dto.spot.SpotParams;
+import ku.hackerthon.BeMyMood.dto.web.response.FilteredSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.SpotDetailsResponseDto;
 
@@ -19,7 +20,7 @@ public interface SpotService {
 
     Spot searchById(Long spotId);
 
-    List<Spot> searchAll(SpotSearchParams spotSearchParams);
+    FilteredSpotsResponseDto filter(SpotFilterParams params);
 
     SpotDetailsResponseDto getSpotDetails(Spot spot, Member member);
 

@@ -1,6 +1,6 @@
 package ku.hackerthon.BeMyMood.dto.web.response;
 
-import ku.hackerthon.BeMyMood.dto.spot.RecommendedSpotInfo;
+import ku.hackerthon.BeMyMood.dto.spot.FilteredSpotInfo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
-public class RecommendedSpotsResponseDto {
+public class FilteredSpotsResponseDto {
 
-    private List<RecommendedSpotInfo> spotInfos;
+    private List<FilteredSpotInfo> spotInfos;
 }

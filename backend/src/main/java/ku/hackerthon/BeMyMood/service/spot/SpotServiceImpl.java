@@ -7,13 +7,15 @@ import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.domain.spot.SpotCategory;
-import ku.hackerthon.BeMyMood.dto.spot.RecommendedSpot;
+import ku.hackerthon.BeMyMood.dto.spot.FilteredSpotInfo;
+import ku.hackerthon.BeMyMood.dto.spot.RecommendedSpotInfo;
+import ku.hackerthon.BeMyMood.dto.web.response.FilteredSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.SpotDetailsResponseDto;
 import ku.hackerthon.BeMyMood.respository.SpotRepository;
 import ku.hackerthon.BeMyMood.service.location.LocationService;
 import ku.hackerthon.BeMyMood.service.mood.MoodService;
-import ku.hackerthon.BeMyMood.dto.spot.SpotSearchParams;
+import ku.hackerthon.BeMyMood.dto.spot.SpotFilterParams;
 import ku.hackerthon.BeMyMood.dto.spot.SpotParams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -65,12 +67,22 @@ public class SpotServiceImpl implements SpotService {
      */
     @Transactional
     @Override
-    public List<Spot> searchAll(SpotSearchParams params) {
+    public FilteredSpotsResponseDto filter(SpotFilterParams params) {
 
         List<Spot> collectByLocation = collectByLocation(params);
         List<Spot> collectByCategory = collectByCategory(collectByLocation, params);
         List<Spot> collectByMood = collectByMood(collectByCategory, params);
-        return collectByMood;
+
+        return new FilteredSpotsResponseDto(
+                collectByMood.stream()
+                        .map(spot -> new FilteredSpotInfo(
+                                spot.getId(),
+                                spot.getName(),
+                                spot.getSpotImages().getMainImage().getImgUrl(),
+                                spot.getCategory().name(),
+                                spot.getSpotMoods().getMoodNames()
+                        )).collect(Collectors.toList())
+        );
     }
 
     @Override
@@ -107,10 +119,10 @@ public class SpotServiceImpl implements SpotService {
 
         return new RecommendedSpotsResponseDto(
                 spotsOrderedByScore.stream()
-                        .map(spot -> new RecommendedSpot(
+                        .map(spot -> new RecommendedSpotInfo(
                                         spot.getId(),
                                         spot.getName(),
-                                        spot.getSpotImages().getThumbnail().getImgUrl(),
+                                        spot.getSpotImages().getMainImage().getImgUrl(),
                                         spot.getCategory().name(),
                                         spot.getSpotMoods().getMoodNames()
                                 )
@@ -118,7 +130,7 @@ public class SpotServiceImpl implements SpotService {
         );
     }
 
-    private List<Spot> collectByLocation(SpotSearchParams params) {
+    private List<Spot> collectByLocation(SpotFilterParams params) {
         if (params.getLocationName() != null) {
             Location location = locationService.getByName(params.getLocationName());
             return spotRepository.findAllLocatedIn(location);
@@ -126,7 +138,7 @@ public class SpotServiceImpl implements SpotService {
         return getAll();
     }
 
-    private List<Spot> collectByCategory(List<Spot> spots, SpotSearchParams params) {
+    private List<Spot> collectByCategory(List<Spot> spots, SpotFilterParams params) {
         if (params.getCategoryName() != null) {
             SpotCategory category = SpotCategory.ofName(params.getCategoryName());
             return spots.stream()
@@ -137,7 +149,7 @@ public class SpotServiceImpl implements SpotService {
         return spots;
     }
 
-    private List<Spot> collectByMood(List<Spot> spots,  SpotSearchParams params) {
+    private List<Spot> collectByMood(List<Spot> spots,  SpotFilterParams params) {
         if (params.getMoodName() != null) {
             Mood mood = moodService.getByName(params.getMoodName());
             return spots.stream()
