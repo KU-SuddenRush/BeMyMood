@@ -55,7 +55,7 @@ extension FirstViewController {
     func layout(){
         filterSection.snp.makeConstraints{ make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(50).priority(.high)
+            make.height.equalTo(50)
             make.bottom.equalTo(spotCollectionView.snp.top)
         }
         
@@ -78,19 +78,32 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         spotCell.thumbnailImage.loadImage(from: cellData.thumbnailImageUrl)
         if cellData.isLiked{
-            spotCell.heartButton.image = UIImage(systemName: "heart.fill")
-            spotCell.isSelected = true
+            spotCell.heartButton.setImage(UIImage(systemName: "heart.fill"), for: UIControl.State.normal)
+            spotCell.heartButton.isSelected = true
         }else{
-            spotCell.heartButton.image = UIImage(systemName: "heart")
-            spotCell.isSelected = false
+            spotCell.heartButton.setImage(UIImage(systemName: "heart"), for: UIControl.State.normal)
+            spotCell.heartButton.isSelected = false
         }
         spotCell.spotTypeLabel.text = cellData.spotType
         spotCell.spotTitleLabel.text = cellData.spotTitle
         
+        spotCell.heartButton.addTarget(self, action: #selector(heartBtnTap(_:)), for: .touchUpInside)
+
         spotCell.tags = cellData.tags
-//        spotCell.loadTagCollectionView()
         
         return spotCell
+    }
+    
+    @objc func heartBtnTap(_ sender: UIButton){
+        print("heart Button Tap")
+        if sender.isSelected{
+            sender.setImage(UIImage(systemName: "heart"), for: .normal)
+            sender.isSelected = false
+        }else{
+            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            sender.isSelected = true
+        }
+        /// TODO Heart Tap API
     }
     
 }

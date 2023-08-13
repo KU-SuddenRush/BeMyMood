@@ -20,11 +20,9 @@ class SpotCell: UICollectionViewCell {
         $0.clipsToBounds = true
     }
     
-    let heartButton = UIImageView().then {
+    let heartButton = UIButton().then{
+        $0.setImage(UIImage(systemName: "heart"), for: .normal)
         $0.tintColor = .black
-        $0.image = UIImage(systemName: "heart")
-        /// TODO
-        /// 하트버튼 클릭시 API 호출 addTarget
     }
     
     let spotTitleLabel = UILabel().then{
@@ -56,16 +54,19 @@ class SpotCell: UICollectionViewCell {
     
     private func commonInit() {
         
-        self.addSubview(thumbnailImage)
+        /// TODO contentview 추가되면 어떻게 달라지는지
+        self.contentView.addSubview(thumbnailImage)
         thumbnailImage.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(thumbnailImage.snp.width) // 1:1
         }
         
-        thumbnailImage.addSubview(heartButton)
+        /// TODO
+        /// thumbnailImage.addSubview(heartButton) 할 때는 왜 안되는 거니
+        self.contentView.addSubview(heartButton)
         heartButton.snp.makeConstraints { make in
-            make.top.equalTo(thumbnailImage).offset(12)
-            make.trailing.equalTo(thumbnailImage).offset(-12)
+            make.top.equalTo(contentView).offset(12)
+            make.trailing.equalTo(contentView).offset(-12)
             make.size.equalTo(24)
         }
         
