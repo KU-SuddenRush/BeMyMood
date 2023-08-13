@@ -9,6 +9,7 @@ name: CD
 
 on:
   pull_request:
+    types: [ closed ]
     branches: [ "server-develop" ]
 
 env:
@@ -19,6 +20,7 @@ env:
 
 jobs:
   build:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
