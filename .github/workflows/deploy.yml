@@ -12,10 +12,10 @@ on:
     branches: [ "server-develop" ]
 
 env:
-  PROJECT_NAME: magazine
-  BUCKET_NAME: bemymood-bucket
-  CODE_DEPLOY_APP_NAME: BeMyMood
-  DEPLOYMENT_GROUP_NAME: release
+  PROJECT_NAME: BeMyMood-service
+  S3_BUCKET_NAME: bemymood-bucket
+  CODE_DEPLOY_APPLICATION_NAME: BeMyMood
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: release
 
 jobs:
   build:
