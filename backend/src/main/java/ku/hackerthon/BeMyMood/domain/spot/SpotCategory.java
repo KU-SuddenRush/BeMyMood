@@ -20,4 +20,8 @@ public enum SpotCategory {
                 .findAny()
                 .orElse(NONE);
     }
+
+    public String getName() {
+        return this.name;
+    }
 }

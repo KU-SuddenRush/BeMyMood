@@ -95,7 +95,7 @@ public class MemberServiceImpl implements MemberService {
                         spot.getName(),
                         spot.getSpotMoods().getMoodNames(),
                         spot.getAddress(),
-                        spot.getCategory().name()
+                        spot.getCategory().getName()
                 )).collect(Collectors.toList());
 
         return bookmarkResponseDtoList;
