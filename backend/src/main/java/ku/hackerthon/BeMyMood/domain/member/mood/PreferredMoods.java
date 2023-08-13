@@ -9,8 +9,6 @@ import java.util.List;
 
 public class PreferredMoods {
 
-    private static final int MAX_PREFERRED = 3;
-
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<PreferredMood> preferredMoods = new ArrayList<>();
 
@@ -26,5 +24,13 @@ public class PreferredMoods {
     public boolean hasMood(Mood mood) {
         return this.preferredMoods.stream()
                 .anyMatch(pm -> pm.equalMood(mood));
+    }
+
+    public List<String> getNames() {
+        List<String> names = new ArrayList<>();
+        for (PreferredMood mood : this.preferredMoods) {
+            names.add(mood.getMood().getName());
+        }
+        return names;
     }
 }

@@ -2,6 +2,7 @@ package ku.hackerthon.BeMyMood.service.member;
 
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
+import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.respository.MemberRepository;
@@ -58,8 +59,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void setMemberMood(List<String> moods, Long memberId) {
-        Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("wrong id"));
+        Member member = searchById(memberId);
 
         for (String mood : moods) {
             Mood selectedMood = moodService.getByName(mood);
@@ -69,5 +69,12 @@ public class MemberServiceImpl implements MemberService {
 
             member.addMood(new PreferredMood(member, selectedMood));
         }
+    }
+
+    @Override
+    public List<String> getPreferredMoodNames(Long memberId) {
+        Member member = searchById(memberId);
+        PreferredMoods preferredMoods = member.getPreferredMoods();
+        return preferredMoods.getNames();
     }
 }
