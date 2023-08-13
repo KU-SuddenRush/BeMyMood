@@ -90,11 +90,11 @@ public class MemberServiceImpl implements MemberService {
 
         List<BookmarkResponseDto> bookmarkResponseDtoList = bookmarks.getSpots().stream()
                 .map(spot -> new BookmarkResponseDto(
-                        "imgUrl",
+                        spot.getSpotImages().getMainImage().getImgUrl(),
                         spot.getId(),
                         spot.getName(),
                         spot.getSpotMoods().getMoodNames(),
-                        "address",
+                        spot.getAddress(),
                         spot.getCategory().name()
                 )).collect(Collectors.toList());
 
