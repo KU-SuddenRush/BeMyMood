@@ -16,6 +16,8 @@ target 'BeMyMood' do
   pod 'Alamofire'
 
   pod 'StickerView'
+  
+  pod 'PanModal'
 
   target 'BeMyMoodTests' do
     inherit! :search_paths

@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.7.1)
   - Kingfisher (7.9.0)
+  - PanModal (1.2.7)
   - SnapKit (5.6.0)
   - StickerView (1.0)
   - Then (3.0.0)
@@ -8,6 +9,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Kingfisher (~> 7.0)
+  - PanModal
   - SnapKit (~> 5.6.0)
   - StickerView
   - Then
@@ -16,6 +18,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Kingfisher
+    - PanModal
     - SnapKit
     - StickerView
     - Then
@@ -23,10 +26,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   Kingfisher: 59f908b6d2f403b0a3e539debb0eec05cb27002c
+  PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   StickerView: c486fbc722bddaff4f521afd9028ea4dc3e25a62
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 5907b3adec76b757fe8a1808910787d3ccbfcec3
+PODFILE CHECKSUM: d26f38b4f7defe3dc0f01a3119c6ccddc4d7c1f1
 
 COCOAPODS: 1.12.1
