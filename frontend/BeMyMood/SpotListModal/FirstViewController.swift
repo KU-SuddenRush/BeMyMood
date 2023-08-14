@@ -56,6 +56,9 @@ class FirstViewController: UIViewController {
         filterRegionBtn.setTitleColor(.orange, for: .normal)
         filterRegionBtn.setTitle("filter selected test", for: .normal)
         filterRegionBtn.tintColor = .orange
+        
+        let customBottomSheet = CategoryBottomSheet()
+        self.presentPanModal(customBottomSheet)
     }
 
 }
