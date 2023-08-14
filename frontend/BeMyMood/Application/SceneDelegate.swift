@@ -20,39 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        self.navigationController = UINavigationController(rootViewController: createTabBarController())
+        self.navigationController = UINavigationController(rootViewController: TabBarController())
         self.navigationController?.navigationBar.isHidden = true
         self.window?.rootViewController = self.navigationController
         self.window?.makeKeyAndVisible()
-    }
-    func createTabBarController() -> UITabBarController {
-            let tabBarController = UITabBarController()
-            tabBarController.viewControllers = [createFirstViewController(), createSecondViewController(), createThirdViewController(),createFourViewController()]
-            return tabBarController
-        }
-        
-        func createFirstViewController() -> UIViewController {
-            let firstViewController = HomeViewController()
-            firstViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "circle"), tag: 0)
-            return firstViewController
-        }
-        
-        func createSecondViewController() -> UIViewController {
-            let secondViewController = MoodBoardViewController()
-            secondViewController.tabBarItem = UITabBarItem(title: "무드보드", image: UIImage(named: "circle"), tag: 1)
-            return secondViewController
-        }
-        
-        func createThirdViewController() -> UIViewController {
-            let thirdViewController = CommunityViewController()
-            thirdViewController.tabBarItem = UITabBarItem(title: "커뮤니티", image: UIImage(named: "circle"), tag: 2)
-            return thirdViewController
-        }
-    
-    func createFourViewController() -> UIViewController {
-        let thirdViewController = ProfileViewController()
-        thirdViewController.tabBarItem = UITabBarItem(title: "내프로필", image: UIImage(named: "circle"), tag: 2)
-        return thirdViewController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
