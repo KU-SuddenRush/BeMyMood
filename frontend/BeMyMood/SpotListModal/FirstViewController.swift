@@ -49,7 +49,7 @@ class FirstViewController: UIViewController {
         filterCategoryBtn.layer.cornerRadius = filterCategoryBtn.frame.height / 2
         filterCategoryBtn.addTarget(self, action: #selector(filterCategoryBtnTapped), for: .touchUpInside)
 
-        filterRegionBtn.layer.cornerRadius = filterCategoryBtn.frame.height / 2
+        filterRegionBtn.layer.cornerRadius = filterRegionBtn.frame.height / 2
         filterRegionBtn.addTarget(self, action: #selector(filterRegionBtnTapped), for: .touchUpInside)
     }
     
@@ -67,6 +67,7 @@ class FirstViewController: UIViewController {
 
 }
 
+@objc // for override func in SecondVC
 extension FirstViewController {
     
     func hierarchy(){
@@ -170,6 +171,7 @@ extension FirstViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+@objc // for override func in SecondVC
 extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDelegate {
     
     func setCategoryFilterTitle(_ title: String) {

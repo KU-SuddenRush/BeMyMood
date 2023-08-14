@@ -1,5 +1,5 @@
 //
-//  CategoryBottomSheet.swift
+//  MoodBottomSheet.swift
 //  BeMyMood
 //
 //  Created by YoonSub Lim on 2023/08/14.
@@ -8,18 +8,19 @@
 import UIKit
 import PanModal
 
-protocol FilterCategoryDataDelegate: AnyObject {
-    func setCategoryFilterTitle(_ title: String)
+
+protocol FilterMoodDataDelegate: AnyObject {
+    func setMoodFilterTitle(_ title: String)
 }
 
-/// TODO : BottomSheet 하나로 통합 -> type & data 받아서 컬렉션뷰 처리
-class CategoryBottomSheet: UIViewController {
+class MoodBottomSheet: UIViewController {
     
-    var categories: [String] = ["카페", "전시회", "공원", "전시회", "공연", "맛집", "MZ스팟", "LP바", "술집", "바", "과학관"]
-    weak var delegate: FilterCategoryDataDelegate?
+    var moods: [String] = ["힙한", "무채색", "고즈넉한", "풍경위주의", "LP가흐르는", "미니멀한", "반려동물과 함께", "풍경위주의", "뮤트한", "키치한", "친구와함께"]
 
+    weak var delegate: FilterMoodDataDelegate?
+    
     //MARK: - UIComponents
-    private let categoryBottomCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
+    private let moodBottomCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
         $0.backgroundColor = .white
     }
     
@@ -31,21 +32,21 @@ class CategoryBottomSheet: UIViewController {
         hierarchy()
         layout()
         
-        categoryBottomCollectionView.dataSource = self
-        categoryBottomCollectionView.delegate = self
-        categoryBottomCollectionView.register(SpotTagCell.self, forCellWithReuseIdentifier: "spotTagCell")
+        moodBottomCollectionView.dataSource = self
+        moodBottomCollectionView.delegate = self
+        moodBottomCollectionView.register(SpotTagCell.self, forCellWithReuseIdentifier: "spotTagCell")
     }
-
+    
 }
 
-extension CategoryBottomSheet {
+extension MoodBottomSheet {
     
     func hierarchy(){
-        view.addSubview(categoryBottomCollectionView)
+        view.addSubview(moodBottomCollectionView)
     }
     
     func layout(){
-        categoryBottomCollectionView.snp.makeConstraints{ make in
+        moodBottomCollectionView.snp.makeConstraints{ make in
             make.bottom.equalToSuperview()
             make.top.equalTo(40)
             make.leading.equalTo(34)
@@ -54,7 +55,7 @@ extension CategoryBottomSheet {
     }
 }
 
-extension CategoryBottomSheet: PanModalPresentable {
+extension MoodBottomSheet: PanModalPresentable {
     var panScrollable: UIScrollView? {
         return nil
     }
@@ -62,23 +63,23 @@ extension CategoryBottomSheet: PanModalPresentable {
     var shortFormHeight: PanModalHeight {
         return .contentHeight(200)
     }
-
+    
     var longFormHeight: PanModalHeight {
-//        return .maxHeightWithTopInset(40)
+        //        return .maxHeightWithTopInset(40)
         return .contentHeight(200) // 최대 크기 == 최소 크기 == 크기 고정
     }
 }
 
-extension CategoryBottomSheet: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+extension MoodBottomSheet: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        return moods.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-                
-        let spotTagCell = categoryBottomCollectionView.dequeueReusableCell(withReuseIdentifier: "spotTagCell", for: indexPath) as! SpotTagCell
         
-        spotTagCell.tagLabel.text = "#" + categories[indexPath.row]
+        let spotTagCell = moodBottomCollectionView.dequeueReusableCell(withReuseIdentifier: "spotTagCell", for: indexPath) as! SpotTagCell
+        
+        spotTagCell.tagLabel.text = "#" + moods[indexPath.row]
         
         return spotTagCell
     }
@@ -94,7 +95,7 @@ extension CategoryBottomSheet: UICollectionViewDataSource, UICollectionViewDeleg
     // CollectionView Cell의 Size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellWidth = calculateTagCellWidth(for: categories[indexPath.row])
+        let cellWidth = calculateTagCellWidth(for: moods[indexPath.row])
         
         return CGSize(width: cellWidth, height: 33)
     }
@@ -111,13 +112,13 @@ extension CategoryBottomSheet: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // 선택된 셀에 접근
-        if let selectedCell = categoryBottomCollectionView.cellForItem(at: indexPath) as? SpotTagCell {
+        if let selectedCell = moodBottomCollectionView.cellForItem(at: indexPath) as? SpotTagCell {
             var tagName = selectedCell.tagLabel.text ?? ""
             while tagName.hasPrefix("#"){
                 tagName.removeFirst()
             }
             if tagName != ""{
-                delegate?.setCategoryFilterTitle(tagName)
+                delegate?.setMoodFilterTitle(tagName)
             }
             print(tagName)
         }
