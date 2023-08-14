@@ -38,6 +38,18 @@ extension UIColor {
     
     
     //무드보드 선택 컬러
+    static let color0_1 = UIColor(hex: "#6C6C6C")
+    static let color1_1 = UIColor(hex: "#393939")
+    static let color2_1 = UIColor(hex: "#000000")
+    static let color3_1 = UIColor(hex: "#BEBEBE")
+    static let color4_1 = UIColor(hex: "#FFFFFF")
+    static let color5_1 = UIColor(hex: "#FF5252")
+    static let color6_1 = UIColor(hex: "#FFDA59")
+    static let color7_1 = UIColor(hex: "#45E87C")
+    static let color8_1 = UIColor(hex: "#5690FF")
+    static let color9_1 = UIColor(hex: "#FF70E8")
+    static let color10_1 = UIColor(hex: "#8E0DA3")
+    
     static let color0 = UIColor(hex: "#6C6C6C", alpha: 0.8)
     static let color1 = UIColor(hex: "#393939",alpha: 0.8)
     static let color2 = UIColor(hex: "#000000",alpha: 0.8)

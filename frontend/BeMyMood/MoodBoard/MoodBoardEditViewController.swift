@@ -69,7 +69,7 @@ class MoodBoardEditViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.view.backgroundColor = .color0
+        self.view.backgroundColor = .color0_1
         
         hierarchy()
         layout()
@@ -86,6 +86,11 @@ class MoodBoardEditViewController: UIViewController {
         //Button
         self.backgroundColorBtn.addTarget(self, action: #selector(backgroundColorBtnDidTab), for: .touchUpInside)
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        self.view.backgroundColor = .color0
     }
     
     
