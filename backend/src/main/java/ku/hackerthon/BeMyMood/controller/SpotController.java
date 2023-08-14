@@ -5,6 +5,8 @@ import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.spot.RecommendedSpotInfo;
 import ku.hackerthon.BeMyMood.dto.spot.SpotFilterParams;
+import ku.hackerthon.BeMyMood.dto.spot.SpotParams;
+import ku.hackerthon.BeMyMood.dto.web.request.SpotCreateRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.response.AllSpotInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.FilteredSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
@@ -12,8 +14,12 @@ import ku.hackerthon.BeMyMood.dto.web.response.SpotDetailsResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RequestMapping("/spot")
@@ -23,6 +29,18 @@ public class SpotController {
     private final SpotService spotService;
     private final MemberService memberService;
 
+    /**
+     * 새로운 스팟 등록
+     */
+    @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Long> create(
+            @RequestPart("data") SpotCreateRequestDto requestDto,
+            @RequestPart("files") List<MultipartFile> files
+    ) {
+        Long spotId = spotService.register(requestDto);
+        spotService.registerImages(spotId, files);
+        return ResponseEntity.ok(spotId);
+    }
     /**
      * 전체 스팟 조회
      */

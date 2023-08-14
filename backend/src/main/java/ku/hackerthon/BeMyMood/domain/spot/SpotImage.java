@@ -20,4 +20,9 @@ public class SpotImage {
     @ManyToOne
     @JoinColumn(name = "spot_id")
     private Spot spot;
+
+    public SpotImage(String imgUrl, Spot spot) {
+        this.imgUrl = imgUrl;
+        this.spot = spot;
+    }
 }
