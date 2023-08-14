@@ -31,7 +31,8 @@ public class PreferredLocations {
 
     public List<Long> getLocationIds() {
         return preferredLocations.stream()
-                .map(PreferredLocation::getId)
+                .map(PreferredLocation::getLocation)
+                .map(Location::getId)
                 .collect(Collectors.toUnmodifiableList());
     }
 

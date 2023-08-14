@@ -22,7 +22,6 @@ public class SpotRepository {
     }
 
     public List<Spot> findAllPreferLocated(PreferredLocations preferredLocations) {
-        System.out.println(preferredLocations.getLocationIds());
         return em.createQuery("select s from Spot s where s.id in :locationIds", Spot.class)
                 .setParameter("locationIds", preferredLocations.getLocationIds())
                 .getResultStream()
