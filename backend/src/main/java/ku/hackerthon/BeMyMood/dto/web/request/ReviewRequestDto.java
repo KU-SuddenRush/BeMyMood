@@ -10,5 +10,5 @@ public class ReviewRequestDto {
     private Long spotId;
     private String title;
     private String description;
-    private boolean isPublic;
+    private Boolean opened;
 }

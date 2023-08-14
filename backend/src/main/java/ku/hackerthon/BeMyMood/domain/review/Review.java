@@ -29,7 +29,7 @@ public class Review {
 
     private LocalDate postAt;
 
-    private boolean isPublic;
+    private Boolean opened;
 
     @ManyToOne
     @JoinColumn(name = "member_id")
@@ -40,16 +40,16 @@ public class Review {
     private Spot spot;
 
     // Constructor
-    public Review(String title, String description, LocalDate postAt, boolean isPublic, Member member, Spot spot) {
+    public Review(String title, String description, LocalDate postAt, Boolean opened, Member member, Spot spot) {
         this.title = title;
         this.description = description;
         this.postAt = postAt;
-        this.isPublic = isPublic;
+        this.opened = opened;
         this.member = member;
         member.addReview(this);
 
         this.spot = spot;
-        if (isPublic) {
+        if (opened) {
             spot.addPublicReview(this);
         }
     }

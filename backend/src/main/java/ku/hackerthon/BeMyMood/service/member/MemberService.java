@@ -6,6 +6,7 @@ import ku.hackerthon.BeMyMood.dto.member.MemberJoinParams;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.ReviewRequestDto;
+import ku.hackerthon.BeMyMood.dto.web.response.ReviewResponseDto;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -35,4 +36,5 @@ public interface MemberService {
 
     void review(ReviewRequestDto requestDto, MultipartFile file, Long memberId) throws IOException;
 
+    List<ReviewResponseDto> findAllReviewByMemberID(Long memberId);
 }

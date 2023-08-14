@@ -13,6 +13,7 @@ import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.storage.StorageDomain;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.ReviewRequestDto;
+import ku.hackerthon.BeMyMood.dto.web.response.ReviewResponseDto;
 import ku.hackerthon.BeMyMood.respository.MemberRepository;
 import ku.hackerthon.BeMyMood.dto.member.MemberJoinParams;
 import ku.hackerthon.BeMyMood.service.location.LocationService;
@@ -149,12 +150,29 @@ public class MemberServiceImpl implements MemberService {
                 requestDto.getTitle(),
                 requestDto.getDescription(),
                 LocalDate.now(),
-                requestDto.isPublic(),
+                requestDto.getOpened(),
                 searchById(memberId),
                 spotService.searchById(requestDto.getSpotId())
         );
 
         setReviewImage(file, review);
+    }
+
+    @Override
+    public List<ReviewResponseDto> findAllReviewByMemberID(Long memberId) {
+        Member member = searchById(memberId);
+        List<Review> allReview = member.getReviews()
+                .getAllReview();
+
+        return allReview.stream()
+                .map(review -> new ReviewResponseDto(
+                            member.getName(),
+                            review.getImgUrl(),
+                            review.getDescription(),
+                            review.getPostAt(),
+                            review.getOpened()
+                    )
+                ).collect(Collectors.toList());
     }
 
     private void setReviewImage(MultipartFile file, Review review) throws IOException {
