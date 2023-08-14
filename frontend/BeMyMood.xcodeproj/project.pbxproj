@@ -23,6 +23,13 @@
 		2ECD05272A81184200FC3FF3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05262A81184200FC3FF3 /* SecondViewController.swift */; };
 		76D03CCBDD333211385A400D /* Pods_BeMyMood_BeMyMoodUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20789D2FDFD4A2EB34922C8 /* Pods_BeMyMood_BeMyMoodUITests.framework */; };
 		906A530A66B51C9F89D40E23 /* Pods_BeMyMoodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9608FAD3B71F7A69B22CBDA /* Pods_BeMyMoodTests.framework */; };
+		AC06243E2A87B7DA00EDFB8E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06243D2A87B7DA00EDFB8E /* RecordViewController.swift */; };
+		AC0624402A87B81000EDFB8E /* RecordLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06243F2A87B81000EDFB8E /* RecordLayout.swift */; };
+		AC0624422A88ADFE00EDFB8E /* RecordPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624412A88ADFE00EDFB8E /* RecordPictureCell.swift */; };
+		AC0624442A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624432A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift */; };
+		AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */; };
+		AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */; };
+		AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */; };
 		ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */; };
 		ACF16DCC2A7D4CE50010CF21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */; };
 		ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DCD2A7D4CE50010CF21 /* HomeViewController.swift */; };
@@ -88,6 +95,13 @@
 		3866844B03D2C5893F9D2102 /* Pods-BeMyMood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood.release.xcconfig"; path = "Target Support Files/Pods-BeMyMood/Pods-BeMyMood.release.xcconfig"; sourceTree = "<group>"; };
 		8C55293BF6C3B8416A325017 /* Pods_BeMyMood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyMood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9D02533203E491DDD9E805 /* Pods-BeMyMoodTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMoodTests.release.xcconfig"; path = "Target Support Files/Pods-BeMyMoodTests/Pods-BeMyMoodTests.release.xcconfig"; sourceTree = "<group>"; };
+		AC06243D2A87B7DA00EDFB8E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		AC06243F2A87B81000EDFB8E /* RecordLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordLayout.swift; sourceTree = "<group>"; };
+		AC0624412A88ADFE00EDFB8E /* RecordPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPictureCell.swift; sourceTree = "<group>"; };
+		AC0624432A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentBottomSheetViewController.swift; sourceTree = "<group>"; };
+		AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
+		AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchLayout.swift; sourceTree = "<group>"; };
+		AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultCell.swift; sourceTree = "<group>"; };
 		ACF16DC62A7D4CE50010CF21 /* BeMyMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +223,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AC06243C2A87B73100EDFB8E /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				AC06243D2A87B7DA00EDFB8E /* RecordViewController.swift */,
+				AC06243F2A87B81000EDFB8E /* RecordLayout.swift */,
+				AC0624432A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
 		ACF16DBD2A7D4CE50010CF21 = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +258,7 @@
 		ACF16DC82A7D4CE50010CF21 /* BeMyMood */ = {
 			isa = PBXGroup;
 			children = (
+				AC06243C2A87B73100EDFB8E /* Record */,
 				2ECD05182A80FF7A00FC3FF3 /* SpotListModal */,
 				ACF16E092A8110E50010CF21 /* TabBar */,
 				ACF16E132A8263E70010CF21 /* Cell */,
@@ -325,6 +350,8 @@
 			isa = PBXGroup;
 			children = (
 				ACF16E142A8263FC0010CF21 /* TagCell.swift */,
+				AC0624412A88ADFE00EDFB8E /* RecordPictureCell.swift */,
+				AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -338,6 +365,8 @@
 				ACF16E1F2A82919C0010CF21 /* ColorSelectionLayout.swift */,
 				ACF16E1B2A8290A70010CF21 /* LocationSelectionViewController.swift */,
 				ACF16E212A8291AA0010CF21 /* LocationSelectionLayout.swift */,
+				AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */,
+				AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */,
 			);
 			path = Selection;
 			sourceTree = "<group>";
@@ -590,9 +619,13 @@
 				ACF16E152A8263FC0010CF21 /* TagCell.swift in Sources */,
 				ACF16E122A82638C0010CF21 /* UICollectionView.swift in Sources */,
 				ACF16E202A82919C0010CF21 /* ColorSelectionLayout.swift in Sources */,
+				AC0624422A88ADFE00EDFB8E /* RecordPictureCell.swift in Sources */,
+				AC06243E2A87B7DA00EDFB8E /* RecordViewController.swift in Sources */,
 				ACF16E082A810E660010CF21 /* UIColor.swift in Sources */,
+				AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */,
 				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
 				ACF16E1A2A828EE10010CF21 /* ColorSelectionViewController.swift in Sources */,
+				AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */,
 				ACF16E042A7D6B900010CF21 /* CommunityViewController.swift in Sources */,
 				ACF16E182A828ECF0010CF21 /* MoodSelectionViewController.swift in Sources */,
 				ACF16E222A8291AA0010CF21 /* LocationSelectionLayout.swift in Sources */,
@@ -606,14 +639,17 @@
 				2ECD05252A81182100FC3FF3 /* FirstViewController.swift in Sources */,
 				2E4FEC0D2A87809300EDA21A /* SpotCell.swift in Sources */,
 				ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */,
+				AC0624442A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift in Sources */,
 				ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */,
 				2E401BC62A88E85E00D77351 /* FilterOption.swift in Sources */,
 				2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */,
 				2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */,
 				ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */,
+				AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */,
 				ACF16DFA2A7D5D500010CF21 /* HomeLayout.swift in Sources */,
 				ACF16E1C2A8290A70010CF21 /* LocationSelectionViewController.swift in Sources */,
 				ACF16DCC2A7D4CE50010CF21 /* SceneDelegate.swift in Sources */,
+				AC0624402A87B81000EDFB8E /* RecordLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,34 +31,37 @@ class LocationSelectionViewController: UIViewController {
         $0.text = "선호하는 지역을 알려주세요"
     }
     
-    let searchBar1 = UITextField().then{
-        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기 (필수)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
+    let searchBar1 = UIButton().then{
+        $0.setTitle("지역 1", for: .normal)
+        $0.setTitleColor(.orange, for: .selected)
+        $0.setTitleColor(.darkBrown, for: .normal)
         $0.layer.borderColor = UIColor.darkBrown_30.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 50/2
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: $0.frame.size.height))
-        $0.leftView = paddingView
-        $0.leftViewMode = .always
+        $0.contentHorizontalAlignment = .left
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
     }
     
-    let searchBar2 = UITextField().then{
-        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기 (선택)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
+    let searchBar2 = UIButton().then{
+        $0.setTitle("지역 2", for: .normal)
+        $0.setTitleColor(.orange, for: .selected)
+        $0.setTitleColor(.darkBrown, for: .normal)
         $0.layer.borderColor = UIColor.darkBrown_30.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 50/2
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: $0.frame.size.height))
-        $0.leftView = paddingView
-        $0.leftViewMode = .always
+        $0.contentHorizontalAlignment = .left
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
     }
     
-    let searchBar3 = UITextField().then{
-        $0.attributedPlaceholder = NSAttributedString(string: "동 이름으로 찾기 (선택)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkBrown])
+    let searchBar3 = UIButton().then{
+        $0.setTitle("지역 3", for: .normal)
+        $0.setTitleColor(.darkBrown, for: .normal)
+        $0.setTitleColor(.orange, for: .selected)
         $0.layer.borderColor = UIColor.darkBrown_30.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 50/2
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: $0.frame.size.height))
-        $0.leftView = paddingView
-        $0.leftViewMode = .always
+        $0.contentHorizontalAlignment = .left
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
     }
     
     let locationSearchBtn = UIButton().then{
@@ -75,6 +78,7 @@ class LocationSelectionViewController: UIViewController {
     }
     
     let nextBtn = UIButton().then{
+        $0.isEnabled = false
         $0.setTitle("완료", for: .normal)
         $0.backgroundColor = .darkBrown_30
         $0.setTitleColor(.white, for: .normal)
@@ -92,14 +96,64 @@ class LocationSelectionViewController: UIViewController {
         
         hierarchy()
         layout()
+        checkBtnStatus()
+        
+        self.searchBar1.addTarget(self, action: #selector(searchBar1BtnDidTab), for: .touchUpInside)
+        
+        self.searchBar2.addTarget(self, action: #selector(searchBar2BtnDidTab), for: .touchUpInside)
+        
+        self.searchBar3.addTarget(self, action: #selector(searchBar3BtnDidTab), for: .touchUpInside)
 
     }
     
     
-    //MARK: - Btn
-
+    //MARK: - Actions
+    @objc func searchBar1BtnDidTab() {
+        let locationSelectionViewController = LocationSearchViewController()
+        locationSelectionViewController.completionHandler = {result in
+            self.searchBar1.setTitle(result, for: .normal)
+            self.searchBar1.layer.borderColor = UIColor.orange.cgColor
+            self.searchBar1.isSelected = true
+            self.checkBtnStatus()
+            }
+        self.navigationController?.pushViewController(locationSelectionViewController, animated: true)
+    }
+    
+    @objc func searchBar2BtnDidTab() {
+        let locationSelectionViewController = LocationSearchViewController()
+        locationSelectionViewController.completionHandler = {result in
+            self.searchBar2.setTitle(result, for: .normal)
+            self.searchBar2.layer.borderColor = UIColor.orange.cgColor
+            self.searchBar2.isSelected = true
+            self.checkBtnStatus()
+            }
+        self.navigationController?.pushViewController(locationSelectionViewController, animated: true)
+    }
+    
+    @objc func searchBar3BtnDidTab() {
+        let locationSelectionViewController = LocationSearchViewController()
+        locationSelectionViewController.completionHandler = {result in
+            self.searchBar3.setTitle(result, for: .normal)
+            self.searchBar3.layer.borderColor = UIColor.orange.cgColor
+            self.searchBar3.isSelected = true
+            self.checkBtnStatus()
+            }
+        self.navigationController?.pushViewController(locationSelectionViewController, animated: true)
+    }
+    
+    //MARK: - Helpers
+    func checkBtnStatus(){
+        if searchBar1.isSelected && searchBar2.isSelected && searchBar3.isSelected {
+            nextBtn.isEnabled = true
+            nextBtn.backgroundColor = .darkBrown
+        }else{
+            nextBtn.isEnabled = false
+            nextBtn.backgroundColor = .darkBrown_30
+        }
+    }
 
 }
+
 
 struct LocationSelectionVCPreView:PreviewProvider {
     static var previews: some View {
