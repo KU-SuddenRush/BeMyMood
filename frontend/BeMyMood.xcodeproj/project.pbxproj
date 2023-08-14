@@ -31,6 +31,7 @@
 		AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */; };
 		AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */; };
 		ACC9DBA42A8A6BC4000FEDF9 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBA32A8A6BC4000FEDF9 /* ColorCell.swift */; };
+		ACC9DBA62A8AA36C000FEDF9 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBA52A8AA36C000FEDF9 /* UIImage.swift */; };
 		ACE4E6002A8A3CF000BE3150 /* MoodBoardEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */; };
 		ACE4E6022A8A3D0B00BE3150 /* MoodBoardEditLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */; };
 		ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */; };
@@ -106,6 +107,7 @@
 		AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchLayout.swift; sourceTree = "<group>"; };
 		AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultCell.swift; sourceTree = "<group>"; };
 		ACC9DBA32A8A6BC4000FEDF9 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
+		ACC9DBA52A8AA36C000FEDF9 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardEditViewController.swift; sourceTree = "<group>"; };
 		ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardEditLayout.swift; sourceTree = "<group>"; };
 		ACF16DC62A7D4CE50010CF21 /* BeMyMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +188,7 @@
 				2E4FEC0E2A87940300EDA21A /* UIImageView.swift */,
 				ACF16E072A810E660010CF21 /* UIColor.swift */,
 				ACF16E112A82638C0010CF21 /* UICollectionView.swift */,
+				ACC9DBA52A8AA36C000FEDF9 /* UIImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
 				2ECD051C2A80FFE500FC3FF3 /* SpotListModalLayout.swift in Sources */,
 				2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */,
+				ACC9DBA62A8AA36C000FEDF9 /* UIImage.swift in Sources */,
 				ACF16E0B2A81118E0010CF21 /* TabBarController.swift in Sources */,
 				ACF16E152A8263FC0010CF21 /* TagCell.swift in Sources */,
 				ACF16E122A82638C0010CF21 /* UICollectionView.swift in Sources */,

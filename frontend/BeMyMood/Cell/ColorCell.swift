@@ -6,19 +6,34 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 class ColorCell: UICollectionViewCell {
     
-    static let cellIdentifier = "reviewPictureCell"
+    static let cellIdentifier = "colorCell"
     
+    var row: Int = 0 {
+            didSet {
+                updateCellAppearance()
+            }
+        }
+        
+        override var isSelected: Bool {
+            didSet {
+                updateCellAppearance()
+            }
+        }
     
-    var colorBtn = UIButton().then{
-        $0.setImage(UIImage(named: "color0"), for: .normal)
+    lazy var colorBtn = UIImageView().then{
+        $0.image = UIImage(named: "color0")
     }
     
     override init(frame: CGRect) {
         
         super.init(frame: frame)
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         self.contentView.addSubview(colorBtn)
         
@@ -30,7 +45,7 @@ class ColorCell: UICollectionViewCell {
         }
         
         colorBtn.snp.makeConstraints{ make in
-            make.leading.trailing.top.bottom.equalToSuperview()
+            make.edges.equalTo(contentView)
         }
         
     }
@@ -38,5 +53,13 @@ class ColorCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func updateCellAppearance() {
+            if isSelected {
+                colorBtn.image = UIImage(named: "selectedColor\(row)")
+            } else {
+                colorBtn.image = UIImage(named: "color\(row)")
+            }
+        }
 }
 

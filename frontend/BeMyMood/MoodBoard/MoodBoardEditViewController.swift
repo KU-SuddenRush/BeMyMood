@@ -12,7 +12,9 @@ import SwiftUI
 
 class MoodBoardEditViewController: UIViewController {
     
-    let colorIcon :[UIImage?] = [UIImage(named: "color0"),UIImage(named: "color1"),UIImage(named: "color2"),UIImage(named: "color3"),UIImage(named: "color4"),UIImage(named: "color5"),UIImage(named: "color6"),UIImage(named: "color7"),UIImage(named: "color8"),UIImage(named: "color9"),UIImage(named: "color10")]
+    
+    
+    var isColorSelected = false
     
     //MARK: - UIComponents
     
@@ -56,10 +58,10 @@ class MoodBoardEditViewController: UIViewController {
         $0.backgroundColor = .clear
         $0.isHidden = true
         $0.showsHorizontalScrollIndicator = false
-        $0.allowsSelection = false
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.isScrollEnabled = true
         $0.register(ColorCell.self, forCellWithReuseIdentifier: ColorCell.cellIdentifier)
+        $0.isUserInteractionEnabled = true
+        $0.allowsMultipleSelection = false
     }
 
     //MARK: - LifeCycles
@@ -90,12 +92,35 @@ class MoodBoardEditViewController: UIViewController {
     //MARK: - Actions
     
     @objc func backgroundColorBtnDidTab() {
-        nextBtn.isHidden = true
-        colorCollectionView.isHidden = false
+        if isColorSelected {
+            nextBtn.isHidden = false
+            colorCollectionView.isHidden = true
+            isColorSelected.toggle()
+        }else {
+            nextBtn.isHidden = true
+            colorCollectionView.isHidden = false
+            isColorSelected.toggle()
+        }
+        
     }
     
     
     //MARK: - Helpers
+    func backgroundColorBtnStatus(){
+        if backgroundColorBtn.currentImage == UIImage.colorIcon[3] || backgroundColorBtn.currentImage == UIImage.colorIcon[4] || backgroundColorBtn.currentImage == UIImage.colorIcon[6]{
+            closeBtn.tintColor = .black
+            drawBtn.tintColor = .black
+            textBtn.tintColor = .black
+            stickerBtn.tintColor = .black
+            photoBtn.tintColor = .black
+        }else {
+            closeBtn.tintColor = .white
+            drawBtn.tintColor = .white
+            textBtn.tintColor = .white
+            stickerBtn.tintColor = .white
+            photoBtn.tintColor = .white
+        }
+    }
 
 }
 
@@ -103,10 +128,10 @@ class MoodBoardEditViewController: UIViewController {
 extension MoodBoardEditViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
 func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    if colorIcon.isEmpty{
+    if UIImage.colorIcon.isEmpty{
         return 0
     }else {
-        return colorIcon.count
+        return UIImage.colorIcon.count
     }
 }
 
@@ -115,27 +140,44 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.cellIdentifier, for: indexPath) as? ColorCell else{
         fatalError()
     }
-    cell.layer.cornerRadius = 15
-    cell.layer.masksToBounds = true
-    cell.colorBtn.setImage(colorIcon[indexPath.row], for: .normal)
+    cell.colorBtn.image = UIImage.colorIcon[indexPath.row]
     cell.contentMode = .scaleAspectFit
-    
-//    cell.removeBtn.tag = indexPath.row
-//    cell.removeBtn.addTarget(self, action: #selector(deletePictureBtnDidTab(_:)), for: .touchUpInside)
 
     return cell
 }
 
-func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.cellIdentifier, for: indexPath) as? ColorCell else{
-        fatalError()
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ColorCell else {
+            fatalError()
+        }
+        cell.isSelected.toggle() // 셀의 isSelected 상태를 변경
+        cell.row = indexPath.row
+        self.view.backgroundColor = UIColor.colorList[indexPath.row]
+        self.backgroundColorBtn.setImage(UIImage.colorIcon[indexPath.row], for: .normal)
+        backgroundColorBtnStatus()
     }
 
-    let size = CGSize(width: 28, height: 28)
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ColorCell else {
+            fatalError()
+        }
+        cell.isSelected.toggle()
+        cell.colorBtn.image = UIImage.colorIcon[indexPath.row]
+        
+        
+    }
     
-    return size
-}
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        guard let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.cellIdentifier, for: indexPath) as? ColorCell else{
+            fatalError()
+        }
+
+        let size = CGSize(width: 28, height: 28)
+        
+        return size
+    }
 }
 
 
