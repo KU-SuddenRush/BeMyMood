@@ -37,7 +37,7 @@ class FirstViewController: UIViewController {
     }
     
     let spotCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
-        $0.backgroundColor = .blue
+        $0.backgroundColor = .white
     }
     
     override func viewDidLoad() {
@@ -84,9 +84,10 @@ extension FirstViewController {
     
     func layout(){
         filterSection.snp.makeConstraints{ make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(50)
-            make.bottom.equalTo(spotCollectionView.snp.top)
+//            make.bottom.equalTo(spotCollectionView.snp.top)
         }
         
         filterIcon.snp.makeConstraints{ make in
@@ -111,7 +112,10 @@ extension FirstViewController {
         }
         
         spotCollectionView.snp.makeConstraints{ make in
-            make.bottom.leading.trailing.equalToSuperview()
+            make.leading.equalTo(16)
+            make.trailing.equalTo(-16)
+            make.top.equalTo(filterSection.snp.bottom).offset(10)
+            make.bottom.equalToSuperview()
         }
     }
 }
@@ -166,8 +170,13 @@ extension FirstViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width: CGFloat = spotCollectionView.frame.width / 2 - 10.0
-        let height: CGFloat = width + 35
+        let height: CGFloat = width + 45
         return CGSize(width: width, height: height)
+    }
+    
+    // CollectionView Cell의 위아래 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10.0
     }
 }
 

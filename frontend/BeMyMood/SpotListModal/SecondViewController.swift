@@ -37,9 +37,10 @@ extension SecondViewController {
     
     override func layout(){
         filterSection.snp.makeConstraints{ make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(50)
-            make.bottom.equalTo(spotCollectionView.snp.top)
+//            make.bottom.equalTo(spotCollectionView.snp.top)
         }
         
         filterIcon.snp.makeConstraints{ make in
@@ -71,7 +72,10 @@ extension SecondViewController {
         }
         
         spotCollectionView.snp.makeConstraints{ make in
-            make.bottom.leading.trailing.equalToSuperview()
+            make.leading.equalTo(16)
+            make.trailing.equalTo(-16)
+            make.top.equalTo(filterSection.snp.bottom).offset(10)
+            make.bottom.equalToSuperview()
         }
     }
 }

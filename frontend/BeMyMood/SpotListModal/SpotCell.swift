@@ -121,7 +121,7 @@ extension SpotCell: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
     func calculateTagCellWidth(for tagText: String) -> CGFloat {
         // 셀 폭을 계산하는 로직을 작성합니다. 텍스트의 길이에 따라 동적으로 폭을 설정하거나, 고정된 값으로 설정할 수 있습니다.
         let textWidth = tagText.size(withAttributes: [.font: UIFont.systemFont(ofSize: 14.0)]).width
-        let cellWidth = textWidth + 40.0 // 예시로 폭에 텍스트 너비를 추가하고 여백을 더합니다.
+        let cellWidth = textWidth + 45.0 // 예시로 폭에 텍스트 너비를 추가하고 여백을 더합니다.
         
         return cellWidth
     }
@@ -131,7 +131,7 @@ extension SpotCell: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
         
         let cellWidth = calculateTagCellWidth(for: tags![indexPath.row])
         
-        return CGSize(width: cellWidth, height: collectionView.frame.height)
+        return CGSize(width: cellWidth, height: collectionView.frame.height - 15)
     }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -144,9 +144,9 @@ extension SpotCell: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
 //        return CGSize(width: cellWidth, height: cellHeight)
 //    }
 //    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10 // 가로 간격 설정
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5 // 가로 간격 설정
+    }
 }
 
 struct SpotCellPreView:PreviewProvider {

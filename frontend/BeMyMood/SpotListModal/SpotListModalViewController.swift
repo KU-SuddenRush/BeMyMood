@@ -15,7 +15,7 @@ class SpotListModalViewController: UIViewController {
     //MARK: - UIComponents
     
     let spotListModalTitle = UILabel().then{
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .white
         $0.font = .boldSystemFont(ofSize: 20)
         $0.textAlignment = .center
         $0.textColor = .black
@@ -26,9 +26,9 @@ class SpotListModalViewController: UIViewController {
     let slidingTabVC = UISlidingTabController().then{
         $0.addItem(item: FirstViewController(), title: "모든무드")
         $0.addItem(item: SecondViewController(), title: "무드별")
-        $0.setHeaderActiveColor(color: .white)
-        $0.setHeaderInActiveColor(color: .lightText)
-        $0.setHeaderBackgroundColor(color: .orange)
+        $0.setHeaderActiveColor(color: .orange)
+        $0.setHeaderInActiveColor(color: .black)
+        $0.setHeaderBackgroundColor(color: .white)
         $0.build()
     }
 
