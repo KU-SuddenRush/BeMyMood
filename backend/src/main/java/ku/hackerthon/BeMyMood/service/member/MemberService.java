@@ -5,7 +5,10 @@ import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.member.MemberJoinParams;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.request.ReviewRequestDto;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface MemberService {
@@ -29,4 +32,7 @@ public interface MemberService {
     boolean setMemberLocation(List<Long> locationIds, Long memberId);
 
     List<String> getPreferredLocationNames(Long memberId);
+
+    void review(ReviewRequestDto requestDto, MultipartFile file, Long memberId) throws IOException;
+
 }

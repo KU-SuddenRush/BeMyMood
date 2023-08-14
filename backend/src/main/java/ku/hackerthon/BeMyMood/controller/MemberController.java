@@ -8,6 +8,7 @@ import ku.hackerthon.BeMyMood.dto.member.request.MemberMoodRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberLocationRequestDto;
+import ku.hackerthon.BeMyMood.dto.web.request.ReviewRequestDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import ku.hackerthon.BeMyMood.service.storage.StorageService;
@@ -136,5 +137,15 @@ public class MemberController {
             return ResponseEntity.ok("관심 스팟에 등록하였습니다.");
         }
         return ResponseEntity.ok("관심 스팟에서 삭제하였습니다.");
+    }
+
+    @PostMapping("/review")
+    public ResponseEntity<String> review(
+            @RequestPart("data") ReviewRequestDto requestDto,
+            @RequestPart("file") MultipartFile file,
+            @State Long memberId
+    ) throws IOException {
+        memberService.review(requestDto, file, memberId);
+        return ResponseEntity.ok("리뷰 등록에 성공했습니다.");
     }
 }

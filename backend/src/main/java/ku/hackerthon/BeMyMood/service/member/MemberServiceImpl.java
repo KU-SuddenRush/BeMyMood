@@ -7,19 +7,26 @@ import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocation;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
+import ku.hackerthon.BeMyMood.domain.review.Review;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
+import ku.hackerthon.BeMyMood.dto.storage.StorageDomain;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.request.ReviewRequestDto;
 import ku.hackerthon.BeMyMood.respository.MemberRepository;
 import ku.hackerthon.BeMyMood.dto.member.MemberJoinParams;
 import ku.hackerthon.BeMyMood.service.location.LocationService;
 import ku.hackerthon.BeMyMood.service.mood.MoodService;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
+import ku.hackerthon.BeMyMood.service.storage.StorageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +39,8 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
     private final MoodService moodService;
     private final LocationService locationService;
+    private final SpotService spotService;
+    private final StorageService storageService;
 
     @Override
     public Long join(MemberJoinParams params) {
@@ -132,5 +141,26 @@ public class MemberServiceImpl implements MemberService {
     public List<String> getPreferredLocationNames(Long memberId) {
         Member member = searchById(memberId);
         return member.getPreferredLocations().getNames();
+    }
+
+    @Override
+    public void review(ReviewRequestDto requestDto, MultipartFile file, Long memberId) throws IOException {
+        Review review = new Review(
+                requestDto.getTitle(),
+                requestDto.getDescription(),
+                LocalDate.now(),
+                requestDto.isPublic(),
+                searchById(memberId),
+                spotService.searchById(requestDto.getSpotId())
+        );
+
+        setReviewImage(file, review);
+    }
+
+    private void setReviewImage(MultipartFile file, Review review) throws IOException {
+        String fileName = storageService.setFileName(review.getId(), file, StorageDomain.REVIEW);
+        String uploadUrl = storageService.uploadToS3(file, fileName);
+
+        review.setImageUrl(uploadUrl);
     }
 }
