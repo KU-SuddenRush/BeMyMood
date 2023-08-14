@@ -19,6 +19,7 @@ class FilterOption: UIButton {
 
         tintColor = .lightGray
         setTitleColor(.lightGray, for: .normal)
+        setTitleColor(.orange, for: .selected)
 
         semanticContentAttribute = .forceRightToLeft
 

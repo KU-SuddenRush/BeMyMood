@@ -47,17 +47,19 @@ class FirstViewController: UIViewController {
         layout()
         
         filterCategoryBtn.layer.cornerRadius = filterCategoryBtn.frame.height / 2
+        filterCategoryBtn.addTarget(self, action: #selector(filterCategoryBtnTapped), for: .touchUpInside)
+
         filterRegionBtn.layer.cornerRadius = filterCategoryBtn.frame.height / 2
         filterRegionBtn.addTarget(self, action: #selector(filterRegionBtnTapped), for: .touchUpInside)
     }
     
     @objc func filterRegionBtnTapped(){
-        print("region btn tap")
-        filterRegionBtn.setTitleColor(.orange, for: .normal)
-        filterRegionBtn.setTitle("filter selected test", for: .normal)
-        filterRegionBtn.tintColor = .orange
-        
+
+    }
+    
+    @objc func filterCategoryBtnTapped(){
         let customBottomSheet = CategoryBottomSheet()
+        customBottomSheet.delegate = self
         self.presentPanModal(customBottomSheet)
     }
 
@@ -164,6 +166,25 @@ extension FirstViewController: UICollectionViewDelegateFlowLayout {
         let height: CGFloat = width + 35
         return CGSize(width: width, height: height)
     }
+}
+
+extension FirstViewController: FilterCategoryDataDelegate {
+    
+    func setCategoryFilterTitle(_ title: String) {
+        filterCategoryBtn.isSelected = true
+        filterCategoryBtn.setTitle(title, for: .selected)
+        filterCategoryBtn.tintColor = .orange
+        filterCategoryBtn.layer.borderColor = UIColor.orange.cgColor
+        updateFilterIconColor()
+        /// 검색 with filter option API 호출
+    }
+    
+    func updateFilterIconColor(){
+        if filterCategoryBtn.isSelected || filterRegionBtn.isSelected {
+            filterIcon.tintColor = .orange
+        }
+    }
+    
 }
 
 

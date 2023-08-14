@@ -8,13 +8,14 @@
 import UIKit
 import PanModal
 
-protocol FilterCategoryDataDelegate {
+protocol FilterCategoryDataDelegate: AnyObject {
     func setCategoryFilterTitle(_ title: String)
 }
 
 class CategoryBottomSheet: UIViewController {
     
     var categories: [String] = ["카페", "전시회", "공원", "전시회", "공연", "맛집", "MZ스팟", "LP바", "술집", "바", "과학관"]
+    weak var delegate: FilterCategoryDataDelegate?
 
     //MARK: - UIComponents
     private let categoryBottomCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
@@ -113,6 +114,9 @@ extension CategoryBottomSheet: UICollectionViewDataSource, UICollectionViewDeleg
             var tagName = selectedCell.tagLabel.text ?? ""
             while tagName.hasPrefix("#"){
                 tagName.removeFirst()
+            }
+            if tagName != ""{
+                delegate?.setCategoryFilterTitle(tagName)
             }
             print(tagName)
         }
