@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		13A7F6639B6F1B219DB4FFF9 /* Pods_BeMyMood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C55293BF6C3B8416A325017 /* Pods_BeMyMood.framework */; };
 		2E1BF3052A89558400C58138 /* CategoryBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF3042A89558400C58138 /* CategoryBottomSheet.swift */; };
+		2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF3062A8A45FC00C58138 /* RegionBottomSheet.swift */; };
 		2E401BC62A88E85E00D77351 /* FilterOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E401BC52A88E85E00D77351 /* FilterOption.swift */; };
 		2E4FEC0D2A87809300EDA21A /* SpotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC0C2A87809300EDA21A /* SpotCell.swift */; };
 		2E4FEC0F2A87940300EDA21A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC0E2A87940300EDA21A /* UIImageView.swift */; };
@@ -60,6 +61,7 @@
 		25E0CDC52360D350D5222219 /* Pods-BeMyMood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood.debug.xcconfig"; path = "Target Support Files/Pods-BeMyMood/Pods-BeMyMood.debug.xcconfig"; sourceTree = "<group>"; };
 		2D6782CAFCB745F115D490F8 /* Pods-BeMyMood-BeMyMoodUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood-BeMyMoodUITests.release.xcconfig"; path = "Target Support Files/Pods-BeMyMood-BeMyMoodUITests/Pods-BeMyMood-BeMyMoodUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2E1BF3042A89558400C58138 /* CategoryBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBottomSheet.swift; sourceTree = "<group>"; };
+		2E1BF3062A8A45FC00C58138 /* RegionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionBottomSheet.swift; sourceTree = "<group>"; };
 		2E401BC52A88E85E00D77351 /* FilterOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOption.swift; sourceTree = "<group>"; };
 		2E4FEC0C2A87809300EDA21A /* SpotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCell.swift; sourceTree = "<group>"; };
 		2E4FEC0E2A87940300EDA21A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				2E1BF3042A89558400C58138 /* CategoryBottomSheet.swift */,
+				2E1BF3062A8A45FC00C58138 /* RegionBottomSheet.swift */,
 			);
 			path = BottomSheet;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */,
 				ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */,
 				2E401BC62A88E85E00D77351 /* FilterOption.swift in Sources */,
+				2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */,
 				2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */,
 				ACF16DFA2A7D5D500010CF21 /* HomeLayout.swift in Sources */,
 				ACF16DCC2A7D4CE50010CF21 /* SceneDelegate.swift in Sources */,

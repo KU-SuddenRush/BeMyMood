@@ -54,7 +54,9 @@ class FirstViewController: UIViewController {
     }
     
     @objc func filterRegionBtnTapped(){
-
+        let customBottomSheet = RegionBottomSheet()
+        customBottomSheet.delegate = self
+        self.presentPanModal(customBottomSheet)
     }
     
     @objc func filterCategoryBtnTapped(){
@@ -168,13 +170,22 @@ extension FirstViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension FirstViewController: FilterCategoryDataDelegate {
+extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDelegate {
     
     func setCategoryFilterTitle(_ title: String) {
         filterCategoryBtn.isSelected = true
         filterCategoryBtn.setTitle(title, for: .selected)
         filterCategoryBtn.tintColor = .orange
         filterCategoryBtn.layer.borderColor = UIColor.orange.cgColor
+        updateFilterIconColor()
+        /// 검색 with filter option API 호출
+    }
+    
+    func setRegionFilterTitle(_ title: String) {
+        filterRegionBtn.isSelected = true
+        filterRegionBtn.setTitle(title, for: .selected)
+        filterRegionBtn.tintColor = .orange
+        filterRegionBtn.layer.borderColor = UIColor.orange.cgColor
         updateFilterIconColor()
         /// 검색 with filter option API 호출
     }
