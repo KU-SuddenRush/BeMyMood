@@ -7,7 +7,11 @@ import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.domain.spot.SpotCategory;
+import ku.hackerthon.BeMyMood.domain.spot.SpotImage;
+import ku.hackerthon.BeMyMood.domain.spot.SpotImages;
 import ku.hackerthon.BeMyMood.dto.spot.*;
+import ku.hackerthon.BeMyMood.dto.storage.StorageDomain;
+import ku.hackerthon.BeMyMood.dto.web.request.SpotCreateRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.response.AllSpotInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.FilteredSpotsResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
@@ -15,13 +19,17 @@ import ku.hackerthon.BeMyMood.dto.web.response.SpotDetailsResponseDto;
 import ku.hackerthon.BeMyMood.respository.SpotRepository;
 import ku.hackerthon.BeMyMood.service.location.LocationService;
 import ku.hackerthon.BeMyMood.service.mood.MoodService;
+import ku.hackerthon.BeMyMood.service.storage.StorageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Transactional
 @RequiredArgsConstructor
 @Service
 public class SpotServiceImpl implements SpotService {
@@ -29,15 +37,24 @@ public class SpotServiceImpl implements SpotService {
     private final SpotRepository spotRepository;
     private final LocationService locationService;
     private final MoodService moodService;
+    private final StorageService storageService;
 
     /**
      * 새로운 스팟을 등록
      */
     @Override
-    public Spot register(SpotParams spotParams) {
-        Spot spot = Spot.ofParams(spotParams);
-        spotRepository.save(spot);
-        return spot;
+    public Long register(SpotCreateRequestDto requestDto) {
+        return spotRepository.save(new Spot(
+                        requestDto.getName(),
+                        requestDto.getAddress(),
+                        requestDto.getContact(),
+                        requestDto.getIntroduce(),
+                        SpotCategory.ofName(requestDto.getCategoryName()),
+                        locationService.getById(requestDto.getLocationId()),
+                        requestDto.getOpenAt(),
+                        requestDto.getCloseAt()
+                )
+        );
     }
 
     /**
@@ -81,7 +98,6 @@ public class SpotServiceImpl implements SpotService {
      * <b>[ 카테고리 / 위치 / 무드 ]로 스팟 리스트를 검색</b>
      * @param params -> 각 필드각 nullable
      */
-    @Transactional
     @Override
     public FilteredSpotsResponseDto filter(SpotFilterParams params) {
 
@@ -144,6 +160,24 @@ public class SpotServiceImpl implements SpotService {
                                 )
                         ).collect(Collectors.toList())
         );
+    }
+
+    @Override
+    public void registerImages(Long spotId, List<MultipartFile> files) {
+        Spot spot = searchById(spotId);
+        SpotImages spotImages = spot.getSpotImages();
+
+        files.stream()
+                .forEach(file -> {
+                    String fileName = storageService.setFileName(spot.getId(), file, StorageDomain.SPOT);
+                    try {
+                        String uploadUrl = storageService.uploadToS3(file, fileName);
+                        spotImages.add(new SpotImage(uploadUrl, spot));
+                    } catch (IOException e) {
+                        throw new RuntimeException("S3 업로드 실패");
+                    }
+                }
+            );
     }
 
     private List<Spot> collectByLocation(SpotFilterParams params) {

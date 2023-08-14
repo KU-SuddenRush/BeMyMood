@@ -45,33 +45,24 @@ public class Spot {
     private Location location;
 
     @Embedded
-    private SpotMoods spotMoods;
+    private SpotMoods spotMoods = new SpotMoods();
 
     @Embedded
-    private SpotImages spotImages;
+    private SpotImages spotImages = new SpotImages();
 
     @OneToMany(mappedBy = "spot")
     private List<Review> reviews = new ArrayList<>();
 
     // Constructor
-    private Spot(String name, String introduce, SpotCategory category, Location location, LocalTime openAt, LocalTime closeAt) {
+    public Spot(String name, String address, String contact, String introduce, SpotCategory category, Location location, LocalTime openAt, LocalTime closeAt) {
         this.name = name;
+        this.address = address;
+        this.contact = contact;
         this.introduce = introduce;
         this.category = category;
         this.location = location;
         this.openAt = openAt;
         this.closeAt = closeAt;
-    }
-
-    public static Spot ofParams(SpotParams params) {
-        return new Spot(
-                params.getName(),
-                params.getIntroduce(),
-                params.getCategory(),
-                params.getLocation(),
-                params.getOpenAt(),
-                params.getCloseAt()
-        );
     }
 
     public boolean hasMood(Mood mood) {

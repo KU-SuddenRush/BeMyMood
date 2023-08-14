@@ -1,16 +1,14 @@
-package ku.hackerthon.BeMyMood.dto.spot;
+package ku.hackerthon.BeMyMood.dto.web.request;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalTime;
 import java.util.List;
 
 @Getter
-@Builder
 @AllArgsConstructor
-public class SpotParams {
+public class SpotCreateRequestDto {
 
     private String name;
     private String address;
