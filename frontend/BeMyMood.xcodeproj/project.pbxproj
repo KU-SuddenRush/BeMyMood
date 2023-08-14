@@ -30,6 +30,8 @@
 		AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */; };
 		AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */; };
 		AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */; };
+		ACE4E6002A8A3CF000BE3150 /* MoodBoardEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */; };
+		ACE4E6022A8A3D0B00BE3150 /* MoodBoardEditLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */; };
 		ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */; };
 		ACF16DCC2A7D4CE50010CF21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */; };
 		ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DCD2A7D4CE50010CF21 /* HomeViewController.swift */; };
@@ -102,6 +104,8 @@
 		AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchLayout.swift; sourceTree = "<group>"; };
 		AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultCell.swift; sourceTree = "<group>"; };
+		ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardEditViewController.swift; sourceTree = "<group>"; };
+		ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardEditLayout.swift; sourceTree = "<group>"; };
 		ACF16DC62A7D4CE50010CF21 /* BeMyMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -324,6 +328,8 @@
 			children = (
 				ACF16DFB2A7D6B090010CF21 /* MoodBoardViewController.swift */,
 				ACF16DFD2A7D6B200010CF21 /* MoodBoardLayout.swift */,
+				ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */,
+				ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */,
 			);
 			path = MoodBoard;
 			sourceTree = "<group>";
@@ -618,6 +624,7 @@
 				ACF16E0B2A81118E0010CF21 /* TabBarController.swift in Sources */,
 				ACF16E152A8263FC0010CF21 /* TagCell.swift in Sources */,
 				ACF16E122A82638C0010CF21 /* UICollectionView.swift in Sources */,
+				ACE4E6002A8A3CF000BE3150 /* MoodBoardEditViewController.swift in Sources */,
 				ACF16E202A82919C0010CF21 /* ColorSelectionLayout.swift in Sources */,
 				AC0624422A88ADFE00EDFB8E /* RecordPictureCell.swift in Sources */,
 				AC06243E2A87B7DA00EDFB8E /* RecordViewController.swift in Sources */,
@@ -644,6 +651,7 @@
 				2E401BC62A88E85E00D77351 /* FilterOption.swift in Sources */,
 				2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */,
 				2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */,
+				ACE4E6022A8A3D0B00BE3150 /* MoodBoardEditLayout.swift in Sources */,
 				ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */,
 				AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */,
 				ACF16DFA2A7D5D500010CF21 /* HomeLayout.swift in Sources */,
