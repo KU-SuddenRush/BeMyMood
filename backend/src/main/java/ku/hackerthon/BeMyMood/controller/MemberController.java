@@ -8,6 +8,8 @@ import ku.hackerthon.BeMyMood.dto.member.request.MemberMoodRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberLocationRequestDto;
+import ku.hackerthon.BeMyMood.dto.web.request.ReviewRequestDto;
+import ku.hackerthon.BeMyMood.dto.web.response.ReviewResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import ku.hackerthon.BeMyMood.service.storage.StorageService;
@@ -136,5 +138,35 @@ public class MemberController {
             return ResponseEntity.ok("관심 스팟에 등록하였습니다.");
         }
         return ResponseEntity.ok("관심 스팟에서 삭제하였습니다.");
+    }
+
+    /**
+     * <b>Member의 리뷰 등록</b>
+     * @param requestDto
+     * @param file
+     * @param memberId
+     * @return
+     * @throws IOException
+     */
+    @PostMapping("/review")
+    public ResponseEntity<String> review(
+            @RequestPart("data") ReviewRequestDto requestDto,
+            @RequestPart("file") MultipartFile file,
+            @State Long memberId
+    ) throws IOException {
+        memberService.review(requestDto, file, memberId);
+        return ResponseEntity.ok("리뷰 등록에 성공했습니다.");
+    }
+
+
+    /**
+     * <b>Member의 전체 리뷰 조회</b>
+     * @param memberId
+     * @return
+     */
+    @GetMapping("/review")
+    public ResponseEntity<List<ReviewResponseDto>> showAllReview(@State Long memberId) {
+        List<ReviewResponseDto> requestDtos = memberService.findAllReviewByMemberID(memberId);
+        return ResponseEntity.ok(requestDtos);
     }
 }

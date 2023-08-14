@@ -1,6 +1,7 @@
 package ku.hackerthon.BeMyMood.domain.spot;
 
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
+import ku.hackerthon.BeMyMood.domain.review.PublicReviews;
 import ku.hackerthon.BeMyMood.domain.review.Review;
 import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.spot.mood.SpotMoods;
@@ -50,8 +51,8 @@ public class Spot {
     @Embedded
     private SpotImages spotImages = new SpotImages();
 
-    @OneToMany(mappedBy = "spot")
-    private List<Review> reviews = new ArrayList<>();
+    @Embedded
+    private PublicReviews publicReviews = new PublicReviews();
 
     // Constructor
     public Spot(String name, String address, String contact, String introduce, SpotCategory category, Location location, LocalTime openAt, LocalTime closeAt) {
@@ -71,5 +72,9 @@ public class Spot {
 
     public String getOperationInfo() {
         return String.format("매일 %s - %s, 라스트오더 20:00", this.openAt.toString(), this.closeAt.toString());
+    }
+
+    public void addPublicReview(Review review) {
+        this.publicReviews.addReview(review);
     }
 }

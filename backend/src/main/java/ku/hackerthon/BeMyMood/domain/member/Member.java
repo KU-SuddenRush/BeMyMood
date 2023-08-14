@@ -7,6 +7,8 @@ import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocation;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
+import ku.hackerthon.BeMyMood.domain.review.Review;
+import ku.hackerthon.BeMyMood.domain.review.Reviews;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -37,6 +39,9 @@ public class Member {
     private PreferredLocations preferredLocations;
 
     @Embedded
+    private Reviews reviews;
+
+    @Embedded
     private Bookmarks bookmarks;
 
     // Constructor
@@ -47,6 +52,7 @@ public class Member {
         this.password = password;
         this.preferredMoods = new PreferredMoods();
         this.preferredLocations = new PreferredLocations();
+        this.reviews = new Reviews();
         this.bookmarks = new Bookmarks();
     }
 
@@ -69,5 +75,9 @@ public class Member {
 
     public void addLocation(PreferredLocation location) {
         this.preferredLocations.add(location);
+    }
+
+    public void addReview(Review review) {
+        this.reviews.add(review);
     }
 }
