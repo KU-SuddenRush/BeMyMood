@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum StorageDomain {
-    MEMBER("member"), SPOT("spot"), REVIEW("review"), STICKER("sticker"), BADGE("badge");
+    MEMBER("member"), SPOT("spot"), REVIEW("review"), STICKER("sticker"), BADGE("badge"), MOODBOARD("moodBoard");
 
     private String domain;
 }

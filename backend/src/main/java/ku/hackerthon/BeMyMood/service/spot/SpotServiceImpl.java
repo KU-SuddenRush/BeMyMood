@@ -230,4 +230,9 @@ public class SpotServiceImpl implements SpotService {
 
         return spots;
     }
+
+    public SpotImage searchSpotImgById(Long spotImgId) {
+        return spotRepository.findSpotImgById(spotImgId)
+                .orElseThrow(() -> new IllegalArgumentException("wrong spot image id"));
+    }
 }
