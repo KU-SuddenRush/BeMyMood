@@ -9,12 +9,76 @@ import UIKit
 import Then
 import SnapKit
 import SwiftUI
+import StickerView
 
-class MoodBoardEditViewController: UIViewController {
+class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestureRecognizerDelegate {
+    
+    var _selectedStickerView:StickerView?
+        var selectedStickerView:StickerView? {
+            get {
+                return _selectedStickerView
+            }
+            set {
+                // if other sticker choosed then resign the handler
+                if _selectedStickerView != newValue {
+                    if let selectedStickerView = _selectedStickerView {
+                        selectedStickerView.showEditingHandlers = false
+                    }
+                    _selectedStickerView = newValue
+                }
+                // assign handler to new sticker added
+                if let selectedStickerView = _selectedStickerView {
+                    selectedStickerView.showEditingHandlers = true
+                    selectedStickerView.superview?.bringSubviewToFront(selectedStickerView)
+                }
+            }
+        }
+    
+    func didAddSticker(tag: Int) {
+        let testImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 116, height: 139))
+        testImage.image = UIImage.stickers[tag]
+        testImage.contentMode = .scaleAspectFit
+        
+        let sticker = StickerView.init(contentView: testImage)
+        sticker.center = CGPoint.init(x: 150, y: 150)
+        sticker.delegate = self
+        sticker.setImage(UIImage.init(named: "deletePicture")!, forHandler: StickerViewHandler.close)
+        sticker.setImage(UIImage.init(named: "rotate")!, forHandler: StickerViewHandler.rotate)
+        sticker.showEditingHandlers = false
+        self.view.addSubview(sticker)
+        self.selectedStickerView = sticker
+    }
     
     
+    func didAddText(_ text: String, withStyle style: TextStyle) {
+        let textView = UITextView().then{
+            $0.font = style.font
+            $0.text = text
+            $0.textAlignment = style.alignment
+            $0.backgroundColor = .clear
+            $0.textColor = .white
+            $0.sizeToFit()
+        }
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        textView.addGestureRecognizer(panGesture)
+        
+        view.addSubview(textView)
+        
+        selectedTextView = textView
+        
+        // 새로운 텍스트뷰를 배열에 추가
+        textViews.append(textView)
+        
+        // 이전 텍스트뷰의 레이아웃을 변경하지 않고 새로운 텍스트뷰의 레이아웃을 설정
+        selectedTextView.center = view.center
+    }
     
+    
+    var textViews: [UITextView] = []
+    var selectedTextView = UITextView()
     var isColorSelected = false
+    var isStickerSelected = false
     
     //MARK: - UIComponents
     
@@ -84,7 +148,12 @@ class MoodBoardEditViewController: UIViewController {
         self.colorCollectionView.delegate = self
         
         //Button
+        self.closeBtn.addTarget(self, action: #selector(closeBtnDidTab), for: .touchUpInside)
+        
         self.backgroundColorBtn.addTarget(self, action: #selector(backgroundColorBtnDidTab), for: .touchUpInside)
+        
+        self.textBtn.addTarget(self, action: #selector(addTextButtonTapped), for: .touchUpInside)
+        self.stickerBtn.addTarget(self, action: #selector(stickerBtnDidTab), for: .touchUpInside)
 
     }
     
@@ -96,6 +165,17 @@ class MoodBoardEditViewController: UIViewController {
     
     //MARK: - Actions
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        UIView.animate(withDuration: 1){
+            self.view.window?.frame.origin.y = 0
+        }
+    }
+    
+    @objc func closeBtnDidTab() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc func backgroundColorBtnDidTab() {
         if isColorSelected {
             nextBtn.isHidden = false
@@ -106,8 +186,47 @@ class MoodBoardEditViewController: UIViewController {
             colorCollectionView.isHidden = false
             isColorSelected.toggle()
         }
+    }
+    
+    @objc func addTextButtonTapped() {
+        let textInputVC = TextEditorViewController()
+        textInputVC.delegate = self
+        textInputVC.modalPresentationStyle = .overFullScreen
+        present(textInputVC, animated: true, completion: nil)
+    }
+    
+    @objc func stickerBtnDidTab() {
+        
+        if isStickerSelected {
+            nextBtn.isHidden = false
+            isStickerSelected.toggle()
+        }else {
+            nextBtn.isHidden = true
+            isStickerSelected.toggle()
+        }
+        
+        let StickerBottomSheetVC = MoodBoardStickerBottomSheet()
+        StickerBottomSheetVC.modalPresentationStyle = .overFullScreen
+        StickerBottomSheetVC.delegate = self
+        self.present(StickerBottomSheetVC, animated: false, completion: nil)
         
     }
+    
+    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+        guard let textView = gesture.view as? UITextView else {
+            return
+        }
+        
+        if gesture.state == .changed {
+            let translation = gesture.translation(in: view)
+            textView.center = CGPoint(x: textView.center.x + translation.x, y: textView.center.y + translation.y)
+            gesture.setTranslation(.zero, in: view)
+        }
+    }
+    
+    //MARK: - StickerViewFunc
+    
+
     
     
     //MARK: - Helpers
@@ -175,7 +294,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        guard let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.cellIdentifier, for: indexPath) as? ColorCell else{
+        guard collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.cellIdentifier, for: indexPath) is ColorCell else{
             fatalError()
         }
 
@@ -185,6 +304,59 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     }
 }
 
+protocol TextEditorDelegate: AnyObject {
+    func didAddText(_ text: String, withStyle style: TextStyle)
+}
+
+protocol StickerDelegate: AnyObject {
+    func didAddSticker(tag: Int)
+}
+
+struct TextStyle {
+    var alignment: NSTextAlignment
+    var font: UIFont
+    var textColor: UIColor
+}
+
+struct Sticker {
+    let stickerType: Int
+    let sticker : StickerView
+    var flip : Bool
+}
+
+extension MoodBoardEditViewController :StickerDelegate, StickerViewDelegate{
+    
+    func stickerViewDidBeginMoving(_ stickerView: StickerView) {
+        self.selectedStickerView = stickerView
+    }
+    
+    func stickerViewDidChangeMoving(_ stickerView: StickerView) {
+    }
+    
+    func stickerViewDidEndMoving(_ stickerView: StickerView) {
+    }
+    
+    func stickerViewDidBeginRotating(_ stickerView: StickerView) {
+    }
+    
+    func stickerViewDidChangeRotating(_ stickerView: StickerView) {
+    }
+    
+    func stickerViewDidEndRotating(_ stickerView: StickerView) {
+    }
+    
+    func stickerViewDidClose(_ stickerView: StickerView) {
+    }
+    
+    func stickerViewDidTap(_ stickerView: StickerView) {
+        if stickerView.showEditingHandlers == false {
+            self.selectedStickerView = stickerView
+            stickerView.showEditingHandlers = true
+        }else {
+            stickerView.showEditingHandlers = false
+        }
+    }
+}
 
 struct MoodBoardEditVCPreView:PreviewProvider {
     static var previews: some View {
