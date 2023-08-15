@@ -5,12 +5,8 @@ import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.spot.RecommendedSpotInfo;
 import ku.hackerthon.BeMyMood.dto.spot.SpotFilterParams;
-import ku.hackerthon.BeMyMood.dto.spot.SpotParams;
 import ku.hackerthon.BeMyMood.dto.web.request.SpotCreateRequestDto;
-import ku.hackerthon.BeMyMood.dto.web.response.AllSpotInfoResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.FilteredSpotsResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.SpotDetailsResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.*;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import lombok.RequiredArgsConstructor;
@@ -94,6 +90,19 @@ public class SpotController {
     ) {
         SpotFilterParams params = new SpotFilterParams(categoryId, locationId, moodId);
         FilteredSpotsResponseDto responseDto = spotService.filter(params);
+        return ResponseEntity.ok(responseDto);
+    }
+
+    /**
+     * <b>스팟 리뷰(공개 설정된 기록) 조회</b>
+     *
+     * @param spotId   스팟에 할당된 식별자
+     * @return {@link SpotDetailsResponseDto}
+     */
+    @GetMapping("/{spotId}/review")
+    public ResponseEntity<SpotPublicReviewsResponseDto> getSpotReviews(@PathVariable Long spotId) {
+        Spot spot = spotService.searchById(spotId);
+        SpotPublicReviewsResponseDto responseDto = spotService.getSpotReviews(spot);
         return ResponseEntity.ok(responseDto);
     }
 }

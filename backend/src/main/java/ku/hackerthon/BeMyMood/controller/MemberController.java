@@ -2,6 +2,7 @@ package ku.hackerthon.BeMyMood.controller;
 
 import ku.hackerthon.BeMyMood.aop.annotation.State;
 import ku.hackerthon.BeMyMood.domain.member.Member;
+import ku.hackerthon.BeMyMood.domain.review.Review;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.member.request.BookmarkSettingRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.request.MemberMoodRequestDto;
@@ -143,7 +144,7 @@ public class MemberController {
     /**
      * <b>Member의 리뷰 등록</b>
      * @param requestDto
-     * @param file
+     * @param files
      * @param memberId
      * @return
      * @throws IOException
@@ -151,10 +152,14 @@ public class MemberController {
     @PostMapping("/review")
     public ResponseEntity<String> review(
             @RequestPart("data") ReviewRequestDto requestDto,
-            @RequestPart("file") MultipartFile file,
+            @RequestPart("files") List<MultipartFile> files,
             @State Long memberId
     ) throws IOException {
-        memberService.review(requestDto, file, memberId);
+        memberService.review(requestDto, memberId);
+
+        // 한 회원이 하나의 가게에 작성할 수 있는 리뷰를 1개로 제한
+        memberService.setReviewImages(requestDto.getSpotId(), memberId, files);
+
         return ResponseEntity.ok("리뷰 등록에 성공했습니다.");
     }
 

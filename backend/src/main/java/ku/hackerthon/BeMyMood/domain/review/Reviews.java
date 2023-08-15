@@ -1,5 +1,7 @@
 package ku.hackerthon.BeMyMood.domain.review;
 
+import ku.hackerthon.BeMyMood.domain.spot.Spot;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
@@ -20,5 +22,11 @@ public class Reviews {
 
     public List<Review> getAllReview() {
         return Collections.unmodifiableList(reviews);
+    }
+
+    public Review getReviewBySpot(Spot spot) {
+        return reviews.stream()
+                .filter(review -> review.equalSpot(spot))
+                .findFirst().get();
     }
 }

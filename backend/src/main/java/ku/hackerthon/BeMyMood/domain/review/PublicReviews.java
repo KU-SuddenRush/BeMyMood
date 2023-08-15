@@ -14,4 +14,8 @@ public class PublicReviews {
     public void addReview(Review review) {
         publicReviews.add(review);
     }
+
+    public List<Review> getPublicReviews() {
+        return publicReviews;
+    }
 }

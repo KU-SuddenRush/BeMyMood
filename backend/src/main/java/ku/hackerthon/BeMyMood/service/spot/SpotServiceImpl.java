@@ -5,6 +5,8 @@ import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
+import ku.hackerthon.BeMyMood.domain.review.PublicReviews;
+import ku.hackerthon.BeMyMood.domain.review.Review;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.domain.spot.SpotCategory;
 import ku.hackerthon.BeMyMood.domain.spot.SpotImage;
@@ -12,10 +14,7 @@ import ku.hackerthon.BeMyMood.domain.spot.SpotImages;
 import ku.hackerthon.BeMyMood.dto.spot.*;
 import ku.hackerthon.BeMyMood.dto.storage.StorageDomain;
 import ku.hackerthon.BeMyMood.dto.web.request.SpotCreateRequestDto;
-import ku.hackerthon.BeMyMood.dto.web.response.AllSpotInfoResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.FilteredSpotsResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.RecommendedSpotsResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.SpotDetailsResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.*;
 import ku.hackerthon.BeMyMood.respository.SpotRepository;
 import ku.hackerthon.BeMyMood.service.location.LocationService;
 import ku.hackerthon.BeMyMood.service.mood.MoodService;
@@ -178,6 +177,28 @@ public class SpotServiceImpl implements SpotService {
                     }
                 }
             );
+    }
+
+    @Override
+    public SpotPublicReviewsResponseDto getSpotReviews(Spot spot) {
+        List<Review> publicReviews = spot.getPublicReviews().getPublicReviews();
+
+        // PostAt 최신 순(내림차순) 정렬
+        publicReviews = publicReviews
+                .stream()
+                .sorted(Comparator.comparing(Review::getPostAt).reversed())
+                .collect(Collectors.toList());
+
+        return new SpotPublicReviewsResponseDto(
+                publicReviews.stream()
+                        .map(publicReview -> new SpotPublicReviewsInfo(
+                                publicReview.getId(),
+                                spot.getId(),
+                                publicReview.getReviewImages().getImageUrls(),
+                                publicReview.getDescription(),
+                                publicReview.getPostAt()
+                        )).collect(Collectors.toList())
+        );
     }
 
     private List<Spot> collectByLocation(SpotFilterParams params) {

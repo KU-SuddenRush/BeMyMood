@@ -34,7 +34,9 @@ public interface MemberService {
 
     List<String> getPreferredLocationNames(Long memberId);
 
-    void review(ReviewRequestDto requestDto, MultipartFile file, Long memberId) throws IOException;
+    void review(ReviewRequestDto requestDto, Long memberId) throws IOException;
 
     List<ReviewResponseDto> findAllReviewByMemberID(Long memberId);
+
+    void setReviewImages(Long spotId, Long memberId, List<MultipartFile> files);
 }
