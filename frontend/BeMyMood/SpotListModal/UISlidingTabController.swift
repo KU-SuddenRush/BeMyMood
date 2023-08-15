@@ -10,7 +10,7 @@ import UIKit
 class UISlidingTabController: UIViewController {
     
     private let collectionHeader = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
-    private let collectionPage = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+    public let collectionPage = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     private let collectionHeaderIdentifier = "COLLECTION_HEADER_IDENTIFIER"
     private let collectionPageIdentifier = "COLLECTION_PAGE_IDENTIFIER"
     private var items = [UIViewController]()
@@ -53,6 +53,8 @@ class UISlidingTabController: UIViewController {
         
         DispatchQueue.main.async {
             // 화면 전환 안되는 문제 https://wiwi-pe.tistory.com/187 로 해결함
+            print("self.collectionPage.frame")
+            print(self.collectionPage.frame)
             self.collectionPage.isPagingEnabled = false
             self.collectionPage.scrollToItem(at: path, at: .centeredHorizontally, animated: true)
             self.collectionPage.isPagingEnabled = true
@@ -195,7 +197,6 @@ extension UISlidingTabController: UICollectionViewDataSource{
         let vc = items[indexPath.row]
         
         cell.addSubview(vc.view)
-        
         vc.view.translatesAutoresizingMaskIntoConstraints = false
 //        vc.view.topAnchor.constraint(equalTo: cell.topAnchor, constant: 28).isActive = true
         vc.view.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0).isActive = true
@@ -223,7 +224,11 @@ extension UISlidingTabController: UICollectionViewDelegateFlowLayout{
 //        print(collectionPage.frame.size)
 //        print(collectionPage.frame.origin)
         
-        return CGSize(width: view.frame.width, height: collectionPage.frame.height)
+//        return CGSize(width: view.frame.width, height: collectionPage.frame.height)
+//        return CGSize(width: view.frame.width, height: self.view.frame.height - CGFloat(heightHeader))
+        print("collectionPage.frame \(collectionPage.frame)")
+        
+        return CGSize(width: collectionView.frame.width, height: collectionPage.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

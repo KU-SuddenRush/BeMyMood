@@ -76,6 +76,8 @@ class HomeViewController: UIViewController {
         $0.image = UIImage(named: "star")
     }
 
+    static let bottomSheetVC = SpotListModalViewController()
+
     //MARK: - LifeCycles
     
     override func viewDidLoad() {
@@ -99,6 +101,7 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
         updateLastCell()
+        showBottomSheet()
     }
     
     //MARK: - Actions
@@ -132,6 +135,19 @@ class HomeViewController: UIViewController {
             let newSize = CGSize(width: 50, height: 33)
             tagCell.frame.size = newSize
         }
+    }
+//
+//    static func dismissBottomSheet(){
+//        HomeViewController.bottomSheetVC.dismiss(animated: true, completion: nil)
+//    }
+//
+    func showBottomSheet(){
+//        HomeViewController.bottomSheetVC.homeNavigationController = self.navigationController
+//        HomeViewController.bottomSheetVC.homeViewController = self
+
+        HomeViewController.bottomSheetVC.loadViewIfNeeded()
+
+        present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
     }
 
 
