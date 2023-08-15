@@ -9,6 +9,7 @@ import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberLocationRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.request.ReviewRequestDto;
+import ku.hackerthon.BeMyMood.dto.web.response.MemberMoodResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.ReviewResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
@@ -79,8 +80,9 @@ public class MemberController {
      * @return List<String>
      */
     @GetMapping("/mood")
-    public ResponseEntity<List<String>> getMemberMood(@State Long memberId) {
-        List<String> response = memberService.getPreferredMoodNames(memberId);
+    public ResponseEntity<MemberMoodResponseDto> getMemberMood(@State Long memberId) {
+        List<String> moodNames = memberService.getPreferredMoodNames(memberId);
+        MemberMoodResponseDto response = new MemberMoodResponseDto(moodNames.size(), moodNames);
         return ResponseEntity.ok(response);
     }
 
