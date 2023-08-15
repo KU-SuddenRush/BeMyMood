@@ -10,5 +10,5 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberMoodRequestDto {
-    private List<String> moods;
+    private List<Long> moodIds;
 }

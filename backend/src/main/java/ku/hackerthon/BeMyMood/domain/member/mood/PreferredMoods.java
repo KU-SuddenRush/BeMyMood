@@ -26,11 +26,11 @@ public class PreferredMoods {
                 .anyMatch(pm -> pm.equalMood(mood));
     }
 
-    public List<String> getNames() {
-        List<String> names = new ArrayList<>();
+    public List<Long> getIds() {
+        List<Long> ids = new ArrayList<>();
         for (PreferredMood mood : this.preferredMoods) {
-            names.add(mood.getMood().getName());
+            ids.add(mood.getMood().getId());
         }
-        return names;
+        return ids;
     }
 }
