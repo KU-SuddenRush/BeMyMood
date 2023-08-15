@@ -2,7 +2,6 @@ package ku.hackerthon.BeMyMood.domain.review;
 
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
-import ku.hackerthon.BeMyMood.domain.spot.SpotImages;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
