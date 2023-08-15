@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BoardSticker {
+public class MoodBoardSticker {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_sticker_id")
     private Long id;
@@ -32,7 +32,13 @@ public class BoardSticker {
     private Double rotation;
 
     // Constructor
-    public BoardSticker(MoodBoard moodBoard) {
+    public MoodBoardSticker(MoodBoard moodBoard, Long stickerId, Double locationX, Double locationY, Double width, Double height, Double rotation) {
+        this.stickerId = stickerId;
+        this.locationX = locationX;
+        this.locationY = locationY;
+        this.width = width;
+        this.height = height;
+        this.rotation = rotation;
         this.moodBoard = moodBoard;
         moodBoard.addBoardStickers(this);
     }

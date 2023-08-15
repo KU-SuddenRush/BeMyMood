@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BoardText {
+public class MoodBoardText {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_text_id")
     private Long id;
@@ -25,14 +25,20 @@ public class BoardText {
 
     private Long fontSize;
 
-    private String fontColor;
+    private int fontColor;
 
-    private String sort;
+    private int sort;
 
     private String contents;
 
     // Constructor
-    public BoardText(MoodBoard moodBoard) {
+    public MoodBoardText(MoodBoard moodBoard, Double locationX, Double locationY, Long fontSize, int fontColor, int sort, String contents) {
+        this.locationX = locationX;
+        this.locationY = locationY;
+        this.fontSize = fontSize;
+        this.fontColor = fontColor;
+        this.sort = sort;
+        this.contents = contents;
         this.moodBoard = moodBoard;
         moodBoard.addBoardTexts(this);
     }

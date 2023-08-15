@@ -1,4 +1,4 @@
-package ku.hackerthon.BeMyMood.domain.moodboard.sticker;
+package ku.hackerthon.BeMyMood.domain.moodboard.picture;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Embeddable
-public class BoardStickers {
+public class MoodBoardPictures {
     @OneToMany(mappedBy = "moodBoard", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BoardSticker> stickers = new ArrayList<>();
+    private List<MoodBoardPicture> pictures = new ArrayList<>();
 
-    public void add(BoardSticker boardSticker) {
-        stickers.add(boardSticker);
+    public void add(MoodBoardPicture boardPicture) {
+        pictures.add(boardPicture);
     }
 }

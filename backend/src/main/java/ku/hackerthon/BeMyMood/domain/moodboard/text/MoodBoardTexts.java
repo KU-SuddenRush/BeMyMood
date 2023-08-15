@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Embeddable
-public class BoardTexts {
+public class MoodBoardTexts {
     @OneToMany(mappedBy = "moodBoard", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BoardText> texts = new ArrayList<>();
+    private List<MoodBoardText> texts = new ArrayList<>();
 
-    public void add(BoardText boardText) {
+    public void add(MoodBoardText boardText) {
         texts.add(boardText);
     }
 }
