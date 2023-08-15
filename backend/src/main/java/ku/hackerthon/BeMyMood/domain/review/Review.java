@@ -2,6 +2,7 @@ package ku.hackerthon.BeMyMood.domain.review;
 
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
+import ku.hackerthon.BeMyMood.domain.spot.SpotImages;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,11 +19,8 @@ public class Review {
     @Column(name = "review_id")
     private Long id;
 
-    @Column(name = "review_img_url")
-    private String imgUrl;
-
-    @Column(name = "review_title")
-    private String title;
+    @Embedded
+    private ReviewImages reviewImages = new ReviewImages();
 
     @Column(name = "review_description")
     private String description;
@@ -40,8 +38,7 @@ public class Review {
     private Spot spot;
 
     // Constructor
-    public Review(String title, String description, LocalDate postAt, Boolean opened, Member member, Spot spot) {
-        this.title = title;
+    public Review(String description, LocalDate postAt, Boolean opened, Member member, Spot spot) {
         this.description = description;
         this.postAt = postAt;
         this.opened = opened;
@@ -55,7 +52,7 @@ public class Review {
     }
 
     // Method
-    public void setImageUrl(String url) {
-        this.imgUrl = url;
+    public boolean equalSpot(Spot spot) {
+        return this.spot.equals(spot);
     }
 }

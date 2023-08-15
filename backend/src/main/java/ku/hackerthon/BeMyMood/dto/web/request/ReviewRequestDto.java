@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 public class ReviewRequestDto {
 
     private Long spotId;
-    private String title;
     private String description;
     private Boolean opened;
 }
