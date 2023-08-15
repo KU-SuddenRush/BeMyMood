@@ -1,12 +1,12 @@
 package ku.hackerthon.BeMyMood.domain.moodboard;
 
 import ku.hackerthon.BeMyMood.domain.member.Member;
-import ku.hackerthon.BeMyMood.domain.moodboard.picture.BoardPicture;
-import ku.hackerthon.BeMyMood.domain.moodboard.picture.BoardPictures;
-import ku.hackerthon.BeMyMood.domain.moodboard.sticker.BoardSticker;
-import ku.hackerthon.BeMyMood.domain.moodboard.sticker.BoardStickers;
-import ku.hackerthon.BeMyMood.domain.moodboard.text.BoardText;
-import ku.hackerthon.BeMyMood.domain.moodboard.text.BoardTexts;
+import ku.hackerthon.BeMyMood.domain.moodboard.picture.MoodBoardPicture;
+import ku.hackerthon.BeMyMood.domain.moodboard.picture.MoodBoardPictures;
+import ku.hackerthon.BeMyMood.domain.moodboard.sticker.MoodBoardSticker;
+import ku.hackerthon.BeMyMood.domain.moodboard.sticker.MoodBoardStickers;
+import ku.hackerthon.BeMyMood.domain.moodboard.text.MoodBoardText;
+import ku.hackerthon.BeMyMood.domain.moodboard.text.MoodBoardTexts;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,27 +29,28 @@ public class MoodBoard {
     private String imgUrl;
 
     @Embedded
-    private BoardStickers stickers;
+    private MoodBoardStickers stickers;
 
     @Embedded
-    private BoardPictures pictures;
+    private MoodBoardPictures pictures;
 
     @Embedded
-    private BoardTexts texts;
+    private MoodBoardTexts texts;
 
     // Constructor
-    public MoodBoard(Member member) {
+    public MoodBoard(Member member, String imgUrl) {
         this.member = member;
-        this.stickers = new BoardStickers();
-        this.pictures = new BoardPictures();
-        this.texts = new BoardTexts();
+        this.imgUrl = imgUrl;
+        this.stickers = new MoodBoardStickers();
+        this.pictures = new MoodBoardPictures();
+        this.texts = new MoodBoardTexts();
         member.addMoodBoard(this);
     }
 
     // Method
-    public void addBoardStickers(BoardSticker boardSticker) { this.stickers.add(boardSticker); }
+    public void addBoardStickers(MoodBoardSticker boardSticker) { this.stickers.add(boardSticker); }
 
-    public void addBoardPictures(BoardPicture boardPicture) { this.pictures.add(boardPicture); }
+    public void addBoardPictures(MoodBoardPicture boardPicture) { this.pictures.add(boardPicture); }
 
-    public void addBoardTexts(BoardText boardText) { this.texts.add(boardText); }
+    public void addBoardTexts(MoodBoardText boardText) { this.texts.add(boardText); }
 }
