@@ -8,7 +8,11 @@ import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import ku.hackerthon.BeMyMood.domain.review.Review;
+import ku.hackerthon.BeMyMood.domain.review.ReviewImage;
+import ku.hackerthon.BeMyMood.domain.review.ReviewImages;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
+import ku.hackerthon.BeMyMood.domain.spot.SpotImage;
+import ku.hackerthon.BeMyMood.domain.spot.SpotImages;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
 import ku.hackerthon.BeMyMood.dto.storage.StorageDomain;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
@@ -145,17 +149,14 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void review(ReviewRequestDto requestDto, MultipartFile file, Long memberId) throws IOException {
+    public void review(ReviewRequestDto requestDto, Long memberId) throws IOException {
         Review review = new Review(
-                requestDto.getTitle(),
                 requestDto.getDescription(),
                 LocalDate.now(),
                 requestDto.getOpened(),
                 searchById(memberId),
                 spotService.searchById(requestDto.getSpotId())
         );
-
-        setReviewImage(file, review);
     }
 
     @Override
@@ -167,7 +168,7 @@ public class MemberServiceImpl implements MemberService {
         return allReview.stream()
                 .map(review -> new ReviewResponseDto(
                             member.getName(),
-                            review.getImgUrl(),
+                            review.getReviewImages().getImageUrls(),
                             review.getDescription(),
                             review.getPostAt(),
                             review.getOpened()
@@ -175,10 +176,23 @@ public class MemberServiceImpl implements MemberService {
                 ).collect(Collectors.toList());
     }
 
-    private void setReviewImage(MultipartFile file, Review review) throws IOException {
-        String fileName = storageService.setFileName(review.getId(), file, StorageDomain.REVIEW);
-        String uploadUrl = storageService.uploadToS3(file, fileName);
+    @Override
+    public void setReviewImages(Long spotId, Long memberId, List<MultipartFile> files) {
+        Member member = searchById(memberId);
+        Spot spot = spotService.searchById(spotId);
+        Review review = member.getReviews().getReviewBySpot(spot);
+        ReviewImages reviewImages = review.getReviewImages();
 
-        review.setImageUrl(uploadUrl);
+        files.stream()
+                .forEach(file -> {
+                            String fileName = storageService.setFileName(review.getId(), file, StorageDomain.REVIEW);
+                            try {
+                                String uploadUrl = storageService.uploadToS3(file, fileName);
+                                reviewImages.add(new ReviewImage(uploadUrl, review));
+                            } catch (IOException e) {
+                                throw new RuntimeException("S3 업로드 실패");
+                            }
+                        }
+                );
     }
 }
