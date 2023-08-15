@@ -4,7 +4,7 @@ import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.member.MemberJoinParams;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.ReviewRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.response.ReviewResponseDto;
 import org.springframework.web.multipart.MultipartFile;

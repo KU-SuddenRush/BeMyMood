@@ -1,4 +1,4 @@
-package ku.hackerthon.BeMyMood.dto.web.request;
+package ku.hackerthon.BeMyMood.dto.web.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
