@@ -69,7 +69,7 @@ public class MemberController {
     public ResponseEntity<String> setMemberMood(
             @RequestBody MemberMoodRequestDto requestDto,
             @State Long memberId) {
-        memberService.setMemberMood(requestDto.getMoods(), memberId);
+        memberService.setMemberMood(requestDto.getMoodIds(), memberId);
         return ResponseEntity.ok("내가 좋아하는 무드 저장에 성공하였습니다.");
     }
 
@@ -77,11 +77,11 @@ public class MemberController {
      * <b>나의 무드 조회</b>
      *
      * @param memberId {@link State}로 주입된 MemberId
-     * @return List<String>
+     * @return List<Long>
      */
     @GetMapping("/mood")
     public ResponseEntity<MemberMoodResponseDto> getMemberMood(@State Long memberId) {
-        List<String> moodNames = memberService.getPreferredMoodNames(memberId);
+        List<Long> moodNames = memberService.getPreferredMoodIds(memberId);
         MemberMoodResponseDto response = new MemberMoodResponseDto(moodNames.size(), moodNames);
         return ResponseEntity.ok(response);
     }

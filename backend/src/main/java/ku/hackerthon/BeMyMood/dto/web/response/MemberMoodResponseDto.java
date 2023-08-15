@@ -9,5 +9,5 @@ import java.util.List;
 @AllArgsConstructor
 public class MemberMoodResponseDto {
     private int count;
-    private List<String> moodNames;
+    private List<Long> moodIds;
 }

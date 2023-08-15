@@ -79,11 +79,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void setMemberMood(List<String> moods, Long memberId) {
+    public void setMemberMood(List<Long> moodIds, Long memberId) {
         Member member = searchById(memberId);
 
-        for (String mood : moods) {
-            Mood selectedMood = moodService.getByName(mood);
+        for (Long moodId : moodIds) {
+            Mood selectedMood = moodService.getById(moodId);
 
             // 이미 선택한 무드 -> 생략
             if (member.getPreferredMoods().hasMood(selectedMood)) continue;
@@ -93,10 +93,10 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public List<String> getPreferredMoodNames(Long memberId) {
+    public List<Long> getPreferredMoodIds(Long memberId) {
         Member member = searchById(memberId);
         PreferredMoods preferredMoods = member.getPreferredMoods();
-        return preferredMoods.getNames();
+        return preferredMoods.getIds();
     }
 
     @Override

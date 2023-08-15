@@ -22,9 +22,9 @@ public interface MemberService {
 
     MemberInfoResponseDto searchMemberInfoById(Long memberId);
 
-    void setMemberMood(List<String> moods, Long memberId);
+    void setMemberMood(List<Long> moodIds, Long memberId);
 
-    List<String> getPreferredMoodNames(Long memberId);
+    List<Long> getPreferredMoodIds(Long memberId);
 
     List<BookmarkResponseDto> getBookmarks(Long memberId);
 
