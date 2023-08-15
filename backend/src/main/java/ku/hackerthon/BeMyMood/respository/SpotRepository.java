@@ -3,6 +3,8 @@ package ku.hackerthon.BeMyMood.respository;
 import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
+import ku.hackerthon.BeMyMood.domain.spot.SpotImage;
+import ku.hackerthon.BeMyMood.domain.spot.SpotImages;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
@@ -42,4 +44,9 @@ public class SpotRepository {
     public Optional<Spot> findById(Long spotId) {
         return Optional.ofNullable(em.find(Spot.class, spotId));
     }
+
+    public Optional<SpotImage> findSpotImgById(Long spotImgId) {
+        return Optional.ofNullable(em.find(SpotImage.class, spotImgId));
+    }
+
 }

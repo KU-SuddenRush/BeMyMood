@@ -1,12 +1,13 @@
 package ku.hackerthon.BeMyMood.domain.member;
 
-import ku.hackerthon.BeMyMood.domain.location.Location;
 import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmark;
 import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmarks;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocation;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
+import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoard;
+import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoards;
 import ku.hackerthon.BeMyMood.domain.review.Review;
 import ku.hackerthon.BeMyMood.domain.review.Reviews;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
@@ -44,6 +45,9 @@ public class Member {
     @Embedded
     private Bookmarks bookmarks;
 
+    @Embedded
+    private MoodBoards moodBoards;
+
     // Constructor
     @Builder
     public Member(String name, String email, String password) {
@@ -54,6 +58,7 @@ public class Member {
         this.preferredLocations = new PreferredLocations();
         this.reviews = new Reviews();
         this.bookmarks = new Bookmarks();
+        this.moodBoards = new MoodBoards();
     }
 
     // Method
@@ -66,6 +71,8 @@ public class Member {
     }
 
     public void addBookmark(Bookmark bookmark) { this.bookmarks.add(bookmark); }
+
+    public void addMoodBoard(MoodBoard moodBoard) { this.moodBoards.add(moodBoard); }
 
     public void removeBookmark(Bookmark bookmark) { this.bookmarks.remove(bookmark); }
 

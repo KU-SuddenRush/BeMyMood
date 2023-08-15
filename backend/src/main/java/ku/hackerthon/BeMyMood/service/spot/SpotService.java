@@ -4,6 +4,7 @@ import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
+import ku.hackerthon.BeMyMood.domain.spot.SpotImage;
 import ku.hackerthon.BeMyMood.dto.spot.SpotFilterParams;
 import ku.hackerthon.BeMyMood.dto.web.request.SpotCreateRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.response.*;
@@ -30,4 +31,6 @@ public interface SpotService {
     void registerImages(Long spotId, List<MultipartFile> files);
 
     SpotPublicReviewsResponseDto getSpotReviews(Spot spot);
+
+    SpotImage searchSpotImgById(Long spotImgId);
 }
