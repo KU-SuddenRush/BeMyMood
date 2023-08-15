@@ -13,56 +13,73 @@ import SwiftUI
 class SpotDetailViewController: UIViewController {
     
     //MARK: - UIComponents
-//    let 
     let categoryLabel = UILabel().then{
         $0.backgroundColor = .lightGray
-        $0.text = "default"
+        $0.text = "Category Label"
         $0.textColor = .orange
     }
     
     let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
         $0.backgroundColor = .blue
     }
-
-//    let slidingTabVC = UISlidingTabController().then{
-////        $0.addItem(item: SpotDetailInfoViewController(), title: "상세정보")
-////        $0.addItem(item: SpotReview(), title: "리뷰")
-//        $0.setHeaderActiveColor(color: .orange)
-//        $0.setHeaderInActiveColor(color: .black)
-//        $0.setHeaderBackgroundColor(color: .white)
-//        $0.build()
-//    }
     
+    let slidingTabVC = UISlidingTabController().then{
+        $0.addItem(item: DetailViewController(), title: "상세정보")
+        $0.addItem(item: UIViewController(), title: "리뷰")
+        $0.setHeaderActiveColor(color: .orange)
+        $0.setHeaderInActiveColor(color: .black)
+        $0.setHeaderBackgroundColor(color: .white)
+        $0.build()
+    }
+    
+    let addModeBoardView = UIView().then{
+        $0.backgroundColor = .purple
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        
+        self.view.backgroundColor = .systemTeal
         
         hierarchy()
         layout()
-     }
-
+    }
+    
 }
 
-extension SpotDetailViewController {
+extension SpotDetailViewController{
     
     func hierarchy(){
         self.view.addSubview(categoryLabel)
         self.view.addSubview(tagCollectionView)
+        self.view.addSubview(slidingTabVC.view)
+        self.view.addSubview(addModeBoardView)
     }
+    
     func layout(){
         categoryLabel.snp.makeConstraints{ make in
-            make.top.equalTo(10)
-            make.leading.equalTo(30)
-            make.trailing.equalTo(-30)
-            make.height.equalTo(30)
+            make.top.equalTo(20)
+            make.leading.equalTo(25)
+            make.trailing.equalTo(-25)
+            make.height.equalTo(24)
         }
         
         tagCollectionView.snp.makeConstraints{ make in
-            make.top.equalTo(categoryLabel.snp.bottom).offset(10)
-            make.leading.equalTo(30)
-            make.trailing.equalTo(-30)
-            make.height.equalTo(100)
+            make.top.equalTo(categoryLabel.snp.bottom).offset(12)
+            make.leading.equalTo(16)
+            make.trailing.equalTo(-16)
+            make.height.equalTo(60)
+        }
+        
+        slidingTabVC.view.snp.makeConstraints{ make in
+            make.top.equalTo(tagCollectionView.snp.bottom).offset(22)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(addModeBoardView.snp.top)
+        }
+        
+        addModeBoardView.snp.makeConstraints{ make in
+            make.bottom.leading.trailing.equalToSuperview()
+            make.height.equalTo(104)
         }
     }
 }
