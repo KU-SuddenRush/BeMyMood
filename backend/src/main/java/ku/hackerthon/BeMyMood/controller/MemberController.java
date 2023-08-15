@@ -2,12 +2,11 @@ package ku.hackerthon.BeMyMood.controller;
 
 import ku.hackerthon.BeMyMood.aop.annotation.State;
 import ku.hackerthon.BeMyMood.domain.member.Member;
-import ku.hackerthon.BeMyMood.domain.review.Review;
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.member.request.BookmarkSettingRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.request.MemberMoodRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.request.MemberInfoResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberLocationRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.request.ReviewRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.response.ReviewResponseDto;
@@ -126,7 +125,7 @@ public class MemberController {
     }
 
     /**
-     * <b>나의 관심 스팟(즐겨찾기) 조회</b>
+     * <b>나의 관심 스팟(즐겨찾기) 등록/삭제</b>
      *
      * @param memberId {@link State}로 주입된 MemberId
      * @return List<String>
