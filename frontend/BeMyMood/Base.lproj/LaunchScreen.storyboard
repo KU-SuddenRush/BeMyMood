@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5Jc-By-Htc">
-                                <rect key="frame" x="0.0" y="59" width="393" height="600"/>
+                                <rect key="frame" x="0.0" y="109" width="393" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="600" id="P22-BD-b35"/>
                                 </constraints>
@@ -26,7 +26,7 @@
                         <color key="backgroundColor" red="0.91764705882352937" green="0.9137254901960784" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="5Jc-By-Htc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0ES-aR-Pks"/>
-                            <constraint firstItem="5Jc-By-Htc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lPp-PR-kcl"/>
+                            <constraint firstItem="5Jc-By-Htc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="jQh-Lb-YKJ"/>
                             <constraint firstItem="5Jc-By-Htc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lkc-6r-O8c"/>
                         </constraints>
                     </view>

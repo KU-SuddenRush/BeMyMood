@@ -40,6 +40,9 @@
 		ACC9DBB22A8BE106000FEDF9 /* LoginLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBB12A8BE106000FEDF9 /* LoginLayout.swift */; };
 		ACC9DBB42A8BE120000FEDF9 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBB32A8BE120000FEDF9 /* SignupViewController.swift */; };
 		ACC9DBB62A8BE12E000FEDF9 /* SignupLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBB52A8BE12E000FEDF9 /* SignupLayout.swift */; };
+		ACC9DE562A8BFF1B00A1DA78 /* SignUpModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DE552A8BFF1B00A1DA78 /* SignUpModal.swift */; };
+		ACC9DE582A8C178200A1DA78 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DE572A8C178200A1DA78 /* ApiClient.swift */; };
+		ACC9DE5A2A8C180300A1DA78 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DE592A8C180300A1DA78 /* ApiModel.swift */; };
 		ACE4E6002A8A3CF000BE3150 /* MoodBoardEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */; };
 		ACE4E6022A8A3D0B00BE3150 /* MoodBoardEditLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */; };
 		ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */; };
@@ -124,6 +127,9 @@
 		ACC9DBB12A8BE106000FEDF9 /* LoginLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLayout.swift; sourceTree = "<group>"; };
 		ACC9DBB32A8BE120000FEDF9 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		ACC9DBB52A8BE12E000FEDF9 /* SignupLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLayout.swift; sourceTree = "<group>"; };
+		ACC9DE552A8BFF1B00A1DA78 /* SignUpModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModal.swift; sourceTree = "<group>"; };
+		ACC9DE572A8C178200A1DA78 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		ACC9DE592A8C180300A1DA78 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardEditViewController.swift; sourceTree = "<group>"; };
 		ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardEditLayout.swift; sourceTree = "<group>"; };
 		ACF16DC62A7D4CE50010CF21 /* BeMyMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -326,6 +332,9 @@
 				ACC9DBB12A8BE106000FEDF9 /* LoginLayout.swift */,
 				ACC9DBB32A8BE120000FEDF9 /* SignupViewController.swift */,
 				ACC9DBB52A8BE12E000FEDF9 /* SignupLayout.swift */,
+				ACC9DE552A8BFF1B00A1DA78 /* SignUpModal.swift */,
+				ACC9DE572A8C178200A1DA78 /* ApiClient.swift */,
+				ACC9DE592A8C180300A1DA78 /* ApiModel.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -681,6 +690,7 @@
 				2E1BF3092A8A4BA300C58138 /* MoodBottomSheet.swift in Sources */,
 				2ECD05252A81182100FC3FF3 /* FirstViewController.swift in Sources */,
 				ACC9DBAE2A8B8B19000FEDF9 /* StickerCell.swift in Sources */,
+				ACC9DE5A2A8C180300A1DA78 /* ApiModel.swift in Sources */,
 				2E4FEC0D2A87809300EDA21A /* SpotCell.swift in Sources */,
 				ACC9DBAC2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift in Sources */,
 				ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */,
@@ -689,7 +699,9 @@
 				ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */,
 				2E401BC62A88E85E00D77351 /* FilterOption.swift in Sources */,
 				2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */,
+				ACC9DE582A8C178200A1DA78 /* ApiClient.swift in Sources */,
 				ACC9DBB22A8BE106000FEDF9 /* LoginLayout.swift in Sources */,
+				ACC9DE562A8BFF1B00A1DA78 /* SignUpModal.swift in Sources */,
 				2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */,
 				ACE4E6022A8A3D0B00BE3150 /* MoodBoardEditLayout.swift in Sources */,
 				ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */,

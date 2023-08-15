@@ -57,7 +57,6 @@ class LoginViewController: UIViewController {
     }
     
     let loginBtn = UIButton().then{
-        $0.isEnabled = false
         $0.setTitle("로그인", for: .normal)
         $0.backgroundColor = .darkBrown
         $0.setTitleColor(.white, for: .normal)
@@ -67,7 +66,6 @@ class LoginViewController: UIViewController {
     }
     
     let signUpBtn = UIButton().then{
-        $0.isEnabled = false
         $0.setTitle("회원가입", for: .normal)
         $0.setTitleColor(.darkBrown_80, for: .normal)
         $0.backgroundColor = .clear
@@ -84,10 +82,15 @@ class LoginViewController: UIViewController {
         hierarchy()
         layout()
         
+        self.loginBtn.addTarget(self, action: #selector(loginBtnDidTab), for: .touchUpInside)
         self.signUpBtn.addTarget(self, action: #selector(signUpBtnDidTab), for: .touchUpInside)
     }
     
     //MARK: - Actions
+    @objc func loginBtnDidTab() {
+        ApiClient().login(self,LoginInput(email: email.text,password: password.text))
+    }
+    
     @objc func signUpBtnDidTab() {
         let signUpViewController = SignupViewController()
         self.navigationController?.pushViewController(signUpViewController, animated: true)

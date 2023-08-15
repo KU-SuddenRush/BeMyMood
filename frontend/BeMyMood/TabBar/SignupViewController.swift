@@ -131,7 +131,6 @@ class SignupViewController: UIViewController {
     }
     
     let signUpBtn = UIButton().then{
-        $0.isEnabled = false
         $0.setTitle("가입하기", for: .normal)
         $0.backgroundColor = .darkBrown
         $0.setTitleColor(.white, for: .normal)
@@ -149,6 +148,18 @@ class SignupViewController: UIViewController {
         
         hierarchy()
         layout()
+        
+        self.signUpBtn.addTarget(self, action: #selector(signUpBtnDidTab), for: .touchUpInside)
+    }
+    
+    @objc func signUpBtnDidTab() {
+        
+        let signUpModal = SignUpModal()
+        signUpModal.modalPresentationStyle = .overFullScreen
+        signUpModal.signupVCNavigationController = self.navigationController
+        
+        self.present(signUpModal, animated: false, completion: nil)
+        
     }
 }
 

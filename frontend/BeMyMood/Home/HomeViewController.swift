@@ -104,7 +104,7 @@ class HomeViewController: UIViewController {
     //MARK: - Actions
     
     @objc func nextBtnDidTab() {
-        let colorSelectionViewController = MoodBoardEditViewController()
+        let colorSelectionViewController = LoginViewController()
         self.navigationController?.pushViewController(colorSelectionViewController, animated: true)
         
     }
