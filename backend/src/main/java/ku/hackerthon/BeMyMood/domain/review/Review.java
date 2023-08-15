@@ -54,4 +54,6 @@ public class Review {
     public boolean equalSpot(Spot spot) {
         return this.spot.equals(spot);
     }
+
+    public boolean isOpen() { return this.opened; }
 }
