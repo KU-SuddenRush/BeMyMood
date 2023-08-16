@@ -17,7 +17,7 @@ public class MoodController {
 
     /**
      * <b>색상 리스트 반환</b>
-     * @return List<Long> -> id 리스트</String>
+     * @return List<Long> id 리스트</String>
      */
     @GetMapping("/color")
     public ResponseEntity<List<Long>> getAllColors() {
@@ -27,7 +27,7 @@ public class MoodController {
 
     /**
      * <b>분위기 리스트 반환</b>
-     * @return List<Long> -> id 리스트</String>
+     * @return List<Long> id 리스트</String>
      */
     @GetMapping("/vibe")
     public ResponseEntity<List<Long>> getAllVibes() {
