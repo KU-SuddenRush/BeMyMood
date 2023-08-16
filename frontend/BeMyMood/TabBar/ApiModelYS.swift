@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - GetLiquorDetailDTO
+// MARK: - GetSpotDataDTO
 struct GetSpotDataDTO: Codable {
     var spotInfos: [SpotInfo]
 }
@@ -20,4 +20,17 @@ struct SpotInfo: Codable {
     var spotThumbnailImageUrl: String
     var categoryName: String
     var moodNames: [String]
+}
+
+// MARK: - GetSpotDetailDTO
+struct GetSpotDetailDTO: Codable {
+    var spotId: Int
+    var bookmarked: Bool
+    var categoryName: String
+    var moodNames: [String]
+    var spotImageUrls: [String]
+    var address: String
+    var contact: String?
+    var operationInfo: String
+    var introduce: String
 }

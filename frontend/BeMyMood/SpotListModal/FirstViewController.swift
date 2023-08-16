@@ -58,10 +58,10 @@ class FirstViewController: UIViewController {
     func dataInit(){
         ApiClient.getSpotInfos { result in
             switch result {
-            case .success(let getReviewDetailDTO):
-                print(getReviewDetailDTO)
+            case .success(let getSpotDataDTO):
+                print(getSpotDataDTO)
                 self.spotData.removeAll()
-                for spotInfo in getReviewDetailDTO.spotInfos{
+                for spotInfo in getSpotDataDTO.spotInfos{
                     let spotId = spotInfo.spotId
                     let thumbnailImageUrl = spotInfo.spotThumbnailImageUrl
                     let isLiked = spotInfo.bookmarked
@@ -195,8 +195,11 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
         print("didSelectItemAt \(indexPath)")
 //        delegate?.moveToSpotDetail(spotId: spotData[indexPath.row].spotId)
         
-        /// TODO get Detail Info API
-        spotDetailNavigationController?.pushViewController(SpotDetailViewController(), animated: true)
+        let nextVC = SpotDetailViewController()
+//        nextVC.spotId = spotData[indexPath.row].spotId
+//        nextVC.dataInit()
+        
+        spotDetailNavigationController?.pushViewController(nextVC, animated: true)
     }
     
 }
@@ -264,10 +267,10 @@ extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDeleg
         
         ApiClient.getSpotInfosWithFilter(category: category, location: location, mood: nil){ result in
             switch result {
-            case .success(let getReviewDetailDTO):
-                print(getReviewDetailDTO)
+            case .success(let getSpotDataDTO):
+                print(getSpotDataDTO)
                 self.spotData.removeAll()
-                for spotInfo in getReviewDetailDTO.spotInfos{
+                for spotInfo in getSpotDataDTO.spotInfos{
                     let spotId = spotInfo.spotId
                     let thumbnailImageUrl = spotInfo.spotThumbnailImageUrl
                     let isLiked = spotInfo.bookmarked

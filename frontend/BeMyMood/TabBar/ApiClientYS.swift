@@ -22,8 +22,8 @@ extension ApiClient {
             .responseDecodable(of: GetSpotDataDTO.self) { response in
                 
                 switch response.result {
-                case .success(let getReviewDetailDTO):
-                    completion(.success(getReviewDetailDTO))
+                case .success(let getSpotDataDTO):
+                    completion(.success(getSpotDataDTO))
                 case .failure(let error):
                     completion(.failure(error))
                 }
@@ -44,7 +44,7 @@ extension ApiClient {
             requestUrl += "location_id=" + String(locationIndex + 1) + "&"
         }
         if let mood = mood, let moodIndex = Data.moodData.firstIndex(of: "#" + mood){
-            requestUrl += "mood_id=" + String(moodIndex + 1) + "&" // DB 저장구조상 태그가 mood 와 
+            requestUrl += "mood_id=" + String(moodIndex + 1) + "&" // DB 저장구조상 태그가 mood 와
         }
         
         print("* 필터링 스팟 조회 API 호출")
@@ -54,8 +54,28 @@ extension ApiClient {
             .responseDecodable(of: GetSpotDataDTO.self) { response in
                 
                 switch response.result {
-                case .success(let getReviewDetailDTO):
-                    completion(.success(getReviewDetailDTO))
+                case .success(let getSpotDataDTO):
+                    completion(.success(getSpotDataDTO))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+    
+    // 스팟 상세 조회
+    static func getSpotDetailInfo(spotId: Int, completion: @escaping (Swift.Result<GetSpotDetailDTO, Error>) -> Void) {
+
+        var requestUrl = baseURL + "/spot/" + String(spotId) + "/detail"
+        
+        print("* 스팟 상세 조회 API 호출")
+        print(requestUrl)
+
+        AF.request(requestUrl, method: .get)
+            .responseDecodable(of: GetSpotDetailDTO.self) { response in
+                
+                switch response.result {
+                case .success(let getSpotDetailDTO):
+                    completion(.success(getSpotDetailDTO))
                 case .failure(let error):
                     completion(.failure(error))
                 }

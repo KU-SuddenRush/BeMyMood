@@ -126,10 +126,10 @@ extension SecondViewController: FilterMoodDataDelegate {
         
         ApiClient.getSpotInfosWithFilter(category: category, location: location, mood: mood){ result in
             switch result {
-            case .success(let getReviewDetailDTO):
-                print(getReviewDetailDTO)
+            case .success(let getSpotDataDTO):
+                print(getSpotDataDTO)
                 self.spotData.removeAll()
-                for spotInfo in getReviewDetailDTO.spotInfos{
+                for spotInfo in getSpotDataDTO.spotInfos{
                     let spotId = spotInfo.spotId
                     let thumbnailImageUrl = spotInfo.spotThumbnailImageUrl
                     let isLiked = spotInfo.bookmarked
