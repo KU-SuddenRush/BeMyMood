@@ -12,13 +12,13 @@ let baseURL = "http://52.78.132.135"
 
 extension ApiClient {
     
-    // 리뷰 상세 보기
+    // 전체 스팟 조회
     static func getSpotInfos(completion: @escaping (Swift.Result<GetSpotDataDTO, Error>) -> Void) {
-        let requesetUrl = baseURL + "/spot/info/all"
+        let requestUrl = baseURL + "/spot/info/all"
         
-        print("* 리뷰 상세 보기 API 호출")
+        print("* 전체 스팟 조회 API 호출")
         
-        AF.request(requesetUrl, method: .get)
+        AF.request(requestUrl, method: .get)
             .responseDecodable(of: GetSpotDataDTO.self) { response in
                 
                 switch response.result {
@@ -30,5 +30,36 @@ extension ApiClient {
             }
     }
 
+    // 필터링 스팟 조회
+    static func getSpotInfosWithFilter(category:String?, location:String?, mood:String?, completion: @escaping (Swift.Result<GetSpotDataDTO, Error>) -> Void) {
+
+        var requestUrl = baseURL + "/spot/info/filter?"
+        print("mood in api")
+        print(mood)
+
+        if let category = category, let categoryIndex = Data.categoryData.firstIndex(of: category){
+            requestUrl += "category_id=" + String(categoryIndex + 1) + "&"
+        }
+        if let location = location, let locationIndex = Data.locationData.firstIndex(where: { $0.contains(location) }) {
+            requestUrl += "location_id=" + String(locationIndex + 1) + "&"
+        }
+        if let mood = mood, let moodIndex = Data.moodData.firstIndex(of: "#" + mood){
+            requestUrl += "mood_id=" + String(moodIndex + 1) + "&" // DB 저장구조상 태그가 mood 와 
+        }
+        
+        print("* 필터링 스팟 조회 API 호출")
+        print(requestUrl)
+
+        AF.request(requestUrl, method: .get)
+            .responseDecodable(of: GetSpotDataDTO.self) { response in
+                
+                switch response.result {
+                case .success(let getReviewDetailDTO):
+                    completion(.success(getReviewDetailDTO))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
 }
 

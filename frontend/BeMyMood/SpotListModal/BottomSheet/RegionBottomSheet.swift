@@ -14,7 +14,7 @@ protocol FilterRegionDataDelegate: AnyObject {
 
 class RegionBottomSheet: UIViewController {
     
-    var regions: [String] = ["성수동", "성현동", "자양동", "화양동", "강동", "상도동", "익선동", "미사동", "강일동", "상일동", "중곡동", "중계동", "금은동"]
+    var regions: [String] = ["성수동", "화양동", "익선동", "성현동", "자양동", "강동", "상도동", "미사동", "강일동", "상일동", "중곡동", "중계동", "금은동"]
     weak var delegate: FilterRegionDataDelegate?
 
     //MARK: - UIComponents
