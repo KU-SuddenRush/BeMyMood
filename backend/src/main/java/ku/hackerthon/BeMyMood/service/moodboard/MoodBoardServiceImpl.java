@@ -133,7 +133,12 @@ public class MoodBoardServiceImpl implements MoodBoardService {
 
     @Override
     public MoodBoardInfo getLastEditedMoodBoard(Member member) {
-        MoodBoard moodBoard = member.getMoodBoards().getLastEditedMoodBoard();
+        MoodBoard moodBoard;
+        try {
+            moodBoard = member.getMoodBoards().getLastEditedMoodBoard();
+        } catch (NullPointerException e) {
+            throw e;
+        }
 
         return new MoodBoardInfo(
                 moodBoard.getId(),
