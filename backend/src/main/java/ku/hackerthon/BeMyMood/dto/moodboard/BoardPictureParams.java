@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardPictureParams {
-    private Long spotImgId;
+    private String imgItemUrl;
     private Double locationX;
     private Double locationY;
     private Double width;

@@ -19,6 +19,7 @@ import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardResponseDto;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import ku.hackerthon.BeMyMood.service.storage.StorageService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +28,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -57,7 +59,7 @@ public class MoodBoardServiceImpl implements MoodBoardService {
                 pictures.add(
                         new MoodBoardPicture(
                                 moodBoard,
-                                spotService.searchSpotImgById(pictureParam.getSpotImgId()),
+                                pictureParam.getImgItemUrl(),
                                 pictureParam.getLocationX(),
                                 pictureParam.getLocationY(),
                                 pictureParam.getWidth(),
@@ -160,8 +162,9 @@ public class MoodBoardServiceImpl implements MoodBoardService {
         for (MoodBoardPicture picture : allPictures) {
             moodBoardDetail.getPictures().add(
                     new BoardPictureDetailParams(
-                            picture.getId(),
-                            picture.getSpotImage().getImgUrl(),
+                            //picture.getId(),
+                            //picture.getSpotImage().getImgUrl(),
+                            picture.getImgItemUrl(),
                             picture.getLocationX(),
                             picture.getLocationY(),
                             picture.getWidth(),
