@@ -10,6 +10,8 @@ import SwiftUI
 
 class DetailViewController: UIViewController {
     
+    var tempData: SpotDetailInfos!
+        
     //MARK: - UIComponents
     private let scrollView = UIScrollView()
     private let contentView = DetailVerticalScrollContentView()
@@ -17,10 +19,12 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        contentView.tempData = self.tempData
+        
         setViews()
         setViewConstraints()
         
-        self.scrollView.delegate = self        
+        self.scrollView.delegate = self
     }
     
     func setViews(){
@@ -58,11 +62,20 @@ extension DetailViewController: UIScrollViewDelegate{
 
 //MARK: - content
 class DetailVerticalScrollContentView: UIView{
+    
+    var tempData: SpotDetailInfos!
 
     //MARK: - UIComponents : 사진 컬렉션뷰
-    let imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
-        $0.backgroundColor = .lightGray
-    }
+    let imageCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+//        layout.minimumInteritemSpacing = 0
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let imageCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        imageCV.backgroundColor = .white
+        imageCV.isPagingEnabled = true
+        return imageCV
+    }()
     
     //MARK: - UIComponents : 기본 정보
     let basicInfoView = UIView().then{
@@ -139,12 +152,14 @@ class DetailVerticalScrollContentView: UIView{
         super.init(frame: frame)
         hierarchy()
         layout()
+        setupImageCollectionView()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         hierarchy()
         layout()
+        setupImageCollectionView()
     }
     
     func hierarchy(){
@@ -278,6 +293,37 @@ class DetailVerticalScrollContentView: UIView{
         }
         
     }
+}
+
+extension DetailVerticalScrollContentView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func setupImageCollectionView() {
+        imageCollectionView.dataSource = self
+        imageCollectionView.delegate = self
+        imageCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "imageCell")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tempData.spotThumbnailImageUrl.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath)
+        
+        let imageView = UIImageView(frame: cell.contentView.bounds)
+        imageView.loadImage(from: tempData.spotThumbnailImageUrl[indexPath.row])
+        cell.contentView.addSubview(imageView)
+        
+        return cell
+    }
+    
+    // CollectionView Cell의 Size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
 }
 
 struct DetailVCPreView:PreviewProvider {

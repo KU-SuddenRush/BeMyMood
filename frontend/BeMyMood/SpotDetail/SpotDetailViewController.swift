@@ -31,12 +31,9 @@ class SpotDetailViewController: UIViewController {
     }()
     
     let slidingTabVC = UISlidingTabController().then{
-        $0.addItem(item: DetailViewController(), title: "상세정보")
-        $0.addItem(item: UIViewController(), title: "리뷰")
         $0.setHeaderActiveColor(color: .orange)
         $0.setHeaderInActiveColor(color: .black)
         $0.setHeaderBackgroundColor(color: .white)
-        $0.build()
     }
     
     let addModeBoardView = UIView().then{
@@ -60,6 +57,10 @@ class SpotDetailViewController: UIViewController {
     
     func dataInit(){
         categoryLabel.text = tempData.categoryName
+        
+        slidingTabVC.addItem(item: DetailViewController().then{ $0.tempData = self.tempData }, title: "상세정보")
+        slidingTabVC.addItem(item: UIViewController(), title: "리뷰")
+        slidingTabVC.build()
     }
     
 }
