@@ -148,9 +148,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void review(ReviewRequestDto requestDto, Long memberId) throws IOException {
+    public void review(ReviewRequestDto requestDto, Long spotId, Long memberId) throws IOException {
         Member member = searchById(memberId);
-        Spot spot = spotService.searchById(requestDto.getSpotId());
+        Spot spot = spotService.searchById(spotId);
         Review review = new Review(
                 requestDto.getDescription(),
                 LocalDate.now(),

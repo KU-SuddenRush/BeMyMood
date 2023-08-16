@@ -32,30 +32,6 @@ public class MemberController {
     private final StorageService storageService;
     private final SpotService spotService;
 
-    /**
-     * <b>Member의 간단한 정보 조회 (테스트용)</b>
-     *
-     * @param memberId {@link State}로 주입된 MemberId <- 세션 저장소에 저장된 MemberId
-     * @return
-     */
-    @GetMapping("/info")
-    public ResponseEntity<MemberInfoResponseDto> getMemberInfo(@State Long memberId) {
-        MemberInfoResponseDto responseDto = memberService.searchMemberInfoById(memberId);
-        return ResponseEntity.ok(responseDto);
-    }
-
-    /**
-     * <b>이미지 업로드 (테스트영)</b>
-     *
-     * @param file 업로드할 사진
-     * @return
-     */
-    @PostMapping("/image")
-    public ResponseEntity<String> uploadImage(@RequestPart(name = "file") MultipartFile file) throws IOException {
-        String uploadedUrl = storageService.uploadToS3(file, randomFileName());
-        return ResponseEntity.ok(uploadedUrl);
-    }
-
     private static String randomFileName() {
         return UUID.randomUUID().toString().substring(8);
     }
@@ -145,25 +121,33 @@ public class MemberController {
     /**
      * <b>Member의 리뷰 등록</b>
      * @param requestDto
-     * @param files
      * @param memberId
      * @return
      * @throws IOException
      */
-    @PostMapping("/review")
-    public ResponseEntity<String> review(
-            @RequestPart("data") ReviewRequestDto requestDto,
-            @RequestPart("files") List<MultipartFile> files,
+    @PostMapping("/review/data")
+    public ResponseEntity<String> reviewData(
+            @RequestBody ReviewRequestDto requestDto,
+            @RequestParam("spot-id") Long spotId,
             @State Long memberId
     ) throws IOException {
-        memberService.review(requestDto, memberId);
-
-        // 한 회원이 하나의 가게에 작성할 수 있는 리뷰를 1개로 제한
-        memberService.setReviewImages(requestDto.getSpotId(), memberId, files);
-
-        return ResponseEntity.ok("리뷰 등록에 성공했습니다.");
+        memberService.review(requestDto, spotId, memberId);
+        return ResponseEntity.ok("리뷰 정보 등록에 성공했습니다.");
     }
 
+    /**
+     * <b>Member의 리뷰 사진 등록</b>
+     */
+    @PostMapping("/review/image")
+    public ResponseEntity<String> reviewImages(
+            @RequestPart("images") List<MultipartFile> images,
+            @RequestParam("spot-id") Long spotId,
+            @State Long memberId
+    ) throws IOException {
+        // 한 회원이 하나의 가게에 작성할 수 있는 리뷰를 1개로 제한
+        memberService.setReviewImages(spotId, memberId, images);
+        return ResponseEntity.ok("리뷰 이미지 등록에 성공했습니다.");
+    }
 
     /**
      * <b>Member의 전체 리뷰 조회</b>

@@ -34,7 +34,7 @@ public interface MemberService {
 
     List<String> getPreferredLocationNames(Long memberId);
 
-    void review(ReviewRequestDto requestDto, Long memberId) throws IOException;
+    void review(ReviewRequestDto requestDto, Long spotId, Long memberId) throws IOException;
 
     List<ReviewResponseDto> findAllReviewByMemberID(Long memberId);
 
