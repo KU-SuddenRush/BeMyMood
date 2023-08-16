@@ -6,12 +6,9 @@ import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.member.request.BookmarkSettingRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.request.MemberMoodRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.BadgeResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.MemberInfoResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.*;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberLocationRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.request.ReviewRequestDto;
-import ku.hackerthon.BeMyMood.dto.web.response.MemberMoodResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.ReviewResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.mood.BadgeService;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
@@ -58,11 +55,11 @@ public class MemberController {
      *                 List<String> 색상/분위기 리스트
      */
     @PostMapping("/mood")
-    public ResponseEntity<String> setMemberMood(
+    public ResponseEntity<StringResponseDto> setMemberMood(
             @RequestBody MemberMoodRequestDto requestDto,
             @State Long memberId) {
         memberService.setMemberMood(requestDto.getMoodIds(), memberId);
-        return ResponseEntity.ok("내가 좋아하는 무드 저장에 성공하였습니다.");
+        return ResponseEntity.ok(new StringResponseDto("내가 좋아하는 무드 저장에 성공하였습니다."));
     }
 
     /**
