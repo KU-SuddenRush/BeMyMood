@@ -58,7 +58,6 @@ public class AuthController {
                         requestDto.getEmail(), requestDto.getPassword()
                 )
         );
-
         storeState(request, responseDto.getMemberId());
         return ResponseEntity.ok(responseDto);
     }
