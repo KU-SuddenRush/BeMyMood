@@ -32,8 +32,18 @@ class FirstViewController: UIViewController {
         $0.backgroundColor = .white
     }
     
-    let filterCategoryBtn = FilterOption(title: "카테고리")
-    let filterRegionBtn = FilterOption(title: "지역")
+    let filterCategoryBtn: FilterOption = {
+        let FCBtn = FilterOption(title: "카테고리")
+        FCBtn.layer.cornerRadius = FCBtn.frame.height / 2 + 3
+        return FCBtn
+    }()
+
+    let filterRegionBtn: FilterOption = {
+        let FRBtn = FilterOption(title: "지역")
+        FRBtn.layer.cornerRadius = FRBtn.frame.height / 2 + 3
+        return FRBtn
+    }()
+    
     let filterIcon = UIButton().then {
         $0.setImage(UIImage(named: "filter")?.withRenderingMode(.alwaysOriginal), for: .normal)
         $0.setImage(UIImage(named: "filter.fill")?.withRenderingMode(.alwaysOriginal), for: .selected)
@@ -49,10 +59,8 @@ class FirstViewController: UIViewController {
         hierarchy()
         layout()
         
-        filterCategoryBtn.layer.cornerRadius = filterCategoryBtn.frame.height / 2
         filterCategoryBtn.addTarget(self, action: #selector(filterCategoryBtnTapped), for: .touchUpInside)
 
-        filterRegionBtn.layer.cornerRadius = filterRegionBtn.frame.height / 2
         filterRegionBtn.addTarget(self, action: #selector(filterRegionBtnTapped), for: .touchUpInside)
     }
     

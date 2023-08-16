@@ -18,13 +18,12 @@ class FilterOption: UIButton {
         setImage(UIImage(named: "chevron.down")?.withRenderingMode(.alwaysOriginal), for: .normal)
         setImage(UIImage(named: "chevron.down.fill")?.withRenderingMode(.alwaysOriginal), for: .selected)
 
-        tintColor = .lightGray
-        setTitleColor(.lightGray, for: .normal)
-        setTitleColor(.orange, for: .selected)
+        setTitleColor(UIColor.darkBrown_80, for: .normal)
+        setTitleColor(UIColor.orange, for: .selected)
 
         semanticContentAttribute = .forceRightToLeft
 
-        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderColor = UIColor.darkBrown_80.cgColor
         layer.borderWidth = 1.0
 
         // 내부 간격 설정
