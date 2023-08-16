@@ -4,7 +4,7 @@ import ku.hackerthon.BeMyMood.aop.annotation.State;
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoard;
 import ku.hackerthon.BeMyMood.domain.review.Review;
-import ku.hackerthon.BeMyMood.dto.moodboard.MoodBoardParams;
+import ku.hackerthon.BeMyMood.dto.moodboard.MoodBoardInfo;
 import ku.hackerthon.BeMyMood.dto.moodboard.SpotSignatureImageParams;
 import ku.hackerthon.BeMyMood.dto.web.request.MoodBoardRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.request.SpotSignatureImagesResponseDto;
@@ -61,17 +61,7 @@ public class MoodBoardController {
     @GetMapping("/picture/spot-signature")
     public ResponseEntity<SpotSignatureImagesResponseDto> getSpotSignatureImages(@State Long memberId) {
         Member member = memberService.searchById(memberId);
-        List<Review> allOpenReviews = member.getReviews().getAllReview().stream()
-                .filter(review -> review.isOpen())
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(new SpotSignatureImagesResponseDto(
-                allOpenReviews.stream()
-                        .map(review -> new SpotSignatureImageParams(
-                                review.getSpot().getSpotImages().getMainImage().getId(),
-                                review.getSpot().getSpotImages().getMainImage().getImgUrl()
-                        )).collect(Collectors.toList())));
-
+        return ResponseEntity.ok(moodBoardService.getSpotSignatureImages(member));
     }
 
     /**
@@ -83,15 +73,20 @@ public class MoodBoardController {
     @GetMapping
     public ResponseEntity<MoodBoardResponseDto> getAllMoodBoards(@State Long memberId) {
         Member member = memberService.searchById(memberId);
-        List<MoodBoard> allMoodBoards = member.getMoodBoards().getAllMoodBoards();
+        return ResponseEntity.ok(moodBoardService.getAllMoodBoards(member));
+    }
 
-        return ResponseEntity.ok(new MoodBoardResponseDto(
-                allMoodBoards.stream()
-                        .map(moodBoard -> new MoodBoardParams(
-                                moodBoard.getId(),
-                                moodBoard.getName(),
-                                moodBoard.getCaptureImgUrl()
-                        )).collect(Collectors.toList())));
+    /**
+     * <b>가장 최근에 편집한 무드보드 조회</b>
+     *
+     * @param memberId {@link State}로 주입된 MemberId
+     * @return MoodBoardResponseDto
+     */
+    @GetMapping("/last")
+    public ResponseEntity<MoodBoardInfo> getLastEditedMoodBoard(@State Long memberId) {
+        Member member = memberService.searchById(memberId);
+        return ResponseEntity.ok(moodBoardService.getLastEditedMoodBoard(member));
+
     }
 
 }
