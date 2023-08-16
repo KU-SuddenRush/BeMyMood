@@ -107,6 +107,12 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         
+        let title = UserDefaults.standard.string(forKey: "name")
+        
+        if  title != nil {
+            homeTitle.text = title! + "님을 담을,"
+        }
+        
         ApiClient().getMyMood() { result in
             if !result.moodIds.isEmpty{
                 self.moodCount.text = "무드 \(result.count ?? 0)"

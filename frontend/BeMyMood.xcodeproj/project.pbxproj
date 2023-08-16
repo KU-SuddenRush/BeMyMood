@@ -38,6 +38,9 @@
 		AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */; };
 		AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */; };
 		AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */; };
+		AC3D619F2A8D2A6700499988 /* MoodBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D619E2A8D2A6700499988 /* MoodBoardCell.swift */; };
+		AC3D61A12A8D385700499988 /* MoodBoardImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D61A02A8D385700499988 /* MoodBoardImageViewController.swift */; };
+		AC3D61A32A8D389700499988 /* MoodBoardImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D61A22A8D389700499988 /* MoodBoardImageCell.swift */; };
 		AC400F212A8CAD1100353B81 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC400F202A8CAD1100353B81 /* Data.swift */; };
 		AC72EA182A8CE37900B41E28 /* RecentMoodBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72EA172A8CE37900B41E28 /* RecentMoodBoardViewController.swift */; };
 		AC72EA1A2A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72EA192A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift */; };
@@ -137,6 +140,9 @@
 		AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchLayout.swift; sourceTree = "<group>"; };
 		AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultCell.swift; sourceTree = "<group>"; };
+		AC3D619E2A8D2A6700499988 /* MoodBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardCell.swift; sourceTree = "<group>"; };
+		AC3D61A02A8D385700499988 /* MoodBoardImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardImageViewController.swift; sourceTree = "<group>"; };
+		AC3D61A22A8D389700499988 /* MoodBoardImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardImageCell.swift; sourceTree = "<group>"; };
 		AC400F202A8CAD1100353B81 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		AC72EA172A8CE37900B41E28 /* RecentMoodBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMoodBoardViewController.swift; sourceTree = "<group>"; };
 		AC72EA192A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredMoodBoardViewController.swift; sourceTree = "<group>"; };
@@ -427,6 +433,7 @@
 				ACC9DBAB2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift */,
 				AC72EA172A8CE37900B41E28 /* RecentMoodBoardViewController.swift */,
 				AC72EA192A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift */,
+				AC3D61A02A8D385700499988 /* MoodBoardImageViewController.swift */,
 			);
 			path = MoodBoard;
 			sourceTree = "<group>";
@@ -457,6 +464,8 @@
 				AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */,
 				ACC9DBA32A8A6BC4000FEDF9 /* ColorCell.swift */,
 				ACC9DBAD2A8B8B19000FEDF9 /* StickerCell.swift */,
+				AC3D619E2A8D2A6700499988 /* MoodBoardCell.swift */,
+				AC3D61A22A8D389700499988 /* MoodBoardImageCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -767,6 +776,7 @@
 				ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */,
 				AC0624442A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift in Sources */,
 				ACC9DBB02A8BE0FB000FEDF9 /* LoginViewController.swift in Sources */,
+				AC3D619F2A8D2A6700499988 /* MoodBoardCell.swift in Sources */,
 				ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */,
 				2E401BC62A88E85E00D77351 /* FilterOption.swift in Sources */,
 				2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */,
@@ -775,8 +785,10 @@
 				ACC9DE562A8BFF1B00A1DA78 /* SignUpModal.swift in Sources */,
 				2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */,
 				ACE4E6022A8A3D0B00BE3150 /* MoodBoardEditLayout.swift in Sources */,
+				AC3D61A12A8D385700499988 /* MoodBoardImageViewController.swift in Sources */,
 				ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */,
 				2E7032982A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift in Sources */,
+				AC3D61A32A8D389700499988 /* MoodBoardImageCell.swift in Sources */,
 				AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */,
 				ACF16DFA2A7D5D500010CF21 /* HomeLayout.swift in Sources */,
 				ACF16E1C2A8290A70010CF21 /* LocationSelectionViewController.swift in Sources */,

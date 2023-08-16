@@ -10,8 +10,11 @@ import Then
 import SnapKit
 import SwiftUI
 import StickerView
+import Kingfisher
 
 class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestureRecognizerDelegate {
+    
+    var selectColor = 0
     
     var _selectedStickerView:StickerView?
         var selectedStickerView:StickerView? {
@@ -42,7 +45,7 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
     func didAddSticker(tag: Int) {
         let testImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 116, height: 139))
         testImage.image = UIImage.stickers[tag]
-        testImage.contentMode = .scaleAspectFit
+        testImage.contentMode = .scaleToFill
         
         let sticker = StickerView.init(contentView: testImage)
         sticker.center = CGPoint.init(x: 150, y: 150)
@@ -163,6 +166,7 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
         
         self.textBtn.addTarget(self, action: #selector(addTextButtonTapped), for: .touchUpInside)
         self.stickerBtn.addTarget(self, action: #selector(stickerBtnDidTab), for: .touchUpInside)
+        self.photoBtn.addTarget(self, action: #selector(photoBtnDidTab), for: .touchUpInside)
 
     }
     
@@ -179,7 +183,8 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        self.view.backgroundColor = .color0
+        
+        self.view.backgroundColor = UIColor.colorList[selectColor]
     }
     
     
@@ -187,6 +192,7 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        selectedStickerView.hid
         UIView.animate(withDuration: 1){
             self.view.window?.frame.origin.y = 0
         }
@@ -218,6 +224,28 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
         StickerBottomSheetVC.modalPresentationStyle = .overFullScreen
         StickerBottomSheetVC.delegate = self
         self.present(StickerBottomSheetVC, animated: false, completion: nil)
+        
+    }
+    
+    @objc func photoBtnDidTab() {
+        let MoodBoardImageVC = MoodBoardImageViewController()
+        MoodBoardImageVC.completionHandler = {url in
+            var testImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 125, height: 180))
+            if let imageUrl = URL(string: url) {
+                testImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "addMoodBoard"))
+            }
+            testImage.contentMode = .scaleToFill
+            
+            let sticker = StickerView.init(contentView: testImage)
+            sticker.center = CGPoint.init(x: 150, y: 150)
+            sticker.delegate = self
+            sticker.setImage(UIImage.init(named: "deletePicture")!, forHandler: StickerViewHandler.close)
+            sticker.setImage(UIImage.init(named: "rotate")!, forHandler: StickerViewHandler.rotate)
+            sticker.showEditingHandlers = false
+            self.view.addSubview(sticker)
+            self.selectedStickerView = sticker
+        }
+        self.navigationController?.pushViewController(MoodBoardImageVC, animated: true)
         
     }
     
@@ -300,6 +328,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         cell.isSelected.toggle() // 셀의 isSelected 상태를 변경
         cell.row = indexPath.row
         self.view.backgroundColor = UIColor.colorList[indexPath.row]
+        selectColor = indexPath.row
         self.backgroundColorBtn.setImage(UIImage.colorIcon[indexPath.row], for: .normal)
         backgroundColorBtnStatus()
     }

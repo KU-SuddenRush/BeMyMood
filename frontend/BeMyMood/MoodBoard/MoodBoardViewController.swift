@@ -25,7 +25,7 @@ class MoodBoardViewController: UIViewController {
     
     let slidingTabVC = UISlidingTabController().then{
         $0.addItem(item: RecentMoodBoardViewController(), title: "최근")
-        $0.addItem(item: SecondViewController(), title: "저장된")
+        $0.addItem(item: StoredMoodBoardViewController(), title: "저장된")
         $0.setHeaderActiveColor(color: .orange)
         $0.setHeaderInActiveColor(color: .black)
         $0.setHeaderBackgroundColor(color: .white)

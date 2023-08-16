@@ -30,6 +30,7 @@ class ApiClient{
                     }
                     print(cookies)
                 }
+                UserDefaults.standard.set(result.memberName, forKey: "name")
                 let homeVC = TabBarController()
                 viewController.navigationController?.pushViewController(homeVC, animated: true)
             case .failure(let error):
@@ -134,15 +135,26 @@ class ApiClient{
         }
     }
     
-    func getProfile(completion: @escaping ([Int]) -> Void){
-        AF.request("http://52.78.132.135/mood/color", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: [Int].self) { response in
+    func getMyRecordImage(completion: @escaping (GetMyRecordImage) -> Void){
+        AF.request("http://52.78.132.135/moodboard/picture/review", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: GetMyRecordImage.self) { response in
             switch response.result {
             case .success(let result):
                 print(result)
                 completion(result)
             case .failure(let error):
                 print(error.localizedDescription)
-                completion([])
+            }
+        }
+    }
+    
+    func getMySpotImage(completion: @escaping (GetMySpotImage) -> Void){
+        AF.request("http://52.78.132.135/moodboard/picture/spot-signature", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: GetMySpotImage.self) { response in
+            switch response.result {
+            case .success(let result):
+                print(result)
+                completion(result)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
