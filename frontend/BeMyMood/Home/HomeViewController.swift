@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
     let badgeCount = UILabel().then{
         $0.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         $0.textColor = .darkBrown
-        $0.text = "뱃지 0"
+        $0.text = "뱃지 3"
     }
     
     let badgeBtn = UIButton().then{
@@ -131,10 +131,12 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-
-        updateLastCell()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { // 적절한 딜레이 값 설정
+            self.updateLastCell()
+        }
         /// Home Modal View 고정으로 구성 - 일단 제외
-//        showBottomSheet()
+        //        showBottomSheet()
     }
     
     //MARK: - Actions

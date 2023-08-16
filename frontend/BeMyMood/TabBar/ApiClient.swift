@@ -184,7 +184,7 @@ class ApiClient{
     }
     
     func postCaptureImage(_ parameter: UIImage, completion: @escaping (String) -> Void){
-        guard let imageData = parameter.jpegData(compressionQuality: 0.5) else {
+        guard let imageData = parameter.jpegData(compressionQuality: 1.0) else {
             print("이미지 데이터를 생성할 수 없습니다.")
             return
         }

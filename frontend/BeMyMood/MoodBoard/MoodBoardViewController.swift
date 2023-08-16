@@ -16,7 +16,7 @@ class MoodBoardViewController: UIViewController {
     
     let moodBoardTitle = UILabel().then{
         $0.backgroundColor = .white
-        $0.font = .boldSystemFont(ofSize: 20)
+        $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         $0.textAlignment = .center
         $0.textColor = .black
         

@@ -41,6 +41,7 @@
 		AC3D619F2A8D2A6700499988 /* MoodBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D619E2A8D2A6700499988 /* MoodBoardCell.swift */; };
 		AC3D61A12A8D385700499988 /* MoodBoardImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D61A02A8D385700499988 /* MoodBoardImageViewController.swift */; };
 		AC3D61A32A8D389700499988 /* MoodBoardImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D61A22A8D389700499988 /* MoodBoardImageCell.swift */; };
+		AC3D61A52A8D81B200499988 /* PopularViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D61A42A8D81B200499988 /* PopularViewcontroller.swift */; };
 		AC400F212A8CAD1100353B81 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC400F202A8CAD1100353B81 /* Data.swift */; };
 		AC72EA182A8CE37900B41E28 /* RecentMoodBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72EA172A8CE37900B41E28 /* RecentMoodBoardViewController.swift */; };
 		AC72EA1A2A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72EA192A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift */; };
@@ -143,6 +144,7 @@
 		AC3D619E2A8D2A6700499988 /* MoodBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardCell.swift; sourceTree = "<group>"; };
 		AC3D61A02A8D385700499988 /* MoodBoardImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardImageViewController.swift; sourceTree = "<group>"; };
 		AC3D61A22A8D389700499988 /* MoodBoardImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardImageCell.swift; sourceTree = "<group>"; };
+		AC3D61A42A8D81B200499988 /* PopularViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewcontroller.swift; sourceTree = "<group>"; };
 		AC400F202A8CAD1100353B81 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		AC72EA172A8CE37900B41E28 /* RecentMoodBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMoodBoardViewController.swift; sourceTree = "<group>"; };
 		AC72EA192A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredMoodBoardViewController.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 			children = (
 				ACF16E052A7D6BA00010CF21 /* CommunityLayout.swift */,
 				ACF16E032A7D6B900010CF21 /* CommunityViewController.swift */,
+				AC3D61A42A8D81B200499988 /* PopularViewcontroller.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				2E1BF30C2A8A6A4300C58138 /* SpotDetailViewController.swift in Sources */,
 				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
 				2E70329A2A8CAEEF00AD4593 /* RecommendCell.swift in Sources */,
+				AC3D61A52A8D81B200499988 /* PopularViewcontroller.swift in Sources */,
 				2ECD051C2A80FFE500FC3FF3 /* SpotListModalLayout.swift in Sources */,
 				2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */,
 				ACC9DBA62A8AA36C000FEDF9 /* UIImage.swift in Sources */,
