@@ -32,7 +32,7 @@ public interface MemberService {
 
     boolean setMemberLocation(List<Long> locationIds, Long memberId);
 
-    List<String> getPreferredLocationNames(Long memberId);
+    List<Long> getPreferredLocationNames(Long memberId);
 
     void review(ReviewRequestDto requestDto, Long spotId, Long memberId) throws IOException;
 
