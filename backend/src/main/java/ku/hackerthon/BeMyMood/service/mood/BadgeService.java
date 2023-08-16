@@ -24,14 +24,15 @@ public class BadgeService {
     }
 
     public List<BadgeResponseDto> getBadgesByMemberId(Long memberId) {
-        List<Badge> badges = badgeRepository.findAllByMemberId(memberId);
+        List<Badge> badges = badgeRepository.findOpensByMemberId(memberId);
 
         return badges.stream()
                 .map(badge -> new BadgeResponseDto(
                             badge.getImageUrl(),
                             badge.getName(),
                             badge.getMood().getName(),
-                            badge.getDescription()
+                            badge.getDescription(),
+                            true
                     )
                 ).collect(Collectors.toList());
     }
@@ -42,17 +43,37 @@ public class BadgeService {
     }
 
     public List<BadgeResponseDto> getAllBadges(Member member) {
+        List<BadgeResponseDto> gainedBadgesDto = getGainedBadges(member);
+        List<BadgeResponseDto> lockedBadgesDto = getLockedBadges(member);
+
+        gainedBadgesDto.addAll(lockedBadgesDto);
+
+        return gainedBadgesDto;
+    }
+
+    private List<BadgeResponseDto> getGainedBadges(Member member) {
         List<Badge> badges = member.getMemberBadges()
                                    .getBadges();
+        return badges.stream()
+                .map(badge -> new BadgeResponseDto(
+                            badge.getImageUrl(),
+                            badge.getName(),
+                            badge.getMood().getName(),
+                            badge.getDescription(),
+                            true
+                        )
+                ).collect(Collectors.toList());
+    }
 
-        badges.addAll(badgeRepository.findAllLockedBy(member));
-
+    private List<BadgeResponseDto> getLockedBadges(Member member) {
+        List<Badge> badges = badgeRepository.findAllLockedBy(member);
         return badges.stream()
                 .map(badge -> new BadgeResponseDto(
                                 badge.getImageUrl(),
                                 badge.getName(),
                                 badge.getMood().getName(),
-                                badge.getDescription()
+                                badge.getDescription(),
+                                false
                         )
                 ).collect(Collectors.toList());
     }

@@ -173,7 +173,7 @@ public class MemberController {
         return ResponseEntity.ok(requestDtos);
     }
 
-    @GetMapping("/badge")
+    @GetMapping("/badge/gained")
     public ResponseEntity<List<BadgeResponseDto>> badgeInfos(@State Long memberId) {
         List<BadgeResponseDto> responseDtos = badgeService.getBadgesByMemberId(memberId);
         return ResponseEntity.ok(responseDtos);

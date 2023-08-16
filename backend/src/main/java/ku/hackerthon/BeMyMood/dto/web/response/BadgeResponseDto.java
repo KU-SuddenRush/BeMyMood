@@ -11,4 +11,5 @@ public class BadgeResponseDto {
     private String badgeName;
     private String moodName;
     private String description;
+    private Boolean gained;
 }

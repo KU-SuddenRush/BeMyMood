@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Repository
@@ -21,13 +22,18 @@ public class BadgeRepository {
                 .getSingleResult();
     }
 
-    public List<Badge> findAllByMemberId(Long memberId) {
+    public List<Badge> findOpensByMemberId(Long memberId) {
         return em.createQuery("select mb.badge from MemberBadge mb where mb.member.id = :id", Badge.class)
                 .setParameter("id", memberId)
                 .getResultList();
     }
 
     public List<Badge> findAllLockedBy(Member member) {
-        return null;
+        List<Badge> badges = em.createQuery("select b from Badge b", Badge.class)
+                .getResultList();
+
+        return badges.stream()
+                .filter(badge -> !member.hasBadge(badge))
+                .collect(Collectors.toList());
     }
 }
