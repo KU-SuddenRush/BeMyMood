@@ -39,6 +39,19 @@ public class MemberController {
         return UUID.randomUUID().toString().substring(8);
     }
 
+
+    /**
+     * <b>Member의 간단한 정보 조회 (테스트용)</b>
+     *
+     * @param memberId {@link State}로 주입된 MemberId <- 세션 저장소에 저장된 MemberId
+     * @return
+     */
+    @GetMapping("/info")
+    public ResponseEntity<MemberInfoResponseDto> getMemberInfo(@State Long memberId) {
+        MemberInfoResponseDto responseDto = memberService.searchMemberInfoById(memberId);
+        return ResponseEntity.ok(responseDto);
+    }
+    
     /**
      * <b>Member의 색상/분위기 취향 입력/수정</b>
      * @param memberId {@link State}로 주입된 MemberId,
