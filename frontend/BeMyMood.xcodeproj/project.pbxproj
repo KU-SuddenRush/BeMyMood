@@ -23,6 +23,8 @@
 		2E70329E2A8CD6C100AD4593 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E70329D2A8CD6C100AD4593 /* ReviewViewController.swift */; };
 		2E7032A02A8CD79E00AD4593 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E70329F2A8CD79E00AD4593 /* ReviewCell.swift */; };
 		2E7032A22A8CD93800AD4593 /* Nicknames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032A12A8CD93800AD4593 /* Nicknames.swift */; };
+		2E8798DD2A8D688700625802 /* ApiClientYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8798DC2A8D688700625802 /* ApiClientYS.swift */; };
+		2E8798DF2A8D689500625802 /* ApiModelYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8798DE2A8D689500625802 /* ApiModelYS.swift */; };
 		2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A21242A8768A700750119 /* UISlidingTabController.swift */; };
 		2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05162A80F72700FC3FF3 /* UIViewController.swift */; };
 		2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */; };
@@ -124,6 +126,8 @@
 		2E70329D2A8CD6C100AD4593 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		2E70329F2A8CD79E00AD4593 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		2E7032A12A8CD93800AD4593 /* Nicknames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nicknames.swift; sourceTree = "<group>"; };
+		2E8798DC2A8D688700625802 /* ApiClientYS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientYS.swift; sourceTree = "<group>"; };
+		2E8798DE2A8D689500625802 /* ApiModelYS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModelYS.swift; sourceTree = "<group>"; };
 		2E9A21242A8768A700750119 /* UISlidingTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISlidingTabController.swift; sourceTree = "<group>"; };
 		2ECD05162A80F72700FC3FF3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModalViewController.swift; sourceTree = "<group>"; };
@@ -401,6 +405,8 @@
 				ACC9DE592A8C180300A1DA78 /* ApiModel.swift */,
 				AC400F202A8CAD1100353B81 /* Data.swift */,
 				AC72EA1B2A8D02D800B41E28 /* CustomInterceptor.swift */,
+				2E8798DC2A8D688700625802 /* ApiClientYS.swift */,
+				2E8798DE2A8D689500625802 /* ApiModelYS.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -755,6 +761,7 @@
 				AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */,
 				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
 				ACF16E1A2A828EE10010CF21 /* ColorSelectionViewController.swift in Sources */,
+				2E8798DD2A8D688700625802 /* ApiClientYS.swift in Sources */,
 				AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */,
 				ACF16E042A7D6B900010CF21 /* CommunityViewController.swift in Sources */,
 				ACF16E182A828ECF0010CF21 /* MoodSelectionViewController.swift in Sources */,
@@ -783,6 +790,7 @@
 				AC3D619F2A8D2A6700499988 /* MoodBoardCell.swift in Sources */,
 				ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */,
 				2E401BC62A88E85E00D77351 /* FilterOption.swift in Sources */,
+				2E8798DF2A8D689500625802 /* ApiModelYS.swift in Sources */,
 				2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */,
 				ACC9DE582A8C178200A1DA78 /* ApiClient.swift in Sources */,
 				ACC9DBB22A8BE106000FEDF9 /* LoginLayout.swift in Sources */,

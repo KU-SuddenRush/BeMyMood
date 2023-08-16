@@ -92,6 +92,7 @@ extension SecondViewController: FilterMoodDataDelegate {
         filterMoodBtn.layer.borderColor = UIColor.orange.cgColor
         updateFilterIconColor()
         /// 검색 with filter option API 호출
+        updateSpotCollectionView()
     }
     
     override func updateFilterIconColor(){
@@ -99,6 +100,50 @@ extension SecondViewController: FilterMoodDataDelegate {
             filterIcon.isSelected = true
         }else{
             filterIcon.isSelected = false
+        }
+    }
+    
+    override func updateSpotCollectionView(){
+        var category: String?
+        var location: String?
+        var mood: String?
+        
+        category = filterCategoryBtn.titleLabel?.text
+        if category == "카테고리" {
+            category = nil
+        }
+        location = filterRegionBtn.titleLabel?.text
+        if location == "지역" {
+            location = nil
+        }
+        mood = filterMoodBtn.titleLabel?.text
+        if mood == "무드" {
+            mood = nil
+        }
+        print("category is \(category)")
+        print("location is \(location)")
+        print("mood is \(mood)")
+        
+        ApiClient.getSpotInfosWithFilter(category: category, location: location, mood: mood){ result in
+            switch result {
+            case .success(let getSpotDataDTO):
+                print(getSpotDataDTO)
+                self.spotData.removeAll()
+                for spotInfo in getSpotDataDTO.spotInfos{
+                    let spotId = spotInfo.spotId
+                    let thumbnailImageUrl = spotInfo.spotThumbnailImageUrl
+                    let isLiked = spotInfo.bookmarked
+                    let spotType = spotInfo.categoryName
+                    let spotTitle = spotInfo.spotName
+                    let tags = spotInfo.moodNames
+                    
+                    self.spotData.append(SpotData(spotId: spotId, thumbnailImageUrl: thumbnailImageUrl, isLiked: isLiked, spotType: spotType, spotTitle: spotTitle, tags: tags))
+                    
+                    self.spotCollectionView.reloadData()
+                }
+            case .failure(_):
+                print("getSpotInfosWithFilter failed")
+            }
         }
     }
 }

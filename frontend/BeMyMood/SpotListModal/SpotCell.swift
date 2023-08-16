@@ -113,7 +113,7 @@ extension SpotCell: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
                 
         let spotTagCell = spotTagCollectionView.dequeueReusableCell(withReuseIdentifier: "spotTagCell", for: indexPath) as! SpotTagCell
         
-        spotTagCell.tagLabel.text = "#" + tags![indexPath.row]
+        spotTagCell.tagLabel.text = tags![indexPath.row]
         
         return spotTagCell
     }

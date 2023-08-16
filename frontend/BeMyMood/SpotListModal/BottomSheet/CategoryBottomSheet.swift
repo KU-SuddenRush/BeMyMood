@@ -15,7 +15,7 @@ protocol FilterCategoryDataDelegate: AnyObject {
 /// TODO : BottomSheet 하나로 통합 -> type & data 받아서 컬렉션뷰 처리
 class CategoryBottomSheet: UIViewController {
     
-    var categories: [String] = ["카페", "전시회", "공원", "전시회", "공연", "맛집", "MZ스팟", "LP바", "술집", "바", "과학관"]
+    var categories: [String] = ["카페", "테마카페", "음식점", "전시회", "공연", "맛집", "MZ스팟", "LP바", "술집", "바", "과학관"]
     weak var delegate: FilterCategoryDataDelegate?
 
     //MARK: - UIComponents

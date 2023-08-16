@@ -15,7 +15,7 @@ protocol FilterMoodDataDelegate: AnyObject {
 
 class MoodBottomSheet: UIViewController {
     
-    var moods: [String] = ["힙한", "무채색", "고즈넉한", "풍경위주의", "LP가흐르는", "미니멀한", "반려동물과 함께", "풍경위주의", "뮤트한", "키치한", "친구와함께"]
+    var moods: [String] = Data.moodData
 
     weak var delegate: FilterMoodDataDelegate?
     
@@ -79,7 +79,7 @@ extension MoodBottomSheet: UICollectionViewDataSource, UICollectionViewDelegate,
         
         let spotTagCell = moodBottomCollectionView.dequeueReusableCell(withReuseIdentifier: "spotTagCell", for: indexPath) as! SpotTagCell
         
-        spotTagCell.tagLabel.text = "#" + moods[indexPath.row]
+        spotTagCell.tagLabel.text = moods[indexPath.row]
         
         return spotTagCell
     }
