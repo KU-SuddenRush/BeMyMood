@@ -23,4 +23,8 @@ public class ReviewImages {
                 .map(ReviewImage::getImgUrl)
                 .collect(Collectors.toList());
     }
+
+    public List<ReviewImage> getAllReviewimage() {
+        return this.reviewImages;
+    }
 }

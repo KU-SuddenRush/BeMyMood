@@ -12,7 +12,8 @@ import ku.hackerthon.BeMyMood.domain.review.Review;
 import ku.hackerthon.BeMyMood.dto.moodboard.*;
 import ku.hackerthon.BeMyMood.dto.storage.StorageDomain;
 import ku.hackerthon.BeMyMood.dto.web.request.MoodBoardRequestDto;
-import ku.hackerthon.BeMyMood.dto.web.request.SpotSignatureImagesResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.ReviewImagesResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.SpotSignatureImagesResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardDetailResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardResponseDto;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
@@ -137,6 +138,12 @@ public class MoodBoardServiceImpl implements MoodBoardService {
                                 review.getSpot().getSpotImages().getMainImage().getId(),
                                 review.getSpot().getSpotImages().getMainImage().getImgUrl()
                         )).collect(Collectors.toList()));
+    }
+
+    @Override
+    public ReviewImagesResponseDto getReviewImages(Member member) {
+        List<ReviewImageParams> allReviewImages = member.getReviews().getReviewImgs();
+        return new ReviewImagesResponseDto(allReviewImages.size(), allReviewImages);
     }
 
     @Override
