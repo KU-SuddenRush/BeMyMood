@@ -11,23 +11,21 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleAspectFit" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5Jc-By-Htc">
-                                <rect key="frame" x="0.0" y="109" width="393" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="600" id="P22-BD-b35"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashLogo2" translatesAutoresizingMaskIntoConstraints="NO" id="YnM-HD-Fqf">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.91764705882352937" green="0.9137254901960784" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="5Jc-By-Htc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0ES-aR-Pks"/>
-                            <constraint firstItem="5Jc-By-Htc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="jQh-Lb-YKJ"/>
-                            <constraint firstItem="5Jc-By-Htc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lkc-6r-O8c"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YnM-HD-Fqf" secondAttribute="bottom" id="at0-f0-nPn"/>
+                            <constraint firstItem="YnM-HD-Fqf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gAt-zr-P7t"/>
+                            <constraint firstItem="YnM-HD-Fqf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vZu-HW-qIB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YnM-HD-Fqf" secondAttribute="trailing" id="zhQ-sk-q42"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splashLogo" width="375" height="601"/>
+        <image name="splashLogo2" width="375" height="812"/>
     </resources>
 </document>

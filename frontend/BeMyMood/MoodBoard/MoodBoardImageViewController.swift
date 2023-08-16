@@ -205,7 +205,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         fatalError()
     }
     if let imageUrl = URL(string: moodBoardImages[indexPath.row]) {
-        cell.moodBoardImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "profile"))
+        cell.moodBoardImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "back"))
         cell.moodBoardImage.contentMode = .scaleToFill
     }
     

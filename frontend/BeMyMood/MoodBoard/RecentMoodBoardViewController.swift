@@ -25,7 +25,7 @@ class RecentMoodBoardViewController: UIViewController {
     }
     
     let makeBtn = UIButton().then{
-        $0.setTitle("+ 무드보드 만들기", for: .normal)
+        $0.setTitle("+ 새 무드보드 만들기", for: .normal)
         $0.layer.cornerRadius = 15
         $0.backgroundColor = .darkBrown
         $0.setTitleColor(.white, for: .normal)
@@ -46,7 +46,7 @@ class RecentMoodBoardViewController: UIViewController {
         ApiClient().getMyRecentMoodBoard(){ result in
             if result.exist {
                 if let imageUrl = URL(string: result.moodBoardInfo.moodBoardCaptureUrl) {
-                    self.empty.kf.setImage(with: imageUrl, placeholder: UIImage(named: "profile"))
+                    self.empty.kf.setImage(with: imageUrl, placeholder: UIImage(named: "back"))
                     self.empty.contentMode = .scaleAspectFill
                 }
             }

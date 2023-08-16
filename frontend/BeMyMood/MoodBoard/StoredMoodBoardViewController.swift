@@ -122,7 +122,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         fatalError()
     }
     if let imageUrl = URL(string: moodBoards[indexPath.row].moodBoardCaptureUrl) {
-        cell.moodBoard.kf.setImage(with: imageUrl, placeholder: UIImage(named: "profile"))
+        cell.moodBoard.kf.setImage(with: imageUrl, placeholder: UIImage(named: "back"))
         cell.moodBoard.contentMode = .scaleAspectFill
     }
     

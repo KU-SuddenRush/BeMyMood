@@ -18,23 +18,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        UserDefaults.standard.removeObject(forKey: "sessionID")
         
-        if UserDefaults.standard.string(forKey: "sessionID") != nil {
-            guard let windowScene = (scene as? UIWindowScene) else { return }
-            window = UIWindow(windowScene: windowScene)
-            self.navigationController = UINavigationController(rootViewController: TabBarController())
-            self.navigationController?.navigationBar.isHidden = true
-            self.window?.rootViewController = self.navigationController
-            self.window?.makeKeyAndVisible()
-        }else{
-            guard let windowScene = (scene as? UIWindowScene) else { return }
-            window = UIWindow(windowScene: windowScene)
-            self.navigationController = UINavigationController(rootViewController: LoginViewController())
-            self.navigationController?.navigationBar.isHidden = true
-            self.window?.rootViewController = self.navigationController
-            self.window?.makeKeyAndVisible()
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        self.navigationController = UINavigationController(rootViewController: UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()!)
+        self.window?.rootViewController = self.navigationController
+        self.navigationController?.navigationBar.isHidden = true
+        self.window?.makeKeyAndVisible()
+        
+        // 특정 시간(예: 2초 후) 이후에 런치 스크린을 숨기고 메인 화면으로 전환합니다.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            UserDefaults.standard.removeObject(forKey: "sessionID")
+            
+            if UserDefaults.standard.string(forKey: "sessionID") != nil {
+                self.navigationController?.pushViewController(TabBarController(), animated: false)
+            }else{
+                self.navigationController?.pushViewController(LoginViewController(), animated: false)
+            }
         }
+        
+        
         
         
     }
