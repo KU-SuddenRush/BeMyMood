@@ -33,3 +33,7 @@ struct PostMyMoodInput : Encodable {
     var moodIds : [Int?]
 }
 
+struct StringModel : Decodable {
+    var response : String?
+}
+

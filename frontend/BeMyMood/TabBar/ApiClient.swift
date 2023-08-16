@@ -95,11 +95,11 @@ class ApiClient{
     }
     
     func postMyMood(_ parameter: PostMyMoodInput, completion: @escaping (String) -> Void){
-        AF.request("http://52.78.132.135/member/mood", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, interceptor: interceptor).validate().responseDecodable(of: String.self) { response in
+        AF.request("http://52.78.132.135/member/mood", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, interceptor: interceptor).validate().responseDecodable(of: StringModel.self) { response in
             switch response.result {
             case .success(let result):
                 print("무드보내기성공")
-                completion(result)
+                completion(result.response!)
                 
             case .failure(let error):
                 print(error.localizedDescription)
