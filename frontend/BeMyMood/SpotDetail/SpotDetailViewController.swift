@@ -66,15 +66,17 @@ class SpotDetailViewController: UIViewController {
     let addMoodBoardDescription = UILabel().then{
         $0.text = "이 곳에 다녀왔나요?"
         $0.font = .systemFont(ofSize: 14)
-        $0.textColor = .lightGray
+        $0.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
         $0.textAlignment = .center
     }
     
     let addMoodBoardBtn = UIButton().then{
+        $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
         $0.setTitle("내 무드보드에 추가", for: .normal)
         $0.layer.cornerRadius = 15
         $0.titleLabel?.textColor = .white
         $0.backgroundColor = UIColor(red: 0.349, green: 0.325, blue: 0.322, alpha: 1)
+
     }
     
     override func viewDidLoad() {

@@ -20,11 +20,11 @@ class ReviewCell: UITableViewCell {
         $0.clipsToBounds = true
     }
     var nickname = UILabel().then{
-        $0.font = .boldSystemFont(ofSize: 16)
+        $0.font = .systemFont(ofSize: 16, weight: .bold)
     }
     var postedAt = UILabel().then{
         $0.textAlignment = .right
-        $0.font = UIFont(name: "AppleSDGothicNeoR00-Regular", size: 12)
+        $0.font = .systemFont(ofSize: 14, weight: .regular)
     }
     
     let reviewImageCollectionView: UICollectionView = {
@@ -38,6 +38,7 @@ class ReviewCell: UITableViewCell {
     var reviewText = UILabel().then{
         $0.numberOfLines = 20
         $0.backgroundColor = .white
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -35,6 +35,7 @@ class DetailVerticalScrollContentView: UIView{
     }
     let info1Title = UILabel().then{
         $0.text = "address"
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
         $0.backgroundColor = .white
     }
     let info2Img = UIImageView().then{
@@ -43,6 +44,7 @@ class DetailVerticalScrollContentView: UIView{
     }
     let info2Title = UILabel().then{
         $0.text = "url"
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
         $0.backgroundColor = .white
     }
     let info3Img = UIImageView().then{
@@ -51,6 +53,7 @@ class DetailVerticalScrollContentView: UIView{
     }
     let info3Title = UILabel().then{
         $0.text = "time"
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
         $0.backgroundColor = .white
     }
     
@@ -69,6 +72,7 @@ class DetailVerticalScrollContentView: UIView{
     let descriptionText = UILabel().then{
         $0.numberOfLines = 20
         $0.text = "누데이크의 두 번째 플래그십 스토어인 성수점은 <Museum of Nudake>를 테마로 완성했습니다. 'Make New Fantasy'라는 슬로건을 담아 만든 오브제와 조형물을 중심으로 아티스틱한 경험과 새로운 감정을 선사합니다."
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
         $0.backgroundColor = .white
     }
     
@@ -83,6 +87,7 @@ class DetailVerticalScrollContentView: UIView{
     }
     let entertainmentSubtitle = UILabel().then{
         $0.text = "리뷰어들의 추천"
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
     }
     let entertainmentRecommendCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -94,6 +99,7 @@ class DetailVerticalScrollContentView: UIView{
     }()
     let entertainmentMenu = UILabel().then{
         $0.text = "메뉴"
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
     }
     let entertainmentMenuCollecionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -316,8 +322,17 @@ extension DetailVerticalScrollContentView: UICollectionViewDelegate, UICollectio
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCell", for: indexPath) as! RecommendCell
             
-            cell.recommmendImage.loadImage(from: "https://picsum.photos/200/300")
             cell.recommendLabel.text = tempData.recommends[indexPath.row]
+            switch cell.recommendLabel.text{
+            case "음료":
+                cell.recommmendImage.image = UIImage(named: "drinkIcon")
+            case "디저트":
+                cell.recommmendImage.image = UIImage(named: "dessertIcon")
+            case "전시":
+                cell.recommmendImage.image = UIImage(named: "exhibitionIcon")
+            default:
+                cell.recommmendImage.image = UIImage(systemName: "circle.hexagongrid")
+            }
             
             return cell
 
