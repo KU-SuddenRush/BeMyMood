@@ -4,12 +4,8 @@ import ku.hackerthon.BeMyMood.aop.annotation.State;
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoard;
 import ku.hackerthon.BeMyMood.dto.moodboard.MoodBoardInfo;
-import ku.hackerthon.BeMyMood.dto.web.response.CreatMoodBoardResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.*;
 import ku.hackerthon.BeMyMood.dto.web.request.MoodBoardRequestDto;
-import ku.hackerthon.BeMyMood.dto.web.response.SpotSignatureImagesResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardDetailResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardResponseDto;
-import ku.hackerthon.BeMyMood.dto.web.response.ReviewImagesResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.moodboard.MoodBoardService;
 import lombok.RequiredArgsConstructor;
@@ -58,13 +54,13 @@ public class MoodBoardController {
      * @return
      */
     @PostMapping("/capture")
-    public ResponseEntity<String> storeCaptureImg(
+    public ResponseEntity<StringResponseDto> storeCaptureImg(
             @RequestPart("file") MultipartFile file,
             @RequestParam(name = "mood_board_id") Long moodBoardId) {
         MoodBoard moodBoard = moodBoardService.findById(moodBoardId);
         moodBoardService.storeCaptureImg(file, moodBoard);
 
-        return ResponseEntity.ok("무드보드 캡쳐 이미지를 성공적으로 저장하였습니다.");
+        return ResponseEntity.ok(new StringResponseDto("무드보드 캡쳐 이미지를 성공적으로 저장하였습니다."));
     }
 
     /**
