@@ -12,6 +12,7 @@ class RecommendCell: UICollectionViewCell {
     lazy var recommmendImage = UIImageView()
     
     lazy var recommendLabel = UILabel().then{
+        $0.textColor = UIColor(red: 0.349, green: 0.325, blue: 0.322, alpha: 1)
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         $0.textAlignment = .center
     }

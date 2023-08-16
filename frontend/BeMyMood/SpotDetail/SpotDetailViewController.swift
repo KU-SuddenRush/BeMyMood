@@ -15,6 +15,23 @@ class SpotDetailViewController: UIViewController {
     var tempData = SpotDetailInfos(spotId: 3, bookmarked: true, spotName: "누데이크 성수점", spotThumbnailImageUrl: ["https://picsum.photos/200/300","https://picsum.photos/200/300","https://picsum.photos/200/300"], categoryName: "카페", moodNames: ["힙한","소품이많은","무채색","어두운","특이한소재","포인트컬러","정적인","키치한","세련된","단조로운"], address: "서울 성동구 성수이로7길 26 1층", url: "http://www.nudake.com", time: "매일 11:00 - 21:00, 라스트오더 20:45", description: "대법관의 임기는 6년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다. 국정감사 및 조사에 관한 절차 기타 필요한 사항은 법률로 정한다. 국방상 또는 국민경제상 긴절한 필요로 인하여 법률이 정하는 경우를 제외하고는, 사영기업을 국유 또는 공유로 이전하거나 그 경영을 통제 또는 관리할 수 없다.", recommends: ["음료", "전시", "디저트"], menuImageUrls: ["https://picsum.photos/200/300","https://picsum.photos/200/300","https://picsum.photos/200/300", "https://picsum.photos/200/300"])
     
     //MARK: - UIComponents
+    
+    let navigationView = UIView()
+    
+    let navigationBackBtn = UIButton().then{
+        $0.setImage(UIImage(named: "backArrow"), for: .normal)
+    }
+    
+    let navigationTitle = UILabel().then{
+        $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        $0.text = "장소명_default"
+    }
+    
+    let spotIsLikedButton = UIButton().then{
+        $0.setImage(UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        $0.setImage(UIImage(named: "heart.fill")?.withRenderingMode(.alwaysOriginal), for: .selected)
+    }
+    
     let headerView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -49,15 +66,17 @@ class SpotDetailViewController: UIViewController {
     let addMoodBoardDescription = UILabel().then{
         $0.text = "이 곳에 다녀왔나요?"
         $0.font = .systemFont(ofSize: 14)
-        $0.textColor = .lightGray
+        $0.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
         $0.textAlignment = .center
     }
     
     let addMoodBoardBtn = UIButton().then{
+        $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
         $0.setTitle("내 무드보드에 추가", for: .normal)
         $0.layer.cornerRadius = 15
         $0.titleLabel?.textColor = .white
         $0.backgroundColor = UIColor(red: 0.349, green: 0.325, blue: 0.322, alpha: 1)
+
     }
     
     override func viewDidLoad() {
@@ -71,6 +90,9 @@ class SpotDetailViewController: UIViewController {
         layout()
         
         dataInit()
+        
+        navigationBackBtn.addTarget(self, action: #selector(backBtnDidTab), for: .touchUpInside)
+        spotIsLikedButton.addTarget(self, action: #selector(likeBtnDidTap), for: .touchUpInside)
         
         tagCollectionView.dataSource = self
         tagCollectionView.delegate = self
@@ -90,6 +112,17 @@ class SpotDetailViewController: UIViewController {
         slidingTabVC.build()
     }
     
+    @objc func backBtnDidTab() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func likeBtnDidTap() {
+        spotIsLikedButton.isSelected = !spotIsLikedButton.isSelected
+        
+        print("Spot Like Btn Tap !")
+        /// TODO Like Btn API
+    }
+    
     @objc func addMoodBoardBtnTapped(){
         print("addMoodBoardBtnTapped")
         
@@ -101,6 +134,11 @@ class SpotDetailViewController: UIViewController {
 extension SpotDetailViewController{
     
     func hierarchy(){
+        self.view.addSubview(navigationView)
+        navigationView.addSubview(navigationBackBtn)
+        navigationView.addSubview(navigationTitle)
+        navigationView.addSubview(spotIsLikedButton)
+        
         self.view.addSubview(headerView)
         headerView.addSubview(categoryLabel)
         headerView.addSubview(tagCollectionView)
@@ -113,9 +151,33 @@ extension SpotDetailViewController{
     func layout(){
         
         updateHeaderViewContraintToVisible()
+        
+        navigationView.snp.makeConstraints{ make in
+            make.top.equalTo(50)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(50)
+        }
+        
+        navigationBackBtn.snp.makeConstraints{ make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(24)
+            make.size.equalTo(24)
+        }
+        
+        navigationTitle.snp.makeConstraints{ make in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(navigationBackBtn.snp.trailing).offset(10)
+            make.height.equalTo(30)
+        }
+        
+        spotIsLikedButton.snp.makeConstraints{ make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-24)
+            make.size.equalTo(24)
+        }
 
         slidingTabVC.view.snp.makeConstraints{ make in
-            make.top.equalTo(headerView.snp.bottom).offset(22)
+            make.top.equalTo(headerView.snp.bottom).offset(15)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(addModeBoardView.snp.top)
         }
@@ -145,7 +207,8 @@ extension SpotDetailViewController{
         tagCollectionView.removeConstraints(tagCollectionView.constraints)
         
         headerView.snp.makeConstraints{ make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalTo(navigationView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
         }
         
         categoryLabel.snp.makeConstraints{ make in
@@ -172,6 +235,12 @@ extension SpotDetailViewController{
         
         headerView.snp.makeConstraints{ make in
             make.size.equalTo(0)
+        }
+        categoryLabel.snp.makeConstraints{ make in
+            make.edges.equalTo(0)
+        }
+        tagCollectionView.snp.makeConstraints{ make in
+            make.edges.equalTo(0)
         }
     }
 }
