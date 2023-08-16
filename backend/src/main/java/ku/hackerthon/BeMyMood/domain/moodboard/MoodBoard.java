@@ -25,8 +25,11 @@ public class MoodBoard {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Column(name = "mood_board_img_url") // 무드보드 캡쳐본 url
-    private String imgUrl;
+    @Column(name = "mood_board_name")
+    private String name;
+
+    @Column(name = "mood_board_capture_img_url") // 무드보드 캡쳐본 url
+    private String captureImgUrl;
 
     @Embedded
     private MoodBoardStickers stickers;
@@ -38,9 +41,10 @@ public class MoodBoard {
     private MoodBoardTexts texts;
 
     // Constructor
-    public MoodBoard(Member member, String imgUrl) {
+    public MoodBoard(Member member, String name, String captureImgUrl) {
         this.member = member;
-        this.imgUrl = imgUrl;
+        this.name = name;
+        this.captureImgUrl = captureImgUrl;
         this.stickers = new MoodBoardStickers();
         this.pictures = new MoodBoardPictures();
         this.texts = new MoodBoardTexts();

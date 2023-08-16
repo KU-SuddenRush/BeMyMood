@@ -38,6 +38,7 @@ public class MoodBoardServiceImpl implements MoodBoardService {
             String uploadUrl = storageService.uploadToS3(file, fileName);
             MoodBoard moodBoard = new MoodBoard(
                     member,
+                    requestDto.getMoodBoardName(),
                     uploadUrl
             );
 

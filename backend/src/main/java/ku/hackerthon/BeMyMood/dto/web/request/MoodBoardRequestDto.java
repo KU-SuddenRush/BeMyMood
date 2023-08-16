@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MoodBoardRequestDto {
+    private String moodBoardName;
     private List<BoardStickerParams> stickers;
     private List<BoardPictureParams> pictures;
     private List<BoardTextParams> texts;
