@@ -85,15 +85,13 @@ extension SecondViewController: FilterMoodDataDelegate {
     func setMoodFilterTitle(_ title: String) {
         filterMoodBtn.isSelected = true
         filterMoodBtn.setTitle(title, for: .selected)
-        filterMoodBtn.tintColor = .orange
         filterMoodBtn.layer.borderColor = UIColor.orange.cgColor
         updateFilterIconColor()
         /// 검색 with filter option API 호출
     }
     
     override func updateFilterIconColor(){
-        super.updateFilterIconColor()
-        if filterMoodBtn.isSelected{
+        if filterCategoryBtn.isSelected || filterRegionBtn.isSelected || filterMoodBtn.isSelected{
             filterIcon.isSelected = true
         }else{
             filterIcon.isSelected = false

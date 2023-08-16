@@ -200,7 +200,6 @@ extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDeleg
     func setCategoryFilterTitle(_ title: String) {
         filterCategoryBtn.isSelected = true
         filterCategoryBtn.setTitle(title, for: .selected)
-        filterCategoryBtn.tintColor = .orange
         filterCategoryBtn.layer.borderColor = UIColor.orange.cgColor
         updateFilterIconColor()
         /// 검색 with filter option API 호출
@@ -209,7 +208,6 @@ extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDeleg
     func setRegionFilterTitle(_ title: String) {
         filterRegionBtn.isSelected = true
         filterRegionBtn.setTitle(title, for: .selected)
-        filterRegionBtn.tintColor = .orange
         filterRegionBtn.layer.borderColor = UIColor.orange.cgColor
         updateFilterIconColor()
         /// 검색 with filter option API 호출

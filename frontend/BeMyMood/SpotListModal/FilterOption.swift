@@ -15,7 +15,8 @@ class FilterOption: UIButton {
         backgroundColor = .clear
 
         setTitle(title, for: .normal)
-        setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        setImage(UIImage(named: "chevron.down")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        setImage(UIImage(named: "chevron.down.fill")?.withRenderingMode(.alwaysOriginal), for: .selected)
 
         tintColor = .lightGray
         setTitleColor(.lightGray, for: .normal)
