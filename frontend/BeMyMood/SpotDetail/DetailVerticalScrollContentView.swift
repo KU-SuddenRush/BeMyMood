@@ -74,7 +74,7 @@ class DetailVerticalScrollContentView: UIView{
     
     //MARK: - UIComponents : 즐길 거리
     let entertainmentView = UIView().then{
-        $0.backgroundColor = .orange
+        $0.backgroundColor = .white
     }
     
     let entertainmentTitle = UILabel().then{
@@ -84,16 +84,20 @@ class DetailVerticalScrollContentView: UIView{
     let entertainmentSubtitle = UILabel().then{
         $0.text = "리뷰어들의 추천"
     }
-    let entertainmentCategoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
-        $0.backgroundColor = .lightGray
-    }
+    let entertainmentRecommendCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let recommendCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        recommendCV.backgroundColor = .white
+        recommendCV.showsHorizontalScrollIndicator = false
+        return recommendCV
+    }()
     let entertainmentMenu = UILabel().then{
         $0.text = "메뉴"
     }
     let entertainmentMenuCollecionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
         $0.backgroundColor = .lightGray
     }
-
 
     init(frame: CGRect, spotInfo: SpotDetailInfos) {
         super.init(frame: frame)
@@ -117,6 +121,8 @@ class DetailVerticalScrollContentView: UIView{
         info3Title.text = tempData.time
         
         descriptionText.text = tempData.description
+        
+        setupRecommendCollectionView()
     }
     
     func hierarchy(){
@@ -139,7 +145,7 @@ class DetailVerticalScrollContentView: UIView{
         self.addSubview(entertainmentView)
         entertainmentView.addSubview(entertainmentTitle)
         entertainmentView.addSubview(entertainmentSubtitle)
-        entertainmentView.addSubview(entertainmentCategoryCollectionView)
+        entertainmentView.addSubview(entertainmentRecommendCollectionView)
         entertainmentView.addSubview(entertainmentMenu)
         entertainmentView.addSubview(entertainmentMenuCollecionView)
     }
@@ -230,14 +236,14 @@ class DetailVerticalScrollContentView: UIView{
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(24)
         }
-        entertainmentCategoryCollectionView.snp.makeConstraints{ make in
+        entertainmentRecommendCollectionView.snp.makeConstraints{ make in
             make.top.equalTo(entertainmentSubtitle.snp.bottom).offset(14)
             make.leading.equalToSuperview()
             make.trailing.equalTo(self.snp.trailing)
             make.height.equalTo(40)
         }
         entertainmentMenu.snp.makeConstraints{ make in
-            make.top.equalTo(entertainmentCategoryCollectionView.snp.bottom).offset(14)
+            make.top.equalTo(entertainmentRecommendCollectionView.snp.bottom).offset(14)
             make.trailing.leading.equalToSuperview()
             make.height.equalTo(24)
         }
@@ -261,25 +267,71 @@ extension DetailVerticalScrollContentView: UICollectionViewDelegate, UICollectio
         imageCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "imageCell")
     }
     
+    func setupRecommendCollectionView() {
+        entertainmentRecommendCollectionView.dataSource = self
+        entertainmentRecommendCollectionView.delegate = self
+        entertainmentRecommendCollectionView.register(RecommendCell.self, forCellWithReuseIdentifier: "recommendCell")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tempData.spotThumbnailImageUrl.count
+        
+        switch collectionView{
+        case imageCollectionView:
+            return tempData.spotThumbnailImageUrl.count
+        case entertainmentRecommendCollectionView:
+            return tempData.recommends.count
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath)
+        switch collectionView{
+        case imageCollectionView:
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath)
+            
+            let imageView = UIImageView(frame: cell.contentView.bounds)
+            imageView.loadImage(from: tempData.spotThumbnailImageUrl[indexPath.row])
+            cell.contentView.addSubview(imageView)
+            
+            return cell
+            
+        case entertainmentRecommendCollectionView:
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCell", for: indexPath) as! RecommendCell
+            
+            cell.recommmendImage.loadImage(from: "https://picsum.photos/200/300")
+            cell.recommendLabel.text = tempData.recommends[indexPath.row]
+            
+            return cell
+
+        default:
+            return UICollectionViewCell()
+        }
         
-        let imageView = UIImageView(frame: cell.contentView.bounds)
-        imageView.loadImage(from: tempData.spotThumbnailImageUrl[indexPath.row])
-        cell.contentView.addSubview(imageView)
+    }
+    
+    func calculateTagCellWidth(for text: String) -> CGFloat {
+        // 셀 폭을 계산하는 로직을 작성합니다. 텍스트의 길이에 따라 동적으로 폭을 설정하거나, 고정된 값으로 설정할 수 있습니다.
+        let textWidth = text.size(withAttributes: [.font: UIFont.systemFont(ofSize: 16.0)]).width
+        let cellWidth = textWidth
         
-        return cell
+        return cellWidth
     }
     
     // CollectionView Cell의 Size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        switch collectionView{
+        case imageCollectionView:
+            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        case entertainmentRecommendCollectionView:
+            let cellWidth = calculateTagCellWidth(for: tempData.recommends[indexPath.row]) + 82
+            return CGSize(width: cellWidth + 5, height: collectionView.frame.height)
+        default:
+            return CGSize()
+        }
     }
-    
 }
