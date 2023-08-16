@@ -4,6 +4,7 @@ import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmark;
 import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmarks;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocation;
+import ku.hackerthon.BeMyMood.domain.member.mood.MoodAccumulations;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
@@ -148,13 +149,22 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void review(ReviewRequestDto requestDto, Long memberId) throws IOException {
+        Member member = searchById(memberId);
+        Spot spot = spotService.searchById(requestDto.getSpotId());
         Review review = new Review(
                 requestDto.getDescription(),
                 LocalDate.now(),
                 requestDto.getOpened(),
-                searchById(memberId),
-                spotService.searchById(requestDto.getSpotId())
+                member,
+                spot
         );
+
+        storeMoodAccumulation(member, spot.getSpotMoods().getMoods());
+    }
+
+    private void storeMoodAccumulation(Member member, List<Mood> moods) {
+        MoodAccumulations moodAccumulations = member.getMoodAccumulations();
+        moods.forEach(mood -> moodAccumulations.addMood(member, mood));
     }
 
     @Override
