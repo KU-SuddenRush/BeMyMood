@@ -9,12 +9,16 @@ import java.util.List;
 
 public class PreferredMoods {
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PreferredMood> preferredMoods = new ArrayList<>();
 
     // Method
     public boolean isEmpty() {
         return this.preferredMoods.size() == 0;
+    }
+
+    public void clearPreferredMoods() {
+        preferredMoods.clear();
     }
 
     public void add(PreferredMood preferredMood) throws IllegalArgumentException {
