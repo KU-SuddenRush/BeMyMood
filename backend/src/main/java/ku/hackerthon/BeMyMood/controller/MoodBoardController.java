@@ -2,10 +2,14 @@ package ku.hackerthon.BeMyMood.controller;
 
 import ku.hackerthon.BeMyMood.aop.annotation.State;
 import ku.hackerthon.BeMyMood.domain.member.Member;
+import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoard;
 import ku.hackerthon.BeMyMood.domain.review.Review;
+import ku.hackerthon.BeMyMood.dto.moodboard.MoodBoardInfo;
 import ku.hackerthon.BeMyMood.dto.moodboard.SpotSignatureImageParams;
 import ku.hackerthon.BeMyMood.dto.web.request.MoodBoardRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.request.SpotSignatureImagesResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardDetailResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.moodboard.MoodBoardService;
 import lombok.RequiredArgsConstructor;
@@ -58,17 +62,49 @@ public class MoodBoardController {
     @GetMapping("/picture/spot-signature")
     public ResponseEntity<SpotSignatureImagesResponseDto> getSpotSignatureImages(@State Long memberId) {
         Member member = memberService.searchById(memberId);
-        List<Review> allOpenReviews = member.getReviews().getAllReview().stream()
-                .filter(review -> review.isOpen())
-                .collect(Collectors.toList());
+        return ResponseEntity.ok(moodBoardService.getSpotSignatureImages(member));
+    }
 
-        return ResponseEntity.ok(new SpotSignatureImagesResponseDto(
-                allOpenReviews.stream()
-                        .map(review -> new SpotSignatureImageParams(
-                                review.getSpot().getSpotImages().getMainImage().getId(),
-                                review.getSpot().getSpotImages().getMainImage().getImgUrl()
-                        )).collect(Collectors.toList())));
+    /**
+     * <b>저장된 무드보드 조회</b>
+     *
+     * @param memberId {@link State}로 주입된 MemberId
+     * @return MoodBoardResponseDto
+     */
+    @GetMapping
+    public ResponseEntity<MoodBoardResponseDto> getAllMoodBoards(@State Long memberId) {
+        Member member = memberService.searchById(memberId);
+        return ResponseEntity.ok(moodBoardService.getAllMoodBoards(member));
+    }
 
+    /**
+     * <b>가장 최근에 편집한 무드보드 조회</b>
+     *
+     * @param memberId {@link State}로 주입된 MemberId
+     * @return MoodBoardResponseDto
+     */
+    @GetMapping("/last")
+    public ResponseEntity<MoodBoardInfo> getLastEditedMoodBoard(@State Long memberId) {
+        Member member = memberService.searchById(memberId);
+        return ResponseEntity.ok(moodBoardService.getLastEditedMoodBoard(member));
+
+    }
+
+    /**
+     * <b>무드보드 상세 보기</b>
+     *
+     * @param memberId {@link State}로 주입된 MemberId
+     * @return MoodBoardResponseDto
+     */
+    @GetMapping("/detail")
+    public ResponseEntity<MoodBoardDetailResponseDto> getMoodBoardDetail(
+            @State Long memberId,
+            @RequestParam(name = "mood_board_id") Long moodBoardId
+    ) {
+        Member member = memberService.searchById(memberId);
+        MoodBoard moodBoard = member.getMoodBoards().searchById(moodBoardId);
+
+        return ResponseEntity.ok(moodBoardService.getMoodBoardDetail(moodBoard));
     }
 
 }

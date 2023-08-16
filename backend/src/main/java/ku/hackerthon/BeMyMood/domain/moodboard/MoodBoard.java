@@ -10,11 +10,16 @@ import ku.hackerthon.BeMyMood.domain.moodboard.text.MoodBoardTexts;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Getter
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MoodBoard {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +30,14 @@ public class MoodBoard {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Column(name = "mood_board_img_url") // 무드보드 캡쳐본 url
-    private String imgUrl;
+    @Column(name = "mood_board_name")
+    private String name;
+
+    @Column(name = "mood_board_capture_img_url") // 무드보드 캡쳐본 url
+    private String captureImgUrl;
+
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
 
     @Embedded
     private MoodBoardStickers stickers;
@@ -38,9 +49,10 @@ public class MoodBoard {
     private MoodBoardTexts texts;
 
     // Constructor
-    public MoodBoard(Member member, String imgUrl) {
+    public MoodBoard(Member member, String name, String captureImgUrl) {
         this.member = member;
-        this.imgUrl = imgUrl;
+        this.name = name;
+        this.captureImgUrl = captureImgUrl;
         this.stickers = new MoodBoardStickers();
         this.pictures = new MoodBoardPictures();
         this.texts = new MoodBoardTexts();
@@ -53,4 +65,6 @@ public class MoodBoard {
     public void addBoardPictures(MoodBoardPicture boardPicture) { this.pictures.add(boardPicture); }
 
     public void addBoardTexts(MoodBoardText boardText) { this.texts.add(boardText); }
+
+    public boolean equalMoodBoard(Long moodBoardId) { return Objects.equals(this.id, moodBoardId); }
 }
