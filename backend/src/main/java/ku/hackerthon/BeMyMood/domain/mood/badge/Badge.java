@@ -26,6 +26,9 @@ public class Badge {
     @Column(name = "badge_image_url")
     private String imageUrl;
 
+    @Column(name = "locked_badge_image_url")
+    private String lockedImageUrl;
+
     private String description;
 
     // Method
