@@ -186,6 +186,7 @@ public class SpotServiceImpl implements SpotService {
         // PostAt 최신 순(내림차순) 정렬
         publicReviews = publicReviews
                 .stream()
+                .filter(review -> review.isOpen())
                 .sorted(Comparator.comparing(Review::getPostAt).reversed())
                 .collect(Collectors.toList());
 
