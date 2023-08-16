@@ -4,10 +4,8 @@ import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmark;
 import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmarks;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocation;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
-import ku.hackerthon.BeMyMood.domain.member.mood.MoodAccumulation;
-import ku.hackerthon.BeMyMood.domain.member.mood.MoodAccumulations;
-import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
-import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
+import ku.hackerthon.BeMyMood.domain.member.mood.*;
+import ku.hackerthon.BeMyMood.domain.mood.badge.Badge;
 import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoard;
 import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoards;
 import ku.hackerthon.BeMyMood.domain.review.Review;
@@ -19,6 +17,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Entity
@@ -53,6 +53,9 @@ public class Member {
     @Embedded
     private MoodAccumulations moodAccumulations;
 
+    @Embedded
+    private MemberBadges badges;
+
     // Constructor
     @Builder
     public Member(String name, String email, String password) {
@@ -65,6 +68,7 @@ public class Member {
         this.bookmarks = new Bookmarks();
         this.moodBoards = new MoodBoards();
         this.moodAccumulations = new MoodAccumulations();
+        this.badges = new MemberBadges();
     }
 
     // Method
@@ -92,5 +96,16 @@ public class Member {
 
     public void addReview(Review review) {
         this.reviews.add(review);
+    }
+
+    public boolean hasBadge(Badge badge) {
+        return this.badges.has(badge);
+    }
+
+    public void addBadge(Badge badge) {
+        if (hasBadge(badge)) {
+            return;
+        }
+        this.badges.add(this, badge);
     }
 }

@@ -20,6 +20,7 @@ import ku.hackerthon.BeMyMood.dto.web.response.ReviewResponseDto;
 import ku.hackerthon.BeMyMood.respository.MemberRepository;
 import ku.hackerthon.BeMyMood.dto.member.MemberJoinParams;
 import ku.hackerthon.BeMyMood.service.location.LocationService;
+import ku.hackerthon.BeMyMood.service.mood.MoodAccumulationService;
 import ku.hackerthon.BeMyMood.service.mood.MoodService;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import ku.hackerthon.BeMyMood.service.storage.StorageService;
@@ -45,6 +46,7 @@ public class MemberServiceImpl implements MemberService {
     private final LocationService locationService;
     private final SpotService spotService;
     private final StorageService storageService;
+    private final MoodAccumulationService moodAccumulationService;
 
     @Override
     public Long join(MemberJoinParams params) {
@@ -164,12 +166,11 @@ public class MemberServiceImpl implements MemberService {
                 spot
         );
 
-        storeMoodAccumulation(member, spot.getSpotMoods().getMoods());
+        accumulateMoods(member, spot.getSpotMoods().getMoods());
     }
 
-    private void storeMoodAccumulation(Member member, List<Mood> moods) {
-        MoodAccumulations moodAccumulations = member.getMoodAccumulations();
-        moods.forEach(mood -> moodAccumulations.addMood(member, mood));
+    private void accumulateMoods(Member member, List<Mood> moods) {
+        moods.forEach(mood -> moodAccumulationService.accumulate(member, mood));
     }
 
     @Override

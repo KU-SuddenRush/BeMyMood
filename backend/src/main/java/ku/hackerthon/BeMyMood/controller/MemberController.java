@@ -6,12 +6,14 @@ import ku.hackerthon.BeMyMood.domain.spot.Spot;
 import ku.hackerthon.BeMyMood.dto.member.request.BookmarkSettingRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.request.MemberMoodRequestDto;
 import ku.hackerthon.BeMyMood.dto.member.response.BookmarkResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.BadgeResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MemberInfoResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MemberLocationRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.request.ReviewRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MemberMoodResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.ReviewResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
+import ku.hackerthon.BeMyMood.service.mood.BadgeService;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import ku.hackerthon.BeMyMood.service.storage.StorageService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +33,7 @@ public class MemberController {
     private final MemberService memberService;
     private final StorageService storageService;
     private final SpotService spotService;
+    private final BadgeService badgeService;
 
     private static String randomFileName() {
         return UUID.randomUUID().toString().substring(8);
@@ -158,5 +161,11 @@ public class MemberController {
     public ResponseEntity<List<ReviewResponseDto>> showAllReview(@State Long memberId) {
         List<ReviewResponseDto> requestDtos = memberService.findAllReviewByMemberID(memberId);
         return ResponseEntity.ok(requestDtos);
+    }
+
+    @GetMapping("/badge")
+    public ResponseEntity<List<BadgeResponseDto>> badgeInfos(@State Long memberId) {
+        List<BadgeResponseDto> responseDtos = badgeService.getBadgesByMemberId(memberId);
+        return ResponseEntity.ok(responseDtos);
     }
 }

@@ -13,13 +13,17 @@ public class MoodAccumulations {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<MoodAccumulation> moodAccumulations = new ArrayList<>();
 
-    public void addMood(Member member, Mood mood) {
+    public int accumulate(Member member, Mood mood) {
         for (MoodAccumulation ma : moodAccumulations) {
-            if (ma.isMood(mood)) {
+            if (ma.isMood(mood)) { // 존재하는 MoodAccumulation이면 accumulate 증가
                 ma.increase();
-                return;
+                return ma.getAccumulate();
             }
         }
-        moodAccumulations.add(new MoodAccumulation(member, mood));
+
+        // 새 MoodAccumulation 추가
+        MoodAccumulation moodAccumulation = new MoodAccumulation(member, mood);
+        moodAccumulations.add(moodAccumulation);
+        return moodAccumulation.getAccumulate();
     }
 }
