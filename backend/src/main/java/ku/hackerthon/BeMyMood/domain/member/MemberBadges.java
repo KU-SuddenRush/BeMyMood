@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Embeddable
 public class MemberBadges {
@@ -22,5 +23,11 @@ public class MemberBadges {
     public void add(Member member, Badge badge) {
         MemberBadge memberBadge = new MemberBadge(member, badge);
         badges.add(memberBadge);
+    }
+
+    public List<Badge> getBadges() {
+        return badges.stream()
+                .map(MemberBadge::getBadge)
+                .collect(Collectors.toList());
     }
 }

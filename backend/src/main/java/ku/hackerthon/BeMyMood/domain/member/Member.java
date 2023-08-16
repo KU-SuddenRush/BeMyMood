@@ -54,7 +54,7 @@ public class Member {
     private MoodAccumulations moodAccumulations;
 
     @Embedded
-    private MemberBadges badges;
+    private MemberBadges memberBadges;
 
     // Constructor
     @Builder
@@ -68,7 +68,7 @@ public class Member {
         this.bookmarks = new Bookmarks();
         this.moodBoards = new MoodBoards();
         this.moodAccumulations = new MoodAccumulations();
-        this.badges = new MemberBadges();
+        this.memberBadges = new MemberBadges();
     }
 
     // Method
@@ -99,13 +99,13 @@ public class Member {
     }
 
     public boolean hasBadge(Badge badge) {
-        return this.badges.has(badge);
+        return this.memberBadges.has(badge);
     }
 
     public void addBadge(Badge badge) {
         if (hasBadge(badge)) {
             return;
         }
-        this.badges.add(this, badge);
+        this.memberBadges.add(this, badge);
     }
 }

@@ -40,4 +40,20 @@ public class BadgeService {
         Badge badge = findByMood(mood);
         member.addBadge(badge);
     }
+
+    public List<BadgeResponseDto> getAllBadges(Member member) {
+        List<Badge> badges = member.getMemberBadges()
+                                   .getBadges();
+
+        badges.addAll(badgeRepository.findAllLockedBy(member));
+
+        return badges.stream()
+                .map(badge -> new BadgeResponseDto(
+                                badge.getImageUrl(),
+                                badge.getName(),
+                                badge.getMood().getName(),
+                                badge.getDescription()
+                        )
+                ).collect(Collectors.toList());
+    }
 }

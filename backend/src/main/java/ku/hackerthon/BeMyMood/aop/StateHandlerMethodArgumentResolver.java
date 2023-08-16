@@ -3,6 +3,7 @@ package ku.hackerthon.BeMyMood.aop;
 import ku.hackerthon.BeMyMood.aop.annotation.State;
 import ku.hackerthon.BeMyMood.service.auth.state.StateManager;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -14,6 +15,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 /**
  * {@link ku.hackerthon.BeMyMood.config.WebConfig}
  */
+@Slf4j
 @RequiredArgsConstructor
 @Component
 public class StateHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
@@ -38,6 +40,7 @@ public class StateHandlerMethodArgumentResolver implements HandlerMethodArgument
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         String sessionId = RequestContextHolder.getRequestAttributes().getSessionId();
+        log.info("access session : {} | member-id : {}", sessionId, stateManager.get(sessionId));
         return stateManager.get(sessionId);
     }
 }
