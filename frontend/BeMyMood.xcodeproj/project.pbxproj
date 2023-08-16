@@ -186,12 +186,20 @@
 		2E1BF30A2A8A69D700C58138 /* SpotDetail */ = {
 			isa = PBXGroup;
 			children = (
+				2E70329B2A8CC86100AD4593 /* Detail */,
 				2E1BF30B2A8A6A4300C58138 /* SpotDetailViewController.swift */,
+			);
+			path = SpotDetail;
+			sourceTree = "<group>";
+		};
+		2E70329B2A8CC86100AD4593 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
 				2E7032952A8BE48000AD4593 /* DetailViewController.swift */,
 				2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */,
 				2E7032992A8CAEEF00AD4593 /* RecommendCell.swift */,
 			);
-			path = SpotDetail;
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		2ECD05152A80F6C100FC3FF3 /* Extension */ = {
