@@ -31,7 +31,7 @@ public class AuthServiceImpl implements AuthService {
         Member member = memberService.searchByEmail(signinParams.getEmail());
 
         if (member.matchPassword(signinParams.getPassword())) {
-            return new SigninResponseDto(member.getId());
+            return new SigninResponseDto(member.getId(), member.getName());
         }
         return null;
     }
