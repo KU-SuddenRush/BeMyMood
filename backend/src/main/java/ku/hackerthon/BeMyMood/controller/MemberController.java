@@ -82,14 +82,14 @@ public class MemberController {
      * @return
      */
     @PostMapping("/location")
-    public ResponseEntity<String> setMemberLocation(
+    public ResponseEntity<StringResponseDto> setMemberLocation(
             @RequestBody MemberLocationRequestDto requestDto,
             @State Long memberId
     ) {
         if (memberService.setMemberLocation(requestDto.getLocationIds(), memberId)) {
-            return ResponseEntity.ok("내가 좋아하는 위치 저장에 성공하였습니다.");
+            return ResponseEntity.ok(new StringResponseDto("내가 좋아하는 위치 저장에 성공하였습니다."));
         }
-        return ResponseEntity.ok("내가 좋아하는 위치 저장에 실패하였습니다.");
+        return ResponseEntity.ok(new StringResponseDto("내가 좋아하는 위치 저장에 실패하였습니다."));
     }
 
     /**
@@ -122,13 +122,13 @@ public class MemberController {
      * @return List<String>
      */
     @PostMapping("/bookmark")
-    public ResponseEntity<String> setBookmark(@State Long memberId, @RequestBody BookmarkSettingRequestDto requestDto) {
+    public ResponseEntity<StringResponseDto> setBookmark(@State Long memberId, @RequestBody BookmarkSettingRequestDto requestDto) {
         Member member = memberService.searchById(memberId);
         Spot spot = spotService.searchById(requestDto.getSpotId());
         if (memberService.setBookmark(member, spot)) { // 등록
-            return ResponseEntity.ok("관심 스팟에 등록하였습니다.");
+            return ResponseEntity.ok(new StringResponseDto("관심 스팟에 등록하였습니다."));
         }
-        return ResponseEntity.ok("관심 스팟에서 삭제하였습니다.");
+        return ResponseEntity.ok(new StringResponseDto("관심 스팟에서 삭제하였습니다."));
     }
 
     /**
@@ -139,27 +139,27 @@ public class MemberController {
      * @throws IOException
      */
     @PostMapping("/review/data")
-    public ResponseEntity<String> reviewData(
+    public ResponseEntity<StringResponseDto> reviewData(
             @RequestBody ReviewRequestDto requestDto,
             @RequestParam("spot-id") Long spotId,
             @State Long memberId
     ) throws IOException {
         memberService.review(requestDto, spotId, memberId);
-        return ResponseEntity.ok("리뷰 정보 등록에 성공했습니다.");
+        return ResponseEntity.ok(new StringResponseDto("리뷰 정보 등록에 성공했습니다."));
     }
 
     /**
      * <b>Member의 리뷰 사진 등록</b>
      */
     @PostMapping("/review/image")
-    public ResponseEntity<String> reviewImages(
+    public ResponseEntity<StringResponseDto> reviewImages(
             @RequestPart("images") List<MultipartFile> images,
             @RequestParam("spot-id") Long spotId,
             @State Long memberId
     ) throws IOException {
         // 한 회원이 하나의 가게에 작성할 수 있는 리뷰를 1개로 제한
         memberService.setReviewImages(spotId, memberId, images);
-        return ResponseEntity.ok("리뷰 이미지 등록에 성공했습니다.");
+        return ResponseEntity.ok(new StringResponseDto("리뷰 이미지 등록에 성공했습니다."));
     }
 
     /**
