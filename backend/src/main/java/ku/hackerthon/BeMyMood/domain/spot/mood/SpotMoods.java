@@ -6,6 +6,8 @@ import ku.hackerthon.BeMyMood.domain.mood.Mood;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,5 +53,11 @@ public class SpotMoods {
         return spotMoods.stream()
                 .map(spotMood -> spotMood.getMood().getName())
                 .collect(Collectors.toList());
+    }
+
+    public List<Mood> getMoods() {
+        return spotMoods.stream()
+                .map(SpotMood::getMood)
+                .collect(Collectors.toUnmodifiableList());
     }
 }

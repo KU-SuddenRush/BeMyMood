@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReviewRequestDto {
 
-    private Long spotId;
     private String description;
     private Boolean opened;
 }

@@ -4,6 +4,8 @@ import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmark;
 import ku.hackerthon.BeMyMood.domain.member.bookmark.Bookmarks;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocation;
 import ku.hackerthon.BeMyMood.domain.member.location.PreferredLocations;
+import ku.hackerthon.BeMyMood.domain.member.mood.MoodAccumulation;
+import ku.hackerthon.BeMyMood.domain.member.mood.MoodAccumulations;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoard;
@@ -48,6 +50,9 @@ public class Member {
     @Embedded
     private MoodBoards moodBoards;
 
+    @Embedded
+    private MoodAccumulations moodAccumulations;
+
     // Constructor
     @Builder
     public Member(String name, String email, String password) {
@@ -59,6 +64,7 @@ public class Member {
         this.reviews = new Reviews();
         this.bookmarks = new Bookmarks();
         this.moodBoards = new MoodBoards();
+        this.moodAccumulations = new MoodAccumulations();
     }
 
     // Method

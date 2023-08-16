@@ -31,12 +31,17 @@ public class AuthController {
      * @return
      */
     @PostMapping("/signup")
-    public ResponseEntity<SignupResponseDto> signup(@RequestBody SignupRequestDto requestDto) {
-        SignupResponseDto response = authService.signup(new SignupParams(
+    public ResponseEntity<SignupResponseDto> signup(
+            @RequestBody SignupRequestDto requestDto,
+            HttpServletRequest request
+    ) {
+        SignupResponseDto responseDto = authService.signup(new SignupParams(
                         requestDto.getName(), requestDto.getEmail(), requestDto.getPassword()
                 )
         );
-        return ResponseEntity.ok(response);
+
+        storeState(request, responseDto.getMemberId());
+        return ResponseEntity.ok(responseDto);
     }
 
     /**
