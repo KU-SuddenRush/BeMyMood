@@ -95,9 +95,14 @@ class DetailVerticalScrollContentView: UIView{
     let entertainmentMenu = UILabel().then{
         $0.text = "메뉴"
     }
-    let entertainmentMenuCollecionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
-        $0.backgroundColor = .lightGray
-    }
+    let entertainmentMenuCollecionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let menuCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        menuCV.backgroundColor = .white
+        menuCV.showsHorizontalScrollIndicator = false
+        return menuCV
+    }()
 
     init(frame: CGRect, spotInfo: SpotDetailInfos) {
         super.init(frame: frame)
@@ -123,6 +128,7 @@ class DetailVerticalScrollContentView: UIView{
         descriptionText.text = tempData.description
         
         setupRecommendCollectionView()
+        setupMenuCollectionView()
     }
     
     func hierarchy(){
@@ -273,6 +279,12 @@ extension DetailVerticalScrollContentView: UICollectionViewDelegate, UICollectio
         entertainmentRecommendCollectionView.register(RecommendCell.self, forCellWithReuseIdentifier: "recommendCell")
     }
     
+    func setupMenuCollectionView() {
+        entertainmentMenuCollecionView.dataSource = self
+        entertainmentMenuCollecionView.delegate = self
+        entertainmentMenuCollecionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "menuCell")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView{
@@ -280,6 +292,8 @@ extension DetailVerticalScrollContentView: UICollectionViewDelegate, UICollectio
             return tempData.spotThumbnailImageUrl.count
         case entertainmentRecommendCollectionView:
             return tempData.recommends.count
+        case entertainmentMenuCollecionView:
+            return tempData.menuImageUrls.count
         default:
             return 0
         }
@@ -307,6 +321,16 @@ extension DetailVerticalScrollContentView: UICollectionViewDelegate, UICollectio
             
             return cell
 
+        case entertainmentMenuCollecionView:
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath)
+            
+            let imageView = UIImageView(frame: cell.contentView.bounds)
+            imageView.loadImage(from: tempData.menuImageUrls[indexPath.row])
+            cell.contentView.addSubview(imageView)
+            
+            return cell
+            
         default:
             return UICollectionViewCell()
         }
@@ -330,6 +354,8 @@ extension DetailVerticalScrollContentView: UICollectionViewDelegate, UICollectio
         case entertainmentRecommendCollectionView:
             let cellWidth = calculateTagCellWidth(for: tempData.recommends[indexPath.row]) + 82
             return CGSize(width: cellWidth + 5, height: collectionView.frame.height)
+        case entertainmentMenuCollecionView:
+            return CGSize(width: collectionView.frame.height, height: collectionView.frame.height) // 1:1
         default:
             return CGSize()
         }

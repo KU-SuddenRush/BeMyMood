@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
         scrollView.addSubview(contentView!)
         
         scrollView.backgroundColor = .white
-        contentView!.backgroundColor = .systemPink
+        contentView!.backgroundColor = .white
     }
     
     func setViewConstraints(){
