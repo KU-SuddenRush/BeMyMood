@@ -22,10 +22,10 @@ public class MoodServiceImpl implements MoodService {
     }
 
     @Override
-    public List<String> getAllColors() { return moodRepository.findAllColors(); }
+    public List<Long> getAllColors() { return moodRepository.findAllColorIds(); }
 
     @Override
-    public List<String> getAllVibes() { return moodRepository.findAllVibes(); }
+    public List<Long> getAllVibes() { return moodRepository.findAllVibeIds(); }
 
     @Override
     public Mood getById(Long moodId) {
