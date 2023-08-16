@@ -10,11 +10,15 @@ import ku.hackerthon.BeMyMood.domain.moodboard.text.MoodBoardTexts;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MoodBoard {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +34,9 @@ public class MoodBoard {
 
     @Column(name = "mood_board_capture_img_url") // 무드보드 캡쳐본 url
     private String captureImgUrl;
+
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
 
     @Embedded
     private MoodBoardStickers stickers;
