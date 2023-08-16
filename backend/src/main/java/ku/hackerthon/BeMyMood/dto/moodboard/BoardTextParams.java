@@ -1,4 +1,4 @@
-package ku.hackerthon.BeMyMood.dto.moodboard.store;
+package ku.hackerthon.BeMyMood.dto.moodboard;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,8 +1,8 @@
 package ku.hackerthon.BeMyMood.dto.web.request;
 
-import ku.hackerthon.BeMyMood.dto.moodboard.store.BoardPictureParams;
-import ku.hackerthon.BeMyMood.dto.moodboard.store.BoardStickerParams;
-import ku.hackerthon.BeMyMood.dto.moodboard.store.BoardTextParams;
+import ku.hackerthon.BeMyMood.dto.moodboard.BoardPictureParams;
+import ku.hackerthon.BeMyMood.dto.moodboard.BoardStickerParams;
+import ku.hackerthon.BeMyMood.dto.moodboard.BoardTextParams;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
