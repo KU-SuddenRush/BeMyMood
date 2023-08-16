@@ -14,6 +14,7 @@ class SpotTagCell: UICollectionViewCell {
     let tagLabel = UILabel().then{
         $0.textAlignment = .center
         $0.text = "#tag_default"
+        $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(red: 0.35, green: 0.33, blue: 0.32, alpha: 1)
         $0.backgroundColor = UIColor(red: 0.92, green: 0.91, blue: 0.9, alpha: 1)
     }

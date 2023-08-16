@@ -26,12 +26,12 @@ class SpotCell: UICollectionViewCell {
     }
     
     let spotTitleLabel = UILabel().then{
-        $0.font = UIFont(name: "AppleSDGothicNeoB00-Regular", size: 18)
+        $0.font = .systemFont(ofSize: 18, weight: .bold)
         $0.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     let spotTypeLabel = UILabel().then{
-        $0.font = UIFont(name: "AppleSDGothicNeoR00-Regular", size: 14)
+        $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(red: 1, green: 0.54, blue: 0, alpha: 1)
     }
 
@@ -121,7 +121,7 @@ extension SpotCell: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
     func calculateTagCellWidth(for tagText: String) -> CGFloat {
         // 셀 폭을 계산하는 로직을 작성합니다. 텍스트의 길이에 따라 동적으로 폭을 설정하거나, 고정된 값으로 설정할 수 있습니다.
         let textWidth = tagText.size(withAttributes: [.font: UIFont.systemFont(ofSize: 14.0)]).width
-        let cellWidth = textWidth + 45.0 // 예시로 폭에 텍스트 너비를 추가하고 여백을 더합니다.
+        let cellWidth = textWidth + 35.0 // 예시로 폭에 텍스트 너비를 추가하고 여백을 더합니다.
         
         return cellWidth
     }

@@ -16,10 +16,9 @@ class SpotListModalViewController: UIViewController {
     
     let spotListModalTitle = UILabel().then{
         $0.backgroundColor = .white
-        $0.font = .boldSystemFont(ofSize: 20)
+        $0.font = .systemFont(ofSize: 18, weight: .bold)
         $0.textAlignment = .center
         $0.textColor = .black
-        
         $0.text = "내 무드를 담은 스팟"
     }
     
@@ -66,8 +65,8 @@ extension SpotListModalViewController {
     
     func layout(){
         spotListModalTitle.snp.makeConstraints{ make in
-            make.leading.top.trailing.equalToSuperview()
-            make.height.equalTo(50)
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(40)
         }
         
         slidingTabVC.view.snp.makeConstraints{ make in

@@ -15,6 +15,8 @@ class FilterOption: UIButton {
         backgroundColor = .clear
 
         setTitle(title, for: .normal)
+        self.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
+
         setImage(UIImage(named: "chevron.down")?.withRenderingMode(.alwaysOriginal), for: .normal)
         setImage(UIImage(named: "chevron.down.fill")?.withRenderingMode(.alwaysOriginal), for: .selected)
 
