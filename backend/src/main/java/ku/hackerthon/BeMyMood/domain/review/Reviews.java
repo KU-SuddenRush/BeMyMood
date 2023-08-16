@@ -1,6 +1,7 @@
 package ku.hackerthon.BeMyMood.domain.review;
 
 import ku.hackerthon.BeMyMood.domain.spot.Spot;
+import ku.hackerthon.BeMyMood.dto.moodboard.ReviewImageParams;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
@@ -28,5 +29,21 @@ public class Reviews {
         return reviews.stream()
                 .filter(review -> review.equalSpot(spot))
                 .findFirst().get();
+    }
+
+    public List<ReviewImageParams> getReviewImgs() {
+        List<ReviewImageParams> reviewImages = new ArrayList<>();
+        for (Review review : reviews) {
+            for (ReviewImage image : review.getReviewImages().getAllReviewimage()) {
+                reviewImages.add(
+                        new ReviewImageParams(
+                                image.getId(),
+                                image.getImgUrl()
+                        )
+                );
+            }
+        }
+
+        return reviewImages;
     }
 }

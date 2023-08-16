@@ -3,13 +3,12 @@ package ku.hackerthon.BeMyMood.controller;
 import ku.hackerthon.BeMyMood.aop.annotation.State;
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoard;
-import ku.hackerthon.BeMyMood.domain.review.Review;
 import ku.hackerthon.BeMyMood.dto.moodboard.MoodBoardInfo;
-import ku.hackerthon.BeMyMood.dto.moodboard.SpotSignatureImageParams;
 import ku.hackerthon.BeMyMood.dto.web.request.MoodBoardRequestDto;
-import ku.hackerthon.BeMyMood.dto.web.request.SpotSignatureImagesResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.SpotSignatureImagesResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardDetailResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.ReviewImagesResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.moodboard.MoodBoardService;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -63,6 +59,19 @@ public class MoodBoardController {
     public ResponseEntity<SpotSignatureImagesResponseDto> getSpotSignatureImages(@State Long memberId) {
         Member member = memberService.searchById(memberId);
         return ResponseEntity.ok(moodBoardService.getSpotSignatureImages(member));
+    }
+
+    /**
+     * <b>무드보드 아이템 - 내 기록 사진 조회</b>
+     *
+     * @param memberId {@link State}로 주입된 MemberId
+     *
+     * @return ReviewImagesResponseDto
+     */
+    @GetMapping("/picture/review")
+    public ResponseEntity<ReviewImagesResponseDto> getReviewImages(@State Long memberId) {
+        Member member = memberService.searchById(memberId);
+        return ResponseEntity.ok(moodBoardService.getReviewImages(member));
     }
 
     /**

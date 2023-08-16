@@ -17,21 +17,21 @@ public class MoodController {
 
     /**
      * <b>색상 리스트 반환</b>
-     * @return List<String> -> 문자열 리스트</String>
+     * @return List<Long> id 리스트</String>
      */
     @GetMapping("/color")
-    public ResponseEntity<List<String>> getAllColors() {
-        List<String> response = moodService.getAllColors();
+    public ResponseEntity<List<Long>> getAllColors() {
+        List<Long> response = moodService.getAllColors();
         return ResponseEntity.ok(response);
     }
 
     /**
      * <b>분위기 리스트 반환</b>
-     * @return List<String> -> 문자열 리스트</String>
+     * @return List<Long> id 리스트</String>
      */
     @GetMapping("/vibe")
-    public ResponseEntity<List<String>> getAllVibes() {
-        List<String> response = moodService.getAllVibes();
+    public ResponseEntity<List<Long>> getAllVibes() {
+        List<Long> response = moodService.getAllVibes();
         return ResponseEntity.ok(response);
     }
 }

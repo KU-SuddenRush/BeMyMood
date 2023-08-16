@@ -85,6 +85,11 @@ public class MemberServiceImpl implements MemberService {
     public void setMemberMood(List<Long> moodIds, Long memberId) {
         Member member = searchById(memberId);
 
+        if (!member.getPreferredMoods().isEmpty()) {
+            log.info("기존에 선택된 무드를 삭제합니다.");
+            member.getPreferredMoods().clearPreferredMoods();
+        }
+
         for (Long moodId : moodIds) {
             Mood selectedMood = moodService.getById(moodId);
 
@@ -144,9 +149,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public List<String> getPreferredLocationNames(Long memberId) {
+    public List<Long> getPreferredLocationNames(Long memberId) {
         Member member = searchById(memberId);
-        return member.getPreferredLocations().getNames();
+        return member.getPreferredLocations().getLocationIds();
     }
 
     @Override

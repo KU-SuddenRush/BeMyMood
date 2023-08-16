@@ -10,9 +10,9 @@ public interface MoodService {
 
     Mood getByName(String name);
 
-    List<String> getAllColors();
+    List<Long> getAllColors();
 
-    List<String> getAllVibes();
+    List<Long> getAllVibes();
 
     Mood getById(Long moodId);
 }

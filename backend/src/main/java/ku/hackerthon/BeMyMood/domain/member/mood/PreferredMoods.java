@@ -17,6 +17,10 @@ public class PreferredMoods {
         return this.preferredMoods.size() == 0;
     }
 
+    public void clearPreferredMoods() {
+        preferredMoods.clear();
+    }
+
     public void add(PreferredMood preferredMood) throws IllegalArgumentException {
         preferredMoods.add(preferredMood);
     }

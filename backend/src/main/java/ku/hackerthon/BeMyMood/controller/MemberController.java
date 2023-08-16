@@ -40,7 +40,7 @@ public class MemberController {
     }
 
     /**
-     * <b>Member의 색상/분위기 취향 입력</b>
+     * <b>Member의 색상/분위기 취향 입력/수정</b>
      * @param memberId {@link State}로 주입된 MemberId,
      *                 List<String> 색상/분위기 리스트
      */
@@ -88,8 +88,8 @@ public class MemberController {
      * @return
      */
     @GetMapping("/location")
-    public ResponseEntity<List<String>> getMemberLocation(@State Long memberId) {
-        List<String> response = memberService.getPreferredLocationNames(memberId);
+    public ResponseEntity<List<Long>> getMemberLocation(@State Long memberId) {
+        List<Long> response = memberService.getPreferredLocationNames(memberId);
         return ResponseEntity.ok(response);
     }
 
