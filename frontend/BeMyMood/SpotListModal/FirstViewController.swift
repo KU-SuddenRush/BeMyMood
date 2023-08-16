@@ -142,10 +142,8 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         spotCell.thumbnailImage.loadImage(from: cellData.thumbnailImageUrl)
         if cellData.isLiked{
-            spotCell.heartButton.setImage(UIImage(systemName: "heart.fill"), for: UIControl.State.normal)
             spotCell.heartButton.isSelected = true
         }else{
-            spotCell.heartButton.setImage(UIImage(systemName: "heart"), for: UIControl.State.normal)
             spotCell.heartButton.isSelected = false
         }
         spotCell.spotTypeLabel.text = cellData.spotType
@@ -162,10 +160,8 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
     @objc func heartBtnTap(_ sender: UIButton){
         print("heart Button Tap")
         if sender.isSelected{
-            sender.setImage(UIImage(systemName: "heart"), for: .normal)
             sender.isSelected = false
         }else{
-            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             sender.isSelected = true
         }
         /// TODO Heart Tap API

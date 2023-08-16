@@ -21,8 +21,8 @@ class SpotCell: UICollectionViewCell {
     }
     
     let heartButton = UIButton().then{
-        $0.setImage(UIImage(systemName: "heart"), for: .normal)
-        $0.tintColor = .black
+        $0.setImage(UIImage(named: "heart.preview")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        $0.setImage(UIImage(named: "heart.preview.fill")?.withRenderingMode(.alwaysOriginal), for: .selected)
     }
     
     let spotTitleLabel = UILabel().then{
