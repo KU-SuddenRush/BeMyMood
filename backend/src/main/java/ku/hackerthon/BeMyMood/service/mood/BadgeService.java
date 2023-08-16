@@ -69,7 +69,7 @@ public class BadgeService {
         List<Badge> badges = badgeRepository.findAllLockedBy(member);
         return badges.stream()
                 .map(badge -> new BadgeResponseDto(
-                                badge.getImageUrl(),
+                                badge.getLockedImageUrl(),
                                 badge.getName(),
                                 badge.getMood().getName(),
                                 badge.getDescription(),
