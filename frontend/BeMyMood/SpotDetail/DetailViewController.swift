@@ -14,13 +14,12 @@ class DetailViewController: UIViewController {
         
     //MARK: - UIComponents
     private let scrollView = UIScrollView()
-    private let contentView = DetailVerticalScrollContentView()
+    private var contentView: DetailVerticalScrollContentView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contentView.tempData = self.tempData
-        
+        contentView = DetailVerticalScrollContentView(frame: .zero, spotInfo: tempData)
         setViews()
         setViewConstraints()
         
@@ -29,10 +28,10 @@ class DetailViewController: UIViewController {
     
     func setViews(){
         self.view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
+        scrollView.addSubview(contentView!)
         
-        scrollView.backgroundColor = .brown
-        contentView.backgroundColor = .systemPink
+        scrollView.backgroundColor = .white
+        contentView!.backgroundColor = .systemPink
     }
     
     func setViewConstraints(){
@@ -47,7 +46,7 @@ class DetailViewController: UIViewController {
     }
     
     func configureContentViewConstraint(){
-        contentView.snp.makeConstraints{ make in
+        contentView!.snp.makeConstraints{ make in
             make.edges.equalTo(scrollView)
             make.width.equalTo(scrollView.snp.width)
         }

@@ -26,7 +26,7 @@ class DetailVerticalScrollContentView: UIView{
     
     //MARK: - UIComponents : 기본 정보
     let basicInfoView = UIView().then{
-        $0.backgroundColor = .yellow
+        $0.backgroundColor = .white
     }
 
     let info1Img = UIImageView().then{
@@ -35,7 +35,7 @@ class DetailVerticalScrollContentView: UIView{
     }
     let info1Title = UILabel().then{
         $0.text = "address"
-        $0.backgroundColor = .black_30
+        $0.backgroundColor = .white
     }
     let info2Img = UIImageView().then{
         $0.tintColor = .lightGray
@@ -43,7 +43,7 @@ class DetailVerticalScrollContentView: UIView{
     }
     let info2Title = UILabel().then{
         $0.text = "url"
-        $0.backgroundColor = .black_30
+        $0.backgroundColor = .white
     }
     let info3Img = UIImageView().then{
         $0.tintColor = .lightGray
@@ -51,12 +51,12 @@ class DetailVerticalScrollContentView: UIView{
     }
     let info3Title = UILabel().then{
         $0.text = "time"
-        $0.backgroundColor = .black_30
+        $0.backgroundColor = .white
     }
     
     //MARK: - UIComponents : 상세 설명
     let descriptionView = UIView().then{
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .white
     }
     let digonal1 = UIImageView().then{
         $0.tintColor = .black
@@ -69,7 +69,7 @@ class DetailVerticalScrollContentView: UIView{
     let descriptionText = UILabel().then{
         $0.numberOfLines = 20
         $0.text = "누데이크의 두 번째 플래그십 스토어인 성수점은 <Museum of Nudake>를 테마로 완성했습니다. 'Make New Fantasy'라는 슬로건을 담아 만든 오브제와 조형물을 중심으로 아티스틱한 경험과 새로운 감정을 선사합니다."
-        $0.backgroundColor = .darkBrown
+        $0.backgroundColor = .white
     }
     
     //MARK: - UIComponents : 즐길 거리
@@ -95,8 +95,9 @@ class DetailVerticalScrollContentView: UIView{
     }
 
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, spotInfo: SpotDetailInfos) {
         super.init(frame: frame)
+        self.tempData = spotInfo
         hierarchy()
         layout()
         dataInit()
@@ -111,6 +112,11 @@ class DetailVerticalScrollContentView: UIView{
     
     func dataInit(){
         setupImageCollectionView()
+        info1Title.text = tempData.address
+        info2Title.text = tempData.url
+        info3Title.text = tempData.time
+        
+        descriptionText.text = tempData.description
     }
     
     func hierarchy(){
