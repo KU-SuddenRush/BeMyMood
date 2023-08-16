@@ -10,7 +10,8 @@ import SwiftUI
 
 class FirstViewController: UIViewController {
     
-    weak var delegate: SpotCellTapDelegate?
+    var spotDetailNavigationController: UINavigationController!
+//    weak var delegate: SpotCellTapDelegate?
     
     var tempData: [SpotData] = [
         SpotData(spotId: 1, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "카페", spotTitle: "마카롱 카페", tags: ["힙한", "무채색"]),
@@ -31,11 +32,21 @@ class FirstViewController: UIViewController {
         $0.backgroundColor = .white
     }
     
-    let filterCategoryBtn = FilterOption(title: "카테고리")
-    let filterRegionBtn = FilterOption(title: "지역")
-    let filterIcon = UIImageView().then {
-        $0.tintColor = .lightGray
-        $0.image = UIImage(systemName: "slider.horizontal.3")
+    let filterCategoryBtn: FilterOption = {
+        let FCBtn = FilterOption(title: "카테고리")
+        FCBtn.layer.cornerRadius = FCBtn.frame.height / 2 + 3
+        return FCBtn
+    }()
+
+    let filterRegionBtn: FilterOption = {
+        let FRBtn = FilterOption(title: "지역")
+        FRBtn.layer.cornerRadius = FRBtn.frame.height / 2 + 3
+        return FRBtn
+    }()
+    
+    let filterIcon = UIButton().then {
+        $0.setImage(UIImage(named: "filter")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        $0.setImage(UIImage(named: "filter.fill")?.withRenderingMode(.alwaysOriginal), for: .selected)
     }
     
     let spotCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
@@ -48,10 +59,8 @@ class FirstViewController: UIViewController {
         hierarchy()
         layout()
         
-        filterCategoryBtn.layer.cornerRadius = filterCategoryBtn.frame.height / 2
         filterCategoryBtn.addTarget(self, action: #selector(filterCategoryBtnTapped), for: .touchUpInside)
 
-        filterRegionBtn.layer.cornerRadius = filterRegionBtn.frame.height / 2
         filterRegionBtn.addTarget(self, action: #selector(filterRegionBtnTapped), for: .touchUpInside)
     }
     
@@ -141,10 +150,8 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         spotCell.thumbnailImage.loadImage(from: cellData.thumbnailImageUrl)
         if cellData.isLiked{
-            spotCell.heartButton.setImage(UIImage(systemName: "heart.fill"), for: UIControl.State.normal)
             spotCell.heartButton.isSelected = true
         }else{
-            spotCell.heartButton.setImage(UIImage(systemName: "heart"), for: UIControl.State.normal)
             spotCell.heartButton.isSelected = false
         }
         spotCell.spotTypeLabel.text = cellData.spotType
@@ -161,10 +168,8 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
     @objc func heartBtnTap(_ sender: UIButton){
         print("heart Button Tap")
         if sender.isSelected{
-            sender.setImage(UIImage(systemName: "heart"), for: .normal)
             sender.isSelected = false
         }else{
-            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             sender.isSelected = true
         }
         /// TODO Heart Tap API
@@ -172,8 +177,11 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("didSelectItmeAt")
-        delegate?.moveToSpotDetail(spotId: tempData[indexPath.row].spotId)
+        print("didSelectItemAt \(indexPath)")
+//        delegate?.moveToSpotDetail(spotId: tempData[indexPath.row].spotId)
+        
+        /// TODO get Detail Info API
+        spotDetailNavigationController?.pushViewController(SpotDetailViewController(), animated: true)
     }
     
 }
@@ -200,7 +208,6 @@ extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDeleg
     func setCategoryFilterTitle(_ title: String) {
         filterCategoryBtn.isSelected = true
         filterCategoryBtn.setTitle(title, for: .selected)
-        filterCategoryBtn.tintColor = .orange
         filterCategoryBtn.layer.borderColor = UIColor.orange.cgColor
         updateFilterIconColor()
         /// 검색 with filter option API 호출
@@ -209,7 +216,6 @@ extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDeleg
     func setRegionFilterTitle(_ title: String) {
         filterRegionBtn.isSelected = true
         filterRegionBtn.setTitle(title, for: .selected)
-        filterRegionBtn.tintColor = .orange
         filterRegionBtn.layer.borderColor = UIColor.orange.cgColor
         updateFilterIconColor()
         /// 검색 with filter option API 호출
@@ -217,7 +223,9 @@ extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDeleg
     
     func updateFilterIconColor(){
         if filterCategoryBtn.isSelected || filterRegionBtn.isSelected {
-            filterIcon.tintColor = .orange
+            filterIcon.isSelected = true
+        }else{
+            filterIcon.isSelected = false
         }
     }
     

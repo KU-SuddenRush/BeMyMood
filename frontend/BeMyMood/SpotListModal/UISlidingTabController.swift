@@ -132,12 +132,14 @@ class UISlidingTabController: UIViewController {
         var text: String! {
             didSet {
                 label.text = text
+                label.font = .systemFont(ofSize: 16, weight: .bold)
             }
         }
         
         override init(frame: CGRect) {
             super.init(frame: frame)
             setupUI()
+            indicator.layer.cornerRadius = 2
         }
         
         required init?(coder aDecoder: NSCoder) {
@@ -170,9 +172,11 @@ class UISlidingTabController: UIViewController {
             // indicator
             indicator.translatesAutoresizingMaskIntoConstraints = false
             indicator.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-            indicator.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-            indicator.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-            indicator.heightAnchor.constraint(equalToConstant: 2).isActive = true
+//            indicator.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+//            indicator.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+            indicator.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            indicator.widthAnchor.constraint(equalToConstant: 32).isActive = true
+            indicator.heightAnchor.constraint(equalToConstant: 4).isActive = true
         }
         
     }
