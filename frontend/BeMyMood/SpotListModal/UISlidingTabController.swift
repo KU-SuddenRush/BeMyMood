@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol SlidingTabControllerDelegate: AnyObject {
+    func didSelectFirstVC()
+    func didSelectSecondVC()
+}
+
 class UISlidingTabController: UIViewController {
+    
+    var delegate: SlidingTabControllerDelegate?
     
     private let collectionHeader = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     public let collectionPage = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
@@ -48,6 +55,14 @@ class UISlidingTabController: UIViewController {
                 self.collectionHeader.scrollToItem(at: path, at: .centeredHorizontally, animated: true)
             }
             
+            if let delegate = self.delegate {
+                if position == 0 {
+                    delegate.didSelectFirstVC()
+                }else if position == 1 {
+                    delegate.didSelectSecondVC()
+                }
+            }
+                
             self.collectionHeader.reloadData()
         }
         
@@ -58,6 +73,14 @@ class UISlidingTabController: UIViewController {
             self.collectionPage.isPagingEnabled = false
             self.collectionPage.scrollToItem(at: path, at: .centeredHorizontally, animated: true)
             self.collectionPage.isPagingEnabled = true
+            
+            if let delegate = self.delegate {
+                if position == 0 {
+                    delegate.didSelectFirstVC()
+                }else if position == 1 {
+                    delegate.didSelectSecondVC()
+                }
+            }
         }
     }
     

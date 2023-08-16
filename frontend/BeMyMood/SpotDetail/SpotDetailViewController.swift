@@ -15,6 +15,10 @@ class SpotDetailViewController: UIViewController {
     var tempData = SpotDetailInfos(spotId: 3, bookmarked: true, spotName: "누데이크 성수점", spotThumbnailImageUrl: ["https://picsum.photos/200/300","https://picsum.photos/200/300","https://picsum.photos/200/300"], categoryName: "카페", moodNames: ["힙한","소품이많은","무채색","어두운","특이한소재","포인트컬러","정적인","키치한","세련된","단조로운"], address: "서울 성동구 성수이로7길 26 1층", url: "http://www.nudake.com", time: "매일 11:00 - 21:00, 라스트오더 20:45", description: "대법관의 임기는 6년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다. 국정감사 및 조사에 관한 절차 기타 필요한 사항은 법률로 정한다. 국방상 또는 국민경제상 긴절한 필요로 인하여 법률이 정하는 경우를 제외하고는, 사영기업을 국유 또는 공유로 이전하거나 그 경영을 통제 또는 관리할 수 없다.", recommends: ["음료", "전시", "디저트"], menuImageUrls: ["https://picsum.photos/200/300","https://picsum.photos/200/300","https://picsum.photos/200/300", "https://picsum.photos/200/300"])
     
     //MARK: - UIComponents
+    let headerView = UIView().then{
+        $0.backgroundColor = .white
+    }
+    
     let categoryLabel = UILabel().then{
         $0.backgroundColor = .white
         $0.text = "Category Label"
@@ -45,6 +49,8 @@ class SpotDetailViewController: UIViewController {
         
         self.view.backgroundColor = .white
         
+        slidingTabVC.delegate = self
+        
         hierarchy()
         layout()
         
@@ -71,15 +77,41 @@ class SpotDetailViewController: UIViewController {
 extension SpotDetailViewController{
     
     func hierarchy(){
-        self.view.addSubview(categoryLabel)
-        self.view.addSubview(tagCollectionView)
+        self.view.addSubview(headerView)
+        headerView.addSubview(categoryLabel)
+        headerView.addSubview(tagCollectionView)
         self.view.addSubview(slidingTabVC.view)
         self.view.addSubview(addModeBoardView)
     }
     
     func layout(){
+        
+        updateHeaderViewContraintToVisible()
+
+        slidingTabVC.view.snp.makeConstraints{ make in
+            make.top.equalTo(headerView.snp.bottom).offset(22)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(addModeBoardView.snp.top)
+        }
+        
+        addModeBoardView.snp.makeConstraints{ make in
+            make.bottom.leading.trailing.equalToSuperview()
+            make.height.equalTo(104)
+        }
+    }
+    
+    func updateHeaderViewContraintToVisible(){
+        
+        headerView.removeConstraints(headerView.constraints)
+        categoryLabel.removeConstraints(categoryLabel.constraints)
+        tagCollectionView.removeConstraints(tagCollectionView.constraints)
+        
+        headerView.snp.makeConstraints{ make in
+            make.top.leading.trailing.equalToSuperview()
+        }
+        
         categoryLabel.snp.makeConstraints{ make in
-            make.top.equalTo(20)
+            make.top.equalTo(12)
             make.leading.equalTo(25)
             make.trailing.equalTo(-25)
             make.height.equalTo(24)
@@ -90,17 +122,18 @@ extension SpotDetailViewController{
             make.leading.equalTo(16)
             make.trailing.equalTo(-16)
             make.height.equalTo(60)
+            make.bottom.equalToSuperview().offset(-12)
         }
+    }
+    
+    func updateHeaderViewContraintToInvisible(){
         
-        slidingTabVC.view.snp.makeConstraints{ make in
-            make.top.equalTo(tagCollectionView.snp.bottom).offset(22)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(addModeBoardView.snp.top)
-        }
+        headerView.removeConstraints(headerView.constraints)
+        categoryLabel.removeConstraints(categoryLabel.constraints)
+        tagCollectionView.removeConstraints(tagCollectionView.constraints)
         
-        addModeBoardView.snp.makeConstraints{ make in
-            make.bottom.leading.trailing.equalToSuperview()
-            make.height.equalTo(104)
+        headerView.snp.makeConstraints{ make in
+            make.size.equalTo(0)
         }
     }
 }
@@ -139,6 +172,27 @@ extension SpotDetailViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10 // 가로 간격 설정
     }
+}
+
+//MARK: - UISliding CollectionView 위치에 따른 동적인 뷰 구성을 위한 protocol 채택
+extension SpotDetailViewController: SlidingTabControllerDelegate{
+    
+    func didSelectFirstVC() {
+        // headerView 의 크기를 레이아웃에 맞게 애니메이션
+        UIView.animate(withDuration: 0.3) {
+            self.updateHeaderViewContraintToVisible()
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func didSelectSecondVC() {
+        // headerView 의 크기를 0으로 애니메이션
+        UIView.animate(withDuration: 0.3) {
+            self.updateHeaderViewContraintToInvisible()
+            self.view.layoutIfNeeded()
+        }
+    }
+    
 }
 
 struct SpotDetailVCPreView:PreviewProvider {
