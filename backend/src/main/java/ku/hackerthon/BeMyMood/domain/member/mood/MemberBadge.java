@@ -3,10 +3,12 @@ package ku.hackerthon.BeMyMood.domain.member.mood;
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.mood.badge.Badge;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class MemberBadge {

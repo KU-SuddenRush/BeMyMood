@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.Collection;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -24,5 +25,9 @@ public class BadgeRepository {
         return em.createQuery("select mb.badge from MemberBadge mb where mb.member.id = :id", Badge.class)
                 .setParameter("id", memberId)
                 .getResultList();
+    }
+
+    public List<Badge> findAllLockedBy(Member member) {
+        return null;
     }
 }

@@ -51,7 +51,7 @@ public class MemberController {
         MemberInfoResponseDto responseDto = memberService.searchMemberInfoById(memberId);
         return ResponseEntity.ok(responseDto);
     }
-    
+
     /**
      * <b>Member의 색상/분위기 취향 입력/수정</b>
      * @param memberId {@link State}로 주입된 MemberId,
@@ -179,6 +179,13 @@ public class MemberController {
     @GetMapping("/badge")
     public ResponseEntity<List<BadgeResponseDto>> badgeInfos(@State Long memberId) {
         List<BadgeResponseDto> responseDtos = badgeService.getBadgesByMemberId(memberId);
+        return ResponseEntity.ok(responseDtos);
+    }
+
+    @GetMapping("/badge/all")
+    public ResponseEntity<List<BadgeResponseDto>> allBadgeInfos(@State Long memberId) {
+        Member member = memberService.searchById(memberId);
+        List<BadgeResponseDto> responseDtos = badgeService.getAllBadges(member);
         return ResponseEntity.ok(responseDtos);
     }
 }
