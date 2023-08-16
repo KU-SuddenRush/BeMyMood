@@ -89,6 +89,13 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .grayBeige
         
+        if let firstVC = spotListModalVC.slidingTabVC.items[0] as? FirstViewController {
+            firstVC.spotDetailNavigationController = self.navigationController
+        }
+        if let secondVC = spotListModalVC.slidingTabVC.items[1] as? SecondViewController {
+            secondVC.spotDetailNavigationController = self.navigationController
+        }
+        
         hierarchy()
         layout()
         
