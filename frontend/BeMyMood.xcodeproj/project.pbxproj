@@ -20,6 +20,9 @@
 		2E7032962A8BE48000AD4593 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032952A8BE48000AD4593 /* DetailViewController.swift */; };
 		2E7032982A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */; };
 		2E70329A2A8CAEEF00AD4593 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032992A8CAEEF00AD4593 /* RecommendCell.swift */; };
+		2E70329E2A8CD6C100AD4593 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E70329D2A8CD6C100AD4593 /* ReviewViewController.swift */; };
+		2E7032A02A8CD79E00AD4593 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E70329F2A8CD79E00AD4593 /* ReviewCell.swift */; };
+		2E7032A22A8CD93800AD4593 /* Nicknames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032A12A8CD93800AD4593 /* Nicknames.swift */; };
 		2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A21242A8768A700750119 /* UISlidingTabController.swift */; };
 		2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05162A80F72700FC3FF3 /* UIViewController.swift */; };
 		2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */; };
@@ -95,6 +98,9 @@
 		2E7032952A8BE48000AD4593 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVerticalScrollContentView.swift; sourceTree = "<group>"; };
 		2E7032992A8CAEEF00AD4593 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
+		2E70329D2A8CD6C100AD4593 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		2E70329F2A8CD79E00AD4593 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		2E7032A12A8CD93800AD4593 /* Nicknames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nicknames.swift; sourceTree = "<group>"; };
 		2E9A21242A8768A700750119 /* UISlidingTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISlidingTabController.swift; sourceTree = "<group>"; };
 		2ECD05162A80F72700FC3FF3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModalViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 		2E1BF30A2A8A69D700C58138 /* SpotDetail */ = {
 			isa = PBXGroup;
 			children = (
+				2E70329C2A8CD68E00AD4593 /* Review */,
 				2E70329B2A8CC86100AD4593 /* Detail */,
 				2E1BF30B2A8A6A4300C58138 /* SpotDetailViewController.swift */,
 			);
@@ -200,6 +207,16 @@
 				2E7032992A8CAEEF00AD4593 /* RecommendCell.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		2E70329C2A8CD68E00AD4593 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				2E70329D2A8CD6C100AD4593 /* ReviewViewController.swift */,
+				2E70329F2A8CD79E00AD4593 /* ReviewCell.swift */,
+				2E7032A12A8CD93800AD4593 /* Nicknames.swift */,
+			);
+			path = Review;
 			sourceTree = "<group>";
 		};
 		2ECD05152A80F6C100FC3FF3 /* Extension */ = {
@@ -651,8 +668,10 @@
 				2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */,
 				ACF16E0B2A81118E0010CF21 /* TabBarController.swift in Sources */,
 				ACF16E152A8263FC0010CF21 /* TagCell.swift in Sources */,
+				2E7032A22A8CD93800AD4593 /* Nicknames.swift in Sources */,
 				ACF16E122A82638C0010CF21 /* UICollectionView.swift in Sources */,
 				2E7032962A8BE48000AD4593 /* DetailViewController.swift in Sources */,
+				2E7032A02A8CD79E00AD4593 /* ReviewCell.swift in Sources */,
 				ACF16E202A82919C0010CF21 /* ColorSelectionLayout.swift in Sources */,
 				AC0624422A88ADFE00EDFB8E /* RecordPictureCell.swift in Sources */,
 				AC06243E2A87B7DA00EDFB8E /* RecordViewController.swift in Sources */,
@@ -667,6 +686,7 @@
 				2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */,
 				ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */,
 				ACF16DFC2A7D6B090010CF21 /* MoodBoardViewController.swift in Sources */,
+				2E70329E2A8CD6C100AD4593 /* ReviewViewController.swift in Sources */,
 				2E1BF3052A89558400C58138 /* CategoryBottomSheet.swift in Sources */,
 				ACF16E002A7D6B420010CF21 /* ProfileViewController.swift in Sources */,
 				2E4FEC0F2A87940300EDA21A /* UIImageView.swift in Sources */,

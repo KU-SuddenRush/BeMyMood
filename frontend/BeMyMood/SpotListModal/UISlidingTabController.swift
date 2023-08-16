@@ -20,7 +20,7 @@ class UISlidingTabController: UIViewController {
     public let collectionPage = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     private let collectionHeaderIdentifier = "COLLECTION_HEADER_IDENTIFIER"
     private let collectionPageIdentifier = "COLLECTION_PAGE_IDENTIFIER"
-    private var items = [UIViewController]()
+    public var items = [UIViewController]()
     private var titles = [String]()
     private var colorHeaderActive = UIColor.blue
     private var colorHeaderInActive = UIColor.gray
@@ -81,6 +81,7 @@ class UISlidingTabController: UIViewController {
                     delegate.didSelectSecondVC()
                 }
             }
+            self.collectionPage.reloadData()
         }
     }
     

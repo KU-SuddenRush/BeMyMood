@@ -86,7 +86,7 @@ class SpotDetailViewController: UIViewController {
             $0.tempData = tempData
         }
         slidingTabVC.addItem(item: firstVC, title: "상세정보")
-        slidingTabVC.addItem(item: UIViewController(), title: "리뷰")
+        slidingTabVC.addItem(item: ReviewViewController(), title: "리뷰")
         slidingTabVC.build()
     }
     
