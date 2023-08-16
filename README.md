@@ -182,4 +182,4 @@ Be My Mood의 서비스 전반이 사용자의 무드(취향)를 기반으로 �
 <img width="500" alt="비마이무드_시스템_아키텍처" src="https://github.com/KU-SuddenRush/BeMyMood/assets/93924890/af41312d-b4d6-4004-a526-07bba27a2e20">
 
 ## ER 다이어그램
-<img width="500" src="https://github.com/KU-SuddenRush/BeMyMood/assets/93924890/a260ada5-3231-48e6-abc3-c78b15d2dc41"/>
+<img width="80%" src="https://github.com/KU-SuddenRush/BeMyMood/assets/93924890/a260ada5-3231-48e6-abc3-c78b15d2dc41"/>
