@@ -147,9 +147,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public List<String> getPreferredLocationNames(Long memberId) {
+    public List<Long> getPreferredLocationNames(Long memberId) {
         Member member = searchById(memberId);
-        return member.getPreferredLocations().getNames();
+        return member.getPreferredLocations().getLocationIds();
     }
 
     @Override

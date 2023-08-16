@@ -85,8 +85,8 @@ public class MemberController {
      * @return
      */
     @GetMapping("/location")
-    public ResponseEntity<List<String>> getMemberLocation(@State Long memberId) {
-        List<String> response = memberService.getPreferredLocationNames(memberId);
+    public ResponseEntity<List<Long>> getMemberLocation(@State Long memberId) {
+        List<Long> response = memberService.getPreferredLocationNames(memberId);
         return ResponseEntity.ok(response);
     }
 
