@@ -34,6 +34,8 @@ public class MoodBoard {
     @Column(name = "mood_board_name")
     private String name;
 
+    private int backgroundColor;
+
     @Column(name = "mood_board_capture_img_url") // 무드보드 캡쳐본 url
     private String captureImgUrl;
 
@@ -53,9 +55,10 @@ public class MoodBoard {
     private MoodBoardTexts texts;
 
     // Constructor
-    public MoodBoard(Member member, String name) {
+    public MoodBoard(Member member, String name, int backgroundColor) {
         this.member = member;
         this.name = name;
+        this.backgroundColor = backgroundColor;
         this.stickers = new MoodBoardStickers();
         this.pictures = new MoodBoardPictures();
         this.texts = new MoodBoardTexts();

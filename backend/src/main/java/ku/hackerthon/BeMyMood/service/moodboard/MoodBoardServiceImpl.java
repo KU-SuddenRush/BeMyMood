@@ -43,7 +43,8 @@ public class MoodBoardServiceImpl implements MoodBoardService {
         // 무드보드 생성
         MoodBoard moodBoard = new MoodBoard(
                 member,
-                requestDto.getMoodBoardName()
+                requestDto.getMoodBoardName(),
+                requestDto.getBackgroundColor()
         );
 
         MoodBoardPictures pictures = moodBoard.getPictures();
