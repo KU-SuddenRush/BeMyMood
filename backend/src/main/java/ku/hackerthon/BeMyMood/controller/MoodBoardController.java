@@ -29,7 +29,6 @@ public class MoodBoardController {
      * @param memberId {@link State}로 주입된 MemberId,
      *        requestDto 무드보드 생성에 필요한 데이터 dto
      *
-     * @return
      */
     @PostMapping
     public ResponseEntity<CreatMoodBoardResponseDto> createMoodBoard(
@@ -49,16 +48,17 @@ public class MoodBoardController {
     /**
      * <b>MoodBoard 캡처본 업로드</b>
      *
-     * @param moodBoardId MemberId,
+     * @param memberId {@link State}로 주입된 MemberId,
      *        file 무드보드 캡쳐 파일
      *
-     * @return
      */
     @PostMapping("/capture")
     public ResponseEntity<StringResponseDto> storeCaptureImg(
-            @RequestPart("file") MultipartFile file,
-            @RequestParam(name = "mood_board_id") Long moodBoardId) {
-        MoodBoard moodBoard = moodBoardService.findById(moodBoardId);
+            @State Long memberId,
+            @RequestPart("file") MultipartFile file
+    ) {
+        Member member = memberService.searchById(memberId);
+        MoodBoard moodBoard = member.getMoodBoards().getLastEditedMoodBoard();
         moodBoardService.storeCaptureImg(file, moodBoard);
 
         return ResponseEntity.ok(new StringResponseDto("무드보드 캡쳐 이미지를 성공적으로 저장하였습니다."));
