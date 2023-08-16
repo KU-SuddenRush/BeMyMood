@@ -10,8 +10,11 @@ import Then
 import SnapKit
 import SwiftUI
 import StickerView
+import Kingfisher
 
 class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestureRecognizerDelegate {
+    
+    var selectColor = 0
     
     var _selectedStickerView:StickerView?
         var selectedStickerView:StickerView? {
@@ -34,10 +37,15 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
             }
         }
     
+    func cancel(selected: Bool) {
+        isStickerSelected = selected
+        btnCheck()
+    }
+    
     func didAddSticker(tag: Int) {
         let testImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 116, height: 139))
         testImage.image = UIImage.stickers[tag]
-        testImage.contentMode = .scaleAspectFit
+        testImage.contentMode = .scaleToFill
         
         let sticker = StickerView.init(contentView: testImage)
         sticker.center = CGPoint.init(x: 150, y: 150)
@@ -47,6 +55,9 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
         sticker.showEditingHandlers = false
         self.view.addSubview(sticker)
         self.selectedStickerView = sticker
+        
+        isStickerSelected = false
+        btnCheck()
         
     }
     
@@ -110,7 +121,6 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
     }
     
     let nextBtn = UIButton().then{
-        $0.isEnabled = false
         $0.setTitle("완료", for: .normal)
         $0.backgroundColor = .darkBrown_30
         $0.setTitleColor(.darkBrown, for: .normal)
@@ -155,6 +165,8 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
         
         self.textBtn.addTarget(self, action: #selector(addTextButtonTapped), for: .touchUpInside)
         self.stickerBtn.addTarget(self, action: #selector(stickerBtnDidTab), for: .touchUpInside)
+        self.photoBtn.addTarget(self, action: #selector(photoBtnDidTab), for: .touchUpInside)
+        self.nextBtn.addTarget(self, action: #selector(captureButtonTapped), for: .touchUpInside)
 
     }
     
@@ -171,7 +183,8 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        self.view.backgroundColor = .color0
+        
+        self.view.backgroundColor = UIColor.colorList[selectColor]
     }
     
     
@@ -213,11 +226,38 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
         
     }
     
+    @objc func photoBtnDidTab() {
+        let MoodBoardImageVC = MoodBoardImageViewController()
+        MoodBoardImageVC.completionHandler = {url in
+            var testImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 125, height: 180))
+            if let imageUrl = URL(string: url) {
+                testImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "addMoodBoard"))
+            }
+            testImage.contentMode = .scaleToFill
+            
+            let sticker = StickerView.init(contentView: testImage)
+            sticker.center = CGPoint.init(x: 150, y: 150)
+            sticker.delegate = self
+            sticker.setImage(UIImage.init(named: "deletePicture")!, forHandler: StickerViewHandler.close)
+            sticker.setImage(UIImage.init(named: "rotate")!, forHandler: StickerViewHandler.rotate)
+            sticker.showEditingHandlers = false
+            self.view.addSubview(sticker)
+            self.selectedStickerView = sticker
+        }
+        self.navigationController?.pushViewController(MoodBoardImageVC, animated: true)
+        
+    }
+    
     func btnCheck(){
-        if !isStickerSelected && !isColorSelected{
-            nextBtn.isHidden = false
-        }else {
+        if isColorSelected && !isStickerSelected{
             nextBtn.isHidden = true
+            colorCollectionView.isHidden = false
+        }else if !isColorSelected && isStickerSelected{
+            nextBtn.isHidden = true
+            colorCollectionView.isHidden = true
+        }else {
+            nextBtn.isHidden = false
+            colorCollectionView.isHidden = true
         }
     }
     
@@ -231,6 +271,23 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
             textView.center = CGPoint(x: textView.center.x + translation.x, y: textView.center.y + translation.y)
             gesture.setTranslation(.zero, in: view)
         }
+    }
+    
+    @objc func captureButtonTapped() {
+        // 화면 캡처
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let capturedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        ApiClient().postCaptureImage(capturedImage!){ result in
+            if !result.contains("fail"){
+                print("성공",result)
+            }else{
+                print("실패")
+                print(capturedImage)
+            }
+        }
+
     }
     
     //MARK: - StickerViewFunc
@@ -287,6 +344,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         cell.isSelected.toggle() // 셀의 isSelected 상태를 변경
         cell.row = indexPath.row
         self.view.backgroundColor = UIColor.colorList[indexPath.row]
+        selectColor = indexPath.row
         self.backgroundColorBtn.setImage(UIImage.colorIcon[indexPath.row], for: .normal)
         backgroundColorBtnStatus()
     }
@@ -319,6 +377,7 @@ protocol TextEditorDelegate: AnyObject {
 
 protocol StickerDelegate: AnyObject {
     func didAddSticker(tag: Int)
+    func cancel(selected: Bool)
 }
 
 struct TextStyle {
@@ -334,6 +393,8 @@ struct Sticker {
 }
 
 extension MoodBoardEditViewController :StickerDelegate, StickerViewDelegate{
+ 
+    
     
     func stickerViewDidBeginMoving(_ stickerView: StickerView) {
         self.selectedStickerView = stickerView

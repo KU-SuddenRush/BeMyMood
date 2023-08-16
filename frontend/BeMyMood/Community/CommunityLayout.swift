@@ -12,13 +12,20 @@ import SnapKit
 extension CommunityViewController {
     
     func hierarchy(){
-        self.view.addSubview(nextButton)
+        self.view.addSubview(moodBoardTitle)
+        self.view.addSubview(slidingTabVC.view)
     }
     
     func layout(){
-        nextButton.snp.makeConstraints{ make in
-            make.centerX.centerY.equalToSuperview()
-            make.width.height.equalTo(100)
+        moodBoardTitle.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(73)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(30)
+        }
+        
+        slidingTabVC.view.snp.makeConstraints{ make in
+            make.top.equalTo(moodBoardTitle.snp.bottom).offset(23)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

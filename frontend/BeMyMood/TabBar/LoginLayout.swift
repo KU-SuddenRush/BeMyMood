@@ -21,8 +21,7 @@ extension LoginViewController {
     
     func layout(){
         logo.snp.makeConstraints{ make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(316)
+            make.top.leading.trailing.bottom.equalToSuperview()
         }
         email.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(190)

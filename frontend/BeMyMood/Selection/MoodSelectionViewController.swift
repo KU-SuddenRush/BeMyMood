@@ -14,6 +14,8 @@ import SwiftUI
 class MoodSelectionViewController: UIViewController {
     var moodData : [Int] = []
     
+    var selectData : [Int] = []
+    
     var isAnyCellSelected = false
     
     //MARK: - UIComponents
@@ -83,9 +85,12 @@ class MoodSelectionViewController: UIViewController {
     //MARK: - Actions
     
     @objc func nextBtnDidTab() {
-        let locationSelectionViewController = LocationSelectionViewController()
-        self.navigationController?.pushViewController(locationSelectionViewController, animated: true)
-        
+        ApiClient().postMyMood(PostMyMoodInput(moodIds: selectData)) { result in
+            if !result.contains("fail"){
+                let locationSelectionViewController = LocationSelectionViewController()
+                self.navigationController?.pushViewController(locationSelectionViewController, animated: true)
+            }
+        }
     }
     
     //MARK: - Helpers
@@ -142,6 +147,8 @@ extension MoodSelectionViewController: UICollectionViewDelegate, UICollectionVie
         isAnyCellSelected = true
         updateNextBtnColor()
         
+        selectData.append(moodData[indexPath.row])
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -151,6 +158,7 @@ extension MoodSelectionViewController: UICollectionViewDelegate, UICollectionVie
         cell.isSelected = false
         isAnyCellSelected = collectionView.indexPathsForSelectedItems?.isEmpty == false
         updateNextBtnColor()
+        selectData = selectData.filter { $0 != moodData[indexPath.row] }
         
     }
     
@@ -160,6 +168,7 @@ extension MoodSelectionViewController: UICollectionViewDelegate, UICollectionVie
         }
            if cell.isSelected {
                collectionView.deselectItem(at: indexPath, animated: true)
+               
                return false
            } else {
                return true

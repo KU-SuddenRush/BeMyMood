@@ -8,10 +8,12 @@
 import UIKit
 import Then
 import SnapKit
+import Kingfisher
 
 class StoredMoodBoardViewController: UIViewController {
     
     var storedMBnavigationController: UINavigationController!
+    var moodBoards : [MyRecentMoodBoard] = []
     
     //MARK: - UIComponents
     
@@ -32,10 +34,9 @@ class StoredMoodBoardViewController: UIViewController {
     }
     
     let collectionView = UICollectionView(frame: .init(), collectionViewLayout: UICollectionViewLayout()).then{
-        $0.backgroundColor = .white
-        $0.showsVerticalScrollIndicator = true
-        $0.register(TagCell.self, forCellWithReuseIdentifier: TagCell.cellIdentifier)
-        $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        $0.backgroundColor = .clear
+        $0.showsVerticalScrollIndicator = false
+        $0.register(MoodBoardCell.self, forCellWithReuseIdentifier: MoodBoardCell.cellIdentifier)
     }
 
     //MARK: - LifeCycles
@@ -47,6 +48,20 @@ class StoredMoodBoardViewController: UIViewController {
         
         hierarchy()
         layout()
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 5
+        self.collectionView.collectionViewLayout = layout
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.allowsMultipleSelection = false
+        
+        ApiClient().getMyMoodBoards(){ result in
+            self.count.text = "\(result.moodBoards.count)개의 무드보드"
+            self.moodBoards = result.moodBoards
+            self.collectionView.reloadData()
+        }
 //
 //        self.makeBtn.addTarget(self, action: #selector(makeBtnDidTab), for: .touchUpInside)
     }
@@ -77,8 +92,8 @@ extension StoredMoodBoardViewController {
         
         selectBtn.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(26)
-            make.leading.equalToSuperview().offset(24)
-            make.height.equalTo(53)
+            make.trailing.equalToSuperview().offset(-24)
+            make.width.equalTo(53)
             make.height.equalTo(25)
         }
         
@@ -88,5 +103,38 @@ extension StoredMoodBoardViewController {
             make.trailing.equalToSuperview().offset(-15.5)
             make.bottom.equalToSuperview()
         }
+    }
+}
+
+extension StoredMoodBoardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+
+func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    if moodBoards.isEmpty{
+        return 0
+    }else {
+        return moodBoards.count
+    }
+}
+
+func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoodBoardCell.cellIdentifier, for: indexPath) as? MoodBoardCell else{
+        fatalError()
+    }
+    if let imageUrl = URL(string: moodBoards[indexPath.row].moodBoardCaptureUrl) {
+        cell.moodBoard.kf.setImage(with: imageUrl, placeholder: UIImage(named: "back"))
+        cell.moodBoard.contentMode = .scaleAspectFill
+    }
+    
+    return cell
+}
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let size = CGSize(width: 169, height: 203)
+        
+        return size
     }
 }

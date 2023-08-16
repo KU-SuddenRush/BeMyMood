@@ -13,6 +13,7 @@ struct LoginInput : Encodable {
 
 struct LoginModel : Decodable {
     var memberId : Int?
+    var memberName : String?
 }
 
 struct SignUpInput : Encodable {
@@ -31,6 +32,49 @@ struct GetTotalMoodModel : Decodable {
 
 struct PostMyMoodInput : Encodable {
     var moodIds : [Int?]
+}
+
+struct PostLocationInput : Encodable {
+    var locationIds : [Int?]
+}
+
+struct GetMyMoodModel : Decodable {
+    var count : Int?
+    var moodIds : [Int?]
+}
+
+struct GetMyRecordImage : Decodable {
+    var count : Int
+    var reviewImageParams : [MyRecordImages]
+}
+
+struct MyRecordImages : Decodable {
+    var reviewImgId : Int
+    var reviewImgUrl : String
+}
+
+struct GetMySpotImage : Decodable {
+    var spotSignatureImageParams : [MySpotImages]
+}
+
+struct MySpotImages : Decodable {
+    var spotImgId : Int
+    var spotImgUrl : String
+}
+
+struct GetMyRecentMoodBoard : Decodable {
+    var moodBoardInfo : MyRecentMoodBoard
+    var exist : Bool
+}
+
+struct MyRecentMoodBoard : Decodable {
+    var moodBoardId : Int
+    var moodBoardName : String
+    var moodBoardCaptureUrl : String
+}
+
+struct GetMyMoodBoards : Decodable {
+    var moodBoards : [MyRecentMoodBoard]
 }
 
 struct StringModel : Decodable {

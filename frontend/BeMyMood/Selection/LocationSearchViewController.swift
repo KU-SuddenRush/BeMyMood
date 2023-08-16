@@ -14,9 +14,9 @@ class LocationSearchViewController: UIViewController,UITextFieldDelegate {
     
     var locationData = ["서울 성동구 성수2가제3동", "서울 성동구 성수1가제2동", "서울 성동구 성수동2가", "서울 성동구 성수1가제1동"]
     
-    var searchLocationData: [String] = []
+    var searchLocationData: [Int] = []
     
-    var completionHandler: ((String) -> ())?
+    var completionHandler: ((Int) -> ())?
     
     //MARK: - UIComponents
    
@@ -127,9 +127,11 @@ class LocationSearchViewController: UIViewController,UITextFieldDelegate {
                    return
                }
                
-        searchLocationData = locationData.filter { item in
-                   return item.lowercased().contains(searchText)
-               }
+        searchLocationData = Data.locationData.enumerated().filter { index, item in
+            return item.lowercased().contains(searchText)
+        }.map { index, _ in
+            return index
+        }
                
                if searchLocationData.isEmpty {
                    resultLabel.isHidden = false
@@ -167,7 +169,7 @@ extension LocationSearchViewController: UICollectionViewDelegate, UICollectionVi
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationResultCell.cellIdentifier, for: indexPath) as? LocationResultCell else{
             fatalError()
         }
-        cell.locationLabel.text = searchLocationData[indexPath.row]
+        cell.locationLabel.text = Data.locationData[searchLocationData[indexPath.row]]
         
         return cell
     }

@@ -12,6 +12,8 @@ import SwiftUI
 
 class LocationSelectionViewController: UIViewController {
     
+    var selectData : [Int] = []
+    
     //MARK: - UIComponents
    
     let progressBar = UIProgressView().then{
@@ -112,10 +114,12 @@ class LocationSelectionViewController: UIViewController {
     @objc func searchBar1BtnDidTab() {
         let locationSelectionViewController = LocationSearchViewController()
         locationSelectionViewController.completionHandler = {result in
-            self.searchBar1.setTitle(result, for: .normal)
+            self.searchBar1.setTitle(Data.locationData[result], for: .normal)
             self.searchBar1.layer.borderColor = UIColor.orange.cgColor
             self.searchBar1.isSelected = true
             self.checkBtnStatus()
+            
+            self.selectData.append(result + 1)
             }
         self.navigationController?.pushViewController(locationSelectionViewController, animated: true)
     }
@@ -123,10 +127,12 @@ class LocationSelectionViewController: UIViewController {
     @objc func searchBar2BtnDidTab() {
         let locationSelectionViewController = LocationSearchViewController()
         locationSelectionViewController.completionHandler = {result in
-            self.searchBar2.setTitle(result, for: .normal)
+            self.searchBar2.setTitle(Data.locationData[result], for: .normal)
             self.searchBar2.layer.borderColor = UIColor.orange.cgColor
             self.searchBar2.isSelected = true
             self.checkBtnStatus()
+            
+            self.selectData.append(result + 1)
             }
         self.navigationController?.pushViewController(locationSelectionViewController, animated: true)
     }
@@ -134,17 +140,24 @@ class LocationSelectionViewController: UIViewController {
     @objc func searchBar3BtnDidTab() {
         let locationSelectionViewController = LocationSearchViewController()
         locationSelectionViewController.completionHandler = {result in
-            self.searchBar3.setTitle(result, for: .normal)
+            self.searchBar3.setTitle(Data.locationData[result], for: .normal)
             self.searchBar3.layer.borderColor = UIColor.orange.cgColor
             self.searchBar3.isSelected = true
             self.checkBtnStatus()
+            
+            self.selectData.append(result + 1)
             }
         self.navigationController?.pushViewController(locationSelectionViewController, animated: true)
     }
     
     @objc func nextBtnDidTab() {
-        let homeVC = TabBarController()
-        self.navigationController?.pushViewController(homeVC, animated: true)
+        
+        ApiClient().postLocation(PostLocationInput(locationIds: selectData)) { result in
+            if !result.contains("fail"){
+                let homeVC = TabBarController()
+                self.navigationController?.pushViewController(homeVC, animated: true)
+            }
+        }
     }
     
     //MARK: - Helpers

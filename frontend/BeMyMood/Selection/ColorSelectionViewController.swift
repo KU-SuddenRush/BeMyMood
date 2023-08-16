@@ -86,7 +86,7 @@ class ColorSelectionViewController: UIViewController {
     //MARK: - Actions
     
     @objc func nextBtnDidTab() {
-        print("선택데이터",selectData)
+        print("선택",selectData)
         ApiClient().postMyMood(PostMyMoodInput(moodIds: selectData)) { result in
             if !result.contains("fail"){
                 let moodSelectionViewController = MoodSelectionViewController()
@@ -178,6 +178,7 @@ extension ColorSelectionViewController: UICollectionViewDelegate, UICollectionVi
         cell.isSelected = false
         isAnyCellSelected = collectionView.indexPathsForSelectedItems?.isEmpty == false
         updateNextBtnColor()
+        
         selectData = selectData.filter { $0 != colorData[indexPath.row] }
         
     }

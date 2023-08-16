@@ -42,6 +42,9 @@ class SpotListModalViewController: UIViewController {
         hierarchy()
         layout()
         
+        self.view.layer.cornerRadius = 30
+        self.view.layer.masksToBounds = true
+        
 //        let firstVC = FirstViewController()
 //        firstVC.delegate = self
 //        let secondVC = SecondViewController()
@@ -65,7 +68,8 @@ extension SpotListModalViewController {
     
     func layout(){
         spotListModalTitle.snp.makeConstraints{ make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(40)
         }
         

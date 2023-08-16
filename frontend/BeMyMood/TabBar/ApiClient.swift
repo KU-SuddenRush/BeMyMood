@@ -30,6 +30,7 @@ class ApiClient{
                     }
                     print(cookies)
                 }
+                UserDefaults.standard.set(result.memberName, forKey: "name")
                 let homeVC = TabBarController()
                 viewController.navigationController?.pushViewController(homeVC, animated: true)
             case .failure(let error):
@@ -108,30 +109,100 @@ class ApiClient{
         }
     }
     
-    func getTotalLocation(completion: @escaping ([Int]) -> Void){
-        AF.request("http://52.78.132.135/mood/color", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: [Int].self) { response in
+    func postLocation(_ parameter: PostLocationInput, completion: @escaping (String) -> Void){
+        AF.request("http://52.78.132.135/member/location", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, interceptor: interceptor).validate().responseDecodable(of: StringModel.self) { response in
+            switch response.result {
+            case .success(let result):
+                print("지역보내기성공")
+                completion(result.response!)
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion("fail" + error.localizedDescription)
+            }
+        }
+    }
+    
+    func getMyMood(completion: @escaping (GetMyMoodModel) -> Void){
+        AF.request("http://52.78.132.135/member/mood", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: GetMyMoodModel.self) { response in
             switch response.result {
             case .success(let result):
                 print(result)
                 completion(result)
             case .failure(let error):
                 print(error.localizedDescription)
-                completion([])
             }
         }
     }
     
-    func getProfile(completion: @escaping ([Int]) -> Void){
-        AF.request("http://52.78.132.135/mood/color", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: [Int].self) { response in
+    func getMyRecordImage(completion: @escaping (GetMyRecordImage) -> Void){
+        AF.request("http://52.78.132.135/moodboard/picture/review", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: GetMyRecordImage.self) { response in
             switch response.result {
             case .success(let result):
                 print(result)
                 completion(result)
             case .failure(let error):
                 print(error.localizedDescription)
-                completion([])
             }
         }
     }
     
+    func getMySpotImage(completion: @escaping (GetMySpotImage) -> Void){
+        AF.request("http://52.78.132.135/moodboard/picture/spot-signature", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: GetMySpotImage.self) { response in
+            switch response.result {
+            case .success(let result):
+                print(result)
+                completion(result)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getMyRecentMoodBoard(completion: @escaping (GetMyRecentMoodBoard) -> Void){
+        AF.request("http://52.78.132.135/moodboard/last", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: GetMyRecentMoodBoard.self) { response in
+            switch response.result {
+            case .success(let result):
+                print(result)
+                completion(result)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getMyMoodBoards(completion: @escaping (GetMyMoodBoards) -> Void){
+        AF.request("http://52.78.132.135/moodboard", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: GetMyMoodBoards.self) { response in
+            switch response.result {
+            case .success(let result):
+                print(result)
+                completion(result)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func postCaptureImage(_ parameter: UIImage, completion: @escaping (String) -> Void){
+        guard let imageData = parameter.jpegData(compressionQuality: 1.0) else {
+            print("이미지 데이터를 생성할 수 없습니다.")
+            return
+        }
+        AF.upload(
+            multipartFormData: { formData in
+                formData.append(imageData, withName: "file", fileName: "file.jpg", mimeType: "image/jpeg")
+            },
+            to: "http://52.78.132.135/moodboard/capture",
+            method: .post, interceptor: interceptor
+        )
+        .validate().responseDecodable(of: StringModel.self) { response in
+            switch response.result {
+            case .success(let result):
+                completion(result.response!)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion("fail" + error.localizedDescription)
+            }
+        }
+    }
 }
