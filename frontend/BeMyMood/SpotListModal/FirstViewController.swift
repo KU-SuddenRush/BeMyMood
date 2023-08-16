@@ -10,7 +10,8 @@ import SwiftUI
 
 class FirstViewController: UIViewController {
     
-    weak var delegate: SpotCellTapDelegate?
+    var spotDetailNavigationController: UINavigationController!
+//    weak var delegate: SpotCellTapDelegate?
     
     var tempData: [SpotData] = [
         SpotData(spotId: 1, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "카페", spotTitle: "마카롱 카페", tags: ["힙한", "무채색"]),
@@ -172,8 +173,11 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("didSelectItmeAt")
-        delegate?.moveToSpotDetail(spotId: tempData[indexPath.row].spotId)
+        print("didSelectItemAt \(indexPath)")
+//        delegate?.moveToSpotDetail(spotId: tempData[indexPath.row].spotId)
+        
+        /// TODO get Detail Info API
+        spotDetailNavigationController?.pushViewController(SpotDetailViewController(), animated: true)
     }
     
 }
