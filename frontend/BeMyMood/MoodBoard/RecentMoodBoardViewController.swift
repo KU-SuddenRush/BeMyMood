@@ -8,6 +8,7 @@
 import UIKit
 import Then
 import SnapKit
+import Kingfisher
 
 class RecentMoodBoardViewController: UIViewController {
     
@@ -16,6 +17,8 @@ class RecentMoodBoardViewController: UIViewController {
     //MARK: - UIComponents
     
     let empty = UIImageView().then{
+        $0.layer.cornerRadius = 8
+        $0.layer.masksToBounds = true
         $0.image = UIImage(named: "emptyBoard")
         $0.backgroundColor = .white
         $0.contentMode = .scaleAspectFill
@@ -39,6 +42,16 @@ class RecentMoodBoardViewController: UIViewController {
         
         hierarchy()
         layout()
+        
+        ApiClient().getMyRecentMoodBoard(){ result in
+            if result.exist {
+                if let imageUrl = URL(string: result.moodBoardInfo.moodBoardCaptureUrl) {
+                    self.empty.kf.setImage(with: imageUrl, placeholder: UIImage(named: "profile"))
+                    self.empty.contentMode = .scaleAspectFill
+                }
+            }
+            
+        }
         
         self.makeBtn.addTarget(self, action: #selector(makeBtnDidTab), for: .touchUpInside)
     }

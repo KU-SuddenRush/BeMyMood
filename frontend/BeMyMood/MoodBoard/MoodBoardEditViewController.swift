@@ -121,7 +121,6 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
     }
     
     let nextBtn = UIButton().then{
-        $0.isEnabled = false
         $0.setTitle("완료", for: .normal)
         $0.backgroundColor = .darkBrown_30
         $0.setTitleColor(.darkBrown, for: .normal)
@@ -167,6 +166,7 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
         self.textBtn.addTarget(self, action: #selector(addTextButtonTapped), for: .touchUpInside)
         self.stickerBtn.addTarget(self, action: #selector(stickerBtnDidTab), for: .touchUpInside)
         self.photoBtn.addTarget(self, action: #selector(photoBtnDidTab), for: .touchUpInside)
+        self.nextBtn.addTarget(self, action: #selector(captureButtonTapped), for: .touchUpInside)
 
     }
     
@@ -271,6 +271,23 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
             textView.center = CGPoint(x: textView.center.x + translation.x, y: textView.center.y + translation.y)
             gesture.setTranslation(.zero, in: view)
         }
+    }
+    
+    @objc func captureButtonTapped() {
+        // 화면 캡처
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let capturedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        ApiClient().postCaptureImage(capturedImage!){ result in
+            if !result.contains("fail"){
+                print("성공",result)
+            }else{
+                print("실패")
+                print(capturedImage)
+            }
+        }
+
     }
     
     //MARK: - StickerViewFunc

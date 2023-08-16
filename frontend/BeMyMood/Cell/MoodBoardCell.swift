@@ -17,6 +17,7 @@ class MoodBoardCell: UICollectionViewCell {
     var moodBoard = UIImageView().then{
         $0.backgroundColor = .clear
         $0.layer.cornerRadius = 8
+        $0.layer.masksToBounds = true
         $0.contentMode = .scaleAspectFill
     }
     

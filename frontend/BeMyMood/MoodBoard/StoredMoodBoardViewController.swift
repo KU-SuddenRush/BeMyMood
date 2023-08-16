@@ -8,10 +8,12 @@
 import UIKit
 import Then
 import SnapKit
+import Kingfisher
 
 class StoredMoodBoardViewController: UIViewController {
     
     var storedMBnavigationController: UINavigationController!
+    var moodBoards : [MyRecentMoodBoard] = []
     
     //MARK: - UIComponents
     
@@ -34,7 +36,7 @@ class StoredMoodBoardViewController: UIViewController {
     let collectionView = UICollectionView(frame: .init(), collectionViewLayout: UICollectionViewLayout()).then{
         $0.backgroundColor = .clear
         $0.showsVerticalScrollIndicator = false
-        $0.register(StickerCell.self, forCellWithReuseIdentifier: StickerCell.cellIdentifier)
+        $0.register(MoodBoardCell.self, forCellWithReuseIdentifier: MoodBoardCell.cellIdentifier)
     }
 
     //MARK: - LifeCycles
@@ -54,6 +56,12 @@ class StoredMoodBoardViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.allowsMultipleSelection = false
+        
+        ApiClient().getMyMoodBoards(){ result in
+            self.count.text = "\(result.moodBoards.count)개의 무드보드"
+            self.moodBoards = result.moodBoards
+            self.collectionView.reloadData()
+        }
 //
 //        self.makeBtn.addTarget(self, action: #selector(makeBtnDidTab), for: .touchUpInside)
     }
@@ -101,20 +109,22 @@ extension StoredMoodBoardViewController {
 extension StoredMoodBoardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
 func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    if UIImage.stickers.isEmpty{
+    if moodBoards.isEmpty{
         return 0
     }else {
-        return UIImage.stickers.count
+        return moodBoards.count
     }
 }
 
 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerCell.cellIdentifier, for: indexPath) as? StickerCell else{
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoodBoardCell.cellIdentifier, for: indexPath) as? MoodBoardCell else{
         fatalError()
     }
-    
-    cell.sticker.image = UIImage.stickers[indexPath.row]
+    if let imageUrl = URL(string: moodBoards[indexPath.row].moodBoardCaptureUrl) {
+        cell.moodBoard.kf.setImage(with: imageUrl, placeholder: UIImage(named: "profile"))
+        cell.moodBoard.contentMode = .scaleAspectFill
+    }
     
     return cell
 }

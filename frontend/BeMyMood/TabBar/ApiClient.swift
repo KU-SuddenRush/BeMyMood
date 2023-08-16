@@ -159,4 +159,50 @@ class ApiClient{
         }
     }
     
+    func getMyRecentMoodBoard(completion: @escaping (GetMyRecentMoodBoard) -> Void){
+        AF.request("http://52.78.132.135/moodboard/last", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: GetMyRecentMoodBoard.self) { response in
+            switch response.result {
+            case .success(let result):
+                print(result)
+                completion(result)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getMyMoodBoards(completion: @escaping (GetMyMoodBoards) -> Void){
+        AF.request("http://52.78.132.135/moodboard", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: GetMyMoodBoards.self) { response in
+            switch response.result {
+            case .success(let result):
+                print(result)
+                completion(result)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func postCaptureImage(_ parameter: UIImage, completion: @escaping (String) -> Void){
+        guard let imageData = parameter.jpegData(compressionQuality: 0.5) else {
+            print("이미지 데이터를 생성할 수 없습니다.")
+            return
+        }
+        AF.upload(
+            multipartFormData: { formData in
+                formData.append(imageData, withName: "file", fileName: "file.jpg", mimeType: "image/jpeg")
+            },
+            to: "http://52.78.132.135/moodboard/capture",
+            method: .post, interceptor: interceptor
+        )
+        .validate().responseDecodable(of: StringModel.self) { response in
+            switch response.result {
+            case .success(let result):
+                completion(result.response!)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion("fail" + error.localizedDescription)
+            }
+        }
+    }
 }

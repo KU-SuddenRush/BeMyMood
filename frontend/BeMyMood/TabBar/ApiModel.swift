@@ -62,6 +62,21 @@ struct MySpotImages : Decodable {
     var spotImgUrl : String
 }
 
+struct GetMyRecentMoodBoard : Decodable {
+    var moodBoardInfo : MyRecentMoodBoard
+    var exist : Bool
+}
+
+struct MyRecentMoodBoard : Decodable {
+    var moodBoardId : Int
+    var moodBoardName : String
+    var moodBoardCaptureUrl : String
+}
+
+struct GetMyMoodBoards : Decodable {
+    var moodBoards : [MyRecentMoodBoard]
+}
+
 struct StringModel : Decodable {
     var response : String?
 }
