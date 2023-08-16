@@ -8,4 +8,5 @@ import lombok.Getter;
 public class SigninResponseDto {
 
     private Long memberId;
+    private String memberName;
 }
