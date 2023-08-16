@@ -11,7 +11,10 @@ public class MoodBoardTexts {
     @OneToMany(mappedBy = "moodBoard", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MoodBoardText> texts = new ArrayList<>();
 
+    // Method
     public void add(MoodBoardText boardText) {
         texts.add(boardText);
     }
+
+    public List<MoodBoardText> getAllTexts() { return this.texts; }
 }

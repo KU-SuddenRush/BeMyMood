@@ -8,6 +8,7 @@ import ku.hackerthon.BeMyMood.dto.moodboard.MoodBoardInfo;
 import ku.hackerthon.BeMyMood.dto.moodboard.SpotSignatureImageParams;
 import ku.hackerthon.BeMyMood.dto.web.request.MoodBoardRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.request.SpotSignatureImagesResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardDetailResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.moodboard.MoodBoardService;
@@ -87,6 +88,23 @@ public class MoodBoardController {
         Member member = memberService.searchById(memberId);
         return ResponseEntity.ok(moodBoardService.getLastEditedMoodBoard(member));
 
+    }
+
+    /**
+     * <b>무드보드 상세 보기</b>
+     *
+     * @param memberId {@link State}로 주입된 MemberId
+     * @return MoodBoardResponseDto
+     */
+    @GetMapping("/detail")
+    public ResponseEntity<MoodBoardDetailResponseDto> getMoodBoardDetail(
+            @State Long memberId,
+            @RequestParam(name = "mood_board_id") Long moodBoardId
+    ) {
+        Member member = memberService.searchById(memberId);
+        MoodBoard moodBoard = member.getMoodBoards().searchById(moodBoardId);
+
+        return ResponseEntity.ok(moodBoardService.getMoodBoardDetail(moodBoard));
     }
 
 }

@@ -13,6 +13,7 @@ import ku.hackerthon.BeMyMood.dto.moodboard.*;
 import ku.hackerthon.BeMyMood.dto.storage.StorageDomain;
 import ku.hackerthon.BeMyMood.dto.web.request.MoodBoardRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.request.SpotSignatureImagesResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardDetailResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardResponseDto;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import ku.hackerthon.BeMyMood.service.storage.StorageService;
@@ -136,6 +137,60 @@ public class MoodBoardServiceImpl implements MoodBoardService {
                                 review.getSpot().getSpotImages().getMainImage().getId(),
                                 review.getSpot().getSpotImages().getMainImage().getImgUrl()
                         )).collect(Collectors.toList()));
+    }
+
+    @Override
+    public MoodBoardDetailResponseDto getMoodBoardDetail(MoodBoard moodBoard) {
+        MoodBoardDetailResponseDto moodBoardDetail = new MoodBoardDetailResponseDto(
+                moodBoard.getId(),
+                moodBoard.getName()
+        );
+
+        List<MoodBoardPicture> allPictures = moodBoard.getPictures().getAllPictures();
+        List<MoodBoardSticker> allStickers = moodBoard.getStickers().getAllStickers();
+        List<MoodBoardText> allTexts = moodBoard.getTexts().getAllTexts();
+
+        for (MoodBoardPicture picture : allPictures) {
+            moodBoardDetail.getPictures().add(
+                    new BoardPictureDetailParams(
+                            picture.getId(),
+                            picture.getSpotImage().getImgUrl(),
+                            picture.getLocationX(),
+                            picture.getLocationY(),
+                            picture.getWidth(),
+                            picture.getHeight(),
+                            picture.getRotation()
+                    )
+            );
+        }
+
+        for (MoodBoardSticker sticker : allStickers) {
+            moodBoardDetail.getStickers().add(
+                    new BoardStickerParams(
+                            sticker.getStickerId(),
+                            sticker.getLocationX(),
+                            sticker.getLocationY(),
+                            sticker.getWidth(),
+                            sticker.getHeight(),
+                            sticker.getRotation()
+                    )
+            );
+        }
+
+        for (MoodBoardText text : allTexts) {
+            moodBoardDetail.getTexts().add(
+                    new BoardTextParams(
+                            text.getLocationX(),
+                            text.getLocationY(),
+                            text.getFontSize(),
+                            text.getFontColor(),
+                            text.getSort(),
+                            text.getContents()
+                    )
+            );
+        }
+
+        return moodBoardDetail;
     }
 
 }

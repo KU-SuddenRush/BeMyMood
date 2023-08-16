@@ -15,6 +15,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Getter
 @Entity
@@ -64,4 +65,6 @@ public class MoodBoard {
     public void addBoardPictures(MoodBoardPicture boardPicture) { this.pictures.add(boardPicture); }
 
     public void addBoardTexts(MoodBoardText boardText) { this.texts.add(boardText); }
+
+    public boolean equalMoodBoard(Long moodBoardId) { return Objects.equals(this.id, moodBoardId); }
 }

@@ -25,4 +25,10 @@ public class MoodBoards {
                 .findFirst().orElseThrow(() -> new NullPointerException("무드보드가 존재하지 않습니다."));
     }
 
+    public MoodBoard searchById(Long moodBoardId) {
+        return moodBoards.stream()
+                .filter(moodBoard -> moodBoard.equalMoodBoard(moodBoardId))
+                .findFirst().orElseThrow(() -> new NullPointerException("wrong mood board id"));
+    }
+
 }
