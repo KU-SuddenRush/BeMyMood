@@ -2,6 +2,7 @@ package ku.hackerthon.BeMyMood.domain.member.location;
 
 import ku.hackerthon.BeMyMood.domain.location.Location;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class PreferredLocations {
     private static final int MAX_PREFERRED = 3;
     private static int orderSequence = 1;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PreferredLocation> preferredLocations = new ArrayList<>();
 
     // Method

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class PreferredMoods {
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PreferredMood> preferredMoods = new ArrayList<>();
 
     // Method

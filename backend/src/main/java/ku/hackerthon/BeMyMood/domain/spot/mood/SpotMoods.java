@@ -3,6 +3,7 @@ package ku.hackerthon.BeMyMood.domain.spot.mood;
 import ku.hackerthon.BeMyMood.domain.member.mood.PreferredMoods;
 import ku.hackerthon.BeMyMood.domain.mood.Mood;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class SpotMoods {
 
     private static final int MAX_PREFERRED = 6;
 
-    @OneToMany(mappedBy = "spot")
+    @OneToMany(mappedBy = "spot", cascade = CascadeType.ALL)
     private List<SpotMood> spotMoods = new ArrayList<>();
 
     // Method
