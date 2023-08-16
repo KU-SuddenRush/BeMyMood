@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Embeddable
@@ -15,4 +16,9 @@ public class MoodBoards {
     public void add(MoodBoard moodBoard) throws IllegalArgumentException {
         moodBoards.add(moodBoard);
     }
+
+    public List<MoodBoard> getAllMoodBoards() {
+        return Collections.unmodifiableList(moodBoards);
+    }
+
 }

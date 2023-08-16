@@ -2,10 +2,13 @@ package ku.hackerthon.BeMyMood.controller;
 
 import ku.hackerthon.BeMyMood.aop.annotation.State;
 import ku.hackerthon.BeMyMood.domain.member.Member;
+import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoard;
 import ku.hackerthon.BeMyMood.domain.review.Review;
+import ku.hackerthon.BeMyMood.dto.moodboard.MoodBoardParams;
 import ku.hackerthon.BeMyMood.dto.moodboard.SpotSignatureImageParams;
 import ku.hackerthon.BeMyMood.dto.web.request.MoodBoardRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.request.SpotSignatureImagesResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardResponseDto;
 import ku.hackerthon.BeMyMood.service.member.MemberService;
 import ku.hackerthon.BeMyMood.service.moodboard.MoodBoardService;
 import lombok.RequiredArgsConstructor;
@@ -69,6 +72,26 @@ public class MoodBoardController {
                                 review.getSpot().getSpotImages().getMainImage().getImgUrl()
                         )).collect(Collectors.toList())));
 
+    }
+
+    /**
+     * <b>저장된 무드보드 조회</b>
+     *
+     * @param memberId {@link State}로 주입된 MemberId
+     * @return MoodBoardResponseDto
+     */
+    @GetMapping
+    public ResponseEntity<MoodBoardResponseDto> getAllMoodBoards(@State Long memberId) {
+        Member member = memberService.searchById(memberId);
+        List<MoodBoard> allMoodBoards = member.getMoodBoards().getAllMoodBoards();
+
+        return ResponseEntity.ok(new MoodBoardResponseDto(
+                allMoodBoards.stream()
+                        .map(moodBoard -> new MoodBoardParams(
+                                moodBoard.getId(),
+                                moodBoard.getName(),
+                                moodBoard.getCaptureImgUrl()
+                        )).collect(Collectors.toList())));
     }
 
 }
