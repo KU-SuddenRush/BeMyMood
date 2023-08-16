@@ -3,6 +3,7 @@ package ku.hackerthon.BeMyMood.controller;
 import ku.hackerthon.BeMyMood.aop.annotation.State;
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoard;
+import ku.hackerthon.BeMyMood.dto.moodboard.LastMoodBoardResponseDto;
 import ku.hackerthon.BeMyMood.dto.moodboard.MoodBoardInfo;
 import ku.hackerthon.BeMyMood.dto.web.response.*;
 import ku.hackerthon.BeMyMood.dto.web.request.MoodBoardRequestDto;
@@ -108,9 +109,15 @@ public class MoodBoardController {
      * @return MoodBoardResponseDto
      */
     @GetMapping("/last")
-    public ResponseEntity<MoodBoardInfo> getLastEditedMoodBoard(@State Long memberId) {
+    public ResponseEntity<LastMoodBoardResponseDto> getLastEditedMoodBoard(@State Long memberId) {
         Member member = memberService.searchById(memberId);
-        return ResponseEntity.ok(moodBoardService.getLastEditedMoodBoard(member));
+        MoodBoardInfo moodBoard;
+        try {
+            moodBoard = moodBoardService.getLastEditedMoodBoard(member);
+        } catch (NullPointerException e) {
+            return ResponseEntity.ok(new LastMoodBoardResponseDto(false, null));
+        }
+        return ResponseEntity.ok(new LastMoodBoardResponseDto(true, moodBoard));
 
     }
 
