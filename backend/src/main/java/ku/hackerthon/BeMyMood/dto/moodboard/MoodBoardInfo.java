@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MoodBoardParams {
+public class MoodBoardInfo {
     private Long moodBoardId;
     private String moodBoardName;
     private String moodBoardCaptureUrl;
