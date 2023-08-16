@@ -25,7 +25,9 @@ class TextEditorViewController: UIViewController {
     
     let closeBtn = UIButton().then{
         $0.tintColor = .white
-        $0.setImage(UIImage(named: "close")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.setTitle("완료", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .regular)
     }
     
     let textView = UITextView().then{

@@ -21,8 +21,10 @@ extension TextEditorViewController {
     
     func layout(){
         closeBtn.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(59)
+            make.top.equalToSuperview().offset(58)
             make.trailing.equalToSuperview().offset(-24)
+            make.width.equalTo(32)
+            make.height.equalTo(27)
         }
         
         textView.snp.makeConstraints{ make in

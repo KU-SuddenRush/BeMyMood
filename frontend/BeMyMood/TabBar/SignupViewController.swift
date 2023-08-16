@@ -77,6 +77,7 @@ class SignupViewController: UIViewController {
         $0.returnKeyType = .next
         $0.backgroundColor = .white
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        $0.enablesReturnKeyAutomatically = true
     }
     
     let passwordLabel = UILabel().then{
@@ -106,9 +107,11 @@ class SignupViewController: UIViewController {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: $0.frame.size.height))
         $0.leftView = paddingView
         $0.leftViewMode = .always
-        $0.returnKeyType = .done
+        $0.returnKeyType = .next
         $0.backgroundColor = .white
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        $0.isSecureTextEntry = true
+        $0.enablesReturnKeyAutomatically = true
     }
     
     let passwordCheck = UITextField().then{
@@ -128,6 +131,15 @@ class SignupViewController: UIViewController {
         $0.returnKeyType = .done
         $0.backgroundColor = .white
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        $0.isSecureTextEntry = true
+        $0.enablesReturnKeyAutomatically = true
+    }
+    
+    let notice = UILabel().then{
+        $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        $0.textColor = .orange
+        $0.text = "비밀번호가 일치하지 않습니다"
+        $0.isHidden = true
     }
     
     let signUpBtn = UIButton().then{
@@ -149,17 +161,87 @@ class SignupViewController: UIViewController {
         hierarchy()
         layout()
         
+        name.delegate = self
+        email.delegate = self
+        password.delegate = self
+        passwordCheck.delegate = self
+        
         self.signUpBtn.addTarget(self, action: #selector(signUpBtnDidTab), for: .touchUpInside)
+        
+        // 텍스트 필드의 텍스트 변경을 모니터링
+        name.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+
+        email.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        password.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordCheck.addTarget(self, action: #selector(passwordCheckTextFieldDidChange), for: .editingChanged)
+
+        // 초기 버튼 상태 설정
+        updateLoginButtonState()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        UIView.animate(withDuration: 0.3){
+            self.view.window?.frame.origin.y = 0
+        }
     }
     
     @objc func signUpBtnDidTab() {
         
-        let signUpModal = SignUpModal()
-        signUpModal.modalPresentationStyle = .overFullScreen
-        signUpModal.signupVCNavigationController = self.navigationController
+        ApiClient().signUp(self,SignUpInput(name: name.text,email: email.text , password: password.text))
         
-        self.present(signUpModal, animated: false, completion: nil)
+    }
+    
+    @objc func passwordCheckTextFieldDidChange() {
         
+        if password.text != passwordCheck.text {
+            notice.isHidden = false
+        }else{
+            notice.isHidden = true
+        }
+        updateLoginButtonState()
+        
+    }
+    
+    @objc func textFieldDidChange() {
+        updateLoginButtonState()
+        
+    }
+    
+    // 로그인 버튼의 활성화 상태를 업데이트하는 메서드
+    private func updateLoginButtonState() {
+        let isNameEmpty = name.text?.isEmpty ?? true
+        let isEmailEmpty = email.text?.isEmpty ?? true
+        let isPasswordEmpty = password.text?.isEmpty ?? true
+        let isPasswordCheckEmpty = passwordCheck.text?.isEmpty ?? true
+        
+        signUpBtn.isEnabled = !isNameEmpty && !isEmailEmpty && !isPasswordEmpty && !isPasswordCheckEmpty
+        
+        if signUpBtn.isEnabled {
+            signUpBtn.backgroundColor = .darkBrown // 활성화된 경우 배경색을 파란색으로 설정
+        } else {
+            signUpBtn.backgroundColor = .darkBrown_30 // 비활성화된 경우 배경색을 연한 회색으로 설정
+        }
+    }
+}
+
+//MARK: - Keyboard
+
+extension SignupViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == name {
+            email.becomeFirstResponder()
+        }
+        else if textField == email{
+            password.becomeFirstResponder()
+        }
+        else if textField == password{
+            passwordCheck.becomeFirstResponder()
+        }
+        else if textField == passwordCheck {
+            passwordCheck.resignFirstResponder()
+        }
+        return true
     }
 }
 

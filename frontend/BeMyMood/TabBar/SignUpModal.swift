@@ -89,8 +89,8 @@ class SignUpModal: UIViewController {
     //MARK: - Helpers
     @objc func startBtnDidTab() {
         self.dismiss(animated: false, completion: nil)
-        let homeVC = TabBarController()
-        self.signupVCNavigationController?.pushViewController(homeVC, animated: true)
+        let loginVC = ColorSelectionViewController()
+        self.signupVCNavigationController?.pushViewController(loginVC, animated: true)
         
     }
 }

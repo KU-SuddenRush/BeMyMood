@@ -13,3 +13,22 @@ struct LoginInput : Encodable {
 struct LoginModel : Decodable {
     var memberId : Int?
 }
+
+struct SignUpInput : Encodable {
+    var name : String?
+    var email : String?
+    var password : String?
+}
+
+struct SignUpModel : Decodable {
+    var memberId : Int?
+}
+
+struct GetTotalMoodModel : Decodable {
+    var memberId : Int?
+}
+
+struct PostMyMoodInput : Encodable {
+    var moodIds : [Int?]
+}
+

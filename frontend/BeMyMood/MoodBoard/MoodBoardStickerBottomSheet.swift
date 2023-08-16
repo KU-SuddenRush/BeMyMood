@@ -34,6 +34,8 @@ class MoodBoardStickerBottomSheet: UIViewController, UIGestureRecognizerDelegate
         $0.clipsToBounds = true
     }
     
+    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
     let stickerTitle = UILabel().then{
         $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         $0.textColor = .white
@@ -53,6 +55,9 @@ class MoodBoardStickerBottomSheet: UIViewController, UIGestureRecognizerDelegate
 
         hierarchy()
         setupGestureRecognizer()
+//
+//        blurEffectView.frame = view.bounds
+        blurEffectView.alpha = 0.5
         
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 2
@@ -67,6 +72,7 @@ class MoodBoardStickerBottomSheet: UIViewController, UIGestureRecognizerDelegate
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
 
         showBottomSheet()
     }
@@ -74,8 +80,10 @@ class MoodBoardStickerBottomSheet: UIViewController, UIGestureRecognizerDelegate
 
     // MARK: - @Functions
     private func hierarchy() {
+        
         view.addSubview(dimmedBackView)
         view.addSubview(bottomSheetView)
+        bottomSheetView.addSubview(blurEffectView)
         bottomSheetView.addSubview(stickerTitle)
         bottomSheetView.addSubview(collectionView)
 
@@ -104,6 +112,10 @@ class MoodBoardStickerBottomSheet: UIViewController, UIGestureRecognizerDelegate
             bottomSheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             bottomSheetViewTopConstraint
         ])
+        
+        blurEffectView.snp.makeConstraints{ make in
+            make.edges.equalTo(bottomSheetView)
+        }
         
         stickerTitle.snp.makeConstraints{ make in
             make.top.equalTo(bottomSheetView.snp.top).offset(24)

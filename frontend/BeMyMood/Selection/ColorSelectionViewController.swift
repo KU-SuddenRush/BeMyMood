@@ -12,7 +12,9 @@ import SwiftUI
 
 class ColorSelectionViewController: UIViewController {
     
-    let tagColorData = ["#뮤트한","#비비드한","#차분한","#빛바랜", "#무채색의","#쿨한","#포인트컬러","#자연적인","#투명한","#형광의","#웜한","#블랙앤화이트"]
+    var colorData : [Int] = []
+    
+    var selectData : [Int] = []
     
     var isAnyCellSelected = false
     
@@ -74,16 +76,23 @@ class ColorSelectionViewController: UIViewController {
         updateNextBtnColor()
         self.nextBtn.addTarget(self, action: #selector(nextBtnDidTab), for: .touchUpInside)
         
-        
+        ApiClient().getTotalColor { result in
+            self.colorData = result
+            self.collectionView.reloadData()
+        }
         
     }
     
     //MARK: - Actions
     
     @objc func nextBtnDidTab() {
-        let moodSelectionViewController = MoodSelectionViewController()
-        self.navigationController?.pushViewController(moodSelectionViewController, animated: true)
-        
+        print("선택데이터",selectData)
+        ApiClient().postMyMood(PostMyMoodInput(moodIds: selectData)) { result in
+            if !result.contains("fail"){
+                let moodSelectionViewController = MoodSelectionViewController()
+                self.navigationController?.pushViewController(moodSelectionViewController, animated: true)
+            }
+        }
     }
     
     @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer){
@@ -129,10 +138,10 @@ class ColorSelectionViewController: UIViewController {
 extension ColorSelectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if tagColorData.isEmpty{
+        if colorData.isEmpty{
             return 0
         }else {
-            return tagColorData.count
+            return colorData.count
         }
     }
     
@@ -143,7 +152,7 @@ extension ColorSelectionViewController: UICollectionViewDelegate, UICollectionVi
         }
         
         cell.tagLabel.backgroundColor = .grayBeige
-        cell.tagLabel.text = tagColorData[indexPath.row]
+        cell.tagLabel.text = Data.moodData[colorData[indexPath.row] - 1]
         cell.tagLabel.textColor = .darkBrown
         
         return cell
@@ -158,6 +167,8 @@ extension ColorSelectionViewController: UICollectionViewDelegate, UICollectionVi
         isAnyCellSelected = true
         updateNextBtnColor()
         
+        selectData.append(colorData[indexPath.row])
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -167,6 +178,7 @@ extension ColorSelectionViewController: UICollectionViewDelegate, UICollectionVi
         cell.isSelected = false
         isAnyCellSelected = collectionView.indexPathsForSelectedItems?.isEmpty == false
         updateNextBtnColor()
+        selectData = selectData.filter { $0 != colorData[indexPath.row] }
         
     }
     
@@ -188,7 +200,7 @@ extension ColorSelectionViewController: UICollectionViewDelegate, UICollectionVi
             fatalError()
         }
         
-        cell.tagLabel.text = tagColorData[indexPath.row]
+        cell.tagLabel.text = Data.moodData[self.colorData[indexPath.row] - 1]
         
         cell.tagLabel.sizeToFit()
 

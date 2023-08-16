@@ -47,6 +47,7 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
         sticker.showEditingHandlers = false
         self.view.addSubview(sticker)
         self.selectedStickerView = sticker
+        
     }
     
     
@@ -157,6 +158,17 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        isColorSelected = false
+        isStickerSelected = false
+        
+        btnCheck()
+        
+        self.view.layoutIfNeeded()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
         self.view.backgroundColor = .color0
@@ -177,15 +189,9 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
     }
     
     @objc func backgroundColorBtnDidTab() {
-        if isColorSelected {
-            nextBtn.isHidden = false
-            colorCollectionView.isHidden = true
-            isColorSelected.toggle()
-        }else {
-            nextBtn.isHidden = true
-            colorCollectionView.isHidden = false
-            isColorSelected.toggle()
-        }
+        isColorSelected.toggle()
+        
+        btnCheck()
     }
     
     @objc func addTextButtonTapped() {
@@ -196,20 +202,23 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
     }
     
     @objc func stickerBtnDidTab() {
+        isStickerSelected.toggle()
         
-        if isStickerSelected {
-            nextBtn.isHidden = false
-            isStickerSelected.toggle()
-        }else {
-            nextBtn.isHidden = true
-            isStickerSelected.toggle()
-        }
+        btnCheck()
         
         let StickerBottomSheetVC = MoodBoardStickerBottomSheet()
         StickerBottomSheetVC.modalPresentationStyle = .overFullScreen
         StickerBottomSheetVC.delegate = self
         self.present(StickerBottomSheetVC, animated: false, completion: nil)
         
+    }
+    
+    func btnCheck(){
+        if !isStickerSelected && !isColorSelected{
+            nextBtn.isHidden = false
+        }else {
+            nextBtn.isHidden = true
+        }
     }
     
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {

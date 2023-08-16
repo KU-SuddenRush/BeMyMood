@@ -20,6 +20,7 @@ extension SignupViewController {
         self.view.addSubview(passwordLabel)
         self.view.addSubview(password)
         self.view.addSubview(passwordCheck)
+        self.view.addSubview(notice)
         self.view.addSubview(signUpBtn)
     }
     
@@ -67,6 +68,10 @@ extension SignupViewController {
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.height.equalTo(46)
+        }
+        notice.snp.makeConstraints{ make in
+            make.top.equalTo(passwordCheck.snp.bottom).offset(7)
+            make.leading.equalToSuperview().offset(32)
         }
         
         signUpBtn.snp.makeConstraints{ make in

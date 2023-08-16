@@ -94,6 +94,8 @@ class HomeViewController: UIViewController {
         self.collectionView.dataSource = self
         
         self.notificationBtn.addTarget(self, action: #selector(nextBtnDidTab), for: .touchUpInside)
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -104,7 +106,7 @@ class HomeViewController: UIViewController {
     //MARK: - Actions
     
     @objc func nextBtnDidTab() {
-        let colorSelectionViewController = LoginViewController()
+        let colorSelectionViewController = ColorSelectionViewController()
         self.navigationController?.pushViewController(colorSelectionViewController, animated: true)
         
     }
