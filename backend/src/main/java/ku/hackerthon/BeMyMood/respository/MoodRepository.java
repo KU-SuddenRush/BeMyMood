@@ -25,14 +25,14 @@ public class MoodRepository {
                 .getSingleResult();
     }
 
-    public List<String> findAllColors() {
-        return em.createQuery("select m.name from Mood m where m.type = :type", String.class)
+    public List<Long> findAllColorIds() {
+        return em.createQuery("select m.id from Mood m where m.type = :type", Long.class)
                 .setParameter("type", MoodType.COLOR)
                 .getResultList();
     }
 
-    public List<String> findAllVibes() {
-        return em.createQuery("select m.name from Mood m where m.type = :type", String.class)
+    public List<Long> findAllVibeIds() {
+        return em.createQuery("select m.id from Mood m where m.type = :type", Long.class)
                 .setParameter("type", MoodType.VIBE)
                 .getResultList();
     }
