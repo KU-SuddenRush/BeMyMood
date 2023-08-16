@@ -11,10 +11,18 @@
 		2E1BF3052A89558400C58138 /* CategoryBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF3042A89558400C58138 /* CategoryBottomSheet.swift */; };
 		2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF3062A8A45FC00C58138 /* RegionBottomSheet.swift */; };
 		2E1BF3092A8A4BA300C58138 /* MoodBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF3082A8A4BA300C58138 /* MoodBottomSheet.swift */; };
+		2E1BF30C2A8A6A4300C58138 /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF30B2A8A6A4300C58138 /* SpotDetailViewController.swift */; };
+		2E1BF30E2A8A7D4600C58138 /* SpotCellTapProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF30D2A8A7D4600C58138 /* SpotCellTapProtocol.swift */; };
 		2E401BC62A88E85E00D77351 /* FilterOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E401BC52A88E85E00D77351 /* FilterOption.swift */; };
 		2E4FEC0D2A87809300EDA21A /* SpotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC0C2A87809300EDA21A /* SpotCell.swift */; };
 		2E4FEC0F2A87940300EDA21A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC0E2A87940300EDA21A /* UIImageView.swift */; };
 		2E4FEC112A88066700EDA21A /* SpotTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC102A88066700EDA21A /* SpotTagCell.swift */; };
+		2E7032962A8BE48000AD4593 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032952A8BE48000AD4593 /* DetailViewController.swift */; };
+		2E7032982A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */; };
+		2E70329A2A8CAEEF00AD4593 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032992A8CAEEF00AD4593 /* RecommendCell.swift */; };
+		2E70329E2A8CD6C100AD4593 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E70329D2A8CD6C100AD4593 /* ReviewViewController.swift */; };
+		2E7032A02A8CD79E00AD4593 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E70329F2A8CD79E00AD4593 /* ReviewCell.swift */; };
+		2E7032A22A8CD93800AD4593 /* Nicknames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032A12A8CD93800AD4593 /* Nicknames.swift */; };
 		2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A21242A8768A700750119 /* UISlidingTabController.swift */; };
 		2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05162A80F72700FC3FF3 /* UIViewController.swift */; };
 		2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */; };
@@ -81,10 +89,18 @@
 		2E1BF3042A89558400C58138 /* CategoryBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBottomSheet.swift; sourceTree = "<group>"; };
 		2E1BF3062A8A45FC00C58138 /* RegionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionBottomSheet.swift; sourceTree = "<group>"; };
 		2E1BF3082A8A4BA300C58138 /* MoodBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBottomSheet.swift; sourceTree = "<group>"; };
+		2E1BF30B2A8A6A4300C58138 /* SpotDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailViewController.swift; sourceTree = "<group>"; };
+		2E1BF30D2A8A7D4600C58138 /* SpotCellTapProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCellTapProtocol.swift; sourceTree = "<group>"; };
 		2E401BC52A88E85E00D77351 /* FilterOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOption.swift; sourceTree = "<group>"; };
 		2E4FEC0C2A87809300EDA21A /* SpotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCell.swift; sourceTree = "<group>"; };
 		2E4FEC0E2A87940300EDA21A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		2E4FEC102A88066700EDA21A /* SpotTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotTagCell.swift; sourceTree = "<group>"; };
+		2E7032952A8BE48000AD4593 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVerticalScrollContentView.swift; sourceTree = "<group>"; };
+		2E7032992A8CAEEF00AD4593 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
+		2E70329D2A8CD6C100AD4593 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		2E70329F2A8CD79E00AD4593 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		2E7032A12A8CD93800AD4593 /* Nicknames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nicknames.swift; sourceTree = "<group>"; };
 		2E9A21242A8768A700750119 /* UISlidingTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISlidingTabController.swift; sourceTree = "<group>"; };
 		2ECD05162A80F72700FC3FF3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModalViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +189,36 @@
 			path = BottomSheet;
 			sourceTree = "<group>";
 		};
+		2E1BF30A2A8A69D700C58138 /* SpotDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2E70329C2A8CD68E00AD4593 /* Review */,
+				2E70329B2A8CC86100AD4593 /* Detail */,
+				2E1BF30B2A8A6A4300C58138 /* SpotDetailViewController.swift */,
+			);
+			path = SpotDetail;
+			sourceTree = "<group>";
+		};
+		2E70329B2A8CC86100AD4593 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				2E7032952A8BE48000AD4593 /* DetailViewController.swift */,
+				2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */,
+				2E7032992A8CAEEF00AD4593 /* RecommendCell.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		2E70329C2A8CD68E00AD4593 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				2E70329D2A8CD6C100AD4593 /* ReviewViewController.swift */,
+				2E70329F2A8CD79E00AD4593 /* ReviewCell.swift */,
+				2E7032A12A8CD93800AD4593 /* Nicknames.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
 		2ECD05152A80F6C100FC3FF3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +242,7 @@
 				2E4FEC0C2A87809300EDA21A /* SpotCell.swift */,
 				2E4FEC102A88066700EDA21A /* SpotTagCell.swift */,
 				2E401BC52A88E85E00D77351 /* FilterOption.swift */,
+				2E1BF30D2A8A7D4600C58138 /* SpotCellTapProtocol.swift */,
 			);
 			path = SpotListModal;
 			sourceTree = "<group>";
@@ -258,6 +305,7 @@
 		ACF16DC82A7D4CE50010CF21 /* BeMyMood */ = {
 			isa = PBXGroup;
 			children = (
+				2E1BF30A2A8A69D700C58138 /* SpotDetail */,
 				AC06243C2A87B73100EDFB8E /* Record */,
 				2ECD05182A80FF7A00FC3FF3 /* SpotListModal */,
 				ACF16E092A8110E50010CF21 /* TabBar */,
@@ -612,12 +660,18 @@
 				2E4FEC112A88066700EDA21A /* SpotTagCell.swift in Sources */,
 				ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */,
 				2ECD05272A81184200FC3FF3 /* SecondViewController.swift in Sources */,
+				2E1BF30E2A8A7D4600C58138 /* SpotCellTapProtocol.swift in Sources */,
+				2E1BF30C2A8A6A4300C58138 /* SpotDetailViewController.swift in Sources */,
 				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
+				2E70329A2A8CAEEF00AD4593 /* RecommendCell.swift in Sources */,
 				2ECD051C2A80FFE500FC3FF3 /* SpotListModalLayout.swift in Sources */,
 				2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */,
 				ACF16E0B2A81118E0010CF21 /* TabBarController.swift in Sources */,
 				ACF16E152A8263FC0010CF21 /* TagCell.swift in Sources */,
+				2E7032A22A8CD93800AD4593 /* Nicknames.swift in Sources */,
 				ACF16E122A82638C0010CF21 /* UICollectionView.swift in Sources */,
+				2E7032962A8BE48000AD4593 /* DetailViewController.swift in Sources */,
+				2E7032A02A8CD79E00AD4593 /* ReviewCell.swift in Sources */,
 				ACF16E202A82919C0010CF21 /* ColorSelectionLayout.swift in Sources */,
 				AC0624422A88ADFE00EDFB8E /* RecordPictureCell.swift in Sources */,
 				AC06243E2A87B7DA00EDFB8E /* RecordViewController.swift in Sources */,
@@ -632,6 +686,7 @@
 				2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */,
 				ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */,
 				ACF16DFC2A7D6B090010CF21 /* MoodBoardViewController.swift in Sources */,
+				2E70329E2A8CD6C100AD4593 /* ReviewViewController.swift in Sources */,
 				2E1BF3052A89558400C58138 /* CategoryBottomSheet.swift in Sources */,
 				ACF16E002A7D6B420010CF21 /* ProfileViewController.swift in Sources */,
 				2E4FEC0F2A87940300EDA21A /* UIImageView.swift in Sources */,
@@ -645,6 +700,7 @@
 				2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */,
 				2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */,
 				ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */,
+				2E7032982A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift in Sources */,
 				AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */,
 				ACF16DFA2A7D5D500010CF21 /* HomeLayout.swift in Sources */,
 				ACF16E1C2A8290A70010CF21 /* LocationSelectionViewController.swift in Sources */,

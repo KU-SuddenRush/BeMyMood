@@ -75,6 +75,12 @@ class HomeViewController: UIViewController {
     let star3 = UIImageView().then{
         $0.image = UIImage(named: "star")
     }
+    
+    /// Home Modal View 고정으로 구성
+    let spotListModalVC = SpotListModalViewController()
+
+    /// Home Modal View 고정으로 구성 - 일단 제외
+    // static let bottomSheetVC = SpotListModalViewController()
 
     //MARK: - LifeCycles
     
@@ -99,6 +105,8 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
         updateLastCell()
+        /// Home Modal View 고정으로 구성 - 일단 제외
+//        showBottomSheet()
     }
     
     //MARK: - Actions
@@ -132,6 +140,29 @@ class HomeViewController: UIViewController {
             let newSize = CGSize(width: 50, height: 33)
             tagCell.frame.size = newSize
         }
+    }
+//
+//    static func dismissBottomSheet(){
+//        HomeViewController.bottomSheetVC.dismiss(animated: true, completion: nil)
+//    }
+//
+    /// Home Modal View 고정으로 구성 - 일단 제외
+    func showBottomSheet(){
+//        HomeViewController.bottomSheetVC.homeNavigationController = self.navigationController
+//        HomeViewController.bottomSheetVC.homeViewController = self
+
+        //- HomeViewController.bottomSheetVC.loadViewIfNeeded()
+        //- present(HomeViewController.bottomSheetVC, animated: true, completion: nil)
+
+//        if #available(iOS 15.0, *) {
+//            let bottomSheetVC = HomeViewController.bottomSheetVC // bottomSheetVC 생성
+//            let sheetPresentationController = self.presentingViewController?.presentationController as? UISheetPresentationController
+//            bottomSheetVC.preferredContentSize = CGSize(width: self.view.bounds.width, height: 400) // 원하는 크기로 조정
+//            sheetPresentationController?.delegate = bottomSheetVC // UISheetPresentationController의 델리게이트 설정
+//            self.present(bottomSheetVC, animated: true, completion: nil)
+//        } else {
+//            // iOS 15 미만에서는 다른 방식으로 bottomSheetVC를 표시하거나 대체할 수 있습니다.
+//        }
     }
 
 
