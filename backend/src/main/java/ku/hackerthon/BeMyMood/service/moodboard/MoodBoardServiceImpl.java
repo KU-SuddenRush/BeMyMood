@@ -16,6 +16,7 @@ import ku.hackerthon.BeMyMood.dto.web.response.ReviewImagesResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.SpotSignatureImagesResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardDetailResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardResponseDto;
+import ku.hackerthon.BeMyMood.respository.MoodBoardRepository;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import ku.hackerthon.BeMyMood.service.storage.StorageService;
 import lombok.RequiredArgsConstructor;
@@ -35,72 +36,85 @@ import java.util.stream.Collectors;
 public class MoodBoardServiceImpl implements MoodBoardService {
     private final StorageService storageService;
     private final SpotService spotService;
+    private final MoodBoardRepository moodBoardRepository;
 
     @Override
-    public void moodBoard(Member member, MultipartFile file, MoodBoardRequestDto requestDto) {
-        String fileName = storageService.setFileName(member.getId(), file, StorageDomain.MOODBOARD);
+    public void moodBoard(Member member, MoodBoardRequestDto requestDto) {
+        // 무드보드 생성
+        MoodBoard moodBoard = new MoodBoard(
+                member,
+                requestDto.getMoodBoardName()
+        );
+
+        MoodBoardPictures pictures = moodBoard.getPictures();
+        MoodBoardStickers stickers = moodBoard.getStickers();
+        MoodBoardTexts texts = moodBoard.getTexts();
+
+        // 무드보드 요소 저장 - 사진(스팟 시그니처) / 스티커 / 텍스트
+        // 사진
+        List<BoardPictureParams> pictureParams = requestDto.getPictures();
+        for (BoardPictureParams pictureParam : pictureParams) {
+            pictures.add(
+                    new MoodBoardPicture(
+                            moodBoard,
+                            pictureParam.getImgItemUrl(),
+                            pictureParam.getLocationX(),
+                            pictureParam.getLocationY(),
+                            pictureParam.getWidth(),
+                            pictureParam.getHeight(),
+                            pictureParam.getRotation()
+                    ));
+        }
+
+        // 스티커
+        List<BoardStickerParams> stickerParams = requestDto.getStickers();
+        for (BoardStickerParams stickerParam : stickerParams) {
+            stickers.add(
+                    new MoodBoardSticker(
+                            moodBoard,
+                            stickerParam.getStickerId(),
+                            stickerParam.getLocationX(),
+                            stickerParam.getLocationY(),
+                            stickerParam.getWidth(),
+                            stickerParam.getHeight(),
+                            stickerParam.getRotation()
+                    ));
+        }
+
+        // 텍스트
+        List<BoardTextParams> textParams = requestDto.getTexts();
+        for (BoardTextParams textParam : textParams) {
+            texts.add(
+                    new MoodBoardText(
+                            moodBoard,
+                            textParam.getLocationX(),
+                            textParam.getLocationY(),
+                            textParam.getFontSize(),
+                            textParam.getFontColor(),
+                            textParam.getSort(),
+                            textParam.getContents()
+                    ));
+        }
+
+    }
+
+    @Override
+    public void storeCaptureImg(MultipartFile file, MoodBoard moodBoard) {
+        String fileName = storageService.setFileName(moodBoard.getId(), file, StorageDomain.MOODBOARD);
         try {
             // 무드보드 생성
             String uploadUrl = storageService.uploadToS3(file, fileName);
-            MoodBoard moodBoard = new MoodBoard(
-                    member,
-                    requestDto.getMoodBoardName(),
-                    uploadUrl
-            );
-
-            MoodBoardPictures pictures = moodBoard.getPictures();
-            MoodBoardStickers stickers = moodBoard.getStickers();
-            MoodBoardTexts texts = moodBoard.getTexts();
-
-            // 무드보드 요소 저장 - 사진(스팟 시그니처) / 스티커 / 텍스트
-            // 사진
-            List<BoardPictureParams> pictureParams = requestDto.getPictures();
-            for (BoardPictureParams pictureParam : pictureParams) {
-                pictures.add(
-                        new MoodBoardPicture(
-                                moodBoard,
-                                pictureParam.getImgItemUrl(),
-                                pictureParam.getLocationX(),
-                                pictureParam.getLocationY(),
-                                pictureParam.getWidth(),
-                                pictureParam.getHeight(),
-                                pictureParam.getRotation()
-                        ));
-            }
-
-            // 스티커
-            List<BoardStickerParams> stickerParams = requestDto.getStickers();
-            for (BoardStickerParams stickerParam : stickerParams) {
-                stickers.add(
-                        new MoodBoardSticker(
-                                moodBoard,
-                                stickerParam.getStickerId(),
-                                stickerParam.getLocationX(),
-                                stickerParam.getLocationY(),
-                                stickerParam.getWidth(),
-                                stickerParam.getHeight(),
-                                stickerParam.getRotation()
-                        ));
-            }
-
-            // 텍스트
-            List<BoardTextParams> textParams = requestDto.getTexts();
-            for (BoardTextParams textParam : textParams) {
-                texts.add(
-                        new MoodBoardText(
-                                moodBoard,
-                                textParam.getLocationX(),
-                                textParam.getLocationY(),
-                                textParam.getFontSize(),
-                                textParam.getFontColor(),
-                                textParam.getSort(),
-                                textParam.getContents()
-                        ));
-            }
-
+            moodBoard.uploadCaptureImg(uploadUrl);
         } catch (IOException e) {
             throw new RuntimeException("S3 업로드 실패");
         }
+
+    }
+
+    @Override
+    public MoodBoard getLastCreatedMoodBoard(Member member) {
+        return member.getMoodBoards().getLastCreatedMoodBoard();
+
     }
 
     @Override
@@ -146,6 +160,12 @@ public class MoodBoardServiceImpl implements MoodBoardService {
     public ReviewImagesResponseDto getReviewImages(Member member) {
         List<ReviewImageParams> allReviewImages = member.getReviews().getReviewImgs();
         return new ReviewImagesResponseDto(allReviewImages.size(), allReviewImages);
+    }
+
+    @Override
+    public MoodBoard findById(Long moodBoardId) {
+        return moodBoardRepository.findById(moodBoardId)
+                .orElseThrow(() -> new IllegalArgumentException("wrong id"));
     }
 
     @Override

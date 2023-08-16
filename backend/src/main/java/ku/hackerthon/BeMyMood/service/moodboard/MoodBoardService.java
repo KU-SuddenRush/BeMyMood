@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface MoodBoardService {
 
-    void moodBoard(Member member, MultipartFile file, MoodBoardRequestDto requestDto);
+    void moodBoard(Member member, MoodBoardRequestDto requestDto);
 
     MoodBoardResponseDto getAllMoodBoards(Member member);
 
@@ -23,4 +23,10 @@ public interface MoodBoardService {
     MoodBoardDetailResponseDto getMoodBoardDetail(MoodBoard moodBoard);
 
     ReviewImagesResponseDto getReviewImages(Member member);
+
+    MoodBoard findById(Long moodBoardId);
+
+    void storeCaptureImg(MultipartFile file, MoodBoard moodBoard);
+
+    MoodBoard getLastCreatedMoodBoard(Member member);
 }

@@ -4,6 +4,7 @@ import ku.hackerthon.BeMyMood.aop.annotation.State;
 import ku.hackerthon.BeMyMood.domain.member.Member;
 import ku.hackerthon.BeMyMood.domain.moodboard.MoodBoard;
 import ku.hackerthon.BeMyMood.dto.moodboard.MoodBoardInfo;
+import ku.hackerthon.BeMyMood.dto.web.response.CreatMoodBoardResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.request.MoodBoardRequestDto;
 import ku.hackerthon.BeMyMood.dto.web.response.SpotSignatureImagesResponseDto;
 import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardDetailResponseDto;
@@ -29,23 +30,41 @@ public class MoodBoardController {
      * <b>MoodBoard 생성</b>
      *
      * @param memberId {@link State}로 주입된 MemberId,
-     *        requestDto 무드보드 생성에 필요한 데이터 dto,
-     *        file 무드보드 캡쳐 파일
+     *        requestDto 무드보드 생성에 필요한 데이터 dto
      *
      * @return
      */
     @PostMapping
-    public ResponseEntity<String> createMoodBoard(
+    public ResponseEntity<CreatMoodBoardResponseDto> createMoodBoard(
             @State Long memberId,
-            @RequestPart("data") MoodBoardRequestDto requestDto,
-            @RequestPart("file") MultipartFile file
+            @RequestBody MoodBoardRequestDto requestDto
             ) {
         Member member = memberService.searchById(memberId);
 
         // 무드보드 생성
-        moodBoardService.moodBoard(member, file, requestDto);
+        moodBoardService.moodBoard(member, requestDto);
 
-        return ResponseEntity.ok("무드보드가 생성되었습니다.");
+        MoodBoard moodBoardId = moodBoardService.getLastCreatedMoodBoard(member);
+
+        return ResponseEntity.ok(new CreatMoodBoardResponseDto(moodBoardId.getId()));
+    }
+
+    /**
+     * <b>MoodBoard 캡처본 업로드</b>
+     *
+     * @param moodBoardId MemberId,
+     *        file 무드보드 캡쳐 파일
+     *
+     * @return
+     */
+    @PostMapping("/capture")
+    public ResponseEntity<String> storeCaptureImg(
+            @RequestPart("file") MultipartFile file,
+            @RequestParam(name = "mood_board_id") Long moodBoardId) {
+        MoodBoard moodBoard = moodBoardService.findById(moodBoardId);
+        moodBoardService.storeCaptureImg(file, moodBoard);
+
+        return ResponseEntity.ok("무드보드 캡쳐 이미지를 성공적으로 저장하였습니다.");
     }
 
     /**
