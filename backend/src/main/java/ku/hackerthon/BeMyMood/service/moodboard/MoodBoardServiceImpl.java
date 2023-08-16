@@ -8,11 +8,12 @@ import ku.hackerthon.BeMyMood.domain.moodboard.sticker.MoodBoardSticker;
 import ku.hackerthon.BeMyMood.domain.moodboard.sticker.MoodBoardStickers;
 import ku.hackerthon.BeMyMood.domain.moodboard.text.MoodBoardText;
 import ku.hackerthon.BeMyMood.domain.moodboard.text.MoodBoardTexts;
-import ku.hackerthon.BeMyMood.dto.moodboard.BoardPictureParams;
-import ku.hackerthon.BeMyMood.dto.moodboard.BoardStickerParams;
-import ku.hackerthon.BeMyMood.dto.moodboard.BoardTextParams;
+import ku.hackerthon.BeMyMood.domain.review.Review;
+import ku.hackerthon.BeMyMood.dto.moodboard.*;
 import ku.hackerthon.BeMyMood.dto.storage.StorageDomain;
 import ku.hackerthon.BeMyMood.dto.web.request.MoodBoardRequestDto;
+import ku.hackerthon.BeMyMood.dto.web.request.SpotSignatureImagesResponseDto;
+import ku.hackerthon.BeMyMood.dto.web.response.MoodBoardResponseDto;
 import ku.hackerthon.BeMyMood.service.spot.SpotService;
 import ku.hackerthon.BeMyMood.service.storage.StorageService;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -95,6 +97,45 @@ public class MoodBoardServiceImpl implements MoodBoardService {
         } catch (IOException e) {
             throw new RuntimeException("S3 업로드 실패");
         }
+    }
+
+    @Override
+    public MoodBoardResponseDto getAllMoodBoards(Member member) {
+        List<MoodBoard> allMoodBoards = member.getMoodBoards().getAllMoodBoards();
+
+        return new MoodBoardResponseDto(
+                allMoodBoards.stream()
+                        .map(moodBoard -> new MoodBoardInfo(
+                                moodBoard.getId(),
+                                moodBoard.getName(),
+                                moodBoard.getCaptureImgUrl()
+                        )).collect(Collectors.toList()));
+
+    }
+
+    @Override
+    public MoodBoardInfo getLastEditedMoodBoard(Member member) {
+        MoodBoard moodBoard = member.getMoodBoards().getLastEditedMoodBoard();
+
+        return new MoodBoardInfo(
+                moodBoard.getId(),
+                moodBoard.getName(),
+                moodBoard.getCaptureImgUrl()
+        );
+    }
+
+    @Override
+    public SpotSignatureImagesResponseDto getSpotSignatureImages(Member member) {
+        List<Review> allOpenReviews = member.getReviews().getAllReview().stream()
+                .filter(review -> review.isOpen())
+                .collect(Collectors.toList());
+
+        return new SpotSignatureImagesResponseDto(
+                allOpenReviews.stream()
+                        .map(review -> new SpotSignatureImageParams(
+                                review.getSpot().getSpotImages().getMainImage().getId(),
+                                review.getSpot().getSpotImages().getMainImage().getImgUrl()
+                        )).collect(Collectors.toList()));
     }
 
 }
