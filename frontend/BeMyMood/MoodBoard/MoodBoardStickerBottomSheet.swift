@@ -200,6 +200,7 @@ class MoodBoardStickerBottomSheet: UIViewController, UIGestureRecognizerDelegate
 
     // UITapGestureRecognizer 연결 함수 부분
     @objc private func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
+        delegate?.cancel(selected: false)
         hideBottomSheetAndGoBack()
     }
 
@@ -208,6 +209,7 @@ class MoodBoardStickerBottomSheet: UIViewController, UIGestureRecognizerDelegate
         if recognizer.state == .ended {
             switch recognizer.direction {
             case .down:
+                delegate?.cancel(selected: false)
                 hideBottomSheetAndGoBack()
             default:
                 break
@@ -238,20 +240,6 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     
     return cell
 }
-
-//func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerCell.cellIdentifier, for: indexPath) as? StickerCell else{
-//        fatalError()
-//    }
-//    
-//    
-//}
-//
-//func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StickerCell.cellIdentifier, for: indexPath) as? StickerCell else{
-//        fatalError()
-//    }
-//}
     
     
     

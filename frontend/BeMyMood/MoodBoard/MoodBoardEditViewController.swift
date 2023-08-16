@@ -34,6 +34,11 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
             }
         }
     
+    func cancel(selected: Bool) {
+        isStickerSelected = selected
+        btnCheck()
+    }
+    
     func didAddSticker(tag: Int) {
         let testImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 116, height: 139))
         testImage.image = UIImage.stickers[tag]
@@ -47,6 +52,9 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
         sticker.showEditingHandlers = false
         self.view.addSubview(sticker)
         self.selectedStickerView = sticker
+        
+        isStickerSelected = false
+        btnCheck()
         
     }
     
@@ -214,10 +222,15 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
     }
     
     func btnCheck(){
-        if !isStickerSelected && !isColorSelected{
-            nextBtn.isHidden = false
-        }else {
+        if isColorSelected && !isStickerSelected{
             nextBtn.isHidden = true
+            colorCollectionView.isHidden = false
+        }else if !isColorSelected && isStickerSelected{
+            nextBtn.isHidden = true
+            colorCollectionView.isHidden = true
+        }else {
+            nextBtn.isHidden = false
+            colorCollectionView.isHidden = true
         }
     }
     
@@ -319,6 +332,7 @@ protocol TextEditorDelegate: AnyObject {
 
 protocol StickerDelegate: AnyObject {
     func didAddSticker(tag: Int)
+    func cancel(selected: Bool)
 }
 
 struct TextStyle {
@@ -334,6 +348,8 @@ struct Sticker {
 }
 
 extension MoodBoardEditViewController :StickerDelegate, StickerViewDelegate{
+ 
+    
     
     func stickerViewDidBeginMoving(_ stickerView: StickerView) {
         self.selectedStickerView = stickerView
