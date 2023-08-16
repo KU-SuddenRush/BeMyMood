@@ -18,6 +18,7 @@
 		2E4FEC0F2A87940300EDA21A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC0E2A87940300EDA21A /* UIImageView.swift */; };
 		2E4FEC112A88066700EDA21A /* SpotTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC102A88066700EDA21A /* SpotTagCell.swift */; };
 		2E7032962A8BE48000AD4593 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032952A8BE48000AD4593 /* DetailViewController.swift */; };
+		2E7032982A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */; };
 		2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A21242A8768A700750119 /* UISlidingTabController.swift */; };
 		2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05162A80F72700FC3FF3 /* UIViewController.swift */; };
 		2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */; };
@@ -91,6 +92,7 @@
 		2E4FEC0E2A87940300EDA21A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		2E4FEC102A88066700EDA21A /* SpotTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotTagCell.swift; sourceTree = "<group>"; };
 		2E7032952A8BE48000AD4593 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVerticalScrollContentView.swift; sourceTree = "<group>"; };
 		2E9A21242A8768A700750119 /* UISlidingTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISlidingTabController.swift; sourceTree = "<group>"; };
 		2ECD05162A80F72700FC3FF3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModalViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			children = (
 				2E1BF30B2A8A6A4300C58138 /* SpotDetailViewController.swift */,
 				2E7032952A8BE48000AD4593 /* DetailViewController.swift */,
+				2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */,
 			);
 			path = SpotDetail;
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 				2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */,
 				2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */,
 				ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */,
+				2E7032982A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift in Sources */,
 				AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */,
 				ACF16DFA2A7D5D500010CF21 /* HomeLayout.swift in Sources */,
 				ACF16E1C2A8290A70010CF21 /* LocationSelectionViewController.swift in Sources */,
