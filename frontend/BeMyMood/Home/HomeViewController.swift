@@ -100,6 +100,8 @@ class HomeViewController: UIViewController {
         self.collectionView.dataSource = self
         
         self.notificationBtn.addTarget(self, action: #selector(nextBtnDidTab), for: .touchUpInside)
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

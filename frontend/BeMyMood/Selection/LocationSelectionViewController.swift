@@ -104,6 +104,7 @@ class LocationSelectionViewController: UIViewController {
         
         self.searchBar3.addTarget(self, action: #selector(searchBar3BtnDidTab), for: .touchUpInside)
 
+        self.nextBtn.addTarget(self, action: #selector(nextBtnDidTab), for: .touchUpInside)
     }
     
     
@@ -139,6 +140,11 @@ class LocationSelectionViewController: UIViewController {
             self.checkBtnStatus()
             }
         self.navigationController?.pushViewController(locationSelectionViewController, animated: true)
+    }
+    
+    @objc func nextBtnDidTab() {
+        let homeVC = TabBarController()
+        self.navigationController?.pushViewController(homeVC, animated: true)
     }
     
     //MARK: - Helpers

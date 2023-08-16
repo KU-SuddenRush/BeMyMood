@@ -12,7 +12,7 @@ import SnapKit
 import SwiftUI
 
 class MoodSelectionViewController: UIViewController {
-    let tagMoodData = ["#앤틱","#빈티지","#인더스트리얼","#식물이많은", "#힙한","#특이한소재","#어두운","#아기자기한","#포인트컬러","#모노톤의","#미니멀한","#연인과함께","#반려동물과함께","#우디","#복고풍의","#풍경위주의","#여유로운","#키치한","#친구와함께","#컬러풀한","#루프탑","#야경이예쁜","#고즈넉한","#한국적인","#고풍스러운","#별이보이는","#로컬의","#화려한조명","#한적한","#영화컨셉의","#이국적인","#은은한조명의","#Y2k","#LP가흐르는","#복고풍의","#무채색","#미래지향적인","#볼거리가 많은","#소품이많은","#밤과어울리는","#LP가흐르는","#복고풍의","#무채색","#미래지향적인","#볼거리가 많은","#소품이많은","#밤과어울리는"]
+    var moodData : [Int] = []
     
     var isAnyCellSelected = false
     
@@ -61,6 +61,7 @@ class MoodSelectionViewController: UIViewController {
         hierarchy()
         layout()
         
+        
         let layout = LeftAlignedCollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 8
         layout.minimumLineSpacing = 10
@@ -71,6 +72,11 @@ class MoodSelectionViewController: UIViewController {
         
         updateNextBtnColor()
         self.nextBtn.addTarget(self, action: #selector(nextBtnDidTab), for: .touchUpInside)
+        
+        ApiClient().getTotalMood { result in
+            self.moodData = result
+            self.collectionView.reloadData()
+        }
     }
     
     
@@ -107,10 +113,10 @@ class MoodSelectionViewController: UIViewController {
 extension MoodSelectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if tagMoodData.isEmpty{
+        if moodData.isEmpty{
             return 0
         }else {
-            return tagMoodData.count
+            return moodData.count
         }
     }
     
@@ -121,7 +127,7 @@ extension MoodSelectionViewController: UICollectionViewDelegate, UICollectionVie
         }
         
         cell.tagLabel.backgroundColor = .grayBeige
-        cell.tagLabel.text = tagMoodData[indexPath.row]
+        cell.tagLabel.text = Data.moodData[self.moodData[indexPath.row] - 1]
         cell.tagLabel.textColor = .darkBrown
         
         return cell
@@ -166,7 +172,7 @@ extension MoodSelectionViewController: UICollectionViewDelegate, UICollectionVie
             fatalError()
         }
         
-        cell.tagLabel.text = tagMoodData[indexPath.row]
+        cell.tagLabel.text = Data.moodData[self.moodData[indexPath.row] - 1]
         
         cell.tagLabel.sizeToFit()
 

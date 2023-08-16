@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIColor {
-    convenience init(hex: String) {
+    convenience init(hex: String, alpha: CGFloat = 1.0) {
         var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if cString.hasPrefix("#") {
@@ -22,7 +22,7 @@ extension UIColor {
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: 1.0
+            alpha: alpha
         )
     }
     
@@ -34,4 +34,33 @@ extension UIColor {
     static let darkBrown_50 = UIColor(hex: "#BAB9B8")
     static let darkBrown_80 = UIColor(hex: "#999999")
     static let darkBrown = UIColor(hex: "#595352")
+    
+    
+    
+    //무드보드 선택 컬러
+    static let color0_1 = UIColor(hex: "#6C6C6C")
+    static let color1_1 = UIColor(hex: "#393939")
+    static let color2_1 = UIColor(hex: "#000000")
+    static let color3_1 = UIColor(hex: "#BEBEBE")
+    static let color4_1 = UIColor(hex: "#FFFFFF")
+    static let color5_1 = UIColor(hex: "#FF5252")
+    static let color6_1 = UIColor(hex: "#FFDA59")
+    static let color7_1 = UIColor(hex: "#45E87C")
+    static let color8_1 = UIColor(hex: "#5690FF")
+    static let color9_1 = UIColor(hex: "#FF70E8")
+    static let color10_1 = UIColor(hex: "#8E0DA3")
+    
+    static let color0 = UIColor(hex: "#6C6C6C", alpha: 0.8)
+    static let color1 = UIColor(hex: "#393939",alpha: 0.8)
+    static let color2 = UIColor(hex: "#000000",alpha: 0.8)
+    static let color3 = UIColor(hex: "#BEBEBE",alpha: 0.8)
+    static let color4 = UIColor(hex: "#FFFFFF",alpha: 0.8)
+    static let color5 = UIColor(hex: "#FF5252",alpha: 0.8)
+    static let color6 = UIColor(hex: "#FFDA59",alpha: 0.8)
+    static let color7 = UIColor(hex: "#45E87C",alpha: 0.8)
+    static let color8 = UIColor(hex: "#5690FF",alpha: 0.8)
+    static let color9 = UIColor(hex: "#FF70E8",alpha: 0.8)
+    static let color10 = UIColor(hex: "#8E0DA3",alpha: 0.8)
+    
+    static let colorList : [UIColor] = [color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10]
 }

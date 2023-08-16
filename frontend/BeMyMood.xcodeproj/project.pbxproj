@@ -38,6 +38,25 @@
 		AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */; };
 		AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */; };
 		AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */; };
+		AC400F212A8CAD1100353B81 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC400F202A8CAD1100353B81 /* Data.swift */; };
+		AC72EA182A8CE37900B41E28 /* RecentMoodBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72EA172A8CE37900B41E28 /* RecentMoodBoardViewController.swift */; };
+		AC72EA1A2A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72EA192A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift */; };
+		AC72EA1C2A8D02D800B41E28 /* CustomInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72EA1B2A8D02D800B41E28 /* CustomInterceptor.swift */; };
+		ACC9DBA42A8A6BC4000FEDF9 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBA32A8A6BC4000FEDF9 /* ColorCell.swift */; };
+		ACC9DBA62A8AA36C000FEDF9 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBA52A8AA36C000FEDF9 /* UIImage.swift */; };
+		ACC9DBA82A8AB177000FEDF9 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBA72A8AB177000FEDF9 /* TextEditorViewController.swift */; };
+		ACC9DBAA2A8AB187000FEDF9 /* TextEditorLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBA92A8AB187000FEDF9 /* TextEditorLayout.swift */; };
+		ACC9DBAC2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBAB2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift */; };
+		ACC9DBAE2A8B8B19000FEDF9 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBAD2A8B8B19000FEDF9 /* StickerCell.swift */; };
+		ACC9DBB02A8BE0FB000FEDF9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBAF2A8BE0FB000FEDF9 /* LoginViewController.swift */; };
+		ACC9DBB22A8BE106000FEDF9 /* LoginLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBB12A8BE106000FEDF9 /* LoginLayout.swift */; };
+		ACC9DBB42A8BE120000FEDF9 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBB32A8BE120000FEDF9 /* SignupViewController.swift */; };
+		ACC9DBB62A8BE12E000FEDF9 /* SignupLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBB52A8BE12E000FEDF9 /* SignupLayout.swift */; };
+		ACC9DE562A8BFF1B00A1DA78 /* SignUpModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DE552A8BFF1B00A1DA78 /* SignUpModal.swift */; };
+		ACC9DE582A8C178200A1DA78 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DE572A8C178200A1DA78 /* ApiClient.swift */; };
+		ACC9DE5A2A8C180300A1DA78 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DE592A8C180300A1DA78 /* ApiModel.swift */; };
+		ACE4E6002A8A3CF000BE3150 /* MoodBoardEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */; };
+		ACE4E6022A8A3D0B00BE3150 /* MoodBoardEditLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */; };
 		ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */; };
 		ACF16DCC2A7D4CE50010CF21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */; };
 		ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DCD2A7D4CE50010CF21 /* HomeViewController.swift */; };
@@ -118,6 +137,25 @@
 		AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchLayout.swift; sourceTree = "<group>"; };
 		AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultCell.swift; sourceTree = "<group>"; };
+		AC400F202A8CAD1100353B81 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		AC72EA172A8CE37900B41E28 /* RecentMoodBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMoodBoardViewController.swift; sourceTree = "<group>"; };
+		AC72EA192A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredMoodBoardViewController.swift; sourceTree = "<group>"; };
+		AC72EA1B2A8D02D800B41E28 /* CustomInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInterceptor.swift; sourceTree = "<group>"; };
+		ACC9DBA32A8A6BC4000FEDF9 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
+		ACC9DBA52A8AA36C000FEDF9 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		ACC9DBA72A8AB177000FEDF9 /* TextEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
+		ACC9DBA92A8AB187000FEDF9 /* TextEditorLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorLayout.swift; sourceTree = "<group>"; };
+		ACC9DBAB2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardStickerBottomSheet.swift; sourceTree = "<group>"; };
+		ACC9DBAD2A8B8B19000FEDF9 /* StickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
+		ACC9DBAF2A8BE0FB000FEDF9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ACC9DBB12A8BE106000FEDF9 /* LoginLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLayout.swift; sourceTree = "<group>"; };
+		ACC9DBB32A8BE120000FEDF9 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		ACC9DBB52A8BE12E000FEDF9 /* SignupLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLayout.swift; sourceTree = "<group>"; };
+		ACC9DE552A8BFF1B00A1DA78 /* SignUpModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModal.swift; sourceTree = "<group>"; };
+		ACC9DE572A8C178200A1DA78 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		ACC9DE592A8C180300A1DA78 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
+		ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardEditViewController.swift; sourceTree = "<group>"; };
+		ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardEditLayout.swift; sourceTree = "<group>"; };
 		ACF16DC62A7D4CE50010CF21 /* BeMyMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +264,7 @@
 				2E4FEC0E2A87940300EDA21A /* UIImageView.swift */,
 				ACF16E072A810E660010CF21 /* UIColor.swift */,
 				ACF16E112A82638C0010CF21 /* UICollectionView.swift */,
+				ACC9DBA52A8AA36C000FEDF9 /* UIImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -345,6 +384,15 @@
 			isa = PBXGroup;
 			children = (
 				ACF16E0A2A81118E0010CF21 /* TabBarController.swift */,
+				ACC9DBAF2A8BE0FB000FEDF9 /* LoginViewController.swift */,
+				ACC9DBB12A8BE106000FEDF9 /* LoginLayout.swift */,
+				ACC9DBB32A8BE120000FEDF9 /* SignupViewController.swift */,
+				ACC9DBB52A8BE12E000FEDF9 /* SignupLayout.swift */,
+				ACC9DE552A8BFF1B00A1DA78 /* SignUpModal.swift */,
+				ACC9DE572A8C178200A1DA78 /* ApiClient.swift */,
+				ACC9DE592A8C180300A1DA78 /* ApiModel.swift */,
+				AC400F202A8CAD1100353B81 /* Data.swift */,
+				AC72EA1B2A8D02D800B41E28 /* CustomInterceptor.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -372,6 +420,13 @@
 			children = (
 				ACF16DFB2A7D6B090010CF21 /* MoodBoardViewController.swift */,
 				ACF16DFD2A7D6B200010CF21 /* MoodBoardLayout.swift */,
+				ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */,
+				ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */,
+				ACC9DBA72A8AB177000FEDF9 /* TextEditorViewController.swift */,
+				ACC9DBA92A8AB187000FEDF9 /* TextEditorLayout.swift */,
+				ACC9DBAB2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift */,
+				AC72EA172A8CE37900B41E28 /* RecentMoodBoardViewController.swift */,
+				AC72EA192A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift */,
 			);
 			path = MoodBoard;
 			sourceTree = "<group>";
@@ -400,6 +455,8 @@
 				ACF16E142A8263FC0010CF21 /* TagCell.swift */,
 				AC0624412A88ADFE00EDFB8E /* RecordPictureCell.swift */,
 				AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */,
+				ACC9DBA32A8A6BC4000FEDF9 /* ColorCell.swift */,
+				ACC9DBAD2A8B8B19000FEDF9 /* StickerCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -659,6 +716,7 @@
 			files = (
 				2E4FEC112A88066700EDA21A /* SpotTagCell.swift in Sources */,
 				ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */,
+				AC72EA1A2A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift in Sources */,
 				2ECD05272A81184200FC3FF3 /* SecondViewController.swift in Sources */,
 				2E1BF30E2A8A7D4600C58138 /* SpotCellTapProtocol.swift in Sources */,
 				2E1BF30C2A8A6A4300C58138 /* SpotDetailViewController.swift in Sources */,
@@ -666,39 +724,57 @@
 				2E70329A2A8CAEEF00AD4593 /* RecommendCell.swift in Sources */,
 				2ECD051C2A80FFE500FC3FF3 /* SpotListModalLayout.swift in Sources */,
 				2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */,
+				ACC9DBA62A8AA36C000FEDF9 /* UIImage.swift in Sources */,
+				AC72EA1C2A8D02D800B41E28 /* CustomInterceptor.swift in Sources */,
 				ACF16E0B2A81118E0010CF21 /* TabBarController.swift in Sources */,
 				ACF16E152A8263FC0010CF21 /* TagCell.swift in Sources */,
 				2E7032A22A8CD93800AD4593 /* Nicknames.swift in Sources */,
 				ACF16E122A82638C0010CF21 /* UICollectionView.swift in Sources */,
+				ACE4E6002A8A3CF000BE3150 /* MoodBoardEditViewController.swift in Sources */,
 				2E7032962A8BE48000AD4593 /* DetailViewController.swift in Sources */,
 				2E7032A02A8CD79E00AD4593 /* ReviewCell.swift in Sources */,
 				ACF16E202A82919C0010CF21 /* ColorSelectionLayout.swift in Sources */,
 				AC0624422A88ADFE00EDFB8E /* RecordPictureCell.swift in Sources */,
+				ACC9DBAA2A8AB187000FEDF9 /* TextEditorLayout.swift in Sources */,
 				AC06243E2A87B7DA00EDFB8E /* RecordViewController.swift in Sources */,
 				ACF16E082A810E660010CF21 /* UIColor.swift in Sources */,
+				AC400F212A8CAD1100353B81 /* Data.swift in Sources */,
 				AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */,
 				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
 				ACF16E1A2A828EE10010CF21 /* ColorSelectionViewController.swift in Sources */,
 				AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */,
 				ACF16E042A7D6B900010CF21 /* CommunityViewController.swift in Sources */,
 				ACF16E182A828ECF0010CF21 /* MoodSelectionViewController.swift in Sources */,
+				ACC9DBB42A8BE120000FEDF9 /* SignupViewController.swift in Sources */,
 				ACF16E222A8291AA0010CF21 /* LocationSelectionLayout.swift in Sources */,
+				ACC9DBB62A8BE12E000FEDF9 /* SignupLayout.swift in Sources */,
 				2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */,
 				ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */,
 				ACF16DFC2A7D6B090010CF21 /* MoodBoardViewController.swift in Sources */,
 				2E70329E2A8CD6C100AD4593 /* ReviewViewController.swift in Sources */,
 				2E1BF3052A89558400C58138 /* CategoryBottomSheet.swift in Sources */,
+				ACC9DBA82A8AB177000FEDF9 /* TextEditorViewController.swift in Sources */,
+				ACC9DBA42A8A6BC4000FEDF9 /* ColorCell.swift in Sources */,
 				ACF16E002A7D6B420010CF21 /* ProfileViewController.swift in Sources */,
 				2E4FEC0F2A87940300EDA21A /* UIImageView.swift in Sources */,
 				2E1BF3092A8A4BA300C58138 /* MoodBottomSheet.swift in Sources */,
 				2ECD05252A81182100FC3FF3 /* FirstViewController.swift in Sources */,
+				ACC9DBAE2A8B8B19000FEDF9 /* StickerCell.swift in Sources */,
+				ACC9DE5A2A8C180300A1DA78 /* ApiModel.swift in Sources */,
 				2E4FEC0D2A87809300EDA21A /* SpotCell.swift in Sources */,
+				AC72EA182A8CE37900B41E28 /* RecentMoodBoardViewController.swift in Sources */,
+				ACC9DBAC2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift in Sources */,
 				ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */,
 				AC0624442A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift in Sources */,
+				ACC9DBB02A8BE0FB000FEDF9 /* LoginViewController.swift in Sources */,
 				ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */,
 				2E401BC62A88E85E00D77351 /* FilterOption.swift in Sources */,
 				2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */,
+				ACC9DE582A8C178200A1DA78 /* ApiClient.swift in Sources */,
+				ACC9DBB22A8BE106000FEDF9 /* LoginLayout.swift in Sources */,
+				ACC9DE562A8BFF1B00A1DA78 /* SignUpModal.swift in Sources */,
 				2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */,
+				ACE4E6022A8A3D0B00BE3150 /* MoodBoardEditLayout.swift in Sources */,
 				ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */,
 				2E7032982A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift in Sources */,
 				AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */,
