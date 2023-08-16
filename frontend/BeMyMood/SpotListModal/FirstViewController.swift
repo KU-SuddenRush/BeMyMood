@@ -10,17 +10,19 @@ import SwiftUI
 
 class FirstViewController: UIViewController {
     
+    weak var delegate: SpotCellTapDelegate?
+    
     var tempData: [SpotData] = [
-        SpotData(thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "카페", spotTitle: "마카롱 카페", tags: ["힙한", "무채색"]),
-        SpotData(thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "전시회", spotTitle: "모던 아트 전시회", tags: ["고즈넉한"]),
-        SpotData(thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "밥집", spotTitle: "맛있는 밥집", tags: ["풍경위주의"]),
-        SpotData(thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "놀이공원", spotTitle: "어드벤처 놀이공원", tags: ["LP가흐르는"]),
-        SpotData(thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "카페", spotTitle: "우리집 근처 공원", tags: []),
-        SpotData(thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "전시회", spotTitle: "아늑한 카페", tags: ["반려동물과 함께"]),
-        SpotData(thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "밥집", spotTitle: "시원한 물놀이공원", tags: ["풍경위주의", "뮤트한", "친구와함께"]),
-        SpotData(thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "놀이공원", spotTitle: "장소명8", tags: []),
-        SpotData(thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "카페", spotTitle: "장소명9", tags: ["키치한"]),
-        SpotData(thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "전시회", spotTitle: "장소명10", tags: ["친구와함께"])
+        SpotData(spotId: 1, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "카페", spotTitle: "마카롱 카페", tags: ["힙한", "무채색"]),
+        SpotData(spotId: 2, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "전시회", spotTitle: "모던 아트 전시회", tags: ["고즈넉한"]),
+        SpotData(spotId: 3, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "밥집", spotTitle: "맛있는 밥집", tags: ["풍경위주의"]),
+        SpotData(spotId: 4, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "놀이공원", spotTitle: "어드벤처 놀이공원", tags: ["LP가흐르는"]),
+        SpotData(spotId: 5, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "카페", spotTitle: "우리집 근처 공원", tags: []),
+        SpotData(spotId: 6, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "전시회", spotTitle: "아늑한 카페", tags: ["반려동물과 함께"]),
+        SpotData(spotId: 7, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "밥집", spotTitle: "시원한 물놀이공원", tags: ["풍경위주의", "뮤트한", "친구와함께"]),
+        SpotData(spotId: 8, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "놀이공원", spotTitle: "장소명8", tags: []),
+        SpotData(spotId: 9, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "카페", spotTitle: "장소명9", tags: ["키치한"]),
+        SpotData(spotId: 10, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "전시회", spotTitle: "장소명10", tags: ["친구와함께"])
     ]
 
     //MARK: - UIComponents
@@ -71,7 +73,12 @@ class FirstViewController: UIViewController {
 extension FirstViewController {
     
     func hierarchy(){
+        print("self.view")
+        print(self.view)
         self.view.addSubview(filterSection)
+        print("filterSection.superview")
+        print(filterSection.superview)
+
         filterSection.addSubview(filterCategoryBtn)
         filterSection.addSubview(filterRegionBtn)
         filterSection.addSubview(filterIcon)
@@ -162,6 +169,12 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
         /// TODO Heart Tap API
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        print("didSelectItmeAt")
+        delegate?.moveToSpotDetail(spotId: tempData[indexPath.row].spotId)
+    }
+    
 }
 
 extension FirstViewController: UICollectionViewDelegateFlowLayout {
@@ -217,6 +230,7 @@ struct FirstVCPreView:PreviewProvider {
 }
 
 struct SpotData{
+    let spotId: Int
     let thumbnailImageUrl: String
     let isLiked: Bool
     let spotType: String

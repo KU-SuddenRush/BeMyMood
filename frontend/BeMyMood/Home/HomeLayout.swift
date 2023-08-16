@@ -22,6 +22,8 @@ extension HomeViewController {
         self.view.addSubview(star1)
         self.view.addSubview(star2)
         self.view.addSubview(star3)
+        /// Home Modal View 고정으로 구성
+        self.view.addSubview(spotListModalVC.view)
     }
     
     func layout(){
@@ -82,6 +84,13 @@ extension HomeViewController {
             make.bottom.equalTo(badgeBtn.snp.bottom).offset(-36)
             make.trailing.equalTo(badgeBtn.snp.trailing).offset(5)
             make.height.width.equalTo(26)
+        }
+        
+        /// Home Modal View 고정으로 구성
+        spotListModalVC.view.snp.makeConstraints{ make in
+            make.top.equalTo(collectionView.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(-90)
         }
     }
 }
