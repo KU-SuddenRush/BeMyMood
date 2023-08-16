@@ -13,18 +13,7 @@ class FirstViewController: UIViewController {
     var spotDetailNavigationController: UINavigationController!
 //    weak var delegate: SpotCellTapDelegate?
     
-    var tempData: [SpotData] = [
-        SpotData(spotId: 1, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "카페", spotTitle: "마카롱 카페", tags: ["힙한", "무채색"]),
-        SpotData(spotId: 2, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "전시회", spotTitle: "모던 아트 전시회", tags: ["고즈넉한"]),
-        SpotData(spotId: 3, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "밥집", spotTitle: "맛있는 밥집", tags: ["풍경위주의"]),
-        SpotData(spotId: 4, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "놀이공원", spotTitle: "어드벤처 놀이공원", tags: ["LP가흐르는"]),
-        SpotData(spotId: 5, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "카페", spotTitle: "우리집 근처 공원", tags: []),
-        SpotData(spotId: 6, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "전시회", spotTitle: "아늑한 카페", tags: ["반려동물과 함께"]),
-        SpotData(spotId: 7, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "밥집", spotTitle: "시원한 물놀이공원", tags: ["풍경위주의", "뮤트한", "친구와함께"]),
-        SpotData(spotId: 8, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "놀이공원", spotTitle: "장소명8", tags: []),
-        SpotData(spotId: 9, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: true, spotType: "카페", spotTitle: "장소명9", tags: ["키치한"]),
-        SpotData(spotId: 10, thumbnailImageUrl: "https://picsum.photos/200/300", isLiked: false, spotType: "전시회", spotTitle: "장소명10", tags: ["친구와함께"])
-    ]
+    var spotData: [SpotData] = []
 
     //MARK: - UIComponents
     
@@ -59,9 +48,35 @@ class FirstViewController: UIViewController {
         hierarchy()
         layout()
         
+        dataInit()
+        
         filterCategoryBtn.addTarget(self, action: #selector(filterCategoryBtnTapped), for: .touchUpInside)
 
         filterRegionBtn.addTarget(self, action: #selector(filterRegionBtnTapped), for: .touchUpInside)
+    }
+    
+    func dataInit(){
+        ApiClient.getSpotInfos { result in
+            switch result {
+            case .success(let getSpotDataDTO):
+                print(getSpotDataDTO)
+                self.spotData.removeAll()
+                for spotInfo in getSpotDataDTO.spotInfos{
+                    let spotId = spotInfo.spotId
+                    let thumbnailImageUrl = spotInfo.spotThumbnailImageUrl
+                    let isLiked = spotInfo.bookmarked
+                    let spotType = spotInfo.categoryName
+                    let spotTitle = spotInfo.spotName
+                    let tags = spotInfo.moodNames
+                    
+                    self.spotData.append(SpotData(spotId: spotId, thumbnailImageUrl: thumbnailImageUrl, isLiked: isLiked, spotType: spotType, spotTitle: spotTitle, tags: tags))
+                    
+                    self.spotCollectionView.reloadData()
+                }
+            case .failure(_):
+                print("getSpotInfos failed")
+            }
+        }
     }
     
     @objc func filterRegionBtnTapped(){
@@ -140,13 +155,13 @@ extension FirstViewController {
 extension FirstViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        tempData.count
+        spotData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let spotCell = spotCollectionView.dequeueReusableCell(withReuseIdentifier: "spotCell", for: indexPath) as! SpotCell
-        let cellData = tempData[indexPath.row]
+        let cellData = spotData[indexPath.row]
         
         spotCell.thumbnailImage.loadImage(from: cellData.thumbnailImageUrl)
         if cellData.isLiked{
@@ -178,10 +193,13 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         print("didSelectItemAt \(indexPath)")
-//        delegate?.moveToSpotDetail(spotId: tempData[indexPath.row].spotId)
+//        delegate?.moveToSpotDetail(spotId: spotData[indexPath.row].spotId)
         
-        /// TODO get Detail Info API
-        spotDetailNavigationController?.pushViewController(SpotDetailViewController(), animated: true)
+        let nextVC = SpotDetailViewController()
+//        nextVC.spotId = spotData[indexPath.row].spotId
+//        nextVC.dataInit()
+        
+        spotDetailNavigationController?.pushViewController(nextVC, animated: true)
     }
     
 }
@@ -211,6 +229,7 @@ extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDeleg
         filterCategoryBtn.layer.borderColor = UIColor.orange.cgColor
         updateFilterIconColor()
         /// 검색 with filter option API 호출
+        updateSpotCollectionView()
     }
     
     func setRegionFilterTitle(_ title: String) {
@@ -219,6 +238,7 @@ extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDeleg
         filterRegionBtn.layer.borderColor = UIColor.orange.cgColor
         updateFilterIconColor()
         /// 검색 with filter option API 호출
+        updateSpotCollectionView()
     }
     
     func updateFilterIconColor(){
@@ -226,6 +246,45 @@ extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDeleg
             filterIcon.isSelected = true
         }else{
             filterIcon.isSelected = false
+        }
+    }
+    
+    func updateSpotCollectionView(){
+        var category: String?
+        var location: String?
+//        var mood: String?
+        
+        category = filterCategoryBtn.titleLabel?.text
+        if category == "카테고리" {
+            category = nil
+        }
+        location = filterRegionBtn.titleLabel?.text
+        if location == "지역" {
+            location = nil
+        }
+        print("category is \(category)")
+        print("location is \(location)")
+        
+        ApiClient.getSpotInfosWithFilter(category: category, location: location, mood: nil){ result in
+            switch result {
+            case .success(let getSpotDataDTO):
+                print(getSpotDataDTO)
+                self.spotData.removeAll()
+                for spotInfo in getSpotDataDTO.spotInfos{
+                    let spotId = spotInfo.spotId
+                    let thumbnailImageUrl = spotInfo.spotThumbnailImageUrl
+                    let isLiked = spotInfo.bookmarked
+                    let spotType = spotInfo.categoryName
+                    let spotTitle = spotInfo.spotName
+                    let tags = spotInfo.moodNames
+                    
+                    self.spotData.append(SpotData(spotId: spotId, thumbnailImageUrl: thumbnailImageUrl, isLiked: isLiked, spotType: spotType, spotTitle: spotTitle, tags: tags))
+                    
+                    self.spotCollectionView.reloadData()
+                }
+            case .failure(_):
+                print("getSpotInfosWithFilter failed")
+            }
         }
     }
     
