@@ -20,10 +20,7 @@ public class MoodBoardPicture {
     @JoinColumn(name = "mood_board_id")
     private MoodBoard moodBoard;
 
-    @OneToOne
-    @JoinColumn(name = "spot_img_id")
-    private SpotImage spotImage;
-    // 무드보드에 등록 가능한 사진 = 스팟 시그니처
+    private String imgItemUrl;
 
     private Double locationX;
 
@@ -36,8 +33,8 @@ public class MoodBoardPicture {
     private Double rotation;
 
     // Constructor
-    public MoodBoardPicture(MoodBoard moodBoard, SpotImage spotImage, Double locationX, Double locationY, Double width, Double height, Double rotation) {
-        this.spotImage = spotImage;
+    public MoodBoardPicture(MoodBoard moodBoard, String imgItemUrl, Double locationX, Double locationY, Double width, Double height, Double rotation) {
+        this.imgItemUrl = imgItemUrl;
         this.locationX = locationX;
         this.locationY = locationY;
         this.width = width;
