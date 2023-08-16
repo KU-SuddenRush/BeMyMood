@@ -94,7 +94,9 @@ extension SecondViewController: FilterMoodDataDelegate {
     override func updateFilterIconColor(){
         super.updateFilterIconColor()
         if filterMoodBtn.isSelected{
-            filterIcon.tintColor = .orange
+            filterIcon.isSelected = true
+        }else{
+            filterIcon.isSelected = false
         }
     }
 }

@@ -34,9 +34,9 @@ class FirstViewController: UIViewController {
     
     let filterCategoryBtn = FilterOption(title: "카테고리")
     let filterRegionBtn = FilterOption(title: "지역")
-    let filterIcon = UIImageView().then {
-        $0.tintColor = .lightGray
-        $0.image = UIImage(systemName: "slider.horizontal.3")
+    let filterIcon = UIButton().then {
+        $0.setImage(UIImage(named: "filter")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        $0.setImage(UIImage(named: "filter.fill")?.withRenderingMode(.alwaysOriginal), for: .selected)
     }
     
     let spotCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
@@ -217,7 +217,9 @@ extension FirstViewController: FilterCategoryDataDelegate, FilterRegionDataDeleg
     
     func updateFilterIconColor(){
         if filterCategoryBtn.isSelected || filterRegionBtn.isSelected {
-            filterIcon.tintColor = .orange
+            filterIcon.isSelected = true
+        }else{
+            filterIcon.isSelected = false
         }
     }
     
