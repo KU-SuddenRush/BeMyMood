@@ -153,6 +153,7 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
         spotCell.heartButton.addTarget(self, action: #selector(heartBtnTap(_:)), for: .touchUpInside)
 
         spotCell.tags = cellData.tags
+        spotCell.spotTagCollectionView.reloadData()
         
         return spotCell
     }
