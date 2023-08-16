@@ -17,6 +17,5 @@ public class MoodBoardRequestDto {
     private List<BoardStickerParams> stickers;
     private List<BoardPictureParams> pictures;
     private List<BoardTextParams> texts;
-
     // 스티커 / 사진 / 텍스트
 }
