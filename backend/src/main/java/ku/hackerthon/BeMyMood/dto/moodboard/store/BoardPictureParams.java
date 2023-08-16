@@ -1,4 +1,4 @@
-package ku.hackerthon.BeMyMood.dto.moodboard;
+package ku.hackerthon.BeMyMood.dto.moodboard.store;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BoardStickerParams {
-    private Long stickerId;
+public class BoardPictureParams {
+    private Long spotImgId;
     private Double locationX;
     private Double locationY;
     private Double width;
@@ -16,4 +16,4 @@ public class BoardStickerParams {
     private Double rotation;
 }
 
-// 스티커 - id / x y / h w / rotation
+// id / x y / h w / rotation
