@@ -192,7 +192,6 @@ class MoodBoardEditViewController: UIViewController, TextEditorDelegate, UIGestu
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        selectedStickerView.hid
         UIView.animate(withDuration: 1){
             self.view.window?.frame.origin.y = 0
         }
