@@ -41,7 +41,23 @@ class SpotDetailViewController: UIViewController {
     }
     
     let addModeBoardView = UIView().then{
-        $0.backgroundColor = .purple
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor(red: 0.947, green: 0.947, blue: 0.947, alpha: 1).cgColor
+        $0.backgroundColor = .white
+    }
+    
+    let addMoodBoardDescription = UILabel().then{
+        $0.text = "이 곳에 다녀왔나요?"
+        $0.font = .systemFont(ofSize: 14)
+        $0.textColor = .lightGray
+        $0.textAlignment = .center
+    }
+    
+    let addMoodBoardBtn = UIButton().then{
+        $0.setTitle("내 무드보드에 추가", for: .normal)
+        $0.layer.cornerRadius = 15
+        $0.titleLabel?.textColor = .white
+        $0.backgroundColor = UIColor(red: 0.349, green: 0.325, blue: 0.322, alpha: 1)
     }
     
     override func viewDidLoad() {
@@ -59,6 +75,8 @@ class SpotDetailViewController: UIViewController {
         tagCollectionView.dataSource = self
         tagCollectionView.delegate = self
         tagCollectionView.register(SpotTagCell.self, forCellWithReuseIdentifier: "spotTagCell")
+        
+        addMoodBoardBtn.addTarget(self, action: #selector(addMoodBoardBtnTapped), for: .touchUpInside)
     }
     
     func dataInit(){
@@ -72,6 +90,12 @@ class SpotDetailViewController: UIViewController {
         slidingTabVC.build()
     }
     
+    @objc func addMoodBoardBtnTapped(){
+        print("addMoodBoardBtnTapped")
+        
+        /// TODO : MoveTo addMoodBoard View
+    }
+    
 }
 
 extension SpotDetailViewController{
@@ -82,6 +106,8 @@ extension SpotDetailViewController{
         headerView.addSubview(tagCollectionView)
         self.view.addSubview(slidingTabVC.view)
         self.view.addSubview(addModeBoardView)
+        addModeBoardView.addSubview(addMoodBoardDescription)
+        addModeBoardView.addSubview(addMoodBoardBtn)
     }
     
     func layout(){
@@ -96,7 +122,19 @@ extension SpotDetailViewController{
         
         addModeBoardView.snp.makeConstraints{ make in
             make.bottom.leading.trailing.equalToSuperview()
-            make.height.equalTo(104)
+        }
+        
+        addMoodBoardDescription.snp.makeConstraints{ make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(25)
+        }
+        
+        addMoodBoardBtn.snp.makeConstraints{ make in
+            make.leading.equalTo(16)
+            make.trailing.equalTo(-16)
+            make.bottom.equalTo(addModeBoardView.snp.bottom).offset(-25)
+            make.top.equalTo(addMoodBoardDescription.snp.bottom).offset(3)
+            make.height.equalTo(56)
         }
     }
     
