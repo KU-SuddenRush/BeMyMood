@@ -3,9 +3,7 @@ package ku.hackerthon.BeMyMood.domain.moodboard;
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Embeddable
 public class MoodBoards {
@@ -19,6 +17,12 @@ public class MoodBoards {
 
     public List<MoodBoard> getAllMoodBoards() {
         return Collections.unmodifiableList(moodBoards);
+    }
+
+    public MoodBoard getLastEditedMoodBoard() {
+        return moodBoards.stream()
+                .sorted(Comparator.comparing(MoodBoard::getUpdatedAt).reversed())
+                .findFirst().orElseThrow(() -> new NullPointerException("무드보드가 존재하지 않습니다."));
     }
 
 }
