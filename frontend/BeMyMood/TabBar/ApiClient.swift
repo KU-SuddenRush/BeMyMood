@@ -108,15 +108,28 @@ class ApiClient{
         }
     }
     
-    func getTotalLocation(completion: @escaping ([Int]) -> Void){
-        AF.request("http://52.78.132.135/mood/color", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: [Int].self) { response in
+    func postLocation(_ parameter: PostLocationInput, completion: @escaping (String) -> Void){
+        AF.request("http://52.78.132.135/member/location", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, interceptor: interceptor).validate().responseDecodable(of: StringModel.self) { response in
+            switch response.result {
+            case .success(let result):
+                print("지역보내기성공")
+                completion(result.response!)
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion("fail" + error.localizedDescription)
+            }
+        }
+    }
+    
+    func getMyMood(completion: @escaping (GetMyMoodModel) -> Void){
+        AF.request("http://52.78.132.135/member/mood", method: .get, parameters: nil, interceptor: interceptor).validate().responseDecodable(of: GetMyMoodModel.self) { response in
             switch response.result {
             case .success(let result):
                 print(result)
                 completion(result)
             case .failure(let error):
                 print(error.localizedDescription)
-                completion([])
             }
         }
     }

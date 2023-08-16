@@ -12,7 +12,7 @@ import SwiftUI
 
 class HomeViewController: UIViewController {
     
-    let tagData = ["#풍경위주의","#힙한","#뮤트한", "#미니멀한","#반려동물과함께","#고즈넉한","#우디","#우디","#우디","#우디","#우디"]
+    var tagData : [Int?] = []
     
     var lastTag = -1
     
@@ -104,8 +104,21 @@ class HomeViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        ApiClient().getMyMood() { result in
+            if !result.moodIds.isEmpty{
+                self.moodCount.text = "무드 \(result.count ?? 0)"
+                self.tagData = result.moodIds
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
+
         updateLastCell()
         /// Home Modal View 고정으로 구성 - 일단 제외
 //        showBottomSheet()
@@ -187,7 +200,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         cell.tagLabel.backgroundColor = .darkBrown
         cell.tagLabel.layer.borderColor = UIColor.black.cgColor
-        cell.tagLabel.text = tagData[indexPath.row]
+        cell.tagLabel.text = Data.moodData[tagData[indexPath.row]! - 1]
         cell.tagLabel.textColor = .white
         
         
@@ -200,7 +213,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             fatalError()
         }
         
-        cell.tagLabel.text = tagData[indexPath.row]
+        cell.tagLabel.text = Data.moodData[tagData[indexPath.row]! - 1]
         
         cell.tagLabel.sizeToFit()
 
