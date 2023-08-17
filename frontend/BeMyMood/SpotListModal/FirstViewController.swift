@@ -198,7 +198,8 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
         let nextVC = SpotDetailViewController()
 //        nextVC.spotId = spotData[indexPath.row].spotId
 //        nextVC.dataInit()
-        
+        nextVC.detailNavigationController = spotDetailNavigationController
+
         spotDetailNavigationController?.pushViewController(nextVC, animated: true)
     }
     
