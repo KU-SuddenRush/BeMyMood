@@ -1,0 +1,1148 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		13A7F6639B6F1B219DB4FFF9 /* Pods_BeMyMood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C55293BF6C3B8416A325017 /* Pods_BeMyMood.framework */; };
+		2E1BF3052A89558400C58138 /* CategoryBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF3042A89558400C58138 /* CategoryBottomSheet.swift */; };
+		2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF3062A8A45FC00C58138 /* RegionBottomSheet.swift */; };
+		2E1BF3092A8A4BA300C58138 /* MoodBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF3082A8A4BA300C58138 /* MoodBottomSheet.swift */; };
+		2E1BF30C2A8A6A4300C58138 /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF30B2A8A6A4300C58138 /* SpotDetailViewController.swift */; };
+		2E1BF30E2A8A7D4600C58138 /* SpotCellTapProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BF30D2A8A7D4600C58138 /* SpotCellTapProtocol.swift */; };
+		2E401BC62A88E85E00D77351 /* FilterOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E401BC52A88E85E00D77351 /* FilterOption.swift */; };
+		2E4FEC0D2A87809300EDA21A /* SpotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC0C2A87809300EDA21A /* SpotCell.swift */; };
+		2E4FEC0F2A87940300EDA21A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC0E2A87940300EDA21A /* UIImageView.swift */; };
+		2E4FEC112A88066700EDA21A /* SpotTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FEC102A88066700EDA21A /* SpotTagCell.swift */; };
+		2E7032962A8BE48000AD4593 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032952A8BE48000AD4593 /* DetailViewController.swift */; };
+		2E7032982A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */; };
+		2E70329A2A8CAEEF00AD4593 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032992A8CAEEF00AD4593 /* RecommendCell.swift */; };
+		2E70329E2A8CD6C100AD4593 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E70329D2A8CD6C100AD4593 /* ReviewViewController.swift */; };
+		2E7032A02A8CD79E00AD4593 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E70329F2A8CD79E00AD4593 /* ReviewCell.swift */; };
+		2E7032A22A8CD93800AD4593 /* Nicknames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7032A12A8CD93800AD4593 /* Nicknames.swift */; };
+		2E8798DD2A8D688700625802 /* ApiClientYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8798DC2A8D688700625802 /* ApiClientYS.swift */; };
+		2E8798DF2A8D689500625802 /* ApiModelYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8798DE2A8D689500625802 /* ApiModelYS.swift */; };
+		2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A21242A8768A700750119 /* UISlidingTabController.swift */; };
+		2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05162A80F72700FC3FF3 /* UIViewController.swift */; };
+		2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */; };
+		2ECD051C2A80FFE500FC3FF3 /* SpotListModalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD051B2A80FFE500FC3FF3 /* SpotListModalLayout.swift */; };
+		2ECD05252A81182100FC3FF3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05242A81182100FC3FF3 /* FirstViewController.swift */; };
+		2ECD05272A81184200FC3FF3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD05262A81184200FC3FF3 /* SecondViewController.swift */; };
+		76D03CCBDD333211385A400D /* Pods_BeMyMood_BeMyMoodUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20789D2FDFD4A2EB34922C8 /* Pods_BeMyMood_BeMyMoodUITests.framework */; };
+		906A530A66B51C9F89D40E23 /* Pods_BeMyMoodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9608FAD3B71F7A69B22CBDA /* Pods_BeMyMoodTests.framework */; };
+		AC06243E2A87B7DA00EDFB8E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06243D2A87B7DA00EDFB8E /* RecordViewController.swift */; };
+		AC0624402A87B81000EDFB8E /* RecordLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06243F2A87B81000EDFB8E /* RecordLayout.swift */; };
+		AC0624422A88ADFE00EDFB8E /* RecordPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624412A88ADFE00EDFB8E /* RecordPictureCell.swift */; };
+		AC0624442A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624432A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift */; };
+		AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */; };
+		AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */; };
+		AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */; };
+		AC3D619F2A8D2A6700499988 /* MoodBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D619E2A8D2A6700499988 /* MoodBoardCell.swift */; };
+		AC3D61A12A8D385700499988 /* MoodBoardImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D61A02A8D385700499988 /* MoodBoardImageViewController.swift */; };
+		AC3D61A32A8D389700499988 /* MoodBoardImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D61A22A8D389700499988 /* MoodBoardImageCell.swift */; };
+		AC3D61A52A8D81B200499988 /* PopularViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D61A42A8D81B200499988 /* PopularViewcontroller.swift */; };
+		AC400F212A8CAD1100353B81 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC400F202A8CAD1100353B81 /* Data.swift */; };
+		AC72EA182A8CE37900B41E28 /* RecentMoodBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72EA172A8CE37900B41E28 /* RecentMoodBoardViewController.swift */; };
+		AC72EA1A2A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72EA192A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift */; };
+		AC72EA1C2A8D02D800B41E28 /* CustomInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72EA1B2A8D02D800B41E28 /* CustomInterceptor.swift */; };
+		ACC9DBA42A8A6BC4000FEDF9 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBA32A8A6BC4000FEDF9 /* ColorCell.swift */; };
+		ACC9DBA62A8AA36C000FEDF9 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBA52A8AA36C000FEDF9 /* UIImage.swift */; };
+		ACC9DBA82A8AB177000FEDF9 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBA72A8AB177000FEDF9 /* TextEditorViewController.swift */; };
+		ACC9DBAA2A8AB187000FEDF9 /* TextEditorLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBA92A8AB187000FEDF9 /* TextEditorLayout.swift */; };
+		ACC9DBAC2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBAB2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift */; };
+		ACC9DBAE2A8B8B19000FEDF9 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBAD2A8B8B19000FEDF9 /* StickerCell.swift */; };
+		ACC9DBB02A8BE0FB000FEDF9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBAF2A8BE0FB000FEDF9 /* LoginViewController.swift */; };
+		ACC9DBB22A8BE106000FEDF9 /* LoginLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBB12A8BE106000FEDF9 /* LoginLayout.swift */; };
+		ACC9DBB42A8BE120000FEDF9 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBB32A8BE120000FEDF9 /* SignupViewController.swift */; };
+		ACC9DBB62A8BE12E000FEDF9 /* SignupLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DBB52A8BE12E000FEDF9 /* SignupLayout.swift */; };
+		ACC9DE562A8BFF1B00A1DA78 /* SignUpModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DE552A8BFF1B00A1DA78 /* SignUpModal.swift */; };
+		ACC9DE582A8C178200A1DA78 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DE572A8C178200A1DA78 /* ApiClient.swift */; };
+		ACC9DE5A2A8C180300A1DA78 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9DE592A8C180300A1DA78 /* ApiModel.swift */; };
+		ACE4E6002A8A3CF000BE3150 /* MoodBoardEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */; };
+		ACE4E6022A8A3D0B00BE3150 /* MoodBoardEditLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */; };
+		ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */; };
+		ACF16DCC2A7D4CE50010CF21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */; };
+		ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DCD2A7D4CE50010CF21 /* HomeViewController.swift */; };
+		ACF16DD32A7D4CE70010CF21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACF16DD22A7D4CE70010CF21 /* Assets.xcassets */; };
+		ACF16DD62A7D4CE70010CF21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF16DD42A7D4CE70010CF21 /* LaunchScreen.storyboard */; };
+		ACF16DE12A7D4CE70010CF21 /* BeMyMoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DE02A7D4CE70010CF21 /* BeMyMoodTests.swift */; };
+		ACF16DEB2A7D4CE70010CF21 /* BeMyMoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DEA2A7D4CE70010CF21 /* BeMyMoodUITests.swift */; };
+		ACF16DED2A7D4CE70010CF21 /* BeMyMoodUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DEC2A7D4CE70010CF21 /* BeMyMoodUITestsLaunchTests.swift */; };
+		ACF16DFA2A7D5D500010CF21 /* HomeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DF92A7D5D500010CF21 /* HomeLayout.swift */; };
+		ACF16DFC2A7D6B090010CF21 /* MoodBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DFB2A7D6B090010CF21 /* MoodBoardViewController.swift */; };
+		ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DFD2A7D6B200010CF21 /* MoodBoardLayout.swift */; };
+		ACF16E002A7D6B420010CF21 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16DFF2A7D6B420010CF21 /* ProfileViewController.swift */; };
+		ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E012A7D6B520010CF21 /* ProfileLayout.swift */; };
+		ACF16E042A7D6B900010CF21 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E032A7D6B900010CF21 /* CommunityViewController.swift */; };
+		ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E052A7D6BA00010CF21 /* CommunityLayout.swift */; };
+		ACF16E082A810E660010CF21 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E072A810E660010CF21 /* UIColor.swift */; };
+		ACF16E0B2A81118E0010CF21 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E0A2A81118E0010CF21 /* TabBarController.swift */; };
+		ACF16E122A82638C0010CF21 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E112A82638C0010CF21 /* UICollectionView.swift */; };
+		ACF16E152A8263FC0010CF21 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E142A8263FC0010CF21 /* TagCell.swift */; };
+		ACF16E182A828ECF0010CF21 /* MoodSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E172A828ECF0010CF21 /* MoodSelectionViewController.swift */; };
+		ACF16E1A2A828EE10010CF21 /* ColorSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E192A828EE10010CF21 /* ColorSelectionViewController.swift */; };
+		ACF16E1C2A8290A70010CF21 /* LocationSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E1B2A8290A70010CF21 /* LocationSelectionViewController.swift */; };
+		ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E1D2A82918C0010CF21 /* MoodSelectionLayout.swift */; };
+		ACF16E202A82919C0010CF21 /* ColorSelectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E1F2A82919C0010CF21 /* ColorSelectionLayout.swift */; };
+		ACF16E222A8291AA0010CF21 /* LocationSelectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF16E212A8291AA0010CF21 /* LocationSelectionLayout.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ACF16DDD2A7D4CE70010CF21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACF16DBE2A7D4CE50010CF21 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACF16DC52A7D4CE50010CF21;
+			remoteInfo = BeMyMood;
+		};
+		ACF16DE72A7D4CE70010CF21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACF16DBE2A7D4CE50010CF21 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACF16DC52A7D4CE50010CF21;
+			remoteInfo = BeMyMood;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		14918AEB277B52AE7F421F65 /* Pods-BeMyMood-BeMyMoodUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood-BeMyMoodUITests.debug.xcconfig"; path = "Target Support Files/Pods-BeMyMood-BeMyMoodUITests/Pods-BeMyMood-BeMyMoodUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		25E0CDC52360D350D5222219 /* Pods-BeMyMood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood.debug.xcconfig"; path = "Target Support Files/Pods-BeMyMood/Pods-BeMyMood.debug.xcconfig"; sourceTree = "<group>"; };
+		2D6782CAFCB745F115D490F8 /* Pods-BeMyMood-BeMyMoodUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood-BeMyMoodUITests.release.xcconfig"; path = "Target Support Files/Pods-BeMyMood-BeMyMoodUITests/Pods-BeMyMood-BeMyMoodUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2E1BF3042A89558400C58138 /* CategoryBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBottomSheet.swift; sourceTree = "<group>"; };
+		2E1BF3062A8A45FC00C58138 /* RegionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionBottomSheet.swift; sourceTree = "<group>"; };
+		2E1BF3082A8A4BA300C58138 /* MoodBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBottomSheet.swift; sourceTree = "<group>"; };
+		2E1BF30B2A8A6A4300C58138 /* SpotDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailViewController.swift; sourceTree = "<group>"; };
+		2E1BF30D2A8A7D4600C58138 /* SpotCellTapProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCellTapProtocol.swift; sourceTree = "<group>"; };
+		2E401BC52A88E85E00D77351 /* FilterOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOption.swift; sourceTree = "<group>"; };
+		2E4FEC0C2A87809300EDA21A /* SpotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCell.swift; sourceTree = "<group>"; };
+		2E4FEC0E2A87940300EDA21A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		2E4FEC102A88066700EDA21A /* SpotTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotTagCell.swift; sourceTree = "<group>"; };
+		2E7032952A8BE48000AD4593 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVerticalScrollContentView.swift; sourceTree = "<group>"; };
+		2E7032992A8CAEEF00AD4593 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
+		2E70329D2A8CD6C100AD4593 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		2E70329F2A8CD79E00AD4593 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		2E7032A12A8CD93800AD4593 /* Nicknames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nicknames.swift; sourceTree = "<group>"; };
+		2E8798DC2A8D688700625802 /* ApiClientYS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientYS.swift; sourceTree = "<group>"; };
+		2E8798DE2A8D689500625802 /* ApiModelYS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModelYS.swift; sourceTree = "<group>"; };
+		2E9A21242A8768A700750119 /* UISlidingTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISlidingTabController.swift; sourceTree = "<group>"; };
+		2ECD05162A80F72700FC3FF3 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModalViewController.swift; sourceTree = "<group>"; };
+		2ECD051B2A80FFE500FC3FF3 /* SpotListModalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListModalLayout.swift; sourceTree = "<group>"; };
+		2ECD05242A81182100FC3FF3 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		2ECD05262A81184200FC3FF3 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		33D0006B4858ACF3CEE49C14 /* Pods-BeMyMoodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMoodTests.debug.xcconfig"; path = "Target Support Files/Pods-BeMyMoodTests/Pods-BeMyMoodTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3866844B03D2C5893F9D2102 /* Pods-BeMyMood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMood.release.xcconfig"; path = "Target Support Files/Pods-BeMyMood/Pods-BeMyMood.release.xcconfig"; sourceTree = "<group>"; };
+		8C55293BF6C3B8416A325017 /* Pods_BeMyMood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyMood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B9D02533203E491DDD9E805 /* Pods-BeMyMoodTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyMoodTests.release.xcconfig"; path = "Target Support Files/Pods-BeMyMoodTests/Pods-BeMyMoodTests.release.xcconfig"; sourceTree = "<group>"; };
+		AC06243D2A87B7DA00EDFB8E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		AC06243F2A87B81000EDFB8E /* RecordLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordLayout.swift; sourceTree = "<group>"; };
+		AC0624412A88ADFE00EDFB8E /* RecordPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPictureCell.swift; sourceTree = "<group>"; };
+		AC0624432A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentBottomSheetViewController.swift; sourceTree = "<group>"; };
+		AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
+		AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchLayout.swift; sourceTree = "<group>"; };
+		AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultCell.swift; sourceTree = "<group>"; };
+		AC3D619E2A8D2A6700499988 /* MoodBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardCell.swift; sourceTree = "<group>"; };
+		AC3D61A02A8D385700499988 /* MoodBoardImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardImageViewController.swift; sourceTree = "<group>"; };
+		AC3D61A22A8D389700499988 /* MoodBoardImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardImageCell.swift; sourceTree = "<group>"; };
+		AC3D61A42A8D81B200499988 /* PopularViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewcontroller.swift; sourceTree = "<group>"; };
+		AC400F202A8CAD1100353B81 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		AC72EA172A8CE37900B41E28 /* RecentMoodBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMoodBoardViewController.swift; sourceTree = "<group>"; };
+		AC72EA192A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredMoodBoardViewController.swift; sourceTree = "<group>"; };
+		AC72EA1B2A8D02D800B41E28 /* CustomInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInterceptor.swift; sourceTree = "<group>"; };
+		ACC9DBA32A8A6BC4000FEDF9 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
+		ACC9DBA52A8AA36C000FEDF9 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		ACC9DBA72A8AB177000FEDF9 /* TextEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
+		ACC9DBA92A8AB187000FEDF9 /* TextEditorLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorLayout.swift; sourceTree = "<group>"; };
+		ACC9DBAB2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardStickerBottomSheet.swift; sourceTree = "<group>"; };
+		ACC9DBAD2A8B8B19000FEDF9 /* StickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
+		ACC9DBAF2A8BE0FB000FEDF9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ACC9DBB12A8BE106000FEDF9 /* LoginLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLayout.swift; sourceTree = "<group>"; };
+		ACC9DBB32A8BE120000FEDF9 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		ACC9DBB52A8BE12E000FEDF9 /* SignupLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLayout.swift; sourceTree = "<group>"; };
+		ACC9DE552A8BFF1B00A1DA78 /* SignUpModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModal.swift; sourceTree = "<group>"; };
+		ACC9DE572A8C178200A1DA78 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		ACC9DE592A8C180300A1DA78 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
+		ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardEditViewController.swift; sourceTree = "<group>"; };
+		ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardEditLayout.swift; sourceTree = "<group>"; };
+		ACF16DC62A7D4CE50010CF21 /* BeMyMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		ACF16DCD2A7D4CE50010CF21 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		ACF16DD22A7D4CE70010CF21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ACF16DD52A7D4CE70010CF21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ACF16DD72A7D4CE70010CF21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACF16DDC2A7D4CE70010CF21 /* BeMyMoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeMyMoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACF16DE02A7D4CE70010CF21 /* BeMyMoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMyMoodTests.swift; sourceTree = "<group>"; };
+		ACF16DE62A7D4CE70010CF21 /* BeMyMoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeMyMoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACF16DEA2A7D4CE70010CF21 /* BeMyMoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMyMoodUITests.swift; sourceTree = "<group>"; };
+		ACF16DEC2A7D4CE70010CF21 /* BeMyMoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMyMoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ACF16DF92A7D5D500010CF21 /* HomeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLayout.swift; sourceTree = "<group>"; };
+		ACF16DFB2A7D6B090010CF21 /* MoodBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardViewController.swift; sourceTree = "<group>"; };
+		ACF16DFD2A7D6B200010CF21 /* MoodBoardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodBoardLayout.swift; sourceTree = "<group>"; };
+		ACF16DFF2A7D6B420010CF21 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		ACF16E012A7D6B520010CF21 /* ProfileLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLayout.swift; sourceTree = "<group>"; };
+		ACF16E032A7D6B900010CF21 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		ACF16E052A7D6BA00010CF21 /* CommunityLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityLayout.swift; sourceTree = "<group>"; };
+		ACF16E072A810E660010CF21 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		ACF16E0A2A81118E0010CF21 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		ACF16E112A82638C0010CF21 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		ACF16E142A8263FC0010CF21 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		ACF16E172A828ECF0010CF21 /* MoodSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectionViewController.swift; sourceTree = "<group>"; };
+		ACF16E192A828EE10010CF21 /* ColorSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionViewController.swift; sourceTree = "<group>"; };
+		ACF16E1B2A8290A70010CF21 /* LocationSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectionViewController.swift; sourceTree = "<group>"; };
+		ACF16E1D2A82918C0010CF21 /* MoodSelectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelectionLayout.swift; sourceTree = "<group>"; };
+		ACF16E1F2A82919C0010CF21 /* ColorSelectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionLayout.swift; sourceTree = "<group>"; };
+		ACF16E212A8291AA0010CF21 /* LocationSelectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectionLayout.swift; sourceTree = "<group>"; };
+		E20789D2FDFD4A2EB34922C8 /* Pods_BeMyMood_BeMyMoodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyMood_BeMyMoodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9608FAD3B71F7A69B22CBDA /* Pods_BeMyMoodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyMoodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ACF16DC32A7D4CE50010CF21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13A7F6639B6F1B219DB4FFF9 /* Pods_BeMyMood.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACF16DD92A7D4CE70010CF21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				906A530A66B51C9F89D40E23 /* Pods_BeMyMoodTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACF16DE32A7D4CE70010CF21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76D03CCBDD333211385A400D /* Pods_BeMyMood_BeMyMoodUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2E1BF3012A89550900C58138 /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				2E1BF3042A89558400C58138 /* CategoryBottomSheet.swift */,
+				2E1BF3062A8A45FC00C58138 /* RegionBottomSheet.swift */,
+				2E1BF3082A8A4BA300C58138 /* MoodBottomSheet.swift */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		2E1BF30A2A8A69D700C58138 /* SpotDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2E70329C2A8CD68E00AD4593 /* Review */,
+				2E70329B2A8CC86100AD4593 /* Detail */,
+				2E1BF30B2A8A6A4300C58138 /* SpotDetailViewController.swift */,
+			);
+			path = SpotDetail;
+			sourceTree = "<group>";
+		};
+		2E70329B2A8CC86100AD4593 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				2E7032952A8BE48000AD4593 /* DetailViewController.swift */,
+				2E7032972A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift */,
+				2E7032992A8CAEEF00AD4593 /* RecommendCell.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		2E70329C2A8CD68E00AD4593 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				2E70329D2A8CD6C100AD4593 /* ReviewViewController.swift */,
+				2E70329F2A8CD79E00AD4593 /* ReviewCell.swift */,
+				2E7032A12A8CD93800AD4593 /* Nicknames.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		2ECD05152A80F6C100FC3FF3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2ECD05162A80F72700FC3FF3 /* UIViewController.swift */,
+				2E4FEC0E2A87940300EDA21A /* UIImageView.swift */,
+				ACF16E072A810E660010CF21 /* UIColor.swift */,
+				ACF16E112A82638C0010CF21 /* UICollectionView.swift */,
+				ACC9DBA52A8AA36C000FEDF9 /* UIImage.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2ECD05182A80FF7A00FC3FF3 /* SpotListModal */ = {
+			isa = PBXGroup;
+			children = (
+				2E1BF3012A89550900C58138 /* BottomSheet */,
+				2ECD05192A80FFC400FC3FF3 /* SpotListModalViewController.swift */,
+				2ECD051B2A80FFE500FC3FF3 /* SpotListModalLayout.swift */,
+				2ECD05242A81182100FC3FF3 /* FirstViewController.swift */,
+				2ECD05262A81184200FC3FF3 /* SecondViewController.swift */,
+				2E9A21242A8768A700750119 /* UISlidingTabController.swift */,
+				2E4FEC0C2A87809300EDA21A /* SpotCell.swift */,
+				2E4FEC102A88066700EDA21A /* SpotTagCell.swift */,
+				2E401BC52A88E85E00D77351 /* FilterOption.swift */,
+				2E1BF30D2A8A7D4600C58138 /* SpotCellTapProtocol.swift */,
+			);
+			path = SpotListModal;
+			sourceTree = "<group>";
+		};
+		503D9839263E3452235526DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				25E0CDC52360D350D5222219 /* Pods-BeMyMood.debug.xcconfig */,
+				3866844B03D2C5893F9D2102 /* Pods-BeMyMood.release.xcconfig */,
+				14918AEB277B52AE7F421F65 /* Pods-BeMyMood-BeMyMoodUITests.debug.xcconfig */,
+				2D6782CAFCB745F115D490F8 /* Pods-BeMyMood-BeMyMoodUITests.release.xcconfig */,
+				33D0006B4858ACF3CEE49C14 /* Pods-BeMyMoodTests.debug.xcconfig */,
+				9B9D02533203E491DDD9E805 /* Pods-BeMyMoodTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		932966C7FCC272EC2AE029A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C55293BF6C3B8416A325017 /* Pods_BeMyMood.framework */,
+				E20789D2FDFD4A2EB34922C8 /* Pods_BeMyMood_BeMyMoodUITests.framework */,
+				E9608FAD3B71F7A69B22CBDA /* Pods_BeMyMoodTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC06243C2A87B73100EDFB8E /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				AC06243D2A87B7DA00EDFB8E /* RecordViewController.swift */,
+				AC06243F2A87B81000EDFB8E /* RecordLayout.swift */,
+				AC0624432A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		ACF16DBD2A7D4CE50010CF21 = {
+			isa = PBXGroup;
+			children = (
+				ACF16DC82A7D4CE50010CF21 /* BeMyMood */,
+				ACF16DDF2A7D4CE70010CF21 /* BeMyMoodTests */,
+				ACF16DE92A7D4CE70010CF21 /* BeMyMoodUITests */,
+				ACF16DC72A7D4CE50010CF21 /* Products */,
+				503D9839263E3452235526DE /* Pods */,
+				932966C7FCC272EC2AE029A8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		ACF16DC72A7D4CE50010CF21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16DC62A7D4CE50010CF21 /* BeMyMood.app */,
+				ACF16DDC2A7D4CE70010CF21 /* BeMyMoodTests.xctest */,
+				ACF16DE62A7D4CE70010CF21 /* BeMyMoodUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ACF16DC82A7D4CE50010CF21 /* BeMyMood */ = {
+			isa = PBXGroup;
+			children = (
+				2E1BF30A2A8A69D700C58138 /* SpotDetail */,
+				AC06243C2A87B73100EDFB8E /* Record */,
+				2ECD05182A80FF7A00FC3FF3 /* SpotListModal */,
+				ACF16E092A8110E50010CF21 /* TabBar */,
+				ACF16E132A8263E70010CF21 /* Cell */,
+				ACF16E0C2A8123050010CF21 /* Application */,
+				ACF16E162A828E480010CF21 /* Selection */,
+				ACF16E0D2A8123260010CF21 /* Home */,
+				ACF16E102A8123D10010CF21 /* Profile */,
+				ACF16E0F2A8123C20010CF21 /* Community */,
+				ACF16E0E2A8123380010CF21 /* MoodBoard */,
+				2ECD05152A80F6C100FC3FF3 /* Extension */,
+				ACF16DD22A7D4CE70010CF21 /* Assets.xcassets */,
+				ACF16DD42A7D4CE70010CF21 /* LaunchScreen.storyboard */,
+				ACF16DD72A7D4CE70010CF21 /* Info.plist */,
+			);
+			path = BeMyMood;
+			sourceTree = "<group>";
+		};
+		ACF16DDF2A7D4CE70010CF21 /* BeMyMoodTests */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16DE02A7D4CE70010CF21 /* BeMyMoodTests.swift */,
+			);
+			path = BeMyMoodTests;
+			sourceTree = "<group>";
+		};
+		ACF16DE92A7D4CE70010CF21 /* BeMyMoodUITests */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16DEA2A7D4CE70010CF21 /* BeMyMoodUITests.swift */,
+				ACF16DEC2A7D4CE70010CF21 /* BeMyMoodUITestsLaunchTests.swift */,
+			);
+			path = BeMyMoodUITests;
+			sourceTree = "<group>";
+		};
+		ACF16E092A8110E50010CF21 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16E0A2A81118E0010CF21 /* TabBarController.swift */,
+				ACC9DBAF2A8BE0FB000FEDF9 /* LoginViewController.swift */,
+				ACC9DBB12A8BE106000FEDF9 /* LoginLayout.swift */,
+				ACC9DBB32A8BE120000FEDF9 /* SignupViewController.swift */,
+				ACC9DBB52A8BE12E000FEDF9 /* SignupLayout.swift */,
+				ACC9DE552A8BFF1B00A1DA78 /* SignUpModal.swift */,
+				ACC9DE572A8C178200A1DA78 /* ApiClient.swift */,
+				ACC9DE592A8C180300A1DA78 /* ApiModel.swift */,
+				AC400F202A8CAD1100353B81 /* Data.swift */,
+				AC72EA1B2A8D02D800B41E28 /* CustomInterceptor.swift */,
+				2E8798DC2A8D688700625802 /* ApiClientYS.swift */,
+				2E8798DE2A8D689500625802 /* ApiModelYS.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		ACF16E0C2A8123050010CF21 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16DC92A7D4CE50010CF21 /* AppDelegate.swift */,
+				ACF16DCB2A7D4CE50010CF21 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		ACF16E0D2A8123260010CF21 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16DCD2A7D4CE50010CF21 /* HomeViewController.swift */,
+				ACF16DF92A7D5D500010CF21 /* HomeLayout.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		ACF16E0E2A8123380010CF21 /* MoodBoard */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16DFB2A7D6B090010CF21 /* MoodBoardViewController.swift */,
+				ACF16DFD2A7D6B200010CF21 /* MoodBoardLayout.swift */,
+				ACE4E5FF2A8A3CF000BE3150 /* MoodBoardEditViewController.swift */,
+				ACE4E6012A8A3D0B00BE3150 /* MoodBoardEditLayout.swift */,
+				ACC9DBA72A8AB177000FEDF9 /* TextEditorViewController.swift */,
+				ACC9DBA92A8AB187000FEDF9 /* TextEditorLayout.swift */,
+				ACC9DBAB2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift */,
+				AC72EA172A8CE37900B41E28 /* RecentMoodBoardViewController.swift */,
+				AC72EA192A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift */,
+				AC3D61A02A8D385700499988 /* MoodBoardImageViewController.swift */,
+			);
+			path = MoodBoard;
+			sourceTree = "<group>";
+		};
+		ACF16E0F2A8123C20010CF21 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16E052A7D6BA00010CF21 /* CommunityLayout.swift */,
+				ACF16E032A7D6B900010CF21 /* CommunityViewController.swift */,
+				AC3D61A42A8D81B200499988 /* PopularViewcontroller.swift */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		ACF16E102A8123D10010CF21 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16DFF2A7D6B420010CF21 /* ProfileViewController.swift */,
+				ACF16E012A7D6B520010CF21 /* ProfileLayout.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		ACF16E132A8263E70010CF21 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16E142A8263FC0010CF21 /* TagCell.swift */,
+				AC0624412A88ADFE00EDFB8E /* RecordPictureCell.swift */,
+				AC0624492A891DAD00EDFB8E /* LocationResultCell.swift */,
+				ACC9DBA32A8A6BC4000FEDF9 /* ColorCell.swift */,
+				ACC9DBAD2A8B8B19000FEDF9 /* StickerCell.swift */,
+				AC3D619E2A8D2A6700499988 /* MoodBoardCell.swift */,
+				AC3D61A22A8D389700499988 /* MoodBoardImageCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ACF16E162A828E480010CF21 /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				ACF16E172A828ECF0010CF21 /* MoodSelectionViewController.swift */,
+				ACF16E1D2A82918C0010CF21 /* MoodSelectionLayout.swift */,
+				ACF16E192A828EE10010CF21 /* ColorSelectionViewController.swift */,
+				ACF16E1F2A82919C0010CF21 /* ColorSelectionLayout.swift */,
+				ACF16E1B2A8290A70010CF21 /* LocationSelectionViewController.swift */,
+				ACF16E212A8291AA0010CF21 /* LocationSelectionLayout.swift */,
+				AC0624452A88E97900EDFB8E /* LocationSearchViewController.swift */,
+				AC0624472A88E98E00EDFB8E /* LocationSearchLayout.swift */,
+			);
+			path = Selection;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ACF16DC52A7D4CE50010CF21 /* BeMyMood */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACF16DF02A7D4CE70010CF21 /* Build configuration list for PBXNativeTarget "BeMyMood" */;
+			buildPhases = (
+				836609D6FF25CA349A5ADFAD /* [CP] Check Pods Manifest.lock */,
+				ACF16DC22A7D4CE50010CF21 /* Sources */,
+				ACF16DC32A7D4CE50010CF21 /* Frameworks */,
+				ACF16DC42A7D4CE50010CF21 /* Resources */,
+				FEF07A897DD733CA9F628D34 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeMyMood;
+			productName = BeMyMood;
+			productReference = ACF16DC62A7D4CE50010CF21 /* BeMyMood.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ACF16DDB2A7D4CE70010CF21 /* BeMyMoodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACF16DF32A7D4CE70010CF21 /* Build configuration list for PBXNativeTarget "BeMyMoodTests" */;
+			buildPhases = (
+				2D1A0714B0CFB11CBA2426FC /* [CP] Check Pods Manifest.lock */,
+				ACF16DD82A7D4CE70010CF21 /* Sources */,
+				ACF16DD92A7D4CE70010CF21 /* Frameworks */,
+				ACF16DDA2A7D4CE70010CF21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ACF16DDE2A7D4CE70010CF21 /* PBXTargetDependency */,
+			);
+			name = BeMyMoodTests;
+			productName = BeMyMoodTests;
+			productReference = ACF16DDC2A7D4CE70010CF21 /* BeMyMoodTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ACF16DE52A7D4CE70010CF21 /* BeMyMoodUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACF16DF62A7D4CE70010CF21 /* Build configuration list for PBXNativeTarget "BeMyMoodUITests" */;
+			buildPhases = (
+				2BF1C027C0C097E0D062FCA5 /* [CP] Check Pods Manifest.lock */,
+				ACF16DE22A7D4CE70010CF21 /* Sources */,
+				ACF16DE32A7D4CE70010CF21 /* Frameworks */,
+				ACF16DE42A7D4CE70010CF21 /* Resources */,
+				FDA1755AB643B9FF920BE295 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ACF16DE82A7D4CE70010CF21 /* PBXTargetDependency */,
+			);
+			name = BeMyMoodUITests;
+			productName = BeMyMoodUITests;
+			productReference = ACF16DE62A7D4CE70010CF21 /* BeMyMoodUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ACF16DBE2A7D4CE50010CF21 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					ACF16DC52A7D4CE50010CF21 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					ACF16DDB2A7D4CE70010CF21 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = ACF16DC52A7D4CE50010CF21;
+					};
+					ACF16DE52A7D4CE70010CF21 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = ACF16DC52A7D4CE50010CF21;
+					};
+				};
+			};
+			buildConfigurationList = ACF16DC12A7D4CE50010CF21 /* Build configuration list for PBXProject "BeMyMood" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ACF16DBD2A7D4CE50010CF21;
+			productRefGroup = ACF16DC72A7D4CE50010CF21 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ACF16DC52A7D4CE50010CF21 /* BeMyMood */,
+				ACF16DDB2A7D4CE70010CF21 /* BeMyMoodTests */,
+				ACF16DE52A7D4CE70010CF21 /* BeMyMoodUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ACF16DC42A7D4CE50010CF21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACF16DD62A7D4CE70010CF21 /* LaunchScreen.storyboard in Resources */,
+				ACF16DD32A7D4CE70010CF21 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACF16DDA2A7D4CE70010CF21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACF16DE42A7D4CE70010CF21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2BF1C027C0C097E0D062FCA5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeMyMood-BeMyMoodUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D1A0714B0CFB11CBA2426FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeMyMoodTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		836609D6FF25CA349A5ADFAD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeMyMood-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDA1755AB643B9FF920BE295 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeMyMood-BeMyMoodUITests/Pods-BeMyMood-BeMyMoodUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeMyMood-BeMyMoodUITests/Pods-BeMyMood-BeMyMoodUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BeMyMood-BeMyMoodUITests/Pods-BeMyMood-BeMyMoodUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEF07A897DD733CA9F628D34 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeMyMood/Pods-BeMyMood-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeMyMood/Pods-BeMyMood-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BeMyMood/Pods-BeMyMood-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ACF16DC22A7D4CE50010CF21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E4FEC112A88066700EDA21A /* SpotTagCell.swift in Sources */,
+				ACF16DCE2A7D4CE50010CF21 /* HomeViewController.swift in Sources */,
+				AC72EA1A2A8CEF1B00B41E28 /* StoredMoodBoardViewController.swift in Sources */,
+				2ECD05272A81184200FC3FF3 /* SecondViewController.swift in Sources */,
+				2E1BF30E2A8A7D4600C58138 /* SpotCellTapProtocol.swift in Sources */,
+				2E1BF30C2A8A6A4300C58138 /* SpotDetailViewController.swift in Sources */,
+				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
+				2E70329A2A8CAEEF00AD4593 /* RecommendCell.swift in Sources */,
+				AC3D61A52A8D81B200499988 /* PopularViewcontroller.swift in Sources */,
+				2ECD051C2A80FFE500FC3FF3 /* SpotListModalLayout.swift in Sources */,
+				2ECD051A2A80FFC400FC3FF3 /* SpotListModalViewController.swift in Sources */,
+				ACC9DBA62A8AA36C000FEDF9 /* UIImage.swift in Sources */,
+				AC72EA1C2A8D02D800B41E28 /* CustomInterceptor.swift in Sources */,
+				ACF16E0B2A81118E0010CF21 /* TabBarController.swift in Sources */,
+				ACF16E152A8263FC0010CF21 /* TagCell.swift in Sources */,
+				2E7032A22A8CD93800AD4593 /* Nicknames.swift in Sources */,
+				ACF16E122A82638C0010CF21 /* UICollectionView.swift in Sources */,
+				ACE4E6002A8A3CF000BE3150 /* MoodBoardEditViewController.swift in Sources */,
+				2E7032962A8BE48000AD4593 /* DetailViewController.swift in Sources */,
+				2E7032A02A8CD79E00AD4593 /* ReviewCell.swift in Sources */,
+				ACF16E202A82919C0010CF21 /* ColorSelectionLayout.swift in Sources */,
+				AC0624422A88ADFE00EDFB8E /* RecordPictureCell.swift in Sources */,
+				ACC9DBAA2A8AB187000FEDF9 /* TextEditorLayout.swift in Sources */,
+				AC06243E2A87B7DA00EDFB8E /* RecordViewController.swift in Sources */,
+				ACF16E082A810E660010CF21 /* UIColor.swift in Sources */,
+				AC400F212A8CAD1100353B81 /* Data.swift in Sources */,
+				AC0624482A88E98E00EDFB8E /* LocationSearchLayout.swift in Sources */,
+				ACF16DFE2A7D6B200010CF21 /* MoodBoardLayout.swift in Sources */,
+				ACF16E1A2A828EE10010CF21 /* ColorSelectionViewController.swift in Sources */,
+				2E8798DD2A8D688700625802 /* ApiClientYS.swift in Sources */,
+				AC06244A2A891DAD00EDFB8E /* LocationResultCell.swift in Sources */,
+				ACF16E042A7D6B900010CF21 /* CommunityViewController.swift in Sources */,
+				ACF16E182A828ECF0010CF21 /* MoodSelectionViewController.swift in Sources */,
+				ACC9DBB42A8BE120000FEDF9 /* SignupViewController.swift in Sources */,
+				ACF16E222A8291AA0010CF21 /* LocationSelectionLayout.swift in Sources */,
+				ACC9DBB62A8BE12E000FEDF9 /* SignupLayout.swift in Sources */,
+				2ECD05172A80F72700FC3FF3 /* UIViewController.swift in Sources */,
+				ACF16DCA2A7D4CE50010CF21 /* AppDelegate.swift in Sources */,
+				ACF16DFC2A7D6B090010CF21 /* MoodBoardViewController.swift in Sources */,
+				2E70329E2A8CD6C100AD4593 /* ReviewViewController.swift in Sources */,
+				2E1BF3052A89558400C58138 /* CategoryBottomSheet.swift in Sources */,
+				ACC9DBA82A8AB177000FEDF9 /* TextEditorViewController.swift in Sources */,
+				ACC9DBA42A8A6BC4000FEDF9 /* ColorCell.swift in Sources */,
+				ACF16E002A7D6B420010CF21 /* ProfileViewController.swift in Sources */,
+				2E4FEC0F2A87940300EDA21A /* UIImageView.swift in Sources */,
+				2E1BF3092A8A4BA300C58138 /* MoodBottomSheet.swift in Sources */,
+				2ECD05252A81182100FC3FF3 /* FirstViewController.swift in Sources */,
+				ACC9DBAE2A8B8B19000FEDF9 /* StickerCell.swift in Sources */,
+				ACC9DE5A2A8C180300A1DA78 /* ApiModel.swift in Sources */,
+				2E4FEC0D2A87809300EDA21A /* SpotCell.swift in Sources */,
+				AC72EA182A8CE37900B41E28 /* RecentMoodBoardViewController.swift in Sources */,
+				ACC9DBAC2A8B8674000FEDF9 /* MoodBoardStickerBottomSheet.swift in Sources */,
+				ACF16E022A7D6B520010CF21 /* ProfileLayout.swift in Sources */,
+				AC0624442A88D0E600EDFB8E /* EntertainmentBottomSheetViewController.swift in Sources */,
+				ACC9DBB02A8BE0FB000FEDF9 /* LoginViewController.swift in Sources */,
+				AC3D619F2A8D2A6700499988 /* MoodBoardCell.swift in Sources */,
+				ACF16E062A7D6BA00010CF21 /* CommunityLayout.swift in Sources */,
+				2E401BC62A88E85E00D77351 /* FilterOption.swift in Sources */,
+				2E8798DF2A8D689500625802 /* ApiModelYS.swift in Sources */,
+				2E1BF3072A8A45FC00C58138 /* RegionBottomSheet.swift in Sources */,
+				ACC9DE582A8C178200A1DA78 /* ApiClient.swift in Sources */,
+				ACC9DBB22A8BE106000FEDF9 /* LoginLayout.swift in Sources */,
+				ACC9DE562A8BFF1B00A1DA78 /* SignUpModal.swift in Sources */,
+				2E9A21252A8768A700750119 /* UISlidingTabController.swift in Sources */,
+				ACE4E6022A8A3D0B00BE3150 /* MoodBoardEditLayout.swift in Sources */,
+				AC3D61A12A8D385700499988 /* MoodBoardImageViewController.swift in Sources */,
+				ACF16E1E2A82918C0010CF21 /* MoodSelectionLayout.swift in Sources */,
+				2E7032982A8C9FE700AD4593 /* DetailVerticalScrollContentView.swift in Sources */,
+				AC3D61A32A8D389700499988 /* MoodBoardImageCell.swift in Sources */,
+				AC0624462A88E97900EDFB8E /* LocationSearchViewController.swift in Sources */,
+				ACF16DFA2A7D5D500010CF21 /* HomeLayout.swift in Sources */,
+				ACF16E1C2A8290A70010CF21 /* LocationSelectionViewController.swift in Sources */,
+				ACF16DCC2A7D4CE50010CF21 /* SceneDelegate.swift in Sources */,
+				AC0624402A87B81000EDFB8E /* RecordLayout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACF16DD82A7D4CE70010CF21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACF16DE12A7D4CE70010CF21 /* BeMyMoodTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACF16DE22A7D4CE70010CF21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACF16DED2A7D4CE70010CF21 /* BeMyMoodUITestsLaunchTests.swift in Sources */,
+				ACF16DEB2A7D4CE70010CF21 /* BeMyMoodUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ACF16DDE2A7D4CE70010CF21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ACF16DC52A7D4CE50010CF21 /* BeMyMood */;
+			targetProxy = ACF16DDD2A7D4CE70010CF21 /* PBXContainerItemProxy */;
+		};
+		ACF16DE82A7D4CE70010CF21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ACF16DC52A7D4CE50010CF21 /* BeMyMood */;
+			targetProxy = ACF16DE72A7D4CE70010CF21 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ACF16DD42A7D4CE70010CF21 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ACF16DD52A7D4CE70010CF21 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ACF16DEE2A7D4CE70010CF21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ACF16DEF2A7D4CE70010CF21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ACF16DF12A7D4CE70010CF21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25E0CDC52360D350D5222219 /* Pods-BeMyMood.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeMyMood/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyMood;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ACF16DF22A7D4CE70010CF21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3866844B03D2C5893F9D2102 /* Pods-BeMyMood.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeMyMood/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyMood;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		ACF16DF42A7D4CE70010CF21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33D0006B4858ACF3CEE49C14 /* Pods-BeMyMoodTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyMoodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeMyMood.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BeMyMood";
+			};
+			name = Debug;
+		};
+		ACF16DF52A7D4CE70010CF21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B9D02533203E491DDD9E805 /* Pods-BeMyMoodTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyMoodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeMyMood.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BeMyMood";
+			};
+			name = Release;
+		};
+		ACF16DF72A7D4CE70010CF21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14918AEB277B52AE7F421F65 /* Pods-BeMyMood-BeMyMoodUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyMoodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BeMyMood;
+			};
+			name = Debug;
+		};
+		ACF16DF82A7D4CE70010CF21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D6782CAFCB745F115D490F8 /* Pods-BeMyMood-BeMyMoodUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyMoodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BeMyMood;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ACF16DC12A7D4CE50010CF21 /* Build configuration list for PBXProject "BeMyMood" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACF16DEE2A7D4CE70010CF21 /* Debug */,
+				ACF16DEF2A7D4CE70010CF21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACF16DF02A7D4CE70010CF21 /* Build configuration list for PBXNativeTarget "BeMyMood" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACF16DF12A7D4CE70010CF21 /* Debug */,
+				ACF16DF22A7D4CE70010CF21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACF16DF32A7D4CE70010CF21 /* Build configuration list for PBXNativeTarget "BeMyMoodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACF16DF42A7D4CE70010CF21 /* Debug */,
+				ACF16DF52A7D4CE70010CF21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACF16DF62A7D4CE70010CF21 /* Build configuration list for PBXNativeTarget "BeMyMoodUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACF16DF72A7D4CE70010CF21 /* Debug */,
+				ACF16DF82A7D4CE70010CF21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ACF16DBE2A7D4CE50010CF21 /* Project object */;
+}
