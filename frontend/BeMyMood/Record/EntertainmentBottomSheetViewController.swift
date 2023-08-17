@@ -116,6 +116,14 @@ class EntertainmentBottomSheetViewController: UIViewController {
 
         hierarchy()
         setupGestureRecognizer()
+        completeBtn.addTarget(self, action: #selector(moveToHome), for: .touchUpInside)
+    }
+    
+    @objc func moveToHome(){
+        
+        let nextVC = TabBarController()
+        nextVC.modalPresentationStyle = .fullScreen
+        present(nextVC, animated: true)
     }
 
     override func viewDidAppear(_ animated: Bool) {

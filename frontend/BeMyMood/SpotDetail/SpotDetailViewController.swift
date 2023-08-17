@@ -12,9 +12,10 @@ import SwiftUI
 
 class SpotDetailViewController: UIViewController {
     
+    var detailNavigationController: UINavigationController!
     var spotId: Int?
     
-    var tempData = SpotDetailInfos(spotId: 3, bookmarked: true, spotName: "누데이크 성수점", spotThumbnailImageUrl: ["https://picsum.photos/200/300","https://picsum.photos/200/300","https://picsum.photos/200/300"], categoryName: "카페", moodNames: ["힙한","소품이많은","무채색","어두운","특이한소재","포인트컬러","정적인","키치한","세련된","단조로운"], address: "서울 성동구 성수이로7길 26 1층", url: "http://www.nudake.com", time: "매일 11:00 - 21:00, 라스트오더 20:45", description: "대법관의 임기는 6년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다. 국정감사 및 조사에 관한 절차 기타 필요한 사항은 법률로 정한다. 국방상 또는 국민경제상 긴절한 필요로 인하여 법률이 정하는 경우를 제외하고는, 사영기업을 국유 또는 공유로 이전하거나 그 경영을 통제 또는 관리할 수 없다.", recommends: ["음료", "전시", "디저트"], menuImageUrls: ["https://picsum.photos/200/300","https://picsum.photos/200/300","https://picsum.photos/200/300", "https://picsum.photos/200/300"])
+    var tempData = SpotDetailInfos(spotId: 3, bookmarked: true, spotName: "누데이크 성수점", spotThumbnailImageUrl: ["https://bemymood-bucket.s3.ap-northeast-2.amazonaws.com/spot/12.jpg", "https://bemymood-bucket.s3.ap-northeast-2.amazonaws.com/spot/13.jpg","https://bemymood-bucket.s3.ap-northeast-2.amazonaws.com/spot/15.jpg"], categoryName: "카페", moodNames: ["힙한","소품이많은","무채색","어두운","특이한소재","포인트컬러","정적인","키치한","세련된","단조로운"], address: "서울 성동구 성수이로7길 26 1층", url: "http://www.nudake.com", time: "매일 11:00 - 21:00, 라스트오더 20:45", description: "누데이크의 두 번째 플래그십 스토어인 성수점은 <Museum of Nudake>를 테마로 완성했습니다. 'Make New Fantasy'라는 슬로건을 담아 만든 오브제와 조형물을 중심으로 아티스틱한 경험과 새로운 감정을 선사합니다.", recommends: ["음료", "전시", "디저트"], menuImageUrls: ["https://bemymood-bucket.s3.ap-northeast-2.amazonaws.com/spot/14.jpg", "https://bemymood-bucket.s3.ap-northeast-2.amazonaws.com/spot/12.jpg","https://bemymood-bucket.s3.ap-northeast-2.amazonaws.com/spot/16.jpg", "https://bemymood-bucket.s3.ap-northeast-2.amazonaws.com/spot/24.jpg"])
     
     //MARK: - UIComponents
     
@@ -26,7 +27,7 @@ class SpotDetailViewController: UIViewController {
     
     let navigationTitle = UILabel().then{
         $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        $0.text = "장소명_default"
+        $0.text = "누데이크 성수점"
     }
     
     let spotIsLikedButton = UIButton().then{
@@ -134,6 +135,9 @@ class SpotDetailViewController: UIViewController {
         print("addMoodBoardBtnTapped")
         
         /// TODO : MoveTo addMoodBoard View
+        ///
+        detailNavigationController?.pushViewController(RecordViewController(), animated: true)
+        RecordViewController()
     }
     
 }
